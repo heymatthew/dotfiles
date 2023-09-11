@@ -127,6 +127,8 @@ nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 " Window resize events make splits equal
 " https://hachyderm.io/@tpope/109784416506853805
 autocmd VimResized * wincmd =
+" ...and new splits that might open, e.g. v from netrw
+autocmd WinNew * wincmd =
 
 " Reload vimrc on edits
 " credit http://howivim.com/2016/damian-conway
