@@ -40,7 +40,6 @@ setopt NO_BEEP AUTO_LIST AUTO_MENU
 autoload -U compinit
 compinit
 
-setopt PROMPT_SUBST
 
 # Setup zsh git integration
 autoload -Uz vcs_info
