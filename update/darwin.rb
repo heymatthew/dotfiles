@@ -3,7 +3,7 @@ def describe(action)
 end
 
 describe "vim"
-system('nvim -c "call UpdateEverything() | qa"')
+system(%{nvim -c "call execute('PlugUpdate') | call execute('GoInstallBinaries') | qa"})
 
 describe "npm"
 system('npm install -g npm') # update npm itself

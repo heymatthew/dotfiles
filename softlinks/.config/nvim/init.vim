@@ -235,13 +235,6 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
-function! UpdateEverything()
-  exe('source ' . $MYVIMRC)
-  exe('PlugUpdate')
-  exe('source ' . $MYVIMRC)
-  exe('GoInstallBinaries')
-endfunction
-
 " Syntax highlighting is often not quite right.
 nnoremap <leader>t :set filetype=
 
