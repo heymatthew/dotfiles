@@ -171,10 +171,6 @@ if [[ `uname` == "Darwin" ]]; then # OSX
 
   # Local IP as env variable
   export LOCAL_IP=$(ipconfig getifaddr en0)
-
-  # Sometimes softlinks get saved over as files
-  # Restore missing softlinks
-  (cd ~/dotfiles && stow softlinks)
 fi
 
 # hose things that match string
