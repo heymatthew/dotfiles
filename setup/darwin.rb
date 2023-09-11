@@ -27,7 +27,12 @@ git_template = File.new("#{Dir.home}/.gitconfig.local", 'w')
 git_template.puts <<~EOF.strip
   [user]
     name = Matthew B. Gray
-    email = fixme@github.io
+    email = spamed@matthew.nz
 EOF
 git_template.close
 system('vim ~/.gitconfig.local')
+
+puts "\nTODO"
+puts "* Install Rosé Pine for iTerm2 https://github.com/rose-pine/iterm"
+puts "* Create iTerm2 profiles 'dark' from moon and 'light' from dawn"
+puts "* Set m+ 1mn fonts"
