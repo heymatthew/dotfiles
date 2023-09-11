@@ -61,9 +61,10 @@ augroup END
 
 Plug 'w0rp/ale'
 augroup linting
-  let g:ale_set_highlights = 0  " remove highlights
-  let g:ale_set_loclist = 0     " prefer quickfix list to location list
-  let g:ale_set_quickfix = 0
+  let g:ale_set_highlights = 0               " remove highlights
+  let g:ale_set_loclist = 0                  " don't clobber location list
+  let g:ale_set_quickfix = 0                 " don't clobber quickfix list
+  let g:ale_virtualtext_cursor = 'current'   " only show hints under cursor
 augroup END
 
 " Plug 'neovim/nvim-lspconfig' " TODO Language Server Protocal auto config
