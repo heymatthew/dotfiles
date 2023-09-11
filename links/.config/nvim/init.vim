@@ -49,6 +49,9 @@ Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 
 Plug 'vim-scripts/LargeFile' " turn off slow stuff in files > 20mb
 
+Plug 'preservim/vim-colors-pencil' " colorscheme
+Plug 'arcticicestudio/nord-vim' " colorscheme
+
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 augroup fuzzy_finder
@@ -96,30 +99,28 @@ Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
-try
-  syntax off             " turning off colours for fun
+syntax off             " turning off colours for fun
   set termguicolors      " enable true colors support
-  " colorscheme solarized8
-  let ayucolor="light"  " for light version of theme
-  " let ayucolor="mirage" " for mirage version of theme
-  " let ayucolor="dark"   " for dark version of theme
-  set colorscheme ayu
-  set background=light
+set background=light
+colorscheme pencil
 
-  " from system_profiler SPFontsDataType
-  set guifont=mplus-1m-regular:h12
+" from system_profiler SPFontsDataType
+set guifont=mplus-1m-regular:h12
 
-  if filereadable($HOME . "/.config/iterm_theme")
-    let iterm_theme = readfile($HOME . "/.config/iterm_theme")
-    if len(iterm_theme) > 0
-      " 'dark' or 'light'
-      exe "set background=" . iterm_theme[0]
+if filereadable($HOME . "/.config/iterm_theme")
+  let lines = readfile($HOME . "/.config/iterm_theme")
+  if len(lines) > 0
+    " 'dark' or 'light'
+    let iterm_theme = lines[0]
+    if iterm_theme == "light"
+      set background=light
+      colorscheme pencil
+    else
+      set background=dark
+      colorscheme nord
     endif
   endif
-catch
-  " If colors and fonts fail, this isn't a big deal
-endtry
-
+endif
 
 set relativenumber        " better navigation
 set number                " give line number that you're on
