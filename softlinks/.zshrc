@@ -249,15 +249,15 @@ if which gcloud > /dev/null; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-# https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
-it2prof() { echo -e "\033]1337;SetProfile=$1\a" }
+# Credit: https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
+terminal_profile() { echo -e "\033]1337;SetProfile=$1\a" }
 
 # Set and remember iterm colours
 # n.b. themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
 # see https://iterm2.com/documentation-escape-codes.html
-# [ -e ~/.config/iterm_theme ] && it2prof $(cat ~/.config/iterm_theme)"
-alias dark='echo dark > ~/.config/iterm_theme && it2prof dark'
-alias light='echo light > ~/.config/iterm_theme && it2prof light'
+# [ -e ~/.config/iterm_theme ] && terminal_profile $(cat ~/.config/iterm_theme)"
+alias dark='echo dark > ~/.config/iterm_theme && terminal_profile dark'
+alias light='echo light > ~/.config/iterm_theme && terminal_profile light'
 appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
 if [ $appearance = 'Dark' ]; then
   dark
