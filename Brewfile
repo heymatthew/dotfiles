@@ -15,22 +15,22 @@ brew "hugo"       # static website generator
 brew "iftop"      # top for your network interfaces
 brew "jq"
 brew "md5sha1sum"
+brew "mplayer"
 brew "mtr"
 brew "ncdu"
+brew "neovim"
 brew "ranger"
 brew "rename"
+brew "shellcheck"            # ncjones uses this for linting shell stuff
 brew "stow"       # manage softlinks for dotfiles
 brew "svn"        # required for font-source-code-pro
 brew "syncthing"  # keep stuff synced across machines
 brew "tig"
 brew "tree"
 brew "watch"
+brew "wget"
 brew "zsh"
 
-brew "mplayer"
-brew "neovim"
-brew "shellcheck"            # ncjones uses this for linting shell stuff
-brew "wget"
 cask "anki"
 cask "docker"
 cask "font-hack"             # nice looking fixed width font
