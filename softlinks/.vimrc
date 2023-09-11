@@ -104,7 +104,6 @@ nmap sn 0:rightbelow vnew<CR>
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
 nnoremap <leader>t :tab split<CR>
-nnoremap <leader>q :tabclose<CR>
 
 " Vertical split for help files
 autocmd FileType help wincmd L
