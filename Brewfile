@@ -53,11 +53,11 @@ cask "julia"      # Dynamic programming language
 cask "jupyterlab" # A Next-Generation Notebook Interface https://jupyter.org/
 cask "keepassxc"             # compatable with keepassx files
 cask "keepingyouawake"       # keeps the screen on for presentations
-cask "kicad"                 # fabrication of PCBs for http://jlcpcb.com
 cask "signal"                # secure chat
 cask "transmission"          # good for linux ISOs
 cask "vlc"
 
+# cask "kicad"                 # manual install, fab PCBs for http://jlcpcb.com
 # cask "skype"
 # cask "spotify"
 # cask "tunnelblick"           # powers modest VPNs
