@@ -43,7 +43,9 @@ augroup vim_fugitive # for tpope/vim-fugitive
   nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
 
   " Git status
-  nnoremap <leader>g :Git<CR>
+  nnoremap <leader>g :G<CR>
+  nnoremap <leader>l :G log --oneline origin/HEAD...<CR>
+  nnoremap <leader>r :G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
   command Gchanges :G difftool origin/HEAD
