@@ -1,5 +1,5 @@
-Local configurations for programs that I use on my boxes, checked into git for
-maximum awesome.
+Standard local configurations for programs that I use on my machines, checked
+into git for maximum awesome.
 
 Setup a new machine with:
 ```
