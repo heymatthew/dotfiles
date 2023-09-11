@@ -2,9 +2,9 @@
 
 DESC=$1
 if [ -z "$DESC" ]; then
-  echo "Feature branch description is required"
-  echo "usage: git feature remove-shaype-oauth-safely"
-  exit 1
+  # List features
+  git branch --format "%(refname:short)" | grep '^feature/'
+  exit 0
 fi
 
 MAINLINE=$(git origin-head)
