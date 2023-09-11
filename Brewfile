@@ -21,6 +21,7 @@ brew "jq"
 brew "mas"        # App Store control from CLI https://github.com/mas-cli/mas
 brew "mplayer"
 brew "mpv"        # command line media player https://mpv.io/
+brew "mr"         # manage multiple git repos
 brew "mtr"
 brew "ncdu"
 brew "neovim"
