@@ -3,11 +3,12 @@
 	path = ~/.gitconfig.local
 [alias]
 	wip = !git commit -a -m WIP
-	trunk = !git fetch && git checkout $(git remote-head)
-	changes = !git diff $(git remote-head)... --name-only
-	remote-head = !cat .git/remote-head 2>/dev/null || (git remote-head-update && cat .git/remote-head)
-	remote-head-update = !echo "origin/$(git remote-head-get)" > .git/remote-head
-	remote-head-get = !git remote set-head origin -a | awk '{print $4}'
+	trunk = !git fetch && git checkout $(git origin-head)
+	changes = !git diff $(git origin-head)... --name-only
+	origin-head = !cat .git/origin-head 2>/dev/null || (git origin-head-update && cat .git/origin-head)
+	origin-head-update = !echo "origin/$(git origin-head-get)" > .git/origin-head
+	origin-head-get = !git remote set-head origin -a | awk '{print $4}'
+	humans = !git log | grep Author | sort | uniq
 [commit]
 	verbose = true
 [push]
