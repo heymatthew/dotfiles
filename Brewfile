@@ -2,7 +2,9 @@
 # https://openfolder.sh/macos-migrations-with-brewfile
 
 brew "aspell"
+brew "awscli"
 brew "ctags"
+brew "dict"       # dictionary server protocol (RFC2229) client
 brew "direnv"
 brew "entr"       # run commands when files change
 brew "git"
@@ -22,26 +24,24 @@ brew "tig"
 brew "tree"
 brew "watch"
 brew "zsh"
-brew "dict"       # dictionary server protocol (RFC2229) client
-brew "awscli"
 
-cask "keepingyouawake"       # keeps the screen on for presentations
+brew "mplayer"
+brew "neovim"
+brew "shellcheck"            # ncjones uses this for linting shell stuff
+brew "wget"
+cask "docker"
+cask "flux"                  # color temperature based on time of day https://justgetflux.com/
+cask "font-hack"             # nice looking fixed width font
+cask "font-mplus"            # narrow fixed width for retina
 cask "gimp"                  # image editing software
 cask "iterm2"                # terminal emulator
 cask "keepassxc"             # compatable with keepassx files
-cask "docker"
-cask "transmission"          # good for linux ISOs
-brew "neovim"
-brew "wget"
-brew "shellcheck"            # ncjones uses this for linting shell stuff
-brew "mplayer"
-cask "vlc"
-cask "font-hack"             # nice looking fixed width font
-cask "font-mplus"            # narrow fixed width for retina
-cask "unclack"               # for people with mech keebs, https://unclack.app
-cask "flux"                  # color temperature based on time of day https://justgetflux.com/
+cask "keepingyouawake"       # keeps the screen on for presentations
 cask "kicad"                 # fabrication of PCBs for http://jlcpcb.com
+cask "transmission"          # good for linux ISOs
+cask "unclack"               # for people with mech keebs, https://unclack.app
+cask "vlc"
 
+# cask "skype"
 # cask "spotify"
 # cask "tunnelblick"           # powers modest VPNs
-# cask "skype"
