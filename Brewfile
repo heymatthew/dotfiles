@@ -59,6 +59,7 @@ cask "gimp"                 # image editing software
 cask "iterm2"               # terminal emulator
 cask "julia"                # Dynamic programming language
 cask "keepassxc"            # compatible with keepassx files
+cask "linearmouse"          # tune sensitivity and acceleration
 cask "keepingyouawake"      # keeps the screen on for presentations
 cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
