@@ -33,6 +33,7 @@ call plug#end()
 
 set background=dark
 colorscheme rosepine
+set colorcolumn=100
 
 nnoremap <leader>f :FZF<CR>
 
