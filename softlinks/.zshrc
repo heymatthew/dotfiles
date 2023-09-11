@@ -280,3 +280,8 @@ if [ $appearance = 'Dark' ]; then
 else
   light
 fi
+
+func cwd() {
+  pwd | sed "s#$HOME#~#g"
+}
+echo "$(whoami)@$(hostname):$(cwd)"
