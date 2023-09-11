@@ -23,6 +23,7 @@ brew "mplayer"
 brew "mpv"        # command line media player https://mpv.io/
 brew "mr"         # manage multiple git repos
 brew "mtr"
+brew "netcat"     # gnu netcat > osx netcat
 brew "ncdu"
 brew "neovim"
 brew "postgresql@15"
@@ -53,7 +54,7 @@ cask "font-source-code-pro"  # adobe backed fixed width font
 cask "gimp"                  # image editing software
 cask "iterm2"                # terminal emulator
 cask "julia"      # Dynamic programming language
-cask "jupyterlab" # A Next-Generation Notebook Interface https://jupyter.org/
+# cask "jupyterlab" # A Next-Generation Notebook Interface https://jupyter.org/
 cask "keepassxc"             # compatable with keepassx files
 cask "keepingyouawake"       # keeps the screen on for presentations
 cask "signal"                # secure chat
