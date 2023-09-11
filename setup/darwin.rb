@@ -18,6 +18,20 @@ run("sudo scutil --set LocalHostName '#{hostname}'")
 run("sudo scutil --set ComputerName '#{hostname}'")
 run("sudo scutil --set HostName '#{hostname}.matthew.nz'")
 
+# n.b. Put here to avoid awkward user interaction later.
+# Not used till we stow dotfiles.
+describe 'templating git config'
+puts "editing git config in vim 🤔, press enter to continue..."
+gets
+git_template = File.new("#{Dir.home}/.gitconfig.local", 'w')
+git_template.puts <<~EOF.strip
+  [user]
+    name = Matthew B. Gray
+    email = spamed@matthew.nz
+EOF
+git_template.close
+run('vim ~/.gitconfig.local')
+
 # From https://brew.sh/
 describe "installing homebrew"
 run('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
@@ -35,18 +49,6 @@ end
 
 describe "install neovim plugins"
 run('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
-
-describe 'templating git config'
-puts "editing git config in vim 🤔, press enter to continue..."
-gets
-git_template = File.new("#{Dir.home}/.gitconfig.local", 'w')
-git_template.puts <<~EOF.strip
-  [user]
-    name = Matthew B. Gray
-    email = spamed@matthew.nz
-EOF
-git_template.close
-run('vim ~/.gitconfig.local')
 
 puts "\nTODO"
 puts "* Install Rosé Pine for iTerm2 https://github.com/rose-pine/iterm"
