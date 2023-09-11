@@ -49,8 +49,7 @@ Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 
 Plug 'vim-scripts/LargeFile' " turn off slow stuff in files > 20mb
 
-Plug 'preservim/vim-colors-pencil' " colorscheme
-Plug 'arcticicestudio/nord-vim' " colorscheme
+Plug 'rose-pine/neovim' " colorscheme
 
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
@@ -99,26 +98,30 @@ Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
-syntax off             " turning off colours for fun
-  set termguicolors      " enable true colors support
-set background=light
-colorscheme pencil
+syntax on
+set termguicolors                " enable true colors support
+set guifont=mplus-1m-regular:h12 " from system_profiler SPFontsDataType
 
-" from system_profiler SPFontsDataType
-set guifont=mplus-1m-regular:h12
+" <3
+" from https://github.com/rose-pine/neovim
+colorscheme rose-pine
+set background=light
+lua << EOF
+require('rose-pine').setup({
+	--- @usage 'main' | 'moon'
+	dark_variant = 'moon',
+})
+vim.cmd('colorscheme rose-pine')
+EOF
 
 if filereadable($HOME . "/.config/iterm_theme")
   let lines = readfile($HOME . "/.config/iterm_theme")
-  if len(lines) > 0
+  if len(lines) == 0
+    set background='light'
+  else
     " 'dark' or 'light'
     let iterm_theme = lines[0]
-    if iterm_theme == "light"
-      set background=light
-      colorscheme pencil
-    else
-      set background=dark
-      colorscheme nord
-    endif
+    exe "set background=" . iterm_theme
   endif
 endif
 
