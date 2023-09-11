@@ -17,18 +17,17 @@ brew "hugo"       # static website generator
 brew "iftop"      # top for your network interfaces
 brew "jq"
 brew "mas"        # App Store control from CLI https://github.com/mas-cli/mas
-brew "postgresql@15"
-brew "pstree"     # Hirachical list of processes
-brew "restic"     # Nobody wants backup, everyone wants restore https://restic.net/
-
 brew "md5sha1sum"
 brew "mplayer"
 brew "mpv"        # command line media player https://mpv.io/
 brew "mtr"
 brew "ncdu"
 brew "neovim"
+brew "postgresql@15"
+brew "pstree"     # Hirachical list of processes
 brew "ranger"
 brew "rename"
+brew "restic"     # Nobody wants backup, everyone wants restore https://restic.net/
 brew "shellcheck" # ncjones uses this for linting shell stuff
 brew "stow"       # manage softlinks for dotfiles
 brew "svn"        # required for font-source-code-pro
