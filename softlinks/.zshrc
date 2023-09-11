@@ -211,12 +211,6 @@ if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
 fi
 
-# If rbenv exists, init shims autocompletion
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)";
-  export PATH="~/.rbenv/bin:$PATH"
-fi
-
 # If asdf exists, init shims and autocompletion
 if which asdf > /dev/null; then
   source $(brew --prefix asdf)/libexec/asdf.sh
@@ -227,13 +221,6 @@ if [ -f /usr/local/share/chruby/chruby.sh ]; then
   echo "chruby..."
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
-fi
-
-# If pyenv exists, init shims and autocompletion
-if which pyenv > /dev/null; then
-  echo "pyenv..."
-  eval "$(pyenv init -)"
-  pyenv rehash
 fi
 
 # Advice from
