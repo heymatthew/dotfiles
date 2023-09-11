@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Like tcr, but without the git integration
+# Make sure you boost your watch limits:
+# https://eradman.com/entrproject/limits.html
+which entr > /dev/null || {
+    echo "brew install entr"
+    exit 1
+}
+find . | entr -c "$@"

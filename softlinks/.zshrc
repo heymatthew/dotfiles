@@ -264,30 +264,6 @@ if which gcloud > /dev/null; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-# Test && Commit || Revert, pioneered by Kent Beck
-# https://youtu.be/FFzHOyFeovE
-function tcr() {
-  which entr > /dev/null || {
-    echo "brew install entr"
-    return 1
-  }
-  projectRoot=$(git rev-parse --show-toplevel) # for monorepo
-  commitedFiles=$(git diff origin/master... --name-only)
-  changedFiles=$(git status --porcelain | awk '{print $2}')
-  echo "$projectRoot/$commitedFiles" "$projectRoot/$changedFiles" | xargs ls | entr -c sh -c "echo && $* && git add . || git checkout ."
-}
-
-# Like tcr, but without the git integration
-# Make sure you boost your watch limits:
-# https://eradman.com/entrproject/limits.html
-function t() {
-  which entr > /dev/null || {
-    echo "brew install entr"
-    return 1
-  }
-  git ls-tree --full-tree -r --name-only HEAD | xargs ls | entr -c $*
-}
-
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
 it2prof() { echo -e "\033]1337;SetProfile=$1\a" }
 
