@@ -16,6 +16,7 @@ brew "htop"       # prettier top, with colour
 brew "hugo"       # static website generator
 brew "iftop"      # top for your network interfaces
 brew "jq"
+brew "lua"
 brew "mas"        # App Store control from CLI https://github.com/mas-cli/mas
 brew "md5sha1sum"
 brew "mplayer"
