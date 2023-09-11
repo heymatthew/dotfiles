@@ -42,6 +42,9 @@ augroup vim_fugitive # for tpope/vim-fugitive
 
   " Show diffs since master in quickfix list
   command Gchanges :G difftool origin/HEAD
+
+  " Always use vertical diffs
+  set diffopt+=vertical
 augroup END
 
 augroup ale # for w0rp/ale
