@@ -16,6 +16,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'tpope/vim-surround'     " Delete, or insert around text objects
+Plug 'tpope/vim-repeat'       " Lets you use . for surround and other plugins
 Plug 'tpope/vim-commentary'   " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'   " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
 Plug 'tpope/vim-fugitive'     " Git integration
