@@ -98,7 +98,11 @@ call plug#end()
 try
   syntax off             " turning off colours for fun
   set termguicolors      " enable true colors support
-  colorscheme solarized8
+  " colorscheme solarized8
+  let ayucolor="light"  " for light version of theme
+  " let ayucolor="mirage" " for mirage version of theme
+  " let ayucolor="dark"   " for dark version of theme
+  set colorscheme ayu
   set background=light
 
   " from system_profiler SPFontsDataType
