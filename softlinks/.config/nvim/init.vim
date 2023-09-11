@@ -158,13 +158,17 @@ set ignorecase            " Search case insensitive...
 set smartcase             " ... but not it begins with upper case
 set incsearch             " Shows the match while typing
 set magic                 " Allows pattern matching with special characters
-set spl=en spell          " Use English for spellchecking,
-set nospell               " Spellcheck is off initially
 set autoindent            " indent on newlines
 set smartindent           " recognise syntax of files
 set noswapfile            " Don't use swapfile
 set nobackup              " Don't create annoying backup files
 set mouse=a               " Let vim use the mouse, grab and pull splits around etc.
+
+" Spellcheck
+set spelllang=en_gb       " Use English for spellchecking,
+set nospell               " ...but spellcheck is off initially
+autocmd Filetype gitcommit setlocal spell spelllang=en_gb
+autocmd Filetype markdown  setlocal spell spelllang=en_gb
 
 " set foldminlines=10       " Smaller than this will always show like it was open
 " set clipboard=unnamedplus " yank and put straight to system clipboard
