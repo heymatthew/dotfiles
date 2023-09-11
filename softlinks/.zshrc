@@ -80,7 +80,7 @@ case $TERM in
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
       PROMPT=$(echo "%{\e]0;%n@%M: %~\a\e[%(?.32.31)m%}β %{\e[m%}")
     else
-      PROMPT=$(echo "%{\e]0;%n@%M: %~\a\e[%(?.32.31)m%}λ %{\e[m%}")
+      PROMPT=$(echo "%{\e]0;%n@%M:%~\a\e[%(?.32.31)m%}λ %{\e[m%}")
     fi
     ;;
   *)
