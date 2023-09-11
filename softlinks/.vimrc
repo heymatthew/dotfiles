@@ -28,6 +28,8 @@ Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'w0rp/ale',      { 'as': 'vim-ale' }
 Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf.vim'                " Defaults
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 Plug 'heymatthew/vim-blinkenlights'
 Plug 'junegunn/vader.vim'              " Vimscript test framework
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
@@ -226,3 +228,7 @@ vmap <silent> <expr> p <sid>Repl()
 
 " Set title on terminal to focused buffer filename
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
+
+" Insert timestamps after cursor
+command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+command! Today normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
