@@ -106,6 +106,10 @@ nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 " https://hachyderm.io/@tpope/109784416506853805
 autocmd VimResized * wincmd =
 
+" Reload vimrc on edits
+" credit http://howivim.com/2016/damian-conway
+autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
