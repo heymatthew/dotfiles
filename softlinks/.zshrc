@@ -183,13 +183,6 @@ if which asdf > /dev/null; then
   source $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
-# If chruby exists, init shims and hook cd
-if [ -f /usr/local/share/chruby/chruby.sh ]; then
-  echo "chruby..."
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-fi
-
 # Advice from
 # brew cask install google-cloud-sdk
 if which gcloud > /dev/null; then
