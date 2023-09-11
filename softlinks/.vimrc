@@ -58,7 +58,8 @@ augroup vim_fugitive # for tpope/vim-fugitive
   nnoremap <leader>r :G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
-  command Gchanges :G difftool origin/HEAD
+  command Gchanges echo "deprecated, use :Changes"
+  command Changes :G difftool origin/HEAD
 
   " Always use vertical diffs
   set diffopt+=vertical
