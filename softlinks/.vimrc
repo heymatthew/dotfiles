@@ -32,6 +32,7 @@ Plug 'junegunn/fzf.vim'                " Defaults
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 Plug 'heymatthew/vim-blinkenlights'
 Plug 'junegunn/vader.vim'              " Vimscript test framework
+Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
 call plug#end()
 
