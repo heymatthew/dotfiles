@@ -18,6 +18,12 @@ run("sudo scutil --set LocalHostName '#{hostname}'")
 run("sudo scutil --set ComputerName '#{hostname}'")
 run("sudo scutil --set HostName '#{hostname}.matthew.nz'")
 
+describe "creating ssh keys"
+run("ssh-keygen -t ed25519")
+puts "editing public key in vim 🤔, press enter to continue..."
+gets
+run("vim ~/.ssh/id_ed25519.pub")
+
 # n.b. Put here to avoid awkward user interaction later.
 # Not used till we stow dotfiles.
 describe 'templating git config'
@@ -50,7 +56,13 @@ end
 describe "install neovim plugins"
 run('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
 
+describe "Your public ssh key is stored in ~/.ssh/id_ed25519.pub"
+puts File.open("#{Dir.home}/.ssh/id_ed25519.pub").read.chomp
 puts "\nTODO"
+puts "* Copy over ~/.ssh/config"
+puts "* Add ssh key to https://github.com/settings/keys"
+puts "* Add ssh key to https://gitlab.com/-/profile/keys"
+puts "* Add ssh key to remote hosts ~/.ssh/authorized_keys"
 puts "* Install Rosé Pine for iTerm2 https://github.com/rose-pine/iterm"
 puts "* Create iTerm2 profiles 'dark' from moon and 'light' from dawn"
 puts "* Set hack font on profiles"
