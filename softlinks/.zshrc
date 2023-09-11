@@ -31,32 +31,29 @@ setopt no_hist_beep         # no terminal bell please
 setopt interactivecomments  # Don't execute comments in interactive shell
 # setopt share_history      # all open shells see history
 
-# Looks like when you 'paste' with newlines, then hit escape, there's a bug
-# where it doesn't reset properly. Turn it off for now.
-unset zle_bracketed_paste  # Turn off highlight paste
-
 ## Completion
 setopt NO_BEEP AUTO_LIST AUTO_MENU
 autoload -U compinit
 compinit
 
-
 # Setup zsh git integration
-autoload -Uz vcs_info
-precmd_functions+=( vcs_info )
-zstyle ':vcs_info:git:*' formats '🕊️ %b'
-
 change_title_bar () {
   # \e]0;            Set window title to
   # %M               machine name (fqdn)
   # :                colon
   # %~               working directory
   # $vcs_info_msg_0_ and formatted git info
+  # See https://zsh-manual.netlify.app/prompt-expansion#Prompt-Expansion
   print -Pn "\e]0;%M:%~ $vcs_info_msg_0_\a"
 }
-
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '🕊️ %b'
+setopt prompt_subst # Allows vcs_info_msg_0_ in prompt
+precmd_functions+=( vcs_info )
 precmd_functions+=( change_title_bar )
-PROMPT=$(echo "\e[%(?.32.31)m%}λ %{\e[m%}")
+
+# Prompt reflects exit codes
+PS1='%(?.%F{green}.%F{red})λ%f '
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
