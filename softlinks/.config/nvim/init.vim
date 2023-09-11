@@ -23,6 +23,7 @@ Plug 'tpope/vim-fugitive'     " Git integration
 Plug 'tpope/vim-characterize' " UTF8 outputs for ga binding
 Plug 'tpope/vim-speeddating'  " <ctrl>a and <ctrl>x increments and decrements dates and roman numerals. 7<C-a> will jump a week.
 Plug 'tpope/vim-dadbod'       " Database from your vim
+Plug 'tpope/vim-vinegar'      " Better file browser
 
 augroup vim_fugitive
   " Quickfix window when shelling out to grep
@@ -91,39 +92,6 @@ augroup prose
     exec("Goyo")
   endfunction
 augroup END
-
-Plug 'scrooloose/nerdtree'
-augroup file_browser
-  let NERDTreeShowLineNumbers = 1  " Make nerdtree honor numbers
-  let NERDTreeShowHidden = 1       " Show dotfiles
-augroup END
-
-" TODO substitute nerdtree, https://github.com/kyazdani42/nvim-tree.lua
-" Plug 'kyazdani42/nvim-tree.lua'
-
-" Plug 'kyazdani42/nvim-tree.lua'     " File browser
-" Plug 'kyazdani42/nvim-web-devicons' " icons for file browser
-" lua << EOF
-" require("nvim-tree").setup({
-"   sort_by = "case_sensitive",
-"   view = {
-"     adaptive_size = true,
-"     mappings = {
-"       list = {
-"         { key = "u", action = "dir_up" },
-"       },
-"     },
-"   },
-"   renderer = {
-"     group_empty = true,
-"   },
-"   filters = {
-"     dotfiles = true,
-"   },
-" })
-" EOF
-
-Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
