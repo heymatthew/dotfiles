@@ -8,7 +8,9 @@ if !filereadable(plug_executable)
     silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-call plug#begin('~/.vim/plugged')
+let plug_dir = '~/.vim/plugged'
+
+call plug#begin(plug_dir)
 Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
 Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
 Plug 'tpope/vim-commentary'            " Toggle comments on lines
@@ -167,6 +169,7 @@ nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 nnoremap <leader>vp :exec 'edit ' . project_vimrc<CR>
+nnoremap <leader>ve :exec 'edit ' . plug_dir<CR>
 
 " Reverse search command history
 nnoremap <leader>c q:?
