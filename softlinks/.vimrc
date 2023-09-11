@@ -24,12 +24,11 @@ Plug 'tpope/vim-vinegar'               " Better file browser
 Plug 'tpope/vim-fugitive'              " Git
 Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
-Plug 'michaeljsmith/vim-indent-object'  " Select indents as an object
+Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'w0rp/ale',      { 'as': 'vim-ale' }
 Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
-Plug 'heymatthew/vim-rosepine'        " bare bones theme using the Rose Pine colours
-
+Plug 'heymatthew/vim-blinkenlights'
 call plug#end()
 
 set background=dark
