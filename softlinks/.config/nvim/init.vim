@@ -21,6 +21,7 @@ Plug 'rose-pine/neovim'                 " colorscheme
 Plug 'tpope/vim-characterize'           " UTF8 outputs for ga binding
 Plug 'tpope/vim-commentary'             " Toggle comments on lines
 Plug 'tpope/vim-dadbod'                 " Database from your vim
+Plug 'tpope/vim-rails'                  " For rails codebases
 Plug 'tpope/vim-repeat'                 " Lets you use . for surround and other plugins
 Plug 'tpope/vim-speeddating'            " <ctrl>a and <ctrl>x increments and decrements dates and roman numerals. 7<C-a> will jump a week.
 Plug 'tpope/vim-surround'               " Delete, or insert around text objects
