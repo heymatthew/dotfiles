@@ -37,19 +37,23 @@ autoload -U compinit
 compinit
 
 # Setup zsh git integration
-change_title_bar () {
-  # \e]0;<stuff>\a will set window title
-  # See https://zsh-manual.netlify.app/prompt-expansion#Prompt-Expansion
-  # And https://zsh-manual.netlify.app/user-contributions#2651-quickstart
-  print -Pn "\e]0;%m:%~ $vcs_info_msg_0_\a"
-}
+# And https://zsh-manual.netlify.app/user-contributions#2651-quickstart
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '🕊️ %b'
+
+# \e]0;<stuff>\a will set window title
+# See https://zsh-manual.netlify.app/prompt-expansion#Prompt-Expansion
+title_bar_prompt() {
+  vcs_info && print -Pn "\e]0;%m:%~ $vcs_info_msg_0_\a"
+}
+title_bar_cmd() {
+  [[ "$1" =~ "^vim" ]] && return
+  print -Pn "\e]0;%m 🦥 $1\a"
+}
+
 # setopt prompt_subst # allow vcs_info_msg_0_ to be used in PS1
-precmd_functions+=(
-  vcs_info
-  change_title_bar
-)
+precmd_functions+=(title_bar_prompt)
+preexec_functions+=(title_bar_cmd)
 
 # Prompt reflects exit codes
 PS1='%(?.%F{green}.%F{red})λ%f '
