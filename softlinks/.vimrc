@@ -95,10 +95,9 @@ augroup fzf # for junegunn/fzf
   nnoremap <leader>f :FZF<CR>
 augroup END
 
-augroup easy_align
-  " Start interactive EasyAlign in visual mode (e.g. vipga)
-  xmap ga <Plug>(EasyAlign)
-
+augroup easy_align # for junegunn/vim-easy-align
+  " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+  vmap <Enter> <Plug>(EasyAlign)
   " Start interactive EasyAlign for a motion/text object (e.g. gaip)
   nmap ga <Plug>(EasyAlign)
 augroup END
