@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'              " Delete, or insert around text objects
 Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
 Plug 'tpope/vim-vinegar'               " Better file browser
 Plug 'tpope/vim-fugitive'              " Git
+Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
 Plug 'michaeljsmith/vim-indent-object'  " Select indents as an object
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
