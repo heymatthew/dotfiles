@@ -26,7 +26,7 @@ brew "ncdu"
 brew "neovim"
 brew "ranger"
 brew "rename"
-brew "shellcheck"            # ncjones uses this for linting shell stuff
+brew "shellcheck" # ncjones uses this for linting shell stuff
 brew "stow"       # manage softlinks for dotfiles
 brew "svn"        # required for font-source-code-pro
 brew "syncthing"  # keep stuff synced across machines
