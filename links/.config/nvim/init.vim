@@ -92,6 +92,11 @@ augroup linting
   let g:ale_set_quickfix = 0
 augroup END
 
+" Plug 'neovim/nvim-lspconfig' " TODO Language Server Protocal auto config
+" augroup lsp_config
+"   " https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+" augroup END
+
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 augroup golang
   let g:go_def_mode='gopls'  " Based on https://github.com/golang/tools/blob/master/gopls/doc/vim.md
