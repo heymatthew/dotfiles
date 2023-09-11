@@ -117,7 +117,6 @@ autocmd FileType help wincmd L
 " Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<CR>
 nnoremap <leader><backspace> :tabclose<CR>
-nnoremap sd <C-w>q
 
 " Show line numbers in files, help, and netrw
 set number
@@ -258,4 +257,5 @@ cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 nnoremap <leader>q        :echo "🤌 Deprecated. Prefer sd"<CR>
 nnoremap <leader>r        :echo "🤌 Deprecated. Prefer R"<CR>
 nnoremap <space><space>   :echo "🤌 Deprecated. Prefer \<BACKSPACE\>"<CR>
+nnoremap sd               :echo "🤌 Deprecated. \<C-w\>q"<CR>
 command Gchanges          echo "🤌 Deprecated. use :Changes"
