@@ -41,10 +41,6 @@ setopt NO_BEEP AUTO_LIST AUTO_MENU
 autoload -U compinit
 compinit
 
-# Bash-like navigation, http://stackoverflow.com/questions/10847255
-autoload -U select-word-style
-select-word-style bash
-
 setopt PROMPT_SUBST
 
 # Setup zsh git integration
