@@ -188,15 +188,17 @@ fi
 terminal_profile() { echo -e "\033]1337;SetProfile=$1\a" }
 
 # Set iterm colours
-# n.b. themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
+# n.b. LC_APPEARANCE is a hack. SSH accepts LC_* by default so hosts can be dark mode aware
+# n.b. iterm themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
 # see https://iterm2.com/documentation-escape-codes.html
-# [ -e ~/.config/iterm_theme ] && terminal_profile $(cat ~/.config/iterm_theme)"
-alias dark='echo dark > ~/.config/iterm_theme && terminal_profile dark'
-alias light='echo light > ~/.config/iterm_theme && terminal_profile light'
+alias dark='export LC_APPEARANCE=dark && terminal_profile dark'
+alias light='export LC_APPEARANCE=light && terminal_profile light'
 if [ -z "$SSH_CLIENT" ]; then
   # Detect OSX dark mode
   appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
   if [ $appearance = 'Dark' ]; then
+    # Dark mode isn't as good for your eyes as you believe
+    # https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
     dark
   else
     light

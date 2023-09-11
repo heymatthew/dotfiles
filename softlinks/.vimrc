@@ -43,13 +43,8 @@ nnoremap <backspace> :noh<CR>
 " Dark mode isn't as good for your eyes as you believe
 " https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
 " FIXME: Extract to function, detect system
-if empty($SSH_CLIENT)
-  let style = system('defaults read -g AppleInterfaceStyle 2> /dev/null')
-  if style =~ '\cdark'
-    set background=dark
-  else
-    set background=light
-  endif
+if !empty($LC_APPEARANCE)
+  exec 'set background=' . $LC_APPEARANCE
 endif
 
 colorscheme blinkenlights
