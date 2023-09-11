@@ -207,6 +207,10 @@ nnoremap <leader>vp :exec 'edit ' . project_vimrc<CR>
 nnoremap <leader>ve :exec 'edit ' . plug_dir<CR>
 nnoremap <leader>vc :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
 
+" Spelling
+autocmd Filetype gitcommit setlocal spell
+autocmd Filetype markdown  setlocal spell
+
 " Reverse search command history
 nnoremap <leader>c q:?
 
