@@ -80,9 +80,9 @@ augroup END
 
 call plug#end()
 
-syntax off                       " case against... https://www.linusakesson.net/programming/syntaxhighlighting/
-set termguicolors                " enable true colors support
-set guifont=mplus-1m-regular:h12 " from system_profiler SPFontsDataType
+syntax off                        " case against... https://www.linusakesson.net/programming/syntaxhighlighting/
+set termguicolors                 " enable true colors support
+set guifont=mplus-1mn-regular:h12 " from system_profiler SPFontsDataType
 
 " <3 from https://github.com/rose-pine/neovim
 set background=light
