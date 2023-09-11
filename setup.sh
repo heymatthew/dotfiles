@@ -12,7 +12,7 @@ sudo scutil --set ComputerName "$hostname"
 sudo scutil --set HostName "$hostname.$domain"
 
 echo "configuring ssh..."
-ssh-keygen -t ed25519
+ssh-keygen -t ed25519 -a 100 # See https://security.stackexchange.com/a/144044
 echo "editing public key in vim 🤔, press enter to continue..."
 read -r
 vim ~/.ssh/id_ed25519.pub
