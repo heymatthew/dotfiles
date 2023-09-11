@@ -5,7 +5,7 @@ rick="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 
 until curl -s "$url" > /dev/null; do
     echo "$(now) still down ... $url"
-    sleep 1
+    sleep 30
 done
 
 mpv "$rick"
