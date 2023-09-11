@@ -91,6 +91,14 @@ augroup fzf # for junegunn/fzf
   nnoremap <leader>f :FZF<CR>
 augroup END
 
+augroup easy_align
+  " Start interactive EasyAlign in visual mode (e.g. vipga)
+  xmap ga <Plug>(EasyAlign)
+
+  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+  nmap ga <Plug>(EasyAlign)
+augroup END
+
 " Quickly split current view
 " nmemonic s = split new, tab, quit, x, y
 nmap <leader>y 0:lclose<CR>:cclose<CR>:split<CR>
