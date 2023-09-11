@@ -16,6 +16,7 @@ brew "htop"       # prettier top, with colour
 brew "hugo"       # static website generator
 brew "iftop"      # top for your network interfaces
 brew "jq"
+brew "jupyterlab" # A Next-Generation Notebook Interface https://jupyter.org/
 brew "mas"        # App Store control from CLI https://github.com/mas-cli/mas
 brew "pstree"     # Hirachical list of processes
 brew "restic"     # Nobody wants backup, everyone wants restore https://restic.net/
