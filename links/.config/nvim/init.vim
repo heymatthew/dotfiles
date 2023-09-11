@@ -212,7 +212,8 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
 " Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
-nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
+nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
+nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 
