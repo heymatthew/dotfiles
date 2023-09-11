@@ -37,7 +37,7 @@ describe "install neovim plugins"
 run('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
 
 describe 'templating git config'
-puts "editing git config, press enter to continue..."
+puts "editing git config in vim 🤔, press enter to continue..."
 gets
 git_template = File.new("#{Dir.home}/.gitconfig.local", 'w')
 git_template.puts <<~EOF.strip
