@@ -244,3 +244,5 @@ command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 inoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 inoremap <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
+cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
