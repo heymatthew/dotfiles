@@ -104,7 +104,10 @@ match TrailingWhitespace /\s\+$/
 
 " from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 " Open file browser in the directory of the current file
-nnoremap <space><space> :edit %:p:h<CR>
+" nnoremap <space><space> :edit %:p:h<CR>
+
+" Switch between the last two files
+nnoremap <space><space> <C-^>
 
 set number                 " give line number that you're on
 set scrolloff=5            " when scrolling, keep cursor 5 lines away from border
