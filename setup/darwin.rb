@@ -40,7 +40,7 @@ describe "brew bundle"
 run('/opt/homebrew/bin/brew bundle')
 
 describe 'stowing dotfiles'
-run('/opt/homebrew/bin/stow links')
+run('/opt/homebrew/bin/stow softlinks')
 
 describe 'installing npm packages'
 %w(write-good).each do |package|
