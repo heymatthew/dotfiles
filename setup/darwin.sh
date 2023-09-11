@@ -77,3 +77,7 @@ echo "TODO:
   * brew services start postgresql@15
   * brew services start syncthing
 * Add repos with 'mr register XYZ'"
+* Setup asdf
+  * https://github.com/asdf-vm/asdf-ruby
+  * https://github.com/asdf-vm/asdf-nodejs
+  * https://github.com/asdf-community/asdf-python
