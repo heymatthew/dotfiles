@@ -2,7 +2,15 @@
 
 export PATH="/opt/homebrew/bin:$PATH"
 
-{ # output from this block is timestamped and logged
+{
+    # output from this block is timestamped and logged
+    for repo in ~/code/*; do
+      if [ -f "$repo/.git/HEAD" ]; then
+        mr register "$repo" || echo "Error registering $repo"
+      fi
+    done
+
     echo "run: mr fetch -q -j 4"
     mr fetch -q -j 4 | grep -v '^$'
+    echo "complete"
 } | ts '%Y-%m-%dT%T%z:' >> "$HOME/myrepos.log" 2>&1
