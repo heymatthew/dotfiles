@@ -39,7 +39,7 @@ compinit
 # Setup zsh git integration
 # And https://zsh-manual.netlify.app/user-contributions#2651-quickstart
 autoload -Uz vcs_info
-zstyle ':vcs_info:git:*' formats '🕊️ %b'
+zstyle ':vcs_info:git:*' formats 'β %b'
 
 # \e]0;<stuff>\a will set window title
 # See https://zsh-manual.netlify.app/prompt-expansion#Prompt-Expansion
@@ -54,7 +54,7 @@ running_context() {
   if [[ "$1" =~ "^vim" || "$1" =~ "^fg" ]]; then
     # Vim and fg don't help add context
   else
-    set_context "%m 🦥 $1"
+    set_context "%m Σ $1"
   fi
 }
 
