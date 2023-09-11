@@ -34,6 +34,7 @@ Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes 
 call plug#end()
 
 nnoremap <F2> :call SyntaxAttr()<CR>
+nnoremap <backspace> :noh<CR>
 
 set background=dark
 colorscheme blinkenlights
@@ -89,7 +90,7 @@ autocmd FileType help wincmd L
 
 " Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<cr>
-nnoremap <backspace><backspace> :tabclose<cr>
+nnoremap <leader><backspace> :tabclose<cr>
 nnoremap <leader>q <C-w>q
 
 " Show line numbers in files, help, and netrw
