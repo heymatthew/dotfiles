@@ -7,8 +7,8 @@
 	changes = !git diff $(git origin-head)... --name-only
 	feature = !git fetch && git checkout $(git origin-head) -b
 	origin-head = !cat .git/origin-head 2>/dev/null || (git origin-head-update && cat .git/origin-head)
-	origin-head-update = !echo "origin/$(git origin-head-get)" > .git/origin-head
-	origin-head-get = !git remote set-head origin -a | awk '{print $4}'
+	origin-head-update = !git origin-head-get > .git/origin-head
+	origin-head-get = !echo "origin/$(git remote set-head origin -a | awk '{print $4}')"
 	humans = !git log --format='%aN <%aE>' --reverse | sort | uniq -c | sort -r
 [commit]
 	verbose = true
