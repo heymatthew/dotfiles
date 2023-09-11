@@ -11,11 +11,21 @@ sudo scutil --set LocalHostName "$hostname"
 sudo scutil --set ComputerName "$hostname"
 sudo scutil --set HostName "$hostname.$domain"
 
-echo "creating ssh keys..."
+echo "configuring ssh..."
 ssh-keygen -t ed25519
 echo "editing public key in vim 🤔, press enter to continue..."
 read -r
 vim ~/.ssh/id_ed25519.pub
+echo "editing .ssh config.local in vim 🤔, press enter to continue..."
+read -r
+tee ~/.ssh/config.local >/dev/null <<EOF
+# Local configuration
+# https://linux.die.net/man/5/ssh_config
+# Host xxx
+#   User xxx
+#   Port xxx
+EOF
+vim ~/.ssh/config.local
 
 echo "templating git config..."
 echo "editing git config in vim 🤔, press enter to continue..."
