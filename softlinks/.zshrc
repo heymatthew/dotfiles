@@ -102,7 +102,7 @@ ZLS_COLORS=$LS_COLORS
 # Aliases
 alias ls='ls -G'                               # technicolor list
 alias cdg='cd $(git rev-parse --show-cdup)'    # cd to root of repo
-alias update="~/dotfiles/update.rb"
+alias update="~/dotfiles/update.sh"
 alias g="git"
 alias scrub-desktop="rm -I ~/Desktop/Screenshot*"
 
