@@ -1,12 +1,14 @@
 #!/usr/bin/env bash
 
+MAINLINE="origin/HEAD"
 DESC=$1
+
 if [ -z "$DESC" ]; then
   # List features
   git branch --format "%(refname:short)" | grep '^feature/'
+
   exit 0
 fi
 
-MAINLINE=$(git origin-head)
 git fetch
 git checkout "$MAINLINE" -b "feature/$DESC"

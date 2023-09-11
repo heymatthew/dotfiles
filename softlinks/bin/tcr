@@ -6,7 +6,7 @@ which entr > /dev/null || {
   echo "brew install entr"
   return 1
 }
-stable=$(git origin-head)
+stable="origin/HEAD"
 projectRoot=$(git rev-parse --show-toplevel) # for monorepo
 commitedFiles=$(git diff "$stable"... --name-only)
 changedFiles=$(git status --porcelain | awk '{print $2}')
