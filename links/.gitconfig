@@ -6,3 +6,4 @@
 	name = Matthew B. Gray
 [alias]
 	wip = !git commit -a -m WIP
+  trunk = !git fetch && git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's/refs\\/remotes\\///g')
