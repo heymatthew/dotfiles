@@ -29,6 +29,7 @@ Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'w0rp/ale',      { 'as': 'vim-ale' }
 Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'                " Defaults
+Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 Plug 'heymatthew/vim-blinkenlights'
 Plug 'junegunn/vader.vim'              " Vimscript test framework
