@@ -3,7 +3,7 @@ export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
 # CD from anywhere
-cdpath=(~ ~/Desktop ~/code ~/code/go/src ~/.config/nvim ~/code/exercism/go)
+cdpath=(~ ~/Desktop ~/code ~/.config/nvim ~/code/exercism/go)
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
@@ -100,17 +100,17 @@ function rehash() {
   source ~/.zshrc && stty sane
 }
 
+# Hide go dependencies, prefer go mod for projects
+export GOPATH="$HOME/.go"
+
 # Personal programs
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/code/go/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
 
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
-
-export GOPATH="$HOME/code/go"
-export GO111MODULE="on"
 
 # Make ^Z toggle between ^Z and fg
 # https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
