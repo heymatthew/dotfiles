@@ -1,5 +1,5 @@
 # <type>[optional scope][!]: <imperative description>
-# Types: feat, fix, refactor, docs, build, ci, style, test, perf, chore
+# Types: feat, fix, refactor, docs, build, ci, style, test, perf, chore, deprecate
 
 # [BREAKING CHANGE: ...]
 # [Context]
