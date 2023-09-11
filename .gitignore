@@ -16,3 +16,6 @@ xmonad/.xmonad/prompt-history
 
 # Lockfile for brew
 Brewfile.lock.json
+
+# neovim plugins
+links/.config/nvim/plugged/

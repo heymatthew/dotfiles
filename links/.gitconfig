@@ -1,11 +1,10 @@
 # Template coppied over so you can specify per-machine git settings
 [include]
 	path = ~/.gitconfig.local
-[user]
-	email = hey@matthew.nz
-	name = Matthew B. Gray
 [alias]
 	wip = !git commit -a -m WIP
   trunk = !git fetch && git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's/refs\\/remotes\\///g')
 	progress = !git diff $(git symbolic-ref refs/remotes/origin/HEAD)... --name-only
 	changes = !git diff $(git symbolic-ref refs/remotes/origin/HEAD)... --name-only
+[commit]
+	verbose = true
