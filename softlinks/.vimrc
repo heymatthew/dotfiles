@@ -36,7 +36,7 @@ call plug#end()
 nnoremap <F2> :call SyntaxAttr()<CR>
 
 set background=dark
-colorscheme rosepine
+colorscheme blinkenlights
 set colorcolumn=100
 
 nnoremap <leader>f :FZF<CR>
