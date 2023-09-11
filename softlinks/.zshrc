@@ -68,25 +68,22 @@ zle -N zle-line-finish _zle_line_finish
 
 setopt PROMPT_SUBST
 
-case $TERM in
-  xterm*|rxvt*|screen|Apple_Terminal)
-    # Git message in RPROMPT
-    autoload -Uz vcs_info
-    precmd_functions+=( vcs_info )
-    zstyle ':vcs_info:git:*' formats '%b'
-    RPROMPT='${vcs_info_msg_0_} %U%T%u'
+# Setup zsh git integration
+autoload -Uz vcs_info
+precmd_functions+=( vcs_info )
+zstyle ':vcs_info:git:*' formats '🕊️ %b'
 
-    # Remotes look different
-    if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-      PROMPT=$(echo "%{\e]0;%n@%M: %~\a\e[%(?.32.31)m%}β %{\e[m%}")
-    else
-      PROMPT=$(echo "%{\e]0;%n@%M:%~\a\e[%(?.32.31)m%}λ %{\e[m%}")
-    fi
-    ;;
-  *)
-    PROMPT="[%n@%M] %# "
-    ;;
-esac
+change_title_bar () {
+  # \e]0;            Set window title to
+  # %M               machine name (fqdn)
+  # :                colon
+  # %~               working directory
+  # $vcs_info_msg_0_ and formatted git info
+  print -Pn "\e]0;%M:%~ $vcs_info_msg_0_\a"
+}
+
+precmd_functions+=( change_title_bar )
+PROMPT=$(vcs_info && echo "\e[%(?.32.31)m%}λ %{\e[m%}")
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
