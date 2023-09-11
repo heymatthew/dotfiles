@@ -150,15 +150,15 @@ export GO111MODULE="on"
 
 # Make ^Z toggle between ^Z and fg
 # https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
-function ctrlz() {
+function foreground() {
   if [[ $#BUFFER == 0 ]]; then
     fg >/dev/null 2>&1 && zle redisplay
   else
     zle push-input
   fi
 }
-zle -N ctrlz
-bindkey '^Z' ctrlz
+zle -N foreground
+bindkey -M viins '^z' foreground
 
 # Solarized cucumber workaround
 export CUCUMBER_COLORS=comment=cyan
