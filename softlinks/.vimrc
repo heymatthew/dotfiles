@@ -130,6 +130,7 @@ set wrap linebreak nolist  " wrap words, incompatable with visible whitespace (l
 set showcmd                " show command on bottom right as it's typed
 set belloff=all            " I find terminal bells irritating
 set mouse=a                " Looks like this is part of neovim defaults
+set shortmess-=S           " show search matches, see https://stackoverflow.com/a/4671112
 
 " set relativenumber        " toggle with yor, off by default
 " set textwidth=100         " Automatically insert newlines
