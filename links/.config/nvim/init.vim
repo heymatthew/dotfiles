@@ -34,11 +34,11 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'roman/golden-ratio'                " golden ratio splits
-augroup golden_ratio
-  " let g:golden_ratio_autocommand = 0     " not by default
-  nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
-augroup END
+" Plug 'roman/golden-ratio'                " golden ratio splits
+" augroup golden_ratio
+"   " let g:golden_ratio_autocommand = 0     " not by default
+"   nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+" augroup END
 
 Plug 'tpope/vim-surround'     " Delete, or insert around text objects
 Plug 'tpope/vim-commentary'   " Toggle comments on lines
