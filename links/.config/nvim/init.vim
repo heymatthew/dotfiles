@@ -15,18 +15,12 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-" Plug 'roman/golden-ratio'                " golden ratio splits
-" augroup golden_ratio
-"   " let g:golden_ratio_autocommand = 0     " not by default
-"   nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
-" augroup END
-
 Plug 'tpope/vim-surround'     " Delete, or insert around text objects
 Plug 'tpope/vim-commentary'   " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'   " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
+Plug 'tpope/vim-fugitive'     " Git integration
 
-Plug 'tpope/vim-fugitive'     " Git integration, TODO adjust habits
-augroup quickfix_cwindow
+augroup vim_fugitive
   " Quickfix window when shelling out to grep
   " Also works for git grep
   "   e.g. :Ggrep FIXME
@@ -34,15 +28,12 @@ augroup quickfix_cwindow
   " autocmd QuickFixCmdPost *grep* cwindow
   " Also http://stackoverflow.com/a/39010855/81271
   " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
-    autocmd!
-    autocmd QuickFixCmdPost [^l]* cwindow
-    autocmd QuickFixCmdPost l*    cwindow
-augroup END
+  autocmd!
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l*    cwindow
 
-Plug 'scrooloose/nerdtree'
-augroup file_browser
-  let NERDTreeShowLineNumbers = 1  " Make nerdtree honor numbers
-  let NERDTreeShowHidden = 1       " Show dotfiles
+  vmap <C-f> y:silent   Ggrep "<C-r>0"<CR>zz
+  nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
 augroup END
 
 Plug 'bronson/vim-visual-star-search' " Vim multiline search
@@ -63,7 +54,6 @@ augroup fuzzy_finder
   " let g:jzf_history_dir = '~/.local/share/nvim/site/autoload/plug.vim'
   " let g:fzf_command_prefix = 'Fzf'
   nnoremap <leader>f :FZF<CR>
-  nnoremap <silent> <leader>m :History<CR>
 augroup END
 
 Plug 'w0rp/ale'
@@ -84,24 +74,13 @@ augroup golang
   let g:go_info_mode='gopls'
 augroup END
 
-" Text search using pt - the platinum searcher
-Plug 'nazo/pt.vim'
-augroup text_search
-  " Search word or highlight window in new tab, split and search
-  " vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
-  " nmap <C-f> yiW:silent Pt "<C-r>0"<CR>
-  vmap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
-  nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
-augroup END
-
 Plug 'junegunn/goyo.vim'  " Distraction free writing in vim
-nnoremap <leader>w :call Prose()<CR>
 augroup prose
+  nnoremap <leader>p :call Prose()<CR>
   function! Prose()
-    set spell
     " word wrap visually and no newlines unless explicit
-    set wrap linebreak nolist
-    " distraction free writing plugin
+    set wrap linebreak nolist textwidth=0 wrapmargin=0
+    set spell
     exec("Goyo")
   endfunction
 augroup END
@@ -115,7 +94,7 @@ Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 try
-  syntax on             " turning off colours for fun
+  syntax off             " turning off colours for fun
   " don't explode if colour scheme doesn't exist
   set termguicolors      " enable true colors support
   " let ayucolor="light"  " for light version of theme
@@ -125,6 +104,7 @@ try
   colorscheme solarized8
 
   set background=light
+
   " from system_profiler SPFontsDataType
   " set guifont=mplus-1m-regular:h12
 
@@ -143,21 +123,24 @@ set relativenumber        " better navigation
 set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " fold by paragraph or whatever you feel is appropriate
-" set foldminlines=10       " Smaller than thi will always show like it was open
-set textwidth=100         " Line length should be ~100 chars #modern
+" set textwidth=100         " Automatically insert newlines
 set colorcolumn=100       " Show 100th char visually
-" set clipboard=unnamedplus " yank and put straight to system clipboard
 set nojoinspaces          " Single space after period when using J
 set hlsearch              " Highlight my searches :)
-set ignorecase            " Do case insensitive matching.
-set smartcase             " Do smart case matching.
-set incsearch             " Incremental search.
+set ignorecase            " Search case insensitive...
+set smartcase             " ... but not it begins with upper case
+set incsearch             " Shows the match while typing
 set magic                 " Allows pattern matching with special characters
 set spl=en spell          " Use English for spellchecking,
 set nospell               " Spellcheck is off initially
 set autoindent            " indent on newlines
 set smartindent           " recognise syntax of files
-set mouse=a " Let vim use the mouse, grab and pull splits around etc.
+set noswapfile            " Don't use swapfile
+set nobackup              " Don't create annoying backup files
+set mouse=a               " Let vim use the mouse, grab and pull splits around etc.
+
+" set foldminlines=10       " Smaller than this will always show like it was open
+" set clipboard=unnamedplus " yank and put straight to system clipboard
 
 " See https://unix.stackexchange.com/a/383044
 " When someone modifies a file externally, autoread it back in
@@ -191,8 +174,8 @@ nnoremap <C-u> <C-u>zz
 
 " Whitespace management
 set                                expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype markdown setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype markdown setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 highlight TrailingWhitespace ctermbg=grey guibg=grey
 match TrailingWhitespace /\s\+$/
@@ -211,8 +194,10 @@ nnoremap <C-l> 0<C-w>l
 nnoremap <C-j> 0<C-w>j
 nnoremap <C-k> 0<C-w>k
 
-vmap <C-f> y:lclose<CR>:silent G grep -I "<C-r>0"<CR>zz
-nmap <C-f> yiW:silent G grep -I "<C-r>0"<CR>zz<CR>
+" FIXME G grep and Ggrep have differing behavour
+" G grep won't open in the quickfix pane, so I'm going with Ggrep
+vmap <C-f> y:lclose<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+nmap <C-f> yiW:silent Ggrep -I "<C-r>0"<CR>zz<CR>
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
@@ -261,7 +246,8 @@ nnoremap <backspace><backspace> :tabclose<cr>
 nmap <leader>y 0:lclose<CR>:cclose<CR>:split<CR>
 nmap <leader>x 0:lclose<CR>:cclose<CR>:vsplit<CR>
 nmap <leader>n 0:rightbelow vnew<CR>
-set splitright
+set splitright               " Split vertical windows right to the current windows
+set splitbelow               " Split horizontal windows below to the current windows
 
 " Open current focused file in new tab
 nnoremap <leader><leader> :tab split<CR>
