@@ -1,5 +1,5 @@
-# Template coppied over so you can specify per-machine git settings
 [include]
+	# templated for per-machine git settings
 	path = ~/.gitconfig.local
 [alias]
 	wip = !git commit -a -m WIP
@@ -8,3 +8,12 @@
 	changes = !git diff $(git symbolic-ref refs/remotes/origin/HEAD)... --name-only
 [commit]
 	verbose = true
+[push]
+	default = simple
+[pull]
+	rebase = true
+[init]
+	defaultBranch = trunk
+[core]
+	excludesfile = ~/.gitignore
+	pager = less -iXFR
