@@ -141,13 +141,9 @@ EOF
 
 if filereadable($HOME . "/.config/iterm_theme")
   let lines = readfile($HOME . "/.config/iterm_theme")
-  if len(lines) == 0
-    set background='light'
-  else
-    " 'dark' or 'light'
-    let iterm_theme = lines[0]
-    exe "set background=" . iterm_theme
-  endif
+  " 'dark' or 'light'
+  let iterm_theme = lines[0]
+  exe "set background=" . iterm_theme
 endif
 
 set relativenumber        " better navigation
