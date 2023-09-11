@@ -20,6 +20,7 @@ brew "ncdu"
 brew "ranger"
 brew "rename"
 brew "stow"       # manage softlinks for dotfiles
+brew "svn"        # required for font-source-code-pro
 brew "syncthing"  # keep stuff synced across machines
 brew "tig"
 brew "tree"
@@ -32,8 +33,9 @@ brew "shellcheck"            # ncjones uses this for linting shell stuff
 brew "wget"
 cask "anki"
 cask "docker"
-cask "font-hack"  # nice looking fixed width font
-cask "font-mplus" # narrow fixed width for retina
+cask "font-hack"             # nice looking fixed width font
+cask "font-mplus"            # narrow fixed width for retina
+cask "font-source-code-pro"  # adobe backed fixed width font
 cask "gimp"                  # image editing software
 cask "iterm2"                # terminal emulator
 cask "keepassxc"             # compatable with keepassx files
