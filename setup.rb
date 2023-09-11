@@ -9,4 +9,4 @@ def platform
   end
 end
 
-require "./setup/#{platform}.rb"
+require_relative "./setup/#{platform}.rb"

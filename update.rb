@@ -9,4 +9,4 @@ def platform
   end
 end
 
-require "./update/#{platform}.rb"
+require_relative "./update/#{platform}.rb"
