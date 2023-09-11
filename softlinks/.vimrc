@@ -29,7 +29,11 @@ Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'w0rp/ale',      { 'as': 'vim-ale' }
 Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'heymatthew/vim-blinkenlights'
+Plug 'junegunn/vader.vim'              " Vimscript test framework
+Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
 call plug#end()
+
+nnoremap <F2> :call SyntaxAttr()<CR>
 
 set background=dark
 colorscheme rosepine
