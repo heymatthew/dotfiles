@@ -229,9 +229,6 @@ function! s:Repl()
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
-" Set title on terminal to focused buffer filename
-auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
-
 " Insert timestamps after cursor
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 command! Today normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
