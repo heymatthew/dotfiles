@@ -114,8 +114,6 @@ autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwid
 autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-highlight TrailingWhitespace ctermbg=grey guibg=grey
-match TrailingWhitespace /\s\+$/
 
 " from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 " Open file browser in the directory of the current file
