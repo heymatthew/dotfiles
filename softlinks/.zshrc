@@ -151,12 +151,6 @@ else
   export EDITOR=vi
 fi
 
-if which nvm > /dev/null; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-fi
-
 # Cludges follow
 if [[ `uname` == "Darwin" ]]; then # OSX
   # Fix GPG agent detection
