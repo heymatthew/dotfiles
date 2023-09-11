@@ -82,11 +82,6 @@ case $TERM in
     else
       PROMPT=$(echo "%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}λ %{\e[m%}")
     fi
-
-    # Echo current process name in the xterm title bar
-    preexec () {
-      print -Pn "\e]0;$1\a"
-    }
     ;;
   *)
     PROMPT="[%n@%m] %# "
@@ -94,11 +89,6 @@ case $TERM in
 esac
 
 # RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
-
-# Echo current process name in the xterm title bar
-preexec () {
-  print -Pn "\e]0;$1\a"
-}
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
