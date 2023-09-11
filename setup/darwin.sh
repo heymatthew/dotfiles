@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 echo "testing superuser (password required)..."
 sudo echo 'make me a Sandwich! https://xkcd.com/149' || exit 1
 

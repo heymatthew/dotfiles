@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 echo "nvim/vim..."
 nvim -c "call execute('PlugUpdate') | call execute('GoInstallBinaries') | qa"
 vim -c "call execute('PlugUpdate') | call execute('GoInstallBinaries') | qa"

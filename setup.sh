@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
 # Define the platform function
 platform() {
   case "$(uname -s)" in
