@@ -43,20 +43,24 @@ zstyle ':vcs_info:git:*' formats '🕊️ %b'
 
 # \e]0;<stuff>\a will set window title
 # See https://zsh-manual.netlify.app/prompt-expansion#Prompt-Expansion
-title_bar_prompt() {
-  vcs_info && print -Pn "\e]0;%m:%~ $vcs_info_msg_0_\a"
+set_context() {
+  print -Pn "\e]0;$1\a" # window title
+  print -Pn "\e]1;$1\a" # window pane
 }
-title_bar_cmd() {
+directory_context() {
+  vcs_info && set_context "%m:%~ $vcs_info_msg_0_"
+}
+running_context() {
   if [[ "$1" =~ "^vim" || "$1" =~ "^fg" ]]; then
     # Vim and fg don't help add context
   else
-    print -Pn "\e]0;%m 🦥 $1\a"
+    set_context "%m 🦥 $1"
   fi
 }
 
 # setopt prompt_subst # allow vcs_info_msg_0_ to be used in PS1
-precmd_functions+=(title_bar_prompt)
-preexec_functions+=(title_bar_cmd)
+precmd_functions+=(directory_context)
+preexec_functions+=(running_context)
 
 # Prompt reflects exit codes
 PS1='%(?.%F{green}.%F{red})λ%f '
