@@ -157,6 +157,10 @@ nnoremap n nzz
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 
+" Window resize events make splits equal
+" https://hachyderm.io/@tpope/109784416506853805
+autocmd VimResized * wincmd =
+
 " Whitespace management
 set                                expandtab   tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype markdown setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
