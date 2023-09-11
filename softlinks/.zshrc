@@ -78,13 +78,13 @@ case $TERM in
   xterm*|rxvt*|screen|Apple_Terminal)
     # Remotes look different
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-      PROMPT=$(echo "%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}β %{\e[m%}")
+      PROMPT=$(echo "%{\e]0;%n@%M: %~\a\e[%(?.32.31)m%}β %{\e[m%}")
     else
-      PROMPT=$(echo "%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}λ %{\e[m%}")
+      PROMPT=$(echo "%{\e]0;%n@%M: %~\a\e[%(?.32.31)m%}λ %{\e[m%}")
     fi
     ;;
   *)
-    PROMPT="[%n@%m] %# "
+    PROMPT="[%n@%M] %# "
     ;;
 esac
 
@@ -274,8 +274,3 @@ if [ $appearance = 'Dark' ]; then
 else
   light
 fi
-
-func cwd() {
-  pwd | sed "s#$HOME#~#g"
-}
-echo "$(whoami)@$(hostname):$(cwd)"
