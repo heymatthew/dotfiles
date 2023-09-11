@@ -151,8 +151,8 @@ autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwid
 nnoremap <space><space> <C-^>
 
 " Quick access to clipboard, e.g. <space>p or <space>yy
-nnoremap <space> "+
-vnoremap <space> "+
+nnoremap <leader> "+
+vnoremap <leader> "+
 
 set number                 " give line number that you're on
 set scrolloff=5            " when scrolling, keep cursor 5 lines away from border
