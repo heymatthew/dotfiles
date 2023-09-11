@@ -53,6 +53,10 @@ describe 'installing npm packages'
   run("/opt/homebrew/bin/npm install -g #{package}")
 end
 
+describe 'installing julia packages'
+script_dir = File.dirname(__FILE__)
+run "#{script_dir}/julia-packages.jl"
+
 describe "install neovim plugins"
 run('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
 

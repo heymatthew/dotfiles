@@ -216,6 +216,7 @@ autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidt
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype ruby     setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype sh       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype julia    setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 
 highlight TrailingWhitespace ctermbg=grey guibg=grey
 match TrailingWhitespace /\s\+$/

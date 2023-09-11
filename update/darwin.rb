@@ -9,6 +9,9 @@ describe "npm"
 system('npm install -g npm') # update npm itself
 system('npm update -g')      # update global packages
 
+describe "julia"
+system('julia', '-e', 'using Pkg; Pkg.update()')
+
 describe "brew"
 system('brew upgrade')
 system('brew upgrade --cask')
