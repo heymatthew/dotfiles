@@ -75,7 +75,7 @@ export LESS='-R'
 export GREP_COLOR='1;33'
 
 # Changing habits
-alias t='git changes | entr -r -c'
+alias t='(git changes || git ls-files) | entr -r -c'
 alias isodate="echo 'deprecated: today, or now?'"
 
 # Checkout github pull requests locally
