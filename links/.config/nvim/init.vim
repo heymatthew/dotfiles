@@ -114,12 +114,12 @@ augroup text_search
 augroup END
 
 Plug 'junegunn/goyo.vim'  " Distraction free writing in vim
-augroup writing
-  nnoremap <leader>w :call WritingMode()<CR>
-  function! WritingMode()
+nnoremap <leader>w :call Prose()<CR>
+augroup prose
+  function! Prose()
     set spell
-    " word wrap visually rather than in buffer
-    set wrap linebreak
+    " word wrap visually and no newlines unless explicit
+    set wrap linebreak nolist
     " distraction free writing plugin
     exec("Goyo")
   endfunction
@@ -301,9 +301,6 @@ nnoremap <leader>g :Gstatus<CR>
 
 " jj is like escape
 inoremap jj <ESC>
-
-" Non chorded window commands, e.g. leader w v -> vsplit
-nmap <leader>w <C-w>
 
 " Double Escape and jj leave insert mode in terminal
 tnoremap <ESC><ESC> <C-\><C-N>
