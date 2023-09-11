@@ -255,3 +255,4 @@ nnoremap <leader>r :echo "🤌 Deprecated. Prefer R"<CR>
 command Gchanges   echo "🤌 Deprecated. use :Changes"
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
+match HabitChange /recieve_message_chain/
