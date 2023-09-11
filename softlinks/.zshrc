@@ -47,10 +47,8 @@ title_bar_prompt() {
   vcs_info && print -Pn "\e]0;%m:%~ $vcs_info_msg_0_\a"
 }
 title_bar_cmd() {
-  if [[ "$1" =~ "^vim" ]]; then
-    # Vim doesn't change title
-  elif [[ "$1" =~ "^fg" ]]; then
-    # fg doesn't change title either
+  if [[ "$1" =~ "^vim" || "$1" =~ "^fg" ]]; then
+    # Vim and fg don't help add context
   else
     print -Pn "\e]0;%m 🦥 $1\a"
   fi
