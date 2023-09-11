@@ -1,61 +1,56 @@
 # Brewfile, install everything with `brew bundle`
 # https://openfolder.sh/macos-migrations-with-brewfile
 
-brew "git"
-brew "tig"
 brew "aspell"
-brew "gnupg"
-brew "go"
-brew "rbenv"
-brew "task"
 brew "ctags"
 brew "direnv"
+brew "entr"       # run commands when files change
+brew "git"
+brew "gnupg"
+brew "go"
+brew "htop"       # prettier top, with colour
+brew "iftop"      # top for your network interfaces
+brew "jq"
 brew "md5sha1sum"
 brew "mtr"
 brew "ncdu"
-brew "zsh"
-brew "tor"
-brew "htop"
-brew "iftop"
-brew "stow"
 brew "ranger"
+brew "rbenv"
+brew "rename"
+brew "stow"       # manage softlinks for dotfiles
+brew "syncthing"  # keep stuff synced across machines
+brew "task"
+brew "tig"
+brew "tor"
 brew "tree"
 brew "watch"
-brew "rename"
+brew "zsh"
 
-brew "syncthing"
-# cask "background-music"      # control the volume of apps independently
+# Centrapay stuff
+brew "node"
+brew "yarn"
+brew "awscli"
 
-cask "keepingyouawake"       # like caffine, but maintained upstream
-cask "gimp"
+cask "keepingyouawake"       # keeps the screen on for presentations
+cask "gimp"                  # image editing software
 cask "iterm2"                # terminal emulator
 cask "macvim"                # gui version of vim
-
-# Standard browser suite
 cask "google-chrome"
 cask "firefox"
-
-# Security misc
 cask "keepassx"              # password manager
 cask "keepassxc"             # compatable with keepassx files
 cask "tunnelblick"           # powers modest VPNs
-
-# Developer stuff
 cask "docker"
 cask "transmission"          # good for linux ISOs
-brew "vim"
 brew "neovim"
 brew "wget"
 brew "shellcheck"            # ncjones uses this for linting shell stuff
-
-# Media
 brew "mplayer"
 cask "vlc"
 cask "spotify"
-
 cask "font-hack"             # nice looking fixed width font
 cask "font-mplus"            # narrow fixed width for retina
+cask "unclack"               # for people with mech keebs, https://unclack.app
+
 
 # cask "skype"
-
-cask "unclack"               # for people with mech keebs, https://unclack.app

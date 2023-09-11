@@ -1,0 +1,6 @@
+# Template coppied over so you can specify per-machine git settings
+[include]
+	path = ~/.gitconfig.local
+[user]
+	email = hey@matthew.nz
+	name = Matthew B. Gray

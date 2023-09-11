@@ -21,7 +21,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: updates
 
-install: preflight env brew npm-globals zsh-workaround softlinks updates
+install: preflight osx config npm updates
 	# Remember to..."
 	#
 	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
@@ -36,27 +36,13 @@ install: preflight env brew npm-globals zsh-workaround softlinks updates
 # 	curl -fLo $(HOME)/.config/nvim/autoload/plug.vim --create-dirs \
 # 	     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-softlinks:
-	stow zsh
-	stow task
-	# stow nvim
-	stow vim
-	stow xmodmap
-	stow ranger
-	stow urxvt
-	stow git
-	stow i3
-	stow home
+config:
+	cp templates/.gitconfig ~/.gitconfig
+	stow links
 
-git-alias:
-	git config --global alias.feature '!git fetch && git checkout -b $1 origin/master && git push -u origin'
-	git config --global alias.share '!git push -u origin $(git rev-parse --abbrev-ref HEAD)'
-
-env:
-	rm -rf ~/.config/local
-	cp -rv templates/.config/local ~/.config/local
-	vim ~/.config/local/git_author
-	vim ~/.config/local/env
+preflight:
+	sudo echo "pre-prompting so you don't get bugged later"
+	ssh-add -l && echo "reusing unlocked key" || ssh-add
 
 updates: preflight
 	vim -c 'call UpdateEverything() | qa' || true
@@ -67,29 +53,24 @@ updates: preflight
 	brew doctor || true
 	npm install -g npm
 	npm update -g
-	sudo softwareupdate --install --all --restart
+	# sudo softwareupdate --install --all --restart
+	sudo softwareupdate --install --all
 
-preflight:
-	sudo echo "pre-prompting so you don't get bugged later"
-	ssh-add -l && echo "reusing unlocked key" || ssh-add
-
-npm-globals:
+npm:
 	npm install -g write-good # hemmingway app via ale in your vim
 
-brew:
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew bundle
+export install_brew='curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh'
 
-# From https://stackoverflow.com/a/13785716
-zsh-workaround:
+osx:
+	/bin/bash -c "$(install_brew)"
+	brew bundle
+	# from https://stackoverflow.com/a/13785716
 	sudo chmod -R 755 /usr/local/share/zsh
 	sudo chown -R root:staff /usr/local/share/zsh
-
-unfuck-osx:
-	# Turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
+	# turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
-syncthing:
+ubuntu:
 	# stable chan from https://apt.syncthing.net/
 	curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
 	echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
