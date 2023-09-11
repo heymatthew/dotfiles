@@ -18,6 +18,7 @@ Plug 'tpope/vim-dadbod'                " Database from your vim
 Plug 'tpope/vim-fugitive'              " Git
 Plug 'tpope/vim-rails'                 " For rails codebases
 Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
+Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
 Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
 Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and roman numerals. 7<C-a> will jump a week.
 Plug 'tpope/vim-surround'              " Delete, or insert around text objects
