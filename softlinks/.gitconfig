@@ -2,7 +2,7 @@
 	# templated for per-machine git settings
 	path = ~/.gitconfig.local
 [alias]
-	wip = !git commit -a -m WIP
+	wip = !git add . && git commit -m WIP
 	trunk = !git fetch && git checkout $(git origin-head)
 	changes = !git diff $(git origin-head)... --name-only
 	feature = !git fetch && git checkout $(git origin-head) -b
