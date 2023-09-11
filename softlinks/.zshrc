@@ -201,12 +201,6 @@ if which nvm > /dev/null; then
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
-function first() {
-  git init
-  git add .
-  git commit -m "First!"
-}
-
 # Cludges follow
 if [[ `uname` == "Darwin" ]]; then # OSX
   echo "OSX cludges..."
