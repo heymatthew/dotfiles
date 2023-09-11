@@ -109,7 +109,6 @@ autocmd FileType help wincmd L
 nnoremap <leader><leader> :tab split<CR>
 nnoremap <leader><backspace> :tabclose<CR>
 nnoremap <leader>t :tab split<CR>
-nnoremap sn 0:rightbelow vnew<CR>
 
 " Show line numbers in files, help, and netrw
 set number
