@@ -178,14 +178,12 @@ export KEYTIMEOUT=1
 
 # Setting default editor
 if which vim > /dev/null; then
-  echo "vim..."
   export EDITOR=vim
 else
   export EDITOR=vi
 fi
 
 if which nvm > /dev/null; then
-  echo "node version manager..."
   export NVM_DIR="$HOME/.nvm"
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
@@ -193,7 +191,6 @@ fi
 
 # Cludges follow
 if [[ `uname` == "Darwin" ]]; then # OSX
-  echo "OSX cludges..."
   # Fix GPG agent detection
   # see https://github.com/pstadler/keybase-gpg-github/issues/11
   GPG_TTY=$(tty)
@@ -216,13 +213,11 @@ alias fuck='pkill -if'
 
 # .envrc files contain secrets, if direnv exists export them on directory traversal
 if which direnv > /dev/null; then
-  echo "direnv..."
   eval "$(direnv hook zsh)"
 fi
 
 # If rbenv exists, init shims autocompletion
 if which rbenv > /dev/null; then
-  echo "rbenv..."
   eval "$(rbenv init -)";
   export PATH="~/.rbenv/bin:$PATH"
 fi
@@ -266,8 +261,8 @@ it2prof() { echo -e "\033]1337;SetProfile=$1\a" }
 # n.b. themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
 # see https://iterm2.com/documentation-escape-codes.html
 # [ -e ~/.config/iterm_theme ] && it2prof $(cat ~/.config/iterm_theme)"
-alias dark='echo "dark mode..." && echo dark > ~/.config/iterm_theme && it2prof dark'
-alias light='echo "light mode..." && echo light > ~/.config/iterm_theme && it2prof light'
+alias dark='echo dark > ~/.config/iterm_theme && it2prof dark'
+alias light='echo light > ~/.config/iterm_theme && it2prof light'
 appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
 if [ $appearance = 'Dark' ]; then
   dark
