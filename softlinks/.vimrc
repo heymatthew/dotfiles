@@ -230,6 +230,15 @@ nnoremap <leader>c q:?
 " n... :  where to save the viminfo files
 set viminfo='50,\"100,:5000,n~/.vim/info
 
+" See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+function! PositionCursor()
+  if &filetype !=# 'gitcommit' && line("'\"") <= line("$")
+    normal! g`"
+    return 1
+  endif
+endfunction
+autocmd BufWinEnter * call PositionCursor()
+
 " Disable modelines as a security precaution
 " from https://github.com/thoughtbot/dotfiles/blob/main/vimrc
 set nomodeline modelines=0
