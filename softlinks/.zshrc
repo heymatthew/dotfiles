@@ -89,7 +89,7 @@ case $TERM in
     ;;
 esac
 
-RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
+# RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
 
 # Echo current process name in the xterm title bar
 preexec () {
