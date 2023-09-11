@@ -148,23 +148,24 @@ if filereadable($HOME . "/.config/iterm_theme")
   exe "set background=" . iterm_theme
 endif
 
-" set relativenumber        " better navigation, disabled for pairing
-set number                " give line number that you're on
-set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
-set foldmethod=manual     " fold by paragraph or whatever you feel is appropriate
+set number                 " give line number that you're on
+set scrolloff=5            " when scrolling, keep cursor 5 lines away from border
+set foldmethod=manual      " fold by paragraph or whatever you feel is appropriate
+set nojoinspaces           " Single space after period when using J
+set hlsearch               " Highlight my searches :)
+set ignorecase             " Search case insensitive...
+set smartcase              " ... but not it begins with upper case
+set incsearch              " Shows the match while typing
+set magic                  " Allows pattern matching with special characters
+set autoindent             " indent on newlines
+set smartindent            " recognise syntax of files
+set noswapfile             " Don't use swapfile
+set nobackup               " Don't create annoying backup files
+set mouse=a                " Let vim use the mouse, grab and pull splits around etc.
+
+" set relativenumber        " toggle with yor, off by default
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
-set nojoinspaces          " Single space after period when using J
-set hlsearch              " Highlight my searches :)
-set ignorecase            " Search case insensitive...
-set smartcase             " ... but not it begins with upper case
-set incsearch             " Shows the match while typing
-set magic                 " Allows pattern matching with special characters
-set autoindent            " indent on newlines
-set smartindent           " recognise syntax of files
-set noswapfile            " Don't use swapfile
-set nobackup              " Don't create annoying backup files
-set mouse=a               " Let vim use the mouse, grab and pull splits around etc.
 
 " Spellcheck
 set spelllang=en_gb       " Use English for spellchecking,
