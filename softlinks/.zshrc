@@ -32,6 +32,10 @@ setopt no_hist_beep         # no terminal bell please
 
 setopt interactivecomments # Don't execute comments in interactive shell
 
+# Looks like when you 'paste' with newlines, then hit escape, there's a bug
+# where it doesn't reset properly. Turn it off for now.
+unset zle_bracketed_paste  # Turn off highlight paste
+
 ## Completion
 setopt NO_BEEP AUTO_LIST AUTO_MENU
 autoload -U compinit
