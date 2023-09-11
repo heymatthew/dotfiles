@@ -32,6 +32,7 @@ brew "wget"
 brew "zsh"
 
 cask "anki"
+cask "audacity"
 cask "docker"
 cask "font-hack"             # nice looking fixed width font
 cask "font-mplus"            # narrow fixed width for retina
