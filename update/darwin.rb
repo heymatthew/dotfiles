@@ -25,3 +25,10 @@ puts "This command appears to freeze:"
 puts "> softwareupdate --install --all"
 puts "...try updating manually instead"
 # system('sudo softwareupdate --install --all')
+
+puts <<~END.strip
+  WARNING:
+  This version of ruby is included in macOS for compatibility with legacy software.
+  In future versions of macOS the ruby runtime will not be available by
+  default, and may require you to install an additional package.
+END
