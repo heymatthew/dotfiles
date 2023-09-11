@@ -118,10 +118,6 @@ function pullify() {
   git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
 }
 
-function randommac() {
-  ruby -e 'puts ("%02x"%((rand 64)*4|2))+(0..4).inject(""){|s,x|s+":%02x"%(rand 256)}'
-}
-
 function urlencode() {
   ruby -e 'require "cgi"; puts CGI.escape(ARGV.last || gets.chomp)' $@
 }
