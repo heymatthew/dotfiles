@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+DESC=$1
+if [ -z "$DESC" ]; then
+  echo "Feature branch description is required"
+  echo "usage: git feature remove-shaype-oauth-safely"
+  exit 1
+fi
+
+MAINLINE=$(git origin-head)
+git fetch
+git checkout "$MAINLINE" -b "feature/$DESC"
