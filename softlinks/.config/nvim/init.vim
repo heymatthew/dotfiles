@@ -15,14 +15,18 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'tpope/vim-surround'     " Delete, or insert around text objects
-Plug 'tpope/vim-repeat'       " Lets you use . for surround and other plugins
-Plug 'tpope/vim-commentary'   " Toggle comments on lines
-Plug 'tpope/vim-unimpaired'   " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-Plug 'tpope/vim-characterize' " UTF8 outputs for ga binding
-Plug 'tpope/vim-speeddating'  " <ctrl>a and <ctrl>x increments and decrements dates and roman numerals. 7<C-a> will jump a week.
-Plug 'tpope/vim-dadbod'       " Database from your vim
-Plug 'tpope/vim-vinegar'      " Better file browser
+Plug 'bronson/vim-visual-star-search'   " Vim multiline search
+Plug 'michaeljsmith/vim-indent-object'  " Select indents as an object
+Plug 'rose-pine/neovim'                 " colorscheme
+Plug 'tpope/vim-characterize'           " UTF8 outputs for ga binding
+Plug 'tpope/vim-commentary'             " Toggle comments on lines
+Plug 'tpope/vim-dadbod'                 " Database from your vim
+Plug 'tpope/vim-repeat'                 " Lets you use . for surround and other plugins
+Plug 'tpope/vim-speeddating'            " <ctrl>a and <ctrl>x increments and decrements dates and roman numerals. 7<C-a> will jump a week.
+Plug 'tpope/vim-surround'               " Delete, or insert around text objects
+Plug 'tpope/vim-unimpaired'             " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
+Plug 'tpope/vim-vinegar'                " Better file browser
+Plug 'vim-scripts/LargeFile'            " turn off slow stuff in files > 20mb
 
 Plug 'tpope/vim-fugitive'
 augroup vim_fugitive
@@ -35,19 +39,11 @@ augroup vim_fugitive
   nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
 augroup END
 
-Plug 'bronson/vim-visual-star-search' " Vim multiline search
-
 Plug 'hashivim/vim-terraform'
 augroup terraform
   let g:terraform_align=1
   let g:terraform_fmt_on_save=0
 augroup END
-
-Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
-
-Plug 'vim-scripts/LargeFile' " turn off slow stuff in files > 20mb
-
-Plug 'rose-pine/neovim' " colorscheme
 
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
