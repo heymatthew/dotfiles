@@ -31,6 +31,7 @@ brew "mplayer"
 brew "neovim"
 brew "shellcheck"            # ncjones uses this for linting shell stuff
 brew "wget"
+cask "anki"
 cask "docker"
 cask "flux"                  # color temperature based on time of day https://justgetflux.com/
 cask "gimp"                  # image editing software
