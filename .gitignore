@@ -19,3 +19,4 @@ Brewfile.lock.json
 
 # neovim plugins
 softlinks/.config/nvim/plugged/
+softlinks/.config/nvim/spell/
