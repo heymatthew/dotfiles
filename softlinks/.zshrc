@@ -66,16 +66,16 @@ zle -N zle-line-finish _zle_line_finish
 # End tricks
 ##############################################################################
 
-## Prompt
-cur_git_branch() {
-  branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-  [[ -n "$branch" ]] && echo "[$branch]"
-}
-
 setopt PROMPT_SUBST
 
 case $TERM in
   xterm*|rxvt*|screen|Apple_Terminal)
+    # Git message in RPROMPT
+    autoload -Uz vcs_info
+    precmd_functions+=( vcs_info )
+    zstyle ':vcs_info:git:*' formats '%b'
+    RPROMPT='${vcs_info_msg_0_} %U%T%u'
+
     # Remotes look different
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
       PROMPT=$(echo "%{\e]0;%n@%M: %~\a\e[%(?.32.31)m%}β %{\e[m%}")
@@ -87,8 +87,6 @@ case $TERM in
     PROMPT="[%n@%M] %# "
     ;;
 esac
-
-# RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
