@@ -297,7 +297,7 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap <space><space> :edit %:p:h<CR>
 
 " Open git status
-nnoremap <leader>g :Gstatus<CR>
+nnoremap <leader>g :Git<CR>
 
 " jj is like escape
 inoremap jj <ESC>

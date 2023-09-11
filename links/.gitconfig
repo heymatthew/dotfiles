@@ -4,3 +4,5 @@
 [user]
 	email = hey@matthew.nz
 	name = Matthew B. Gray
+[alias]
+	wip = !git commit -a -m WIP
