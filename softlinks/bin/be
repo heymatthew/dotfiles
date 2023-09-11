@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Just shorthand for running "bundle exec ..." commands
+bundle exec $@
