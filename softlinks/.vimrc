@@ -37,6 +37,7 @@ Plug 'heymatthew/vim-blinkenlights'
 Plug 'junegunn/vader.vim'              " Vimscript test framework
 Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
+Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
 call plug#end()
 
 nnoremap <F2> :call SyntaxAttr()<CR>
@@ -125,6 +126,9 @@ nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 autocmd VimResized * wincmd =
 " ...and new splits that might open, e.g. v from netrw
 autocmd WinNew * wincmd =
+" GoldenRatio mnemonic, <C-w>- is like <C-w>=
+let g:golden_ratio_autocommand = 0
+nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 
 " Reload vimrc on edits
 " credit http://howivim.com/2016/damian-conway
