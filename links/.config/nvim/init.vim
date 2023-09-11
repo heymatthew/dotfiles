@@ -94,6 +94,31 @@ augroup file_browser
   let NERDTreeShowHidden = 1       " Show dotfiles
 augroup END
 
+" TODO substitute nerdtree, https://github.com/kyazdani42/nvim-tree.lua
+" Plug 'kyazdani42/nvim-tree.lua'
+
+" Plug 'kyazdani42/nvim-tree.lua'     " File browser
+" Plug 'kyazdani42/nvim-web-devicons' " icons for file browser
+" lua << EOF
+" require("nvim-tree").setup({
+"   sort_by = "case_sensitive",
+"   view = {
+"     adaptive_size = true,
+"     mappings = {
+"       list = {
+"         { key = "u", action = "dir_up" },
+"       },
+"     },
+"   },
+"   renderer = {
+"     group_empty = true,
+"   },
+"   filters = {
+"     dotfiles = true,
+"   },
+" })
+" EOF
+
 Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
