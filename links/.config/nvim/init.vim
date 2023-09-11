@@ -320,3 +320,8 @@ tnoremap <C-w> <C-\><C-N><C-w>
 autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave                      term://* stopinsert
 autocmd TermOpen * setlocal statusline=%{b:term_title}
+
+" dictionary lookup for words, depends on 'dict'
+" https://vim.fandom.com/wiki/Lookup_word_in_dict
+nnoremap <leader>l mayiw`a:exe "!dict -P - $(echo " . @" . ")"<CR>
+vnoremap <leader>l may`a:exe "!dict -P - $(echo " . @" . ")"<CR>
