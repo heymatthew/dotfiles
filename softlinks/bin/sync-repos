@@ -4,7 +4,7 @@ export PATH="/opt/homebrew/bin:$PATH"
 
 {
     # output from this block is timestamped and logged
-    for repo in ~/code/*; do
+    for repo in ~/src/*; do
       if [ -f "$repo/.git/HEAD" ]; then
         mr register "$repo" || echo "Error registering $repo"
       fi
