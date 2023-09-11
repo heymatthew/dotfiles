@@ -314,13 +314,14 @@ function t() {
 }
 
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
-it2prof() { echo -e "\033]50;SetProfile=$1\a" }
+it2prof() { echo -e "\033]1337;SetProfile=$1\a" }
 
 # Set and remember iterm colours
-# Note, themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
-# [ -e ~/.config/iterm_theme ] && echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
-alias dark='echo "dark mode..." && echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dark\a"'
-alias light='echo "light mode..." && echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
+# n.b. themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
+# see https://iterm2.com/documentation-escape-codes.html
+# [ -e ~/.config/iterm_theme ] && echo -e "\033]1337;SetProfile=$(cat ~/.config/iterm_theme)\a"
+alias dark='echo "dark mode..." && echo dark > ~/.config/iterm_theme && echo -e "\033]1337;SetProfile=dark\a"'
+alias light='echo "light mode..." && echo light > ~/.config/iterm_theme && echo -e "\033]1337;SetProfile=light\a"'
 appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
 if [ $appearance = 'Dark' ]; then
   dark
