@@ -119,6 +119,7 @@ autocmd VimResized * wincmd =
 " Reload vimrc on edits
 " credit http://howivim.com/2016/damian-conway
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
