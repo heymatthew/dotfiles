@@ -7,6 +7,17 @@ def run(cmd)
   system(cmd)
 end
 
+describe "testing superuser (password required)"
+run("sudo echo 'make me a Sandwich! https://xkcd.com/149'") || exit(1)
+
+describe "setting hostname"
+print "what do you want your hostname to be?\n🤔 "
+hostname = gets.chomp
+run("sudo hostname -s #{hostname}")
+run("sudo scutil --set LocalHostName '#{hostname}'")
+run("sudo scutil --set ComputerName '#{hostname}'")
+run("sudo scutil --set HostName '#{hostname}.matthew.nz'")
+
 # From https://brew.sh/
 describe "installing homebrew"
 run('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
