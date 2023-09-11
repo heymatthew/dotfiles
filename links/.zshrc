@@ -241,9 +241,6 @@ else # Linux
 
   # Turn off capslock
   setxkbmap -option caps:escape
-
-  # Receiver for HP ZCentral Remote Boost Software
-  export PATH="$PATH:/opt/hpremote/rgreceiver"
 fi
 
 function backup() {
