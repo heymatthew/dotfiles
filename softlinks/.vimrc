@@ -245,7 +245,7 @@ inoremap <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
-" Deprecations
+" Immediate feedback to correct habits
 nnoremap <leader>q        :echo "🤌 Deprecated. \<C-w\>q"<CR>
 nnoremap <leader>r        :echo "🤌 Deprecated. Prefer R"<CR>
 nnoremap <space><space>   :echo "🤌 Deprecated. Prefer \<BACKSPACE\>"<CR>
@@ -253,3 +253,5 @@ nnoremap sh               :echo "🤌 Deprecated. Prefer \<C-w\>h"<CR>
 nnoremap sv               :echo "🤌 Deprecated. Prefer \<C-w\>s"<CR>"
 nnoremap sd               :echo "🤌 Deprecated. \<C-w\>q"<CR>
 command Gchanges          echo "🤌 Deprecated. use :Changes"
+highlight HabitChange guifg=love cterm=underline
+match HabitChange /recieve/
