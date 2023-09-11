@@ -19,5 +19,9 @@ system('brew cleanup')
 system('brew doctor')
 
 describe "osx"
-system('sudo softwareupdate --install --all')
 system('mas upgrade') # https://apple.stackexchange.com/a/72148
+
+puts "This command appears to freeze:"
+puts "> softwareupdate --install --all"
+puts "...try updating manually instead"
+# system('sudo softwareupdate --install --all')
