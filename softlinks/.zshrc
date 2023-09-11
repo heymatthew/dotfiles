@@ -15,6 +15,7 @@ export SAVEHIST=$HISTSIZE
 # Statistics for long running procs
 export REPORTTIME=1 # seconds
 export REPORTMEMORY=10240 # kb, ~10mb
+export TIMEFMT='mem:%Mk time:%E (user:%U/kernel:%S)'
 
 # man zshoptions
 setopt hist_ignore_all_dups # when running a command again, removes previous refs to it
