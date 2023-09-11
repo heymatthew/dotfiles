@@ -3,7 +3,7 @@ export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
 # CD from anywhere
-cdpath=(~ ~/Desktop ~/code/centrapay ~/code ~/code/go/src ~/.config/nvim ~/Exercism/go)
+cdpath=(~ ~/Desktop ~/code/centrapay ~/code ~/code/go/src ~/.config/nvim ~/code/exercism/go)
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
