@@ -66,10 +66,9 @@ augroup vim_fugitive # for tpope/vim-fugitive
   " Git status
   nnoremap <leader>g :G<CR>
   nnoremap <leader>l :G log --oneline --reverse origin/HEAD...<CR>
-  nnoremap <leader>r :G rebase --interactive origin/HEAD<CR>
+  nnoremap R :G rebase --interactive origin/HEAD
 
   " Show diffs since master in quickfix list
-  command Gchanges echo "deprecated, use :Changes"
   command Changes :G difftool origin/HEAD
 
   " Always use vertical diffs
@@ -249,3 +248,7 @@ inoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 inoremap <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
+
+" Deprecations
+nnoremap <leader>r :echo "Deprecated. Prefer R"<CR>
+command Gchanges echo "Deprecated. use :Changes"
