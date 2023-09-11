@@ -5,10 +5,11 @@ sudo echo 'make me a Sandwich! https://xkcd.com/149' || exit 1
 
 echo "setting hostname..."
 read -r -p "what do you want your hostname to be? " hostname
-sudo hostname -s $hostname
-sudo scutil --set LocalHostName $hostname
-sudo scutil --set ComputerName $hostname
-sudo scutil --set HostName $hostname.matthew.nz
+read -r -p "what about the domain? " domain
+sudo hostname -s "$hostname"
+sudo scutil --set LocalHostName "$hostname"
+sudo scutil --set ComputerName "$hostname"
+sudo scutil --set HostName "$hostname.$domain"
 
 echo "creating ssh keys..."
 ssh-keygen -t ed25519
