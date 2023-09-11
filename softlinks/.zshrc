@@ -38,19 +38,18 @@ compinit
 
 # Setup zsh git integration
 change_title_bar () {
-  # \e]0;            Set window title to
-  # %m               computer
-  # :                colon
-  # %~               working directory
-  # $vcs_info_msg_0_ and formatted git info
+  # \e]0;<stuff>\a will set window title
   # See https://zsh-manual.netlify.app/prompt-expansion#Prompt-Expansion
+  # And https://zsh-manual.netlify.app/user-contributions#2651-quickstart
   print -Pn "\e]0;%m:%~ $vcs_info_msg_0_\a"
 }
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '🕊️ %b'
-setopt prompt_subst # Allows vcs_info_msg_0_ in prompt
-precmd_functions+=( vcs_info )
-precmd_functions+=( change_title_bar )
+# setopt prompt_subst # allow vcs_info_msg_0_ to be used in PS1
+precmd_functions+=(
+  vcs_info
+  change_title_bar
+)
 
 # Prompt reflects exit codes
 PS1='%(?.%F{green}.%F{red})λ%f '
