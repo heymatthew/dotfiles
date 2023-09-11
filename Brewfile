@@ -38,6 +38,7 @@ cask "iterm2"                # terminal emulator
 cask "keepassxc"             # compatable with keepassx files
 cask "keepingyouawake"       # keeps the screen on for presentations
 cask "kicad"                 # fabrication of PCBs for http://jlcpcb.com
+cask "signal"                # secure chat
 cask "transmission"          # good for linux ISOs
 cask "unclack"               # for people with mech keebs, https://unclack.app
 cask "vlc"
