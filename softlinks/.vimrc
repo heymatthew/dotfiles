@@ -100,9 +100,9 @@ augroup easy_align
 augroup END
 
 " Quickly split current view
-nmap sh 0:lclose<CR>:cclose<CR>:split<CR>
-nmap sv 0:lclose<CR>:cclose<CR>:vsplit<CR>
-nmap sn 0:rightbelow vnew<CR>
+nnoremap sh 0:lclose<CR>:cclose<CR>:split<CR>
+nnoremap sv 0:lclose<CR>:cclose<CR>:vsplit<CR>
+nnoremap sn 0:rightbelow vnew<CR>
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
 nnoremap <leader>t :tab split<CR>
