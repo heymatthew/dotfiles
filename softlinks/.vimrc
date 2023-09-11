@@ -180,7 +180,6 @@ if exists(project_vimrc) && filereadable(project_vimrc)
   exec 'source ' . project_vimrc
 endif
 
-
 " Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
