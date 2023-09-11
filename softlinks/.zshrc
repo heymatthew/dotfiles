@@ -49,6 +49,8 @@ title_bar_prompt() {
 title_bar_cmd() {
   if [[ "$1" =~ "^vim" ]]; then
     # Vim doesn't change title
+  elif [[ "$1" =~ "^fg" ]]; then
+    # fg doesn't change title either
   else
     print -Pn "\e]0;%m 🦥 $1\a"
   fi
