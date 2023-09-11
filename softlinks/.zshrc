@@ -83,7 +83,7 @@ change_title_bar () {
 }
 
 precmd_functions+=( change_title_bar )
-PROMPT=$(vcs_info && echo "\e[%(?.32.31)m%}λ %{\e[m%}")
+PROMPT=$(echo "\e[%(?.32.31)m%}λ %{\e[m%}")
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
