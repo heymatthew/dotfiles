@@ -52,21 +52,21 @@ brew "busted" # Unit testing in Lua
 cask "anki"
 cask "audacity"
 cask "docker"
-cask "font-hack"             # nice looking fixed width font
-cask "font-mplus"            # narrow fixed width for retina
-cask "font-source-code-pro"  # adobe backed fixed width font
-cask "gimp"                  # image editing software
-cask "iterm2"                # terminal emulator
-cask "julia"      # Dynamic programming language
-# cask "jupyterlab" # A Next-Generation Notebook Interface https://jupyter.org/
-cask "keepassxc"             # compatable with keepassx files
-cask "keepingyouawake"       # keeps the screen on for presentations
-cask "signal"                # secure chat
-cask "transmission"          # good for linux ISOs
+cask "font-hack"            # nice looking fixed width font
+cask "font-mplus"           # narrow fixed width for retina
+cask "font-source-code-pro" # adobe backed fixed width font
+cask "gimp"                 # image editing software
+cask "iterm2"               # terminal emulator
+cask "julia"                # Dynamic programming language
+cask "keepassxc"            # compatible with keepassx files
+cask "keepingyouawake"      # keeps the screen on for presentations
+cask "signal"               # secure chat
+cask "transmission"         # good for Linux ISOs
 cask "vlc"
 
-# cask "kicad"                 # manual install, fab PCBs for http://jlcpcb.com
+# cask "jupyterlab"         # A Next-Generation Notebook Interface https://jupyter.org/
+# cask "kicad"              # manual install, fab PCBs for http://jlcpcb.com
 # cask "skype"
 # cask "spotify"
-# cask "tunnelblick"           # powers modest VPNs
-# cask "unclack"               # for people with mech keebs, https://unclack.app
+# cask "tunnelblick"        # powers modest VPNs
+# cask "unclack"            # for people with mech keebs, https://unclack.app
