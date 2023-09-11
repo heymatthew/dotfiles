@@ -7,4 +7,4 @@ which entr > /dev/null || {
     echo "brew install entr"
     exit 1
 }
-git ls-files | entr -r -c "$@"
+git changes | entr -r -c "$@"
