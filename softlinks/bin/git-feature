@@ -1,14 +1,12 @@
 #!/usr/bin/env bash
 
-MAINLINE="origin/HEAD"
 DESC=$1
 
 if [ -z "$DESC" ]; then
-  # List features
-  git branch --format "%(refname:short)" | grep '^feature/'
-
+  # List branches, newest first
+  git branch --format "%(refname:short)" --sort=-authordate
   exit 0
 fi
 
 git fetch
-git checkout "$MAINLINE" -b "feature/$DESC"
+git checkout "origin/HEAD" -b "$DESC"
