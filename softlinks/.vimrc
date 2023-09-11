@@ -105,6 +105,10 @@ nnoremap sv 0:lclose<CR>:cclose<CR>:vsplit<CR>
 nnoremap sn 0:rightbelow vnew<CR>
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
+
+" Allow for original function s when double tapped
+nnoremap ss s
+
 nnoremap <leader>t :tab split<CR>
 
 " Vertical split for help files
