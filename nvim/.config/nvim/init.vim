@@ -287,9 +287,11 @@ xmap <left>  <Plug>(textmanip-move-left)
 xmap <right> <Plug>(textmanip-move-right)
 
 " Experimental go stuff
-autocmd Filetype go nnoremap <buffer> R  :GoRun<CR>
-autocmd Filetype go nnoremap <buffer> TT :GoAlternate<CR>
-autocmd Filetype go nnoremap <buffer> T  :GoTest<CR>
+autocmd Filetype go nnoremap <buffer> R     :GoRun<CR>
+autocmd Filetype go nnoremap <buffer> TT    :GoAlternate<CR>
+autocmd Filetype go nnoremap <buffer> T     :GoTest<CR>
+autocmd Filetype go nnoremap <buffer> <C-[> :GoCallees<CR>
+let g:go_template_autocreate = 0
 
 " Set title on terminal to focused buffer filename
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
