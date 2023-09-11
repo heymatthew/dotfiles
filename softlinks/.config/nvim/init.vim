@@ -87,10 +87,7 @@ set guifont=mplus-1mn-regular:h12 " from system_profiler SPFontsDataType
 " <3 from https://github.com/rose-pine/neovim
 set background=light
 lua << EOF
-require('rose-pine').setup({
-	--- @usage 'main' | 'moon'
-	dark_variant = 'moon',
-})
+require('rose-pine').setup({ dark_variant = 'moon' })
 vim.cmd('colorscheme rose-pine')
 EOF
 
