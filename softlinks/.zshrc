@@ -160,9 +160,6 @@ if [[ `uname` == "Darwin" ]]; then # OSX
 
   # Local IP as env variable
   export LOCAL_IP=$(ipconfig getifaddr en0)
-else # Linux
-  # Turn off capslock
-  setxkbmap -option caps:escape
 fi
 
 # hose things that match string
