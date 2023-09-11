@@ -7,6 +7,8 @@ brew "ctags"
 brew "dict"       # dictionary server protocol (RFC2229) client
 brew "direnv"
 brew "entr"       # run commands when files change
+brew "font-hack"  # nice looking fixed width font
+brew "font-mplus" # narrow fixed width for retina
 brew "git"
 brew "gnupg"
 brew "go"
@@ -31,8 +33,6 @@ brew "shellcheck"            # ncjones uses this for linting shell stuff
 brew "wget"
 cask "docker"
 cask "flux"                  # color temperature based on time of day https://justgetflux.com/
-cask "font-hack"             # nice looking fixed width font
-cask "font-mplus"            # narrow fixed width for retina
 cask "gimp"                  # image editing software
 cask "iterm2"                # terminal emulator
 cask "keepassxc"             # compatable with keepassx files
