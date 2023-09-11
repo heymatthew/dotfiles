@@ -25,6 +25,9 @@ Plug 'michaeljsmith/vim-indent-object'  " Select indents as an object
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'w0rp/ale',      { 'as': 'vim-ale' }
 Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
+
+" Plug 'heymatthew/vim-rose-pine' " bare bones theme using the Rose Pine colours
+
 call plug#end()
 
 nnoremap <leader>f :FZF<CR>
