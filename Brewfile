@@ -1,6 +1,8 @@
 # Brewfile, install everything with `brew bundle`
 # https://openfolder.sh/macos-migrations-with-brewfile
 
+tap 'homebrew/cask-fonts'
+
 brew "asdf"       # Multi language package manager
 brew "aspell"
 brew "awscli"
