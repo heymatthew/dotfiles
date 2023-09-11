@@ -28,9 +28,8 @@ setopt hist_reduce_blanks   # blanks from each command line added to the history
 setopt extended_history     # save time stamp and runtime information
 setopt inc_append_history   # write after exec rather than waiting till shell exit
 setopt no_hist_beep         # no terminal bell please
+setopt interactivecomments  # Don't execute comments in interactive shell
 # setopt share_history      # all open shells see history
-
-setopt interactivecomments # Don't execute comments in interactive shell
 
 # Looks like when you 'paste' with newlines, then hit escape, there's a bug
 # where it doesn't reset properly. Turn it off for now.
