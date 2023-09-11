@@ -57,8 +57,9 @@ describe 'installing julia packages'
 script_dir = File.dirname(__FILE__)
 run "#{script_dir}/julia-packages.jl"
 
-describe "install neovim plugins"
+describe "install vim/nvim plugins"
 run('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
+run('/opt/homebrew/bin/vim -c "call UpdateEverything() | qa"')
 
 describe "Your public ssh key is stored in ~/.ssh/id_ed25519.pub"
 puts File.open("#{Dir.home}/.ssh/id_ed25519.pub").read.chomp

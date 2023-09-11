@@ -35,6 +35,7 @@ brew "svn"        # required for font-source-code-pro
 brew "syncthing"  # keep stuff synced across machines
 brew "tig"
 brew "tree"
+brew "vim"
 brew "watch"
 brew "wget"
 brew "zsh"

@@ -181,12 +181,7 @@ fi
 export KEYTIMEOUT=1
 
 # Setting default editor
-if which nvim > /dev/null; then
-  echo "nvim..."
-  export EDITOR=nvim
-  alias vim=nvim
-  alias vi=nvim
-elif which vim > /dev/null; then
+if which vim > /dev/null; then
   echo "vim..."
   export EDITOR=vim
 else
