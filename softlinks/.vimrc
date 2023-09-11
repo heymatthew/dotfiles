@@ -38,7 +38,9 @@ Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes 
 call plug#end()
 
 nnoremap <F2> :call SyntaxAttr()<CR>
-nnoremap <backspace> :noh<CR>
+
+" Escape also hides search highlights
+nnoremap <ESC> :noh<CR><ESC>
 
 " Dark mode isn't as good for your eyes as you believe
 " https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
