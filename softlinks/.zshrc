@@ -48,6 +48,7 @@ title_bar_prompt() {
 }
 title_bar_cmd() {
   [[ "$1" =~ "^vim" ]] && return
+  [[ "$1" =~ "^fg" ]] && return
   print -Pn "\e]0;%m 🦥 $1\a"
 }
 
