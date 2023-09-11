@@ -248,11 +248,16 @@ if [ -f /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/auto.sh
 fi
 
-# If pyenv exists, init shims autocompletion
+# If pyenv exists, init shims and autocompletion
 if which pyenv > /dev/null; then
   echo "pyenv..."
   eval "$(pyenv init -)"
   pyenv rehash
+fi
+
+# If asdf exists, init shims and autocompletion
+if which asdf > /dev/null; then
+  source $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
 # Advice from

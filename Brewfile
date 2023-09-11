@@ -1,6 +1,7 @@
 # Brewfile, install everything with `brew bundle`
 # https://openfolder.sh/macos-migrations-with-brewfile
 
+brew "asdf"       # Multi language package manager
 brew "aspell"
 brew "awscli"
 brew "caddy"      # Open source web server with automatic HTTPS written in Go
