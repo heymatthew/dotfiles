@@ -61,11 +61,6 @@ augroup linting
   let g:ale_virtualtext_cursor = 'current'   " only show hints under cursor
 augroup END
 
-" Plug 'neovim/nvim-lspconfig' " TODO Language Server Protocal auto config
-" augroup lsp_config
-"   " https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-" augroup END
-
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 augroup golang
   let g:go_def_mode='gopls'  " Based on https://github.com/golang/tools/blob/master/gopls/doc/vim.md
@@ -89,9 +84,7 @@ syntax off                       " case against... https://www.linusakesson.net/
 set termguicolors                " enable true colors support
 set guifont=mplus-1m-regular:h12 " from system_profiler SPFontsDataType
 
-" <3
-" from https://github.com/rose-pine/neovim
-colorscheme rose-pine
+" <3 from https://github.com/rose-pine/neovim
 set background=light
 lua << EOF
 require('rose-pine').setup({
@@ -137,8 +130,8 @@ autocmd Filetype markdown  setlocal spell spelllang=en_gb
 " set foldminlines=10       " Smaller than this will always show like it was open
 " set clipboard=unnamedplus " yank and put straight to system clipboard
 
-" See https://unix.stackexchange.com/a/383044
 " When someone modifies a file externally, autoread it back in
+" See https://unix.stackexchange.com/a/383044
 set autoread
 au CursorHold,CursorHoldI * checktime
 
@@ -193,15 +186,14 @@ nnoremap <C-l> 0<C-w>l
 nnoremap <C-j> 0<C-w>j
 nnoremap <C-k> 0<C-w>k
 
-" FIXME G grep and Ggrep have differing behavour
-" G grep won't open in the quickfix pane, so I'm going with Ggrep
+" Find files with Ctrl+F
+" In normal mode, use the "word" under cursor
 vmap <C-f> y:lclose<CR>:silent Ggrep -I "<C-r>0"<CR>zz
 nmap <C-f> yiW:silent Ggrep -I "<C-r>0"<CR>zz<CR>
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
 " f1    : also store global marks [A-Z0-9]
-" <500  : store only 500 lines of registers
 set shada='500,f1
 " SHADA EXCEPTION, cursor placement at top on git commit
 autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
@@ -213,7 +205,7 @@ nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 
-" vp doesn't replace paste buffer
+" visual paste doesn't replace what you've got in the paste buffer
 " credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
 function! RestoreRegister()
   let @" = s:restore_reg
