@@ -115,8 +115,7 @@ nnoremap <space><space> <C-^>
 
 set number                 " give line number that you're on
 set scrolloff=5            " when scrolling, keep cursor 5 lines away from border
-set foldmethod=indent      " fold by indentation
-set foldlevelstart=99      " ... but leave it open by default
+set foldmethod=manual      " folds are really broken, do this by hand if you need it
 set nojoinspaces           " Single space after period when using J
 set hlsearch               " Highlight my searches :)
 set ignorecase             " Search case insensitive...
