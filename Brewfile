@@ -3,6 +3,7 @@
 
 brew "aspell"
 brew "awscli"
+brew "caddy"      # Open source web server with automatic HTTPS written in Go
 brew "ctags"
 brew "dict"       # dictionary server protocol (RFC2229) client
 brew "direnv"
