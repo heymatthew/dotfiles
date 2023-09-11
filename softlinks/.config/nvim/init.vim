@@ -240,6 +240,7 @@ nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 " Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<cr>
 nnoremap <backspace><backspace> :tabclose<cr>
+nnoremap <leader>q <C-w>q
 
 " Quickly split current view
 nmap <leader>y 0:lclose<CR>:cclose<CR>:split<CR>
@@ -247,10 +248,6 @@ nmap <leader>x 0:lclose<CR>:cclose<CR>:vsplit<CR>
 nmap <leader>n 0:rightbelow vnew<CR>
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
-
-" Open current focused file in new tab
-nnoremap <leader><leader> :tab split<CR>
-nnoremap <leader>q <C-w>q
 
 " Set title on terminal to focused buffer filename
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
