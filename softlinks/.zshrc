@@ -45,32 +45,6 @@ compinit
 autoload -U select-word-style
 select-word-style bash
 
-##############################################################################
-# Misc tricks from
-# http://chneukirchen.org/blog/archive/2013/03/10-fresh-zsh-tricks-you-may-not-know.html
-autoload -Uz copy-earlier-word
-zle -N copy-earlier-word
-bindkey "^[m" copy-earlier-word
-
-function _recover_line_or_else() {
-  if [[ -z $BUFFER && $CONTEXT = start && $zsh_eval_context = shfunc
-      && -n $ZLE_LINE_ABORTED
-      && $ZLE_LINE_ABORTED != $history[$((HISTCMD-1))] ]]; then
-    LBUFFER+=$ZLE_LINE_ABORTED
-    unset ZLE_LINE_ABORTED
-  else
-    zle .$WIDGET
-  fi
-}
-zle -N up-line-or-history _recover_line_or_else
-function _zle_line_finish() {
-  ZLE_LINE_ABORTED=$BUFFER
-}
-zle -N zle-line-finish _zle_line_finish
-
-# End tricks
-##############################################################################
-
 setopt PROMPT_SUBST
 
 # Setup zsh git integration
