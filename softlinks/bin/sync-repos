@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+logfile="$HOME/myrepos.log"
+
+export PATH="/opt/homebrew/bin:$PATH"
+mr fetch -q \
+  | grep -v '^$' \
+  | ts '%Y-%m-%dT%T%z:' >> "$logfile" 2>&1

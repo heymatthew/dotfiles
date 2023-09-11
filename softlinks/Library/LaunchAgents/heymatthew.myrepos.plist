@@ -7,10 +7,9 @@
 
   <key>ProgramArguments</key>
   <array>
-    <string>/opt/homebrew/bin/mr</string>
-    <string>--jobs</string>
-    <string>2</string>
-    <string>fetch</string>
+    <string>/bin/bash</string>
+    <string>-c</string>
+    <string>$HOME/bin/sync-repos</string>
   </array>
 
   <!-- hourly -->
@@ -19,11 +18,5 @@
 
   <key>RunAtLoad</key>
   <true/>
-
-  <key>StandardErrorPath</key>
-  <string>/tmp/myrepos.log</string>
-
-  <key>StandardOutPath</key>
-  <string>/tmp/myrepos.log</string>
 </dict>
 </plist>
