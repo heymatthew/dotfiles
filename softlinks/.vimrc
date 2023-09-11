@@ -131,6 +131,7 @@ autocmd WinNew * wincmd =
 " Reload vimrc on edits
 " credit http://howivim.com/2016/damian-conway
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $MYVIMRC
 autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 
 " Whitespace management
@@ -198,10 +199,10 @@ if exists(project_vimrc) && filereadable(project_vimrc)
 endif
 
 " Quickly open, reload and edit rc files
-nnoremap <leader>vv :e $MYVIMRC<CR>
+nnoremap <leader>vv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
-nnoremap <leader>zz :e $HOME/.zshrc<CR>
+nnoremap <leader>zz :e $HOME/dotfiles/softlinks/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 nnoremap <leader>vp :exec 'edit ' . project_vimrc<CR>
 nnoremap <leader>ve :exec 'edit ' . plug_dir<CR>
