@@ -167,8 +167,8 @@ else
   bindkey '^r' history-incremental-search-backward
 fi
 
- # zle -N zle-line-init
- # zle -N zle-keymap-select
+# zle -N zle-line-init
+# zle -N zle-keymap-select
 export KEYTIMEOUT=1
 
 # Setting default editor
