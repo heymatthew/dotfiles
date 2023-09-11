@@ -104,7 +104,20 @@ alias ls='ls -G'                               # technicolor list
 alias cdg='cd $(git rev-parse --show-cdup)'    # cd to root of repo
 alias update="~/dotfiles/update.sh"
 alias g="git"
-alias scrub="rm -I ~/Desktop/Screenshot*"
+
+function scrub() {
+  if ls ~/Desktop/Screenshot*; then
+    rm -I ~/Desktop/Screenshot*;
+  else
+    echo "No screenshots to scrub"
+  fi
+
+  if ls ~/Downloads/*; then
+    rm -I ~/Downloads/*
+  else
+    echo "No downloads to scrub"
+  fi
+}
 
 # Configure unix tooling
 export LESS='-R'
