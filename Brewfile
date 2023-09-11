@@ -14,6 +14,7 @@ brew "direnv"
 brew "entr"       # run commands when files change
 brew "exercism"   # develop fluency with coding exercises and mentoring https://exercism.org
 brew "git"
+brew "git-plus"   # git multi, git semvar, git relation, git old-branches, git recvent
 brew "git-workspace"
 brew "gnupg"
 brew "go"
