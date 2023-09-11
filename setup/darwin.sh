@@ -4,7 +4,7 @@ echo "testing superuser (password required)..."
 sudo echo 'make me a Sandwich! https://xkcd.com/149' || exit 1
 
 echo "setting hostname..."
-read -p "what do you want your hostname to be? " hostname
+read -r -p "what do you want your hostname to be? " hostname
 sudo hostname -s $hostname
 sudo scutil --set LocalHostName $hostname
 sudo scutil --set ComputerName $hostname
@@ -13,12 +13,12 @@ sudo scutil --set HostName $hostname.matthew.nz
 echo "creating ssh keys..."
 ssh-keygen -t ed25519
 echo "editing public key in vim 🤔, press enter to continue..."
-read
+read -r
 vim ~/.ssh/id_ed25519.pub
 
 echo "templating git config..."
 echo "editing git config in vim 🤔, press enter to continue..."
-read
+read -r
 tee ~/.gitconfig.local >/dev/null <<EOF
 [user]
   name = Matthew B. Gray
