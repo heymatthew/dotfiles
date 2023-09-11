@@ -102,14 +102,16 @@ ZLS_COLORS=$LS_COLORS
 # Aliases
 alias ls='ls -G'                               # technicolor list
 alias cdg='cd $(git rev-parse --show-cdup)'    # cd to root of repo
-alias isodate="date '+%Y-%m-%dT%H:%M:%S%z'"
-alias utcdate="date -u +'%Y-%m-%dT%H:%M:%SZ'"
 alias be="bundle exec"
 
+alias isodate="echo Do you mean today, or now\?"
+alias today="date '+%Y-%m-%d'"
+alias now="date '+%Y-%m-%dT%H:%M:%S%z'"
+alias nowutc="date -u +'%Y-%m-%dT%H:%M:%SZ'"
+
+# Configure unix tooling
 export LESS='-R'
-
 export GREP_COLOR='1;33'
-
 
 # Checkout github pull requests locally
 # https://gist.github.com/piscisaureus/3342247
