@@ -47,9 +47,13 @@ title_bar_prompt() {
   vcs_info && print -Pn "\e]0;%m:%~ $vcs_info_msg_0_\a"
 }
 title_bar_cmd() {
-  [[ "$1" =~ "^vim" ]] && return
-  [[ "$1" =~ "^fg" ]] && return
-  print -Pn "\e]0;%m 🦥 $1\a"
+  if [[ "$1" =~ "^vim" ]]; then
+    # Vim doesn't change title
+  elif [[ "$1" =~ "^fg" ]]; then
+    print -Pn "\e]0;%m%~ ⛵️ %v\a"
+  else
+    print -Pn "\e]0;%m 🦥 $1\a"
+  fi
 }
 
 # setopt prompt_subst # allow vcs_info_msg_0_ to be used in PS1
