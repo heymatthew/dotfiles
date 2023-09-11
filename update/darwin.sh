@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-echo "nvim/vim..."
-nvim -c "call execute('PlugUpdate') | call execute('GoInstallBinaries') | qa"
+echo "vim..."
 vim -c "call execute('PlugUpdate') | call execute('GoInstallBinaries') | qa"
 
 echo "npm..."
