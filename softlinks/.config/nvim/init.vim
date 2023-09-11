@@ -19,19 +19,13 @@ Plug 'tpope/vim-surround'     " Delete, or insert around text objects
 Plug 'tpope/vim-repeat'       " Lets you use . for surround and other plugins
 Plug 'tpope/vim-commentary'   " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'   " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-Plug 'tpope/vim-fugitive'     " Git integration
 Plug 'tpope/vim-characterize' " UTF8 outputs for ga binding
 Plug 'tpope/vim-speeddating'  " <ctrl>a and <ctrl>x increments and decrements dates and roman numerals. 7<C-a> will jump a week.
 Plug 'tpope/vim-dadbod'       " Database from your vim
 Plug 'tpope/vim-vinegar'      " Better file browser
 
+Plug 'tpope/vim-fugitive'
 augroup vim_fugitive
-  " Quickfix window when shelling out to grep
-  " Also works for git grep
-  "   e.g. :Ggrep FIXME
-  "   see https://github.com/tpope/vim-fugitive
-  " autocmd QuickFixCmdPost *grep* cwindow
-  " Also http://stackoverflow.com/a/39010855/81271
   " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
   autocmd!
   autocmd QuickFixCmdPost [^l]* cwindow
