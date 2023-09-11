@@ -328,3 +328,8 @@ autocmd TermOpen * setlocal statusline=%{b:term_title}
 " https://vim.fandom.com/wiki/Lookup_word_in_dict
 nnoremap <leader>l mayiw`a:exe "!dict -P - $(echo " . @" . ")"<CR>
 vnoremap <leader>l may`a:exe "!dict -P - $(echo " . @" . ")"<CR>
+
+" Git commit messages lint similar to hemingway app
+" See https://github.com/btford/write-good
+" Based on https://github.com/dense-analysis/ale/blob/master/ale_linters/markdown/writegood.vim
+call ale#handlers#writegood#DefineLinter('gitcommit')
