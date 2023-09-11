@@ -318,8 +318,8 @@ it2prof() { echo -e "\033]50;SetProfile=$1\a" }
 # [ -e ~/.config/iterm_theme ] && echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
 alias dark='echo "dark mode..." && echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dark\a"'
 alias light='echo "light mode..." && echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
-appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "light")
-if [ $appearance = 'dark' ]; then
+appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
+if [ $appearance = 'Dark' ]; then
   dark
 else
   light
