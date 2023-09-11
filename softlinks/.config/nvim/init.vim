@@ -201,12 +201,13 @@ set shada='500,f1
 " SHADA EXCEPTION, cursor placement at top on git commit
 autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
-" Quickly open, reload and edit rc files
+" Quickly open, reload and edit files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
+nnoremap <leader>m :e $HOME/monologue.md<CR>
 
 " visual paste doesn't replace what you've got in the paste buffer
 " credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
