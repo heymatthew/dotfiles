@@ -122,6 +122,10 @@ function randommac() {
   ruby -e 'puts ("%02x"%((rand 64)*4|2))+(0..4).inject(""){|s,x|s+":%02x"%(rand 256)}'
 }
 
+function urlencode() {
+  ruby -e 'require "cgi"; puts CGI.escape(ARGV.last || gets.chomp)' $@
+}
+
 # Default working directories per-box
 alias pin="pwd > ~/.pindir"                   # pin cwd as pin dir
 alias cdd='cd $(cat ~/.pindir 2&> /dev/null)' # cdd nav to pin dir
