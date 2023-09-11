@@ -105,11 +105,13 @@ alias cdg='cd $(git rev-parse --show-cdup)'    # cd to root of repo
 alias update="~/dotfiles/update.rb"
 alias g="git"
 
-alias isodate="echo 'Do you mean today, or now?'"
-
 # Configure unix tooling
 export LESS='-R'
 export GREP_COLOR='1;33'
+
+# Changing habits
+alias t='echo "deprecated: git changes | entr -r -c"'
+alias isodate="echo 'deprecated: today, or now?'"
 
 # Checkout github pull requests locally
 # https://gist.github.com/piscisaureus/3342247
