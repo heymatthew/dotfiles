@@ -80,6 +80,7 @@ echo "TODO:
 * Skim MacOS Security & Privacy Guide https://github.com/drduh/macOS-Security-and-Privacy-Guide
 * Set Firefox sync Device Name to '$hostname' about:preferences#sync
 * Set Syncthing Device Name to '$hostname' http://localhost:8384/
+* Set hidden menu with minimalist menu bar
 * Set API token in Exercism
   * https://exercism.io/my/settings
   * exercism configure --token=YOUR_TOKEN
