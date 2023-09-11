@@ -16,6 +16,7 @@ brew "iftop"      # top for your network interfaces
 brew "jq"
 brew "md5sha1sum"
 brew "mplayer"
+brew "mpv"        # command line media player https://mpv.io/
 brew "mtr"
 brew "ncdu"
 brew "neovim"
