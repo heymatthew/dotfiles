@@ -63,6 +63,7 @@ echo "TODO:
   * Set M+ 1mn medium font, light:medium, dark:regular https://css-tricks.com/dark-mode-and-variable-fonts/
   * Bump scrollback to 25k
   * Set Appearance > General > Theme to 'Minimal'
+  * Set Profiles > * > Colors > Cursor Colors
   * Remap 'Close' to Cmd+Shift+W, System Settings > Keyboard Shortcuts > App Shortcuts
 * Bump inotify limits for entr http://eradman.com/entrproject/limits.html
 * Skim MacOS Security & Privacy Guide https://github.com/drduh/macOS-Security-and-Privacy-Guide
