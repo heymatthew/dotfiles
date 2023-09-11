@@ -53,4 +53,4 @@ run('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
 puts "\nTODO"
 puts "* Install Rosé Pine for iTerm2 https://github.com/rose-pine/iterm"
 puts "* Create iTerm2 profiles 'dark' from moon and 'light' from dawn"
-puts "* Set m+ 1mn fonts"
+puts "* Set hack font on profiles"
