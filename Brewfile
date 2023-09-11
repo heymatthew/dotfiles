@@ -64,6 +64,7 @@ cask "linearmouse"          # tune sensitivity and acceleration
 cask "keepingyouawake"      # keeps the screen on for presentations
 cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
+cask "hiddenbar"            # declutter the osx menu bar
 cask "vlc"
 
 # cask "jupyterlab"         # A Next-Generation Notebook Interface https://jupyter.org/
