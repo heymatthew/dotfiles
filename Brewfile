@@ -8,6 +8,7 @@ brew "ctags"
 brew "dict"       # dictionary server protocol (RFC2229) client
 brew "direnv"
 brew "entr"       # run commands when files change
+brew "exercism"   # develop fluency with coding exercises and mentoring https://exercism.org
 brew "git"
 brew "gnupg"
 brew "go"
