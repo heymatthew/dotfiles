@@ -126,8 +126,8 @@ set nobackup               " Don't create annoying backup files
 set wrap linebreak nolist  " wrap words, incompatable with visible whitespace (list and listchars)
 set showcmd                " show command on bottom right as it's typed
 set belloff=all            " I find terminal bells irritating
+set mouse=a                " Looks like this is part of neovim defaults
 
-" set mouse=a               " Looks like this is part of neovim defaults
 " set relativenumber        " toggle with yor, off by default
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
