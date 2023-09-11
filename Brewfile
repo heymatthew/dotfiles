@@ -16,8 +16,6 @@ brew "htop"       # prettier top, with colour
 brew "hugo"       # static website generator
 brew "iftop"      # top for your network interfaces
 brew "jq"
-brew "julia"      # Dynamic programming language
-brew "jupyterlab" # A Next-Generation Notebook Interface https://jupyter.org/
 brew "mas"        # App Store control from CLI https://github.com/mas-cli/mas
 brew "postgresql@15"
 brew "pstree"     # Hirachical list of processes
@@ -49,6 +47,8 @@ cask "font-mplus"            # narrow fixed width for retina
 cask "font-source-code-pro"  # adobe backed fixed width font
 cask "gimp"                  # image editing software
 cask "iterm2"                # terminal emulator
+cask "julia"      # Dynamic programming language
+cask "jupyterlab" # A Next-Generation Notebook Interface https://jupyter.org/
 cask "keepassxc"             # compatable with keepassx files
 cask "keepingyouawake"       # keeps the screen on for presentations
 cask "kicad"                 # fabrication of PCBs for http://jlcpcb.com
