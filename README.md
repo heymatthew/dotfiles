@@ -7,3 +7,5 @@ git clone https://github.com/heymatthew/dotfiles
 cd dotfiles
 ./setup.rb
 ```
+
+Periodically run updates using the `update` alias included in zsh.

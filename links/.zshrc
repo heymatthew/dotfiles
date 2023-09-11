@@ -103,6 +103,8 @@ ZLS_COLORS=$LS_COLORS
 alias ls='ls -G'                               # technicolor list
 alias cdg='cd $(git rev-parse --show-cdup)'    # cd to root of repo
 alias be="bundle exec"
+alias update="~/dotfiles/update.rb"
+
 
 alias isodate="echo Do you mean today, or now\?"
 alias today="date '+%Y-%m-%d'"
@@ -207,11 +209,6 @@ if which nvm > /dev/null; then
   [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
-
-function update() {
-  cd ~/dotfiles
-  make updates
-}
 
 function first() {
   git init
