@@ -1,4 +1,9 @@
 #!/usr/bin/env bash
 
+set -euo pipefail
+
+# Install deps if needed
+bundle check > /dev/null || bundle install
+
 # Just shorthand for running "bundle exec ..." commands
-bundle exec $@
+bundle exec "$@"
