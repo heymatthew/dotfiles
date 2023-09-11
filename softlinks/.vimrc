@@ -255,7 +255,7 @@ cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 " Deprecations
-nnoremap <leader>q :echo "Deprecated. Prefer sd"<CR>
-nnoremap <leader>r :echo "Deprecated. Prefer R"<CR>
-nnoremap <space><space> :echo "Deprecated. Prefer \<BACKSPACE\>"<CR>
-command Gchanges echo "Deprecated. use :Changes"
+nnoremap <leader>q        :echo "🤌 Deprecated. Prefer sd"<CR>
+nnoremap <leader>r        :echo "🤌 Deprecated. Prefer R"<CR>
+nnoremap <space><space>   :echo "🤌 Deprecated. Prefer \<BACKSPACE\>"<CR>
+command Gchanges          echo "🤌 Deprecated. use :Changes"
