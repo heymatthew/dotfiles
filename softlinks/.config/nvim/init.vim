@@ -222,11 +222,7 @@ vmap <silent> <expr> p <sid>Repl()
 nnoremap <leader>t :set filetype=
 
 " turn off EX mode (it annoys me, I don't use it)
-":map Q <Nop>
-" More usefully, reformat paragraphs with vim rules
-" - http://alols.github.io/2012/11/07/writing-prose-with-vim
-" - https://github.com/reedes/vim-pencil
-map Q gqap
+map Q <Nop>
 
 " Display line numbers in help
 autocmd FileType help setlocal number relativenumber
