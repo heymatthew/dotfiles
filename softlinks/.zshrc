@@ -222,10 +222,10 @@ if which rbenv > /dev/null; then
   export PATH="~/.rbenv/bin:$PATH"
 fi
 
-# if which asdf > /dev/null; then
-#   echo "asdf..."
-#   $(brew --prefix asdf)/asdf.sh
-# fi
+# If asdf exists, init shims and autocompletion
+if which asdf > /dev/null; then
+  source $(brew --prefix asdf)/libexec/asdf.sh
+fi
 
 # If chruby exists, init shims and hook cd
 if [ -f /usr/local/share/chruby/chruby.sh ]; then
@@ -239,11 +239,6 @@ if which pyenv > /dev/null; then
   echo "pyenv..."
   eval "$(pyenv init -)"
   pyenv rehash
-fi
-
-# If asdf exists, init shims and autocompletion
-if which asdf > /dev/null; then
-  source $(brew --prefix asdf)/libexec/asdf.sh
 fi
 
 # Advice from
