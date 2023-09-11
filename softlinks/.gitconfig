@@ -22,3 +22,5 @@
 [core]
 	excludesfile = ~/.gitignore
 	pager = less -iXFR
+[branch]
+	autoSetupMerge = simple
