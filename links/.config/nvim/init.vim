@@ -127,7 +127,7 @@ set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " fold by paragraph or whatever you feel is appropriate
 " set textwidth=100         " Automatically insert newlines
-set colorcolumn=100       " Show 100th char visually
+" set colorcolumn=100       " Show 100th char visually
 set nojoinspaces          " Single space after period when using J
 set hlsearch              " Highlight my searches :)
 set ignorecase            " Search case insensitive...
