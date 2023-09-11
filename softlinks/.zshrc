@@ -158,7 +158,7 @@ else
   export EDITOR=vi
 fi
 
-# Cludges follow
+# Kludges follow
 if [[ `uname` == "Darwin" ]]; then # OSX
   # Fix GPG agent detection
   # see https://github.com/pstadler/keybase-gpg-github/issues/11
