@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Define the platform function
 platform() {
   case "$(uname -s)" in
