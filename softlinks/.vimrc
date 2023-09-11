@@ -152,7 +152,7 @@ autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwid
 " nnoremap <space><space> :edit %:p:h<CR>
 
 " Switch between the last two files
-nnoremap <space><space> <C-^>
+nnoremap <BACKSPACE> <C-^>
 
 " Quick access to clipboard, e.g. <space>p or <space>yy
 nnoremap <leader> "+
@@ -252,4 +252,5 @@ cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 " Deprecations
 nnoremap <leader>q :echo "Deprecated. Prefer sd"<CR>
 nnoremap <leader>r :echo "Deprecated. Prefer R"<CR>
+nnoremap <space><space> :echo "Deprecated. Prefer \<BACKSPACE\>"<CR>
 command Gchanges echo "Deprecated. use :Changes"
