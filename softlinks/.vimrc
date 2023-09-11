@@ -121,6 +121,10 @@ set number
 autocmd FileType help setlocal number
 let g:netrw_bufsettings = 'number'
 
+" Using n and p in search centers the window
+nnoremap n nzz
+nnoremap p pzz
+
 " Copy current file to clipboard and yank buffers
 nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 
