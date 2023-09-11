@@ -3,7 +3,7 @@ export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
 # CD from anywhere
-cdpath=(~ ~/Desktop ~/code/centrapay ~/code ~/code/go/src ~/.config/nvim)
+cdpath=(~ ~/Desktop ~/code/centrapay ~/code ~/code/go/src ~/.config/nvim ~/Exercism/go)
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
@@ -100,8 +100,11 @@ export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
 
 # Aliases
-alias ls='ls -G'                            # technicolor list
-alias cdg='cd $(git rev-parse --show-cdup)' # cd to root of repo
+alias ls='ls -G'                               # technicolor list
+alias cdg='cd $(git rev-parse --show-cdup)'    # cd to root of repo
+alias isodate="date '+%Y-%m-%dT%H:%M:%S%z'"
+alias utcdate="date -u +'%Y-%m-%dT%H:%M:%SZ'"
+alias be="bundle exec"
 
 export LESS='-R'
 
@@ -130,7 +133,7 @@ fi
 [ -e ~/.zshrc.local ]      && source ~/.zshrc.local
 [ -f ~/.fzf.zsh ]          && source ~/.fzf.zsh
 
-function reload() {
+function rehash() {
   source ~/.zshrc && stty sane
 }
 
@@ -303,15 +306,14 @@ function tcr() {
 }
 
 # Like tcr, but without the git integration
+# Make sure you boost your watch limits:
+# https://eradman.com/entrproject/limits.html
 function t() {
   which entr > /dev/null || {
     echo "brew install entr"
     return 1
   }
-  projectRoot=$(git rev-parse --show-toplevel) # for monorepo
-  commitedFiles=$(git diff origin/master... --name-only)
-  changedFiles=$(git status --porcelain | awk '{print $2}')
-  echo "$projectRoot/$commitedFiles" "$projectRoot/$changedFiles" | xargs ls | entr -c sh -c "echo && $*"
+  git ls-tree --full-tree -r --name-only HEAD | xargs ls | entr -c $*
 }
 
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
