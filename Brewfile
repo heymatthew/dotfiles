@@ -25,6 +25,7 @@ brew "tor"
 brew "tree"
 brew "watch"
 brew "zsh"
+brew "dict"       # dictionary server protocol (RFC2229) client
 
 # Centrapay stuff
 brew "node"
@@ -52,5 +53,6 @@ cask "font-hack"             # nice looking fixed width font
 cask "font-mplus"            # narrow fixed width for retina
 cask "unclack"               # for people with mech keebs, https://unclack.app
 cask "flux"                  # color temperature based on time of day https://justgetflux.com/
+cask "kicad"                 # fabrication of PCBs for http://jlcpcb.com
 
 # cask "skype"
