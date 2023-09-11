@@ -91,11 +91,14 @@ augroup fzf # for junegunn/fzf
 augroup END
 
 " Quickly split current view
-nmap <leader>y 0:lclose<CR>:cclose<CR>:split<CR>
-nmap <leader>x 0:lclose<CR>:cclose<CR>:vsplit<CR>
-nmap <leader>n 0:rightbelow vnew<CR>
+" nmemonic s = split new, tab, quit, x, y
+nmap sy 0:lclose<CR>:cclose<CR>:split<CR>
+nmap sx 0:lclose<CR>:cclose<CR>:vsplit<CR>
+nmap sn 0:rightbelow vnew<CR>
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
+nnoremap st :tab split<cr>
+nnoremap sq :tabclose<cr>
 
 " Vertical split for help files
 autocmd FileType help wincmd L
