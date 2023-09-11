@@ -125,3 +125,6 @@ nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoIn
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
+
+" Reverse search command history
+nnoremap <leader>c q:?
