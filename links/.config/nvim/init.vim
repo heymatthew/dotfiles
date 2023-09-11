@@ -85,28 +85,24 @@ augroup prose
   endfunction
 augroup END
 
-" Plug 'liuchengxu/space-vim-theme' " Spacemacs dark true colour
-" Plug 'rakr/vim-one' " Atom
-" Plug 'sickirl/vim-monokai' " Sublime
-" Plug 'altercation/vim-colors-solarized'
-Plug 'lifepillar/vim-solarized8' " True colour solarized palette
-Plug 'ayu-theme/ayu-vim'
+Plug 'scrooloose/nerdtree'
+augroup file_browser
+  let NERDTreeShowLineNumbers = 1  " Make nerdtree honor numbers
+  let NERDTreeShowHidden = 1       " Show dotfiles
+augroup END
+
+Plug 'lifepillar/vim-solarized8'
+
 call plug#end()
 
 try
   syntax off             " turning off colours for fun
-  " don't explode if colour scheme doesn't exist
   set termguicolors      " enable true colors support
-  " let ayucolor="light"  " for light version of theme
-  " let ayucolor="mirage" " for mirage version of theme
-  " let ayucolor="dark"   " for dark version of theme
-  " colorscheme solarized
   colorscheme solarized8
-
   set background=light
 
   " from system_profiler SPFontsDataType
-  " set guifont=mplus-1m-regular:h12
+  set guifont=mplus-1m-regular:h12
 
   if filereadable($HOME . "/.config/iterm_theme")
     let iterm_theme = readfile($HOME . "/.config/iterm_theme")
@@ -118,6 +114,7 @@ try
 catch
   " If colors and fonts fail, this isn't a big deal
 endtry
+
 
 set relativenumber        " better navigation
 set number                " give line number that you're on
