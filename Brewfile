@@ -43,9 +43,9 @@ cask "keepingyouawake"       # keeps the screen on for presentations
 cask "kicad"                 # fabrication of PCBs for http://jlcpcb.com
 cask "signal"                # secure chat
 cask "transmission"          # good for linux ISOs
-cask "unclack"               # for people with mech keebs, https://unclack.app
 cask "vlc"
 
 # cask "skype"
 # cask "spotify"
 # cask "tunnelblick"           # powers modest VPNs
+# cask "unclack"               # for people with mech keebs, https://unclack.app
