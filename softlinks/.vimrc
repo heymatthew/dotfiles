@@ -99,24 +99,17 @@ augroup easy_align
   nmap ga <Plug>(EasyAlign)
 augroup END
 
-" Quickly split current view
-nnoremap sh 0:lclose<CR>:cclose<CR>:split<CR>
-nnoremap sv 0:lclose<CR>:cclose<CR>:vsplit<CR>
-nnoremap sn 0:rightbelow vnew<CR>
+" Move default where splits open
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
-
-" Allow for original function s when double tapped
-nnoremap ss s
-
-nnoremap <leader>t :tab split<CR>
-
 " Vertical split for help files
 autocmd FileType help wincmd L
 
 " Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<CR>
 nnoremap <leader><backspace> :tabclose<CR>
+nnoremap <leader>t :tab split<CR>
+nnoremap sn 0:rightbelow vnew<CR>
 
 " Show line numbers in files, help, and netrw
 set number
@@ -254,8 +247,10 @@ cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 " Deprecations
-nnoremap <leader>q        :echo "🤌 Deprecated. Prefer sd"<CR>
+nnoremap <leader>q        :echo "🤌 Deprecated. \<C-w\>q"<CR>
 nnoremap <leader>r        :echo "🤌 Deprecated. Prefer R"<CR>
 nnoremap <space><space>   :echo "🤌 Deprecated. Prefer \<BACKSPACE\>"<CR>
+nnoremap sh               :echo "🤌 Deprecated. Prefer \<C-w\>h"<CR>
+nnoremap sv               :echo "🤌 Deprecated. Prefer \<C-w\>s"<CR>"
 nnoremap sd               :echo "🤌 Deprecated. \<C-w\>q"<CR>
 command Gchanges          echo "🤌 Deprecated. use :Changes"
