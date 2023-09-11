@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Print the current time in our local timezone
+date '+%Y-%m-%dT%H:%M:%S%z'

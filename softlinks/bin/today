@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Print today's date
+date '+%Y-%m-%d'

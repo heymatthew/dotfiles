@@ -106,10 +106,7 @@ alias be="bundle exec"
 alias update="~/dotfiles/update.rb"
 
 
-alias isodate="echo Do you mean today, or now\?"
-alias today="date '+%Y-%m-%d'"
-alias now="date '+%Y-%m-%dT%H:%M:%S%z'"
-alias nowutc="date -u +'%Y-%m-%dT%H:%M:%SZ'"
+alias isodate="echo 'Do you mean today, or now?'"
 
 # Configure unix tooling
 export LESS='-R'

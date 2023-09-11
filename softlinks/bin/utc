@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Print the current time in UTC
+date -u +'%Y-%m-%dT%H:%M:%SZ'
