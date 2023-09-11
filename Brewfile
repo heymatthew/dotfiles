@@ -23,9 +23,9 @@ brew "mplayer"
 brew "mpv"        # command line media player https://mpv.io/
 brew "mr"         # manage multiple git repos
 brew "mtr"
-brew "netcat"     # gnu netcat > osx netcat
 brew "ncdu"
 brew "neovim"
+brew "netcat"     # gnu netcat > osx netcat
 brew "postgresql@15"
 brew "pstree"     # Hirachical list of processes
 brew "ranger"
