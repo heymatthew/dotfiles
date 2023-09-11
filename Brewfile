@@ -12,6 +12,7 @@ brew "direnv"
 brew "entr"       # run commands when files change
 brew "exercism"   # develop fluency with coding exercises and mentoring https://exercism.org
 brew "git"
+brew "git-workspace"
 brew "gnupg"
 brew "go"
 brew "htop"       # prettier top, with colour
