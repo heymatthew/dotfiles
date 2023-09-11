@@ -80,7 +80,7 @@ augroup ale # for w0rp/ale
   let g:ale_set_highlights = 0               " remove highlights
   let g:ale_set_loclist = 0                  " don't clobber location list
   let g:ale_set_quickfix = 0                 " don't clobber quickfix list
-  let g:ale_virtualtext_cursor = 'current'   " only show hints under cursor
+  let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 
   " Move between linting errors
   nnoremap ]r :ALENextWrap<CR>
