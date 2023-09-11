@@ -227,6 +227,10 @@ map Q <Nop>
 " Display line numbers in help
 autocmd FileType help setlocal number relativenumber
 
+" Display line numbers in netrw
+" see https://stackoverflow.com/a/8731175
+let g:netrw_bufsettings = 'number'
+
 " Vertical split for help files
 autocmd FileType help wincmd L
 
