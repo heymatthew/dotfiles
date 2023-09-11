@@ -161,8 +161,9 @@ set autoindent             " indent on newlines
 set smartindent            " recognise syntax of files
 set noswapfile             " Don't use swapfile
 set nobackup               " Don't create annoying backup files
-set mouse=a                " Let vim use the mouse, grab and pull splits around etc.
+set wrap linebreak nolist  " wrap words, incompatable with visible whitespace (list and listchars)
 
+" set mouse=a               " Let vim use the mouse, grab and pull splits around etc.
 " set relativenumber        " toggle with yor, off by default
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
