@@ -45,7 +45,7 @@ preflight:
 	ssh-add -l && echo "reusing unlocked key" || ssh-add
 
 updates: preflight
-	vim -c 'call UpdateEverything() | qa' || true
+	# vim -c 'call UpdateEverything() | qa' || true
 	nvim -c 'call UpdateEverything() | qa' || true
 	brew upgrade
 	brew upgrade --cask
