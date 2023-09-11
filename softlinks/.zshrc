@@ -118,10 +118,6 @@ function pullify() {
   git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
 }
 
-function urlencode() {
-  ruby -e 'require "cgi"; puts CGI.escape(ARGV.last || gets.chomp)' $@
-}
-
 function gravatar() {
   # See https://en.gravatar.com/site/implement/images/ruby/
   url=$(ruby -e 'require "digest/md5"; email = (ARGV.last || gets.chomp).downcase; hash = Digest::MD5.hexdigest(email); puts "https://www.gravatar.com/avatar/#{hash}?size=400px"' $@)

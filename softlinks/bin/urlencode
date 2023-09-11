@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require "cgi"
+puts CGI.escape(ARGV.last || gets.chomp)
