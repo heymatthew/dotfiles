@@ -39,6 +39,7 @@ nnoremap <backspace> :noh<CR>
 set background=dark
 colorscheme blinkenlights
 set colorcolumn=100
+set clipboard=unnamed " System clipboard
 
 nnoremap <leader>f :FZF<CR>
 
