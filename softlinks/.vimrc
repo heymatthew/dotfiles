@@ -21,9 +21,10 @@ Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY
 Plug 'tpope/vim-vinegar'               " Better file browser
 Plug 'tpope/vim-fugitive'              " Git
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
-Plug 'w0rp/ale'                        " Linter
-Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'michaeljsmith/vim-indent-object'  " Select indents as an object
+Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
+Plug 'w0rp/ale',      { 'as': 'vim-ale' }
+Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 call plug#end()
 
 nnoremap <leader>f :FZF<CR>
