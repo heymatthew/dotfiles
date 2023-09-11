@@ -105,11 +105,6 @@ set splitbelow               " Split horizontal windows below to the current win
 " Vertical split for help files
 autocmd FileType help wincmd L
 
-" Triage stuff: Quickly cycle between contexts
-nnoremap <leader><leader> :tab split<CR>
-nnoremap <leader><backspace> :tabclose<CR>
-nnoremap <leader>t :tab split<CR>
-
 " Show line numbers in files, help, and netrw
 set number
 autocmd FileType help setlocal number
@@ -251,12 +246,15 @@ cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 " Immediate feedback to correct habits
-nnoremap <leader>q        :echo "🤌 Deprecated. \<C-w\>q"<CR>
-nnoremap <leader>r        :echo "🤌 Deprecated. Prefer R"<CR>
-nnoremap <space><space>   :echo "🤌 Deprecated. Prefer \<BACKSPACE\>"<CR>
-nnoremap sh               :echo "🤌 Deprecated. Prefer \<C-w\>h"<CR>
-nnoremap sv               :echo "🤌 Deprecated. Prefer \<C-w\>s"<CR>"
-nnoremap sd               :echo "🤌 Deprecated. \<C-w\>q"<CR>
-command Gchanges          echo "🤌 Deprecated. use :Changes"
+nnoremap <leader>q           :echo "🤌 Deprecated. \<C-w\>q"<CR>
+nnoremap <leader>r           :echo "🤌 Deprecated. Prefer R"<CR>
+nnoremap <space><space>      :echo "🤌 Deprecated. Prefer \<BACKSPACE\>"<CR>
+nnoremap sh                  :echo "🤌 Deprecated. Prefer \<C-w\>h"<CR>
+nnoremap sv                  :echo "🤌 Deprecated. Prefer \<C-w\>s"<CR>"
+nnoremap sd                  :echo "🤌 Deprecated. Prefer \<C-w\>q"<CR>
+nnoremap sd                  :echo "🤌 Deprecated. Prefer \<C-w\>q"<CR>
+nnoremap <leader><leader>    :echo "🤌 Deprecated. Prefer <C-i><C-i>"<CR>
+nnoremap <leader><backspace> :echo "🤌 Deprecated. Prefer :tabclose<CR>
+command Gchanges             echo "🤌 Deprecated. use :Changes"
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
