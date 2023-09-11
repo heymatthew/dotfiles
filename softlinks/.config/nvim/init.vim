@@ -146,7 +146,7 @@ if filereadable($HOME . "/.config/iterm_theme")
   exe "set background=" . iterm_theme
 endif
 
-set relativenumber        " better navigation
+" set relativenumber        " better navigation, disabled for pairing
 set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " fold by paragraph or whatever you feel is appropriate
