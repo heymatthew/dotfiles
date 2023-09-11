@@ -135,12 +135,33 @@ set mouse=a                " Looks like this is part of neovim defaults
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
 
+function! ProjectVimrcPath()
+  let root = system('git rev-parse --show-toplevel 2> /dev/null')
+  if v:shell_error
+    return ''
+  endif
+  let root = substitute(root, '\n$', '', '')
+  return root . '/.git/vimrc'
+endfunction
+
+function! EditProjectVimrc()
+  let vimrc = ProjectVimrcPath()
+  exec 'edit ' . vimrc
+endfunction
+
+let project_vimrc = ProjectVimrcPath()
+if exists(project_vimrc) && filereadable(project_vimrc)
+  exec 'source ' . project_vimrc
+endif
+
+
 " Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
+nnoremap <leader>vp :exec 'edit ' . project_vimrc<CR>
 
 " Reverse search command history
 nnoremap <leader>c q:?
