@@ -103,15 +103,15 @@ nmap sv 0:lclose<CR>:cclose<CR>:vsplit<CR>
 nmap sn 0:rightbelow vnew<CR>
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
-nnoremap <leader>t :tab split<cr>
-nnoremap <leader>q :tabclose<cr>
+nnoremap <leader>t :tab split<CR>
+nnoremap <leader>q :tabclose<CR>
 
 " Vertical split for help files
 autocmd FileType help wincmd L
 
 " Triage stuff: Quickly cycle between contexts
-nnoremap <leader><leader> :tab split<cr>
-nnoremap <leader><backspace> :tabclose<cr>
+nnoremap <leader><leader> :tab split<CR>
+nnoremap <leader><backspace> :tabclose<CR>
 nnoremap <leader>q <C-w>q
 
 " Show line numbers in files, help, and netrw
@@ -237,7 +237,7 @@ function! RestoreRegister()
 endfunction
 function! s:Repl()
   let s:restore_reg = @"
-  return "p@=RestoreRegister()\<cr>"
+  return "p@=RestoreRegister()\<CR>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
 
