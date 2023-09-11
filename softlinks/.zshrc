@@ -39,12 +39,12 @@ compinit
 # Setup zsh git integration
 change_title_bar () {
   # \e]0;            Set window title to
-  # %M               machine name (fqdn)
+  # %m               computer
   # :                colon
   # %~               working directory
   # $vcs_info_msg_0_ and formatted git info
   # See https://zsh-manual.netlify.app/prompt-expansion#Prompt-Expansion
-  print -Pn "\e]0;%M:%~ $vcs_info_msg_0_\a"
+  print -Pn "\e]0;%m:%~ $vcs_info_msg_0_\a"
 }
 autoload -Uz vcs_info
 zstyle ':vcs_info:git:*' formats '🕊️ %b'
