@@ -40,8 +40,11 @@ call plug#end()
 
 nnoremap <F2> :call SyntaxAttr()<CR>
 
-" Escape also hides search highlights
-nnoremap <ESC> :noh<CR><ESC>
+" Hide search results
+nnoremap <BACKSPACE> :noh<CR><ESC>
+
+" Switch to the file you just had open
+nnoremap <SPACE> <C-^>
 
 " Dark mode isn't as good for your eyes as you believe
 " https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
@@ -143,9 +146,6 @@ autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwid
 " Open file browser in the directory of the current file
 " nnoremap <space><space> :edit %:p:h<CR>
 
-" Switch between the last two files
-nnoremap <BACKSPACE> <C-^>
-
 " Quick access to clipboard, e.g. <space>p or <space>yy
 nnoremap <leader> "+
 vnoremap <leader> "+
@@ -246,11 +246,8 @@ cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 " Immediate feedback to correct habits
-nnoremap <leader>q           :echo "🤌 Deprecated. \<C-w\>q"<CR>
-nnoremap <leader>r           :echo "🤌 Deprecated. Prefer R"<CR>
-nnoremap <space><space>      :echo "🤌 Deprecated. Prefer \<BACKSPACE\>"<CR>
-nnoremap <leader><leader>    :echo "🤌 Deprecated. Prefer <C-i><C-i>"<CR>
-nnoremap <leader><backspace> :echo "🤌 Deprecated. Prefer :tabclose<CR>
-command Gchanges             echo "🤌 Deprecated. use :Changes"
+nnoremap <leader>q :echo "🤌 Deprecated. \<C-w\>q"<CR>
+nnoremap <leader>r :echo "🤌 Deprecated. Prefer R"<CR>
+command Gchanges   echo "🤌 Deprecated. use :Changes"
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
