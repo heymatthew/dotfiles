@@ -217,6 +217,18 @@ nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 
+" vp doesn't replace paste buffer
+" credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
 function! UpdateEverything()
   exe('source ' . $MYVIMRC)
   exe('PlugUpdate')
