@@ -226,11 +226,6 @@ if [[ `uname` == "Darwin" ]]; then # OSX
   # Local IP as env variable
   export LOCAL_IP=$(ipconfig getifaddr en0)
 else # Linux
-  # webcam hack, this should really go into the kernel or something
-  # checkout https://github.com/patjak/facetimehd-firmware
-  # ubuntu target based on https://github.com/patjak/bcwc_pcie/wiki/Get-Started
-  alias fixwebcam="cd /home/mbgray/code/facetimehd_camera_drivers && make ubuntu"
-
   # Turn off capslock
   setxkbmap -option caps:escape
 fi
