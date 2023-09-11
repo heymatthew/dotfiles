@@ -270,9 +270,9 @@ it2prof() { echo -e "\033]1337;SetProfile=$1\a" }
 # Set and remember iterm colours
 # n.b. themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
 # see https://iterm2.com/documentation-escape-codes.html
-# [ -e ~/.config/iterm_theme ] && echo -e "\033]1337;SetProfile=$(cat ~/.config/iterm_theme)\a"
-alias dark='echo "dark mode..." && echo dark > ~/.config/iterm_theme && echo -e "\033]1337;SetProfile=dark\a"'
-alias light='echo "light mode..." && echo light > ~/.config/iterm_theme && echo -e "\033]1337;SetProfile=light\a"'
+# [ -e ~/.config/iterm_theme ] && it2prof $(cat ~/.config/iterm_theme)"
+alias dark='echo "dark mode..." && echo dark > ~/.config/iterm_theme && it2prof dark'
+alias light='echo "light mode..." && echo light > ~/.config/iterm_theme && it2prof light'
 appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
 if [ $appearance = 'Dark' ]; then
   dark
