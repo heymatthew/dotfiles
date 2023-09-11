@@ -32,6 +32,7 @@ Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./in
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
 Plug 'heymatthew/vim-blinkenlights'
 Plug 'junegunn/vader.vim'              " Vimscript test framework
 Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
