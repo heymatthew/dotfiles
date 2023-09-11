@@ -140,3 +140,33 @@ nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 
 " Reverse search command history
 nnoremap <leader>c q:?
+
+" Vim autojump to last position VIM was at when opening a file.
+" See --> http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+"
+" Tell vim to remember certain things when we exit
+" '10  :  marks will be remembered for up to 10 previously edited files
+" "100 :  will save up to 100 lines for each register
+" :5000:  up to 5000 lines of command-line history will be remembered
+" %    :  saves and restores the buffer list
+" n... :  where to save the viminfo files
+set viminfo='10,\"100,:5000,n~/.vim/info
+
+" Disable modelines as a security precaution
+" from https://github.com/thoughtbot/dotfiles/blob/main/vimrc
+set nomodeline modelines=0
+
+" visual paste doesn't clobber what you've got in the paste buffer
+" credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
+
+" Set title on terminal to focused buffer filename
+auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
