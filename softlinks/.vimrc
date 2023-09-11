@@ -142,6 +142,9 @@ autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwid
 autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 
+" Filetypes
+autocmd BufNewFile,BufRead .env* setlocal filetype=sh
+
 " from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 " Open file browser in the directory of the current file
 " nnoremap <space><space> :edit %:p:h<CR>
