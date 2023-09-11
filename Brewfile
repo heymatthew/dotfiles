@@ -11,6 +11,7 @@ brew "git"
 brew "gnupg"
 brew "go"
 brew "htop"       # prettier top, with colour
+brew "hugo"       # static website generator
 brew "iftop"      # top for your network interfaces
 brew "jq"
 brew "md5sha1sum"
