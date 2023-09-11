@@ -123,7 +123,7 @@ Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
-syntax on
+syntax off                       " case against... https://www.linusakesson.net/programming/syntaxhighlighting/
 set termguicolors                " enable true colors support
 set guifont=mplus-1m-regular:h12 " from system_profiler SPFontsDataType
 
