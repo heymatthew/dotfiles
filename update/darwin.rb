@@ -17,3 +17,4 @@ system('brew doctor')
 
 describe "osx"
 system('sudo softwareupdate --install --all')
+system('mas upgrade') # https://apple.stackexchange.com/a/72148
