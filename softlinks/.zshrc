@@ -220,10 +220,6 @@ else # Linux
   setxkbmap -option caps:escape
 fi
 
-function backup() {
-  restic backup . -r sftp:matthew.nz:restic-backup
-}
-
 # hose things that match string
 # e.g. fuck ruby
 alias fuck='pkill -if'

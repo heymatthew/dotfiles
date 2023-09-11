@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+restic backup . -r sftp:matthew.nz:restic-backup
