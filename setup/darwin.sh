@@ -71,4 +71,5 @@ echo "TODO:
 * Finish setting up brew applications
   * brew link postgresql@15
   * brew services start postgresql@15
-  * brew services start syncthing"
+  * brew services start syncthing
+* Add repos with 'mr register XYZ'"
