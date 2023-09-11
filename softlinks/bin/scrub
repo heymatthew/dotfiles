@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+if ls ~/Desktop/Screenshot*; then
+  rm -I ~/Desktop/Screenshot*;
+else
+  echo "No screenshots to scrub"
+fi
+
+if ls ~/Desktop/*.patch; then
+  rm -I ~/Desktop/*.patch*;
+else
+  echo "No patches to scrub"
+fi
+
+if ls ~/Downloads/*; then
+  rm -I ~/Downloads/*
+else
+  echo "No downloads to scrub"
+fi
