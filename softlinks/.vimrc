@@ -47,7 +47,7 @@ else
 endif
 
 colorscheme blinkenlights
-set colorcolumn=100
+set colorcolumn=120
 
 nnoremap <leader>f :FZF<CR>
 
