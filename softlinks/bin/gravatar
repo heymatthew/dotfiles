@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+# See https://en.gravatar.com/site/implement/images/ruby/
+require "digest/md5"
+
+email = (ARGV.last || gets.chomp).downcase
+hash = Digest::MD5.hexdigest(email)
+
+url = "https://www.gravatar.com/avatar/#{hash}?size=400px"
+puts "Opening #{url}"
+system("open", url)

@@ -118,13 +118,6 @@ function pullify() {
   git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
 }
 
-function gravatar() {
-  # See https://en.gravatar.com/site/implement/images/ruby/
-  url=$(ruby -e 'require "digest/md5"; email = (ARGV.last || gets.chomp).downcase; hash = Digest::MD5.hexdigest(email); puts "https://www.gravatar.com/avatar/#{hash}?size=400px"' $@)
-  echo "Opening $url..."
-  open $url
-}
-
 # Default working directories per-box
 alias pin="pwd > ~/.pindir"                   # pin cwd as pin dir
 alias cdd='cd $(cat ~/.pindir 2&> /dev/null)' # cdd nav to pin dir
