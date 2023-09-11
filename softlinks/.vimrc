@@ -11,18 +11,18 @@ endif
 let plug_dir = '~/.vim/plugged'
 
 call plug#begin(plug_dir)
-Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
+Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
 Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
 Plug 'tpope/vim-commentary'            " Toggle comments on lines
 Plug 'tpope/vim-dadbod'                " Database from your vim
+Plug 'tpope/vim-fugitive'              " Git
 Plug 'tpope/vim-rails'                 " For rails codebases
 Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
+Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
 Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and roman numerals. 7<C-a> will jump a week.
 Plug 'tpope/vim-surround'              " Delete, or insert around text objects
 Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
 Plug 'tpope/vim-vinegar'               " Better file browser
-Plug 'tpope/vim-fugitive'              " Git
-Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
 Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
