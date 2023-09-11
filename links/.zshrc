@@ -147,6 +147,9 @@ export PATH="$HOME/code/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
 
+export PATH="/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/bin:$PATH"
+
 export GOPATH="$HOME/code/go"
 export GO111MODULE="on"
 
@@ -184,11 +187,6 @@ fi
  # zle -N zle-line-init
  # zle -N zle-keymap-select
 export KEYTIMEOUT=1
-
-# Homebrew flub
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/*/bin:$PATH"
 
 # Setting default editor
 if which nvim > /dev/null; then
