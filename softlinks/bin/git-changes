@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# Changes include files modified since master AND anything that's been modified on disk
+echo $(
+  git diff origin/HEAD... --name-only
+  git status --porcelain | cut -c4-
+) | sort | uniq | tr " " "\n"

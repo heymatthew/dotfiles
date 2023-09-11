@@ -4,8 +4,6 @@
 [alias]
 	wip = !git add . && git commit -m WIP
 	trunk = !git fetch && git checkout $(git origin-head)
-	# Changes include files modified since master AND anything that's been modified on disk
-	changes = !echo $(git diff origin/HEAD... --name-only) $(git diff --name-only) | sort | uniq | tr ' ' '\n'
 	origin-head = !cat .git/origin-head 2>/dev/null || (git origin-head-update && cat .git/origin-head)
 	origin-head-update = !git origin-head-get > .git/origin-head
 	origin-head-get = !echo "origin/$(git remote set-head origin -a | awk '{print $4}')"
