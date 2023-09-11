@@ -1,24 +1,29 @@
 def describe(action)
-  puts "#{action}..."
+  puts "\n#{action}..."
+end
+
+def run(cmd)
+  puts "λ #{cmd}"
+  system(cmd)
 end
 
 # From https://brew.sh/
 describe "installing homebrew"
-system('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
+run('/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"')
 
 describe "brew bundle"
-system('/opt/homebrew/bin/brew bundle')
+run('/opt/homebrew/bin/brew bundle')
 
 describe 'stowing dotfiles'
-system('/opt/homebrew/bin/stow links')
+run('/opt/homebrew/bin/stow links')
 
 describe 'installing npm packages'
 %w(write-good).each do |package|
-  system("/opt/homebrew/bin/npm install -g #{package}")
+  run("/opt/homebrew/bin/npm install -g #{package}")
 end
 
 describe "install neovim plugins"
-system('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
+run('/opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"')
 
 describe 'templating git config'
 puts "editing git config, press enter to continue..."
@@ -30,7 +35,7 @@ git_template.puts <<~EOF.strip
     email = spamed@matthew.nz
 EOF
 git_template.close
-system('vim ~/.gitconfig.local')
+run('vim ~/.gitconfig.local')
 
 puts "\nTODO"
 puts "* Install Rosé Pine for iTerm2 https://github.com/rose-pine/iterm"
