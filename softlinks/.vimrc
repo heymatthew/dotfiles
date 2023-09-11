@@ -67,6 +67,7 @@ augroup vim_fugitive # for tpope/vim-fugitive
   nnoremap <leader>r :G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
+  command Gchanges echo "deprecated, use :Changes"
   command Changes :G difftool origin/HEAD
 
   " Always use vertical diffs
@@ -103,14 +104,15 @@ nmap sn 0:rightbelow vnew<CR>
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
 nnoremap <leader>t :tab split<CR>
+nnoremap <leader>q :tabclose<CR>
 
 " Vertical split for help files
 autocmd FileType help wincmd L
 
 " Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<CR>
-nnoremap d<TAB> :tabclose<CR>
-nnoremap db :bd<CR>
+nnoremap <leader><backspace> :tabclose<CR>
+nnoremap <leader>q <C-w>q
 
 " Show line numbers in files, help, and netrw
 set number
@@ -246,8 +248,3 @@ inoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 inoremap <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
-
-" Deprecation hints
-command Gchanges echo "deprecated, use :Changes"
-nnoremap <leader><backspace> :echo "Deprecated: Prefer d\<TAB\>"<CR>
-nnoremap <leader>q :echo "Deprecated: Prefer db"<CR>
