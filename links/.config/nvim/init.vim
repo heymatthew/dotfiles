@@ -134,9 +134,9 @@ Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 try
+  syntax on             " turning off colours for fun
   " don't explode if colour scheme doesn't exist
-  syntax on
-  set termguicolors     " enable true colors support
+  set termguicolors      " enable true colors support
   " let ayucolor="light"  " for light version of theme
   " let ayucolor="mirage" " for mirage version of theme
   " let ayucolor="dark"   " for dark version of theme
@@ -145,7 +145,7 @@ try
 
   set background=light
   " from system_profiler SPFontsDataType
-  set guifont=mplus-1m-regular:h12
+  " set guifont=mplus-1m-regular:h12
 
   if filereadable($HOME . "/.config/iterm_theme")
     let iterm_theme = readfile($HOME . "/.config/iterm_theme")
