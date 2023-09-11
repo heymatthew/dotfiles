@@ -1,0 +1,18 @@
+<type>[optional scope][!]: <imperative description>
+
+# Types: feat, fix, refactor, docs, chore, build, ci, style, perf, test
+
+# [BREAKING CHANGE: ...]
+# [Context]
+# [Change Description]
+
+# Based on Conventional Commits spec v1.0.0
+# see https://www.conventionalcommits.org/en/v1.0.0/
+#
+# Refs to Github PRs or Issues
+# i.e. MR #42 or Issue #42 or github/linguist#4039
+# see https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls
+#
+# Refs to Gitlab MRs
+# i.e. MR !12 or Issue #42
+# see https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically

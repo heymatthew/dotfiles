@@ -12,6 +12,7 @@
 	humans = !git log --format='%aN <%aE>' --reverse | sort | uniq -c | sort -r
 [commit]
 	verbose = true
+	template = ~/.gitmessage
 [push]
 	default = simple
 	autoSetupRemote = true
