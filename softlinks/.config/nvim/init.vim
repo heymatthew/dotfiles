@@ -20,6 +20,7 @@ Plug 'tpope/vim-repeat'       " Lets you use . for surround and other plugins
 Plug 'tpope/vim-commentary'   " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'   " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
 Plug 'tpope/vim-fugitive'     " Git integration
+Plug 'tpope/vim-characterize' " UTF8 outputs for ga binding
 
 augroup vim_fugitive
   " Quickfix window when shelling out to grep
