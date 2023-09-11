@@ -232,4 +232,4 @@ vmap <silent> <expr> p <sid>Repl()
 
 " Insert timestamps after cursor
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
-command! Today normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
