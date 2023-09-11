@@ -3,8 +3,8 @@
 DESC=$1
 
 if [ -z "$DESC" ]; then
-  # List branches, newest first
-  git branch --format "%(refname:short)" --sort=-authordate
+  # If we're not creating a branch, then list branches
+  git branch --format "%(refname:short)"
   exit 0
 fi
 
