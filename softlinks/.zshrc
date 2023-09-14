@@ -75,7 +75,7 @@ alias update="~/dotfiles/update.sh"
 alias g="git"
 
 # Configure unix tooling
-export LESS='-R'
+export LESS='--RAW-CONTROL-CHARS'
 export GREP_COLOR='1;33'
 
 # Changing habits
