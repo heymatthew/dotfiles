@@ -270,8 +270,6 @@ cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 " Immediate feedback to correct habits
-nnoremap <leader>q :echo "🤌 Deprecated. \<C-w\>q"<CR>
-command Gchanges   echo "🤌 Deprecated. use :Changes"
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
