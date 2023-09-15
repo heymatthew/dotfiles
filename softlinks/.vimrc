@@ -72,7 +72,7 @@ augroup vim_fugitive # for tpope/vim-fugitive
   " Git status
   nnoremap <leader>g :G<CR>
   nnoremap <leader>l :G log --oneline --reverse origin/HEAD..<CR>
-  nnoremap R :G rebase --interactive origin/HEAD<CR>
+  nnoremap <leader>r :G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
   command Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
@@ -271,7 +271,6 @@ cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 " Immediate feedback to correct habits
 nnoremap <leader>q :echo "🤌 Deprecated. \<C-w\>q"<CR>
-nnoremap <leader>r :echo "🤌 Deprecated. Prefer R"<CR>
 command Gchanges   echo "🤌 Deprecated. use :Changes"
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
