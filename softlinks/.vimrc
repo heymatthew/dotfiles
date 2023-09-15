@@ -71,7 +71,7 @@ augroup vim_fugitive # for tpope/vim-fugitive
 
   " Git status
   nnoremap <leader>g :G<CR>
-  nnoremap <leader>l :G log --oneline --reverse origin/HEAD...<CR>
+  nnoremap <leader>l :G log --oneline --reverse origin/HEAD..<CR>
   nnoremap R :G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
