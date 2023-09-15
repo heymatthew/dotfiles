@@ -75,7 +75,7 @@ augroup vim_fugitive # for tpope/vim-fugitive
   nnoremap R :G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
-  command Changes :G difftool origin/HEAD
+  command Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
 
   " Always use vertical diffs
   set diffopt+=vertical
