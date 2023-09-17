@@ -25,3 +25,5 @@
 	pager = less -iXFR
 [branch]
 	autoSetupMerge = simple
+[rebase]
+	updateRefs = true
