@@ -166,8 +166,6 @@ vnoremap <leader> "+
 
 set number                 " give line number that you're on
 set scrolloff=5            " when scrolling, keep cursor 5 lines away from border
-set foldmethod=manual      " Indent fold
-" set foldlevelstart=99      " All folds open
 set nojoinspaces           " Single space after period when using J
 set hlsearch               " Highlight my searches :)
 set ignorecase             " Search case insensitive...
@@ -187,6 +185,10 @@ set shortmess-=S           " show search matches, see https://stackoverflow.com/
 " set relativenumber        " toggle with yor, off by default
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
+
+" Indent fold, but expand all folds when opening a file
+set foldmethod=indent
+autocmd BufRead * normal zR
 
 function! ProjectVimrcPath()
   let root = system('git rev-parse --show-toplevel 2> /dev/null')
