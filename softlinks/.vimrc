@@ -187,8 +187,9 @@ set shortmess-=S           " show search matches, see https://stackoverflow.com/
 " set colorcolumn=100       " Show 100th char visually
 
 " Indent fold, but expand all folds when opening a file
-set foldmethod=indent
+set foldmethod=syntax
 autocmd BufRead * normal zR
+autocmd Filetype fugitive setlocal foldmethod=manual
 
 function! ProjectVimrcPath()
   let root = system('git rev-parse --show-toplevel 2> /dev/null')
