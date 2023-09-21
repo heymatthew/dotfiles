@@ -109,6 +109,9 @@ set splitbelow               " Split horizontal windows below to the current win
 " Vertical split for help files
 autocmd FileType help wincmd L
 
+" Quickly close open window
+nnoremap <leader>q <C-w>q
+
 " Show line numbers in files, help, and netrw
 set number
 autocmd FileType help setlocal number
