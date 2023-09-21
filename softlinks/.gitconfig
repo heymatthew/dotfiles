@@ -10,6 +10,7 @@
 	humans = !git log --format='%aN <%aE>' --reverse | sort | uniq -c | sort -r
 	stat = status --porcelain
 	sync = !git fetch && git rebase --interactive origin/HEAD
+	lg = log --oneline
 [commit]
 	verbose = true
 	template = ~/.gitmessage
