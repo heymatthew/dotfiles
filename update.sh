@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 echo "vim..."
-vim -c "call execute('PlugUpdate') | call execute('GoUpdateBinaries') | qa"
+vim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdateBinaries") | qa'
 
 echo "npm..."
 npm install -g npm # update npm itself
