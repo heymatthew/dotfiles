@@ -154,9 +154,9 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
 " Debugging
 autocmd FileType ruby       :iabbrev <buffer> echo  puts "kiwifruit 🥝 \n#{ }" # FIXME: commit = death<ESC>F{a
-autocmd FileType ruby       :iabbrev <buffer> debug binding.pry # FIXME: commit = death<ESC><LEFT>
+autocmd FileType ruby       :iabbrev <buffer> debug binding.pry # FIXME: commit = death<ESC>F#<LEFT><LEFT>
 autocmd FileType go         :iabbrev <buffer> echo  fmt.Println("kiwifruit 🥝 ", ) // FIXME: commit = death<ESC>F,a
-autocmd FileType javascript :iabbrev <buffer> debug debugger; // FIXME: commit = death<ESC><LEFT>
+autocmd FileType javascript :iabbrev <buffer> debug debugger; // FIXME: commit = death<ESC>F;<LEFT><LEFT>
 autocmd FileType javascript :iabbrev <buffer> echo  console.log("kiwifruit 🥝 ", ); // FIXME: commit = death<ESC>F,a
 
 " from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
@@ -279,3 +279,5 @@ cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
+
+" exec 'normal Ohello' | exec 'normal ogoodbye'
