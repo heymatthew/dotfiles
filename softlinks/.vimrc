@@ -279,5 +279,3 @@ cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
-
-" exec 'normal Ohello' | exec 'normal ogoodbye'
