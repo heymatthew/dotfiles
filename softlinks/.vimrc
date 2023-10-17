@@ -235,12 +235,12 @@ nnoremap <leader>c q:?
 " See --> http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 "
 " Tell vim to remember certain things when we exit
-" '50  :  marks will be remembered for up to 10 previously edited files
+" '200  : marks will be remembered for up to 200 previously edited files
 " "100 :  will save up to 100 lines for each register
 " :5000:  up to 5000 lines of command-line history will be remembered
 " %    :  saves and restores the buffer list
 " n... :  where to save the viminfo files
-set viminfo='50,\"100,:5000,n~/.vim/info
+set viminfo='200,\"100,:5000,n~/.vim/info
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 function! PositionCursor()
