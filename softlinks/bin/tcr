@@ -6,8 +6,4 @@ which entr > /dev/null || {
   echo "brew install entr"
   return 1
 }
-stable="origin/HEAD"
-projectRoot=$(git rev-parse --show-toplevel) # for monorepo
-commitedFiles=$(git diff "$stable"... --name-only)
-changedFiles=$(git status --porcelain | awk '{print $2}')
-echo "$projectRoot/$commitedFiles" "$projectRoot/$changedFiles" | xargs ls | entr -c sh -c "echo && $* && git add . || git checkout ."
+(git changes || git ls-files) | entr -c sh -c "echo && $* && git add .  || git checkout ."
