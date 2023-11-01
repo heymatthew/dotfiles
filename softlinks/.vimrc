@@ -281,3 +281,4 @@ match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
 
 command! Focus wa|%bd|e#
+autocmd FileType gitcommit nnoremap <buffer> <C-t> :.!git ticket<CR>

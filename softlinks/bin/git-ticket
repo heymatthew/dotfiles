@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+TICKET_PATTERN="^IN-"
+
+git log -1 --grep "$TICKET_PATTERN" --format=%B \
+    | grep "$TICKET_PATTERN"
