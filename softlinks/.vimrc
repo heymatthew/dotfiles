@@ -128,7 +128,8 @@ nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 " https://hachyderm.io/@tpope/109784416506853805
 autocmd VimResized * wincmd =
 " ...and new splits that might open, e.g. v from netrw
-autocmd WinNew * wincmd =
+let s:resize_exceptions = ['qf', 'loc']
+autocmd WinNew * if index(s:resize_exceptions, &ft) == -1 | wincmd = | endif
 " GoldenRatio mnemonic, <C-w>- is like <C-w>=
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
