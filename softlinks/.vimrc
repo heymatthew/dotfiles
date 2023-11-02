@@ -154,7 +154,7 @@ autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwid
 autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
 " Debugging
-autocmd FileType ruby       :iabbrev <buffer> echo  puts "kiwifruit 🥝 \n#{ }" # FIXME: commit = death<ESC>F{a
+autocmd FileType ruby       :iabbrev <buffer> puts puts "kiwifruit 🥝 \n#{ }" # FIXME: commit = death<ESC>F{a
 autocmd FileType ruby       :iabbrev <buffer> debug binding.pry # FIXME: commit = death<ESC>F#<LEFT><LEFT>
 autocmd FileType go         :iabbrev <buffer> echo  fmt.Println("kiwifruit 🥝 ", ) // FIXME: commit = death<ESC>F,a
 autocmd FileType javascript :iabbrev <buffer> debug debugger; // FIXME: commit = death<ESC>F;<LEFT><LEFT>
