@@ -12,6 +12,7 @@
 	sync = !git fetch && git rebase --interactive origin/HEAD
 	lg = log --oneline
 	feature = git fetch && git checkout -b origin/HEAD
+	review = !git trunk && git checkout origin/$1 .
 [commit]
 	verbose = true
 	template = ~/.gitmessage
