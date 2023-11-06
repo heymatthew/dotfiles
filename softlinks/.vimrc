@@ -155,10 +155,10 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
 " Debugging
 autocmd FileType ruby       :iabbrev <buffer> puts puts "kiwifruit 🥝 \n#{ }" # FIXME: commit = death<ESC>F{a
-autocmd FileType ruby       :iabbrev <buffer> debug binding.pry # FIXME: commit = death<ESC>F#<LEFT><LEFT>
-autocmd FileType go         :iabbrev <buffer> echo  fmt.Println("kiwifruit 🥝 ", ) // FIXME: commit = death<ESC>F,a
-autocmd FileType javascript :iabbrev <buffer> debug debugger; // FIXME: commit = death<ESC>F;<LEFT><LEFT>
-autocmd FileType javascript :iabbrev <buffer> echo  console.log("kiwifruit 🥝 ", ); // FIXME: commit = death<ESC>F,a
+autocmd FileType ruby       :iabbrev <buffer> binding binding.pry # FIXME: commit = death<ESC>F#<LEFT><LEFT>
+autocmd FileType go         :iabbrev <buffer> println fmt.Println("kiwifruit 🥝 ", ) // FIXME: commit = death<ESC>F,a
+autocmd FileType javascript :iabbrev <buffer> debugger debugger; // FIXME: commit = death<ESC>F;<LEFT><LEFT>
+autocmd FileType javascript :iabbrev <buffer> console console.log("kiwifruit 🥝 ", ); // FIXME: commit = death<ESC>F,a
 
 " from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 " Open file browser in the directory of the current file
