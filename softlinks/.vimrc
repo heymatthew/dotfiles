@@ -245,7 +245,7 @@ nnoremap <leader>c q:?
 set viminfo='200,\"100,:5000,n~/.vim/info
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit']
+let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
 function! PositionCursor()
   if index(s:cursor_exceptions, &ft) == -1 && line("'\"") <= line("$")
     normal! g`"
