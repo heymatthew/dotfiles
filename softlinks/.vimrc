@@ -59,6 +59,7 @@ colorscheme blinkenlights
 set colorcolumn=120
 
 nnoremap <leader>f :FZF<CR>
+nnoremap <leader>t :set filetype=
 
 augroup vim_fugitive # for tpope/vim-fugitive
   " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
