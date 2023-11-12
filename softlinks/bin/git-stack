@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# git stack - Apply a command to all branches from your current checkout
+# e.g. git stack push -f
+
+base=$(git merge-base origin/HEAD HEAD)
+branches=$(git branch --contains "$base" --format='%(refname:short)')
+
+for b in "$branches"; do
+  echo git $@ "$b"
+done
