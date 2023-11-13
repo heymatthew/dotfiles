@@ -3,9 +3,18 @@
 # git stack - Apply a command to all branches from your current checkout
 # e.g. git stack push -f
 
-base=$(git merge-base origin/HEAD HEAD)
-branches=$(git branch --contains "$base" --format='%(refname:short)')
+branch_stack=""
+commits=$(git log --pretty=format:"%H" origin/HEAD..HEAD)
+for ref in $commits; do
+    branches=$(git for-each-ref --points-at "$ref" --format '%(refname)')
+    [[ -n "$branches" ]] && branch_stack+=" $branches"
+done
 
-for b in "$branches"; do
-  echo git $@ "$b"
+if [ $# -eq 0 ]; then
+    echo "$branch_stack"
+    exit 0
+fi
+
+for b in $branch_stack; do
+  git "$@" "origin $b"
 done
