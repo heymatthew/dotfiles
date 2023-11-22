@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# git humans - list people who worked on the project you are in
+# e.g. git humans
+
+git log --format='%aN <%aE>' | sort | uniq -c | sort -r
