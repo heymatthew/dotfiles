@@ -115,6 +115,7 @@ export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
 
 export PATH="/opt/homebrew/sbin:$PATH"
 export PATH="/opt/homebrew/bin:$PATH"
+export PATH="/opt/homebrew/opt:$PATH"
 
 # Make ^Z toggle between ^Z and fg
 # https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
