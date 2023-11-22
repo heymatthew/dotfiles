@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# git humans - list people who worked on the project you are in
-# e.g. git humans
+# git humans - quickly list authors
+# e.g. git humans --since="2 weeks ago" -- list humans who committed in the last 2 weeks
 
-git log --format='%aN <%aE>' | sort | uniq -c | sort -r
+git log --format='%aN <%aE>' "$@" | sort | uniq -c | sort -r
