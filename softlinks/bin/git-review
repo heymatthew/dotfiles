@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git trunk
+git restore --source "origin/$1" .
