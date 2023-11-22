@@ -161,11 +161,7 @@ autocmd FileType go         :iabbrev <buffer> println fmt.Println("kiwifruit ü•
 autocmd FileType javascript :iabbrev <buffer> debugger debugger; // FIXME: commit = death<ESC>F;<LEFT><LEFT>
 autocmd FileType javascript :iabbrev <buffer> console console.log("kiwifruit ü•ù ", ); // FIXME: commit = death<ESC>F,a
 
-" from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
-" Open file browser in the directory of the current file
-" nnoremap <space><space> :edit %:p:h<CR>
-
-" Quick access to clipboard, e.g. <space>p or <space>yy
+" Quick access to clipboard, e.g. <leader>p or <leader>yy
 nnoremap <leader> "+
 vnoremap <leader> "+
 
