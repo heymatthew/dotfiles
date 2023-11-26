@@ -280,5 +280,21 @@ highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
 
+" Focus command to close all buffers but the current one
 command! Focus wa|%bd|e#
+
+" Git commit message stuff
+function! CreateGitHumansFile()
+ let git_log = systemlist('git log --format="%aN <%aE>" "$@" --since "1 month ago"')
+ let git_log = uniq(sort(git_log))
+ let git_log = add(git_log, 'Co-authored-by:')
+ let git_log = map(git_log, 'substitute(v:val, " ", " ", "g")')
+ call writefile(git_log, '.git/humans.txt', 'b')
+endfunction
 autocmd FileType gitcommit nnoremap <buffer> <C-t> :.!git ticket<CR>
+autocmd FileType gitcommit call CreateGitHumansFile()
+" <C-n> completion for coauthor names, email addresses and 'Co-authored-by:' string
+" See also https://vim.fandom.com/wiki/Use_abbreviations_for_frequently-used_words
+autocmd FileType gitcommit setlocal dictionary+=.git/humans.txt
+autocmd FileType gitcommit setlocal complete+=k
+autocmd FileType gitcommit setlocal iskeyword+=-,:,<,.,+,@-@,>
