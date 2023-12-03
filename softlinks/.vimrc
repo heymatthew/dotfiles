@@ -166,7 +166,8 @@ nnoremap <leader> "+
 vnoremap <leader> "+
 
 set number                 " give line number that you're on
-set scrolloff=5            " when scrolling, keep cursor 5 lines away from border
+set scrolloff=5            " 5 lines always visible at top and bottom
+set sidescrolloff=5        " 5 characters always visible left and right when scrollwrap is set
 set nojoinspaces           " Single space after period when using J
 set hlsearch               " Highlight my searches :)
 set ignorecase             " Search case insensitive...
