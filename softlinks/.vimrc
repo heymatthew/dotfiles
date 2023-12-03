@@ -165,7 +165,6 @@ autocmd FileType javascript :iabbrev <buffer> console console.log("kiwifruit ðŸ¥
 nnoremap <leader> "+
 vnoremap <leader> "+
 
-set number                 " give line number that you're on
 set scrolloff=5            " 5 lines always visible at top and bottom
 set sidescrolloff=5        " 5 characters always visible left and right when scrollwrap is set
 set nojoinspaces           " Single space after period when using J
@@ -184,7 +183,6 @@ set belloff=all            " I find terminal bells irritating
 set mouse=a                " Looks like this is part of neovim defaults
 set shortmess-=S           " show search matches, see https://stackoverflow.com/a/4671112
 
-" set relativenumber        " toggle with yor, off by default
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
 
