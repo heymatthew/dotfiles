@@ -171,8 +171,7 @@ set smartcase              " ... but not it begins with upper case
 set magic                  " Allows pattern matching with special characters
 set autoindent             " indent on newlines
 set smartindent            " recognise syntax of files
-set noswapfile             " Don't use swapfile
-set nobackup               " Don't create annoying backup files
+set noswapfile nobackup    " git > swapfile, git > backup files
 set wrap linebreak nolist  " wrap words, incompatable with visible whitespace (list and listchars)
 set showcmd                " show command on bottom right as it's typed
 set belloff=all            " I find terminal bells irritating
