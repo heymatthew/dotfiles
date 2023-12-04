@@ -61,7 +61,7 @@ set colorcolumn=120
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>t :set filetype=
 
-augroup vim_fugitive # for tpope/vim-fugitive
+augroup vim_fugitive " for tpope/vim-fugitive
   " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
   autocmd!
   autocmd QuickFixCmdPost [^l]* cwindow
@@ -82,7 +82,7 @@ augroup vim_fugitive # for tpope/vim-fugitive
   set diffopt+=vertical
 augroup END
 
-augroup ale # for w0rp/ale
+augroup ale " for w0rp/ale
   let g:ale_set_highlights = 0               " remove highlights
   let g:ale_set_loclist = 0                  " don't clobber location list
   let g:ale_set_quickfix = 0                 " don't clobber quickfix list
@@ -93,11 +93,11 @@ augroup ale # for w0rp/ale
   nnoremap [r :ALEPreviousWrap<CR>
 augroup END
 
-augroup fzf # for junegunn/fzf
+augroup fzf " for junegunn/fzf
   nnoremap <leader>f :FZF<CR>
 augroup END
 
-augroup easy_align # for junegunn/vim-easy-align
+augroup easy_align " for junegunn/vim-easy-align
   " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
   vmap <Enter> <Plug>(EasyAlign)
   " Start interactive EasyAlign for a motion/text object (e.g. gaip)
