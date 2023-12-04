@@ -168,7 +168,6 @@ set nojoinspaces           " Single space after period when using J
 set hlsearch               " Highlight my searches :)
 set ignorecase             " Search case insensitive...
 set smartcase              " ... but not it begins with upper case
-set incsearch              " Shows the match while typing
 set magic                  " Allows pattern matching with special characters
 set autoindent             " indent on newlines
 set smartindent            " recognise syntax of files
