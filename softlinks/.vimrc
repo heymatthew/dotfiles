@@ -155,11 +155,8 @@ autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwid
 autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
 " Debugging
-autocmd FileType ruby       :iabbrev <buffer> puts puts "kiwifruit 🥝 \n#{ }" # FIXME: commit = death<ESC>F{a
-autocmd FileType ruby       :iabbrev <buffer> binding binding.pry # FIXME: commit = death<ESC>F#<LEFT><LEFT>
-autocmd FileType go         :iabbrev <buffer> println fmt.Println("kiwifruit 🥝 ", ) // FIXME: commit = death<ESC>F,a
-autocmd FileType javascript :iabbrev <buffer> debugger debugger; // FIXME: commit = death<ESC>F;<LEFT><LEFT>
-autocmd FileType javascript :iabbrev <buffer> console console.log("kiwifruit 🥝 ", ); // FIXME: commit = death<ESC>F,a
+autocmd FileType ruby :iabbrev <buffer> puts puts # FIXME: commit = death<ESC>F#<LEFT>i
+autocmd FileType ruby :iabbrev <buffer> binding binding # FIXME: commit = death<ESC>F#<LEFT>i
 
 " Quick access to clipboard, e.g. <leader>p or <leader>yy
 nnoremap <leader> "+
