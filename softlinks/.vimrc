@@ -189,33 +189,13 @@ autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
 
-function! ProjectVimrcPath()
-  let root = system('git rev-parse --show-toplevel 2> /dev/null')
-  if v:shell_error
-    return ''
-  endif
-  let root = substitute(root, '\n$', '', '')
-  return root . '/.git/vimrc'
-endfunction
-
-function! EditProjectVimrc()
-  let vimrc = ProjectVimrcPath()
-  exec 'edit ' . vimrc
-endfunction
-
-let project_vimrc = ProjectVimrcPath()
-if exists(project_vimrc) && filereadable(project_vimrc)
-  exec 'source ' . project_vimrc
-endif
-
 " Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/dotfiles/softlinks/.zshrc<CR>
 nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
-nnoremap <leader>vp :exec 'edit ' . project_vimrc<CR>
-nnoremap <leader>ve :exec 'edit ' . plug_dir<CR>
+nnoremap <leader>vp :exec 'edit ' . plug_dir<CR>
 nnoremap <leader>vc :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
 nnoremap <leader>m :e $HOME/monologue.md<CR>
 
