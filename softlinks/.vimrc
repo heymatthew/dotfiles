@@ -201,9 +201,6 @@ nnoremap <leader>m :e $HOME/monologue.md<CR>
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype markdown  setlocal spell
 
-" Reverse search command history
-nnoremap <leader>c q:?
-
 " Vim autojump to last position VIM was at when opening a file.
 " See --> http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 "
@@ -258,17 +255,13 @@ match HabitChange /recieve_message_chain/
 command! Focus wa|%bd|e#
 
 " Git commit message stuff
-function! CreateGitHumansFile()
- let git_log = systemlist('git log --format="%aN <%aE>" "$@" --since "1 month ago"')
- let git_log = uniq(sort(git_log))
- let git_log = add(git_log, 'Co-authored-by:')
- let git_log = map(git_log, 'substitute(v:val, " ", " ", "g")')
- call writefile(git_log, '.git/humans.txt', 'b')
+function! GitHumans()
+ let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 month ago"')
+ let humans = uniq(sort(humans))
+ let humans = filter(humans, {index, val -> val !~ 'noreply'})
+ let humans = map(humans, '"Co-Authored-By: " . v:val')
+ return humans
 endfunction
-autocmd FileType gitcommit nnoremap <buffer> <C-t> :.!git ticket<CR>
-autocmd FileType gitcommit call CreateGitHumansFile()
-" <C-n> completion for coauthor names, email addresses and 'Co-authored-by:' string
-" See also https://vim.fandom.com/wiki/Use_abbreviations_for_frequently-used_words
-autocmd FileType gitcommit setlocal dictionary+=.git/humans.txt
-autocmd FileType gitcommit setlocal complete+=k
-autocmd FileType gitcommit setlocal iskeyword+=-,:,<,.,+,@-@,>
+
+" Adjust git message template with ticket and coauthors
+nnoremap <leader>c :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
