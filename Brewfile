@@ -41,6 +41,7 @@ brew "shellcheck" # ncjones uses this for linting shell stuff
 brew "stow"       # manage softlinks for dotfiles
 brew "svn"        # required for font-source-code-pro
 brew "syncthing"  # keep stuff synced across machines
+brew "termshark"  # cli replacement for wireshark
 brew "tig"
 brew "tree"
 brew "vim"
