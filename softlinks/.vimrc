@@ -120,7 +120,7 @@ let g:netrw_bufsettings = 'number'
 
 " Using search or page up/downcenters the window
 nnoremap n nzz
-nnoremap N pzz
+nnoremap N Nzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 
