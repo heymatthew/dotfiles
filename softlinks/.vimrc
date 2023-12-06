@@ -71,9 +71,9 @@ augroup vim_fugitive " for tpope/vim-fugitive
   nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
 
   " Git status
-  nnoremap <leader>g :G<CR>
-  nnoremap <leader>l :G log --oneline<CR>
-  nnoremap <leader>r :G rebase --interactive origin/HEAD<CR>
+  nnoremap <leader>g :vert G<CR>
+  nnoremap <leader>l :vert G log --oneline<CR>
+  nnoremap <leader>r :vert G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
   command Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
@@ -105,10 +105,12 @@ augroup easy_align " for junegunn/vim-easy-align
 augroup END
 
 " Move default where splits open
-set splitright               " Split vertical windows right to the current windows
-set splitbelow               " Split horizontal windows below to the current windows
-" Vertical split for help files
+set splitright   " vertical windows go right
+set splitbelow   " horizontal windows go below
+" help files
 autocmd FileType help wincmd L
+" New splits
+nnoremap <C-w>n :vert new<CR>
 
 " Quickly close open window
 nnoremap <leader>q :bd<CR>
