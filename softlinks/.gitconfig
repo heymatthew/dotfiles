@@ -11,6 +11,7 @@
 	sync = !git fetch && git rebase --interactive origin/HEAD
 	lg = log --oneline
 	feature = git fetch && git checkout -b origin/HEAD
+	focus = !git branch | grep -v "^*" | xargs git branch -d
 [commit]
 	verbose = true
 	template = ~/.gitmessage
