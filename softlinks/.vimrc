@@ -43,7 +43,7 @@ call plug#end()
 nnoremap <F2> :call SyntaxAttr()<CR>
 
 " Hide search results
-nnoremap <BACKSPACE> :noh<CR>
+nnoremap <BACKSPACE> :nohlsearch<CR>
 
 " Switch to the file you just had open
 nnoremap <SPACE> <C-^>
