@@ -1,6 +1,12 @@
 " .vimrc configuration file
 
-let mapleader = "\<tab>"
+" Warning: <tab> and <C-i> are treated the same by term, jumplists use this
+" FZF has a workaround for jumplists which worked with leader as <tab>
+" Workaround: https://github.com/junegunn/fzf.vim/blob/1e054c1d075d87903647db9320116d360eb8b024/autoload/fzf/vim.vim#L1311
+" let mapleader = "\<tab>"
+let mapleader = "\<space>"
+" nnoremap H execute 'normal! \<C-o>'
+" nnoremap L execute 'normal! \<C-i>'
 
 let plug_executable=expand('~/.vim/autoload/plug.vim')
 if !filereadable(plug_executable)
@@ -46,7 +52,7 @@ nnoremap <F2> :call SyntaxAttr()<CR>
 nnoremap <BACKSPACE> :nohlsearch<CR>
 
 " Switch to the file you just had open
-nnoremap <SPACE> <C-^>
+nnoremap \ <C-^>
 
 " Dark mode isn't as good for your eyes as you believe
 " https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
