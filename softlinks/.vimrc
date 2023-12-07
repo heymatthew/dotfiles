@@ -175,6 +175,9 @@ autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
 
+" <leader>yy - <leader>p - yank or paste system clipboard
+nnoremap <leader> "+
+
 " modify vim configuration
 nnoremap <leader>vv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
