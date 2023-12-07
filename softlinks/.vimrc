@@ -64,9 +64,6 @@ endif
 colorscheme blinkenlights
 set colorcolumn=120
 
-nnoremap <leader>f :FZF<CR>
-nnoremap <leader>t :set filetype=
-
 augroup vim_fugitive " for tpope/vim-fugitive
   " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
   autocmd!
@@ -75,11 +72,6 @@ augroup vim_fugitive " for tpope/vim-fugitive
 
   vmap <C-f> y:silent   Ggrep "<C-r>0"<CR>zz
   nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
-
-  " Git status
-  nnoremap <leader>g :vert G<CR>
-  nnoremap <leader>l :vert G log --oneline<CR>
-  nnoremap <leader>r :vert G rebase --interactive origin/HEAD<CR>
 
   " Show diffs since master in quickfix list
   command Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
@@ -99,10 +91,6 @@ augroup ale " for w0rp/ale
   nnoremap [r :ALEPreviousWrap<CR>
 augroup END
 
-augroup fzf " for junegunn/fzf
-  nnoremap <leader>f :FZF<CR>
-augroup END
-
 augroup easy_align " for junegunn/vim-easy-align
   " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
   vmap <Enter> <Plug>(EasyAlign)
@@ -118,9 +106,6 @@ autocmd FileType help wincmd L
 " New splits
 nnoremap <C-w>n :vert new<CR>
 
-" Quickly close open window
-nnoremap <leader>q :bd<CR>
-
 " Show line numbers in files, help, and netrw
 set number
 autocmd FileType help setlocal number
@@ -131,9 +116,6 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
-
-" Copy current file to clipboard and yank buffers
-nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 
 " Window resize events make splits equal
 " https://hachyderm.io/@tpope/109784416506853805
@@ -168,10 +150,6 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 autocmd FileType ruby :iabbrev <buffer> puts puts # FIXME: commit = death<ESC>F#<LEFT>i
 autocmd FileType ruby :iabbrev <buffer> binding binding # FIXME: commit = death<ESC>F#<LEFT>i
 
-" Quick access to clipboard, e.g. <leader>p or <leader>yy
-nnoremap <leader> "+
-vnoremap <leader> "+
-
 set scrolloff=5            " 5 lines always visible at top and bottom
 set sidescrolloff=5        " 5 characters always visible left and right when scrollwrap is set
 set nojoinspaces           " Single space after period when using J
@@ -197,7 +175,7 @@ autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
 
-" Quickly open, reload and edit rc files
+" Custom functions to quickly for useful stuff
 nnoremap <leader>vv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
@@ -206,6 +184,14 @@ nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 nnoremap <leader>vp :exec 'edit ' . plug_dir<CR>
 nnoremap <leader>vc :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
 nnoremap <leader>m :e $HOME/monologue.md<CR>
+nnoremap <leader>o :FZF<CR>
+nnoremap <leader>f :let @*=expand("%")<CR>:let @0=expand("%")<CR>
+nnoremap <leader>q :bd<CR>
+nnoremap <leader>t :set filetype=
+nnoremap <leader>g :vert G<CR>
+nnoremap <leader>l :vert G log --oneline<CR>
+nnoremap <leader>r :vert G rebase --interactive origin/HEAD<CR>
+nnoremap <leader>c :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
 
 " Spelling
 autocmd Filetype gitcommit setlocal spell
@@ -272,6 +258,3 @@ function! GitHumans()
  let humans = map(humans, '"Co-Authored-By: " . v:val')
  return humans
 endfunction
-
-" Adjust git message template with ticket and coauthors
-nnoremap <leader>c :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
