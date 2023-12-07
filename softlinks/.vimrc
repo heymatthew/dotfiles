@@ -175,23 +175,37 @@ autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
 
-" Custom functions to quickly for useful stuff
+" modify vim configuration
 nnoremap <leader>vv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>
-nnoremap <leader>zz :e $HOME/dotfiles/softlinks/.zshrc<CR>
-nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
 nnoremap <leader>vp :exec 'edit ' . plug_dir<CR>
 nnoremap <leader>vc :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
-nnoremap <leader>m :e $HOME/monologue.md<CR>
-nnoremap <leader>o :FZF<CR>
-nnoremap <leader>f :let @*=expand("%")<CR>:let @0=expand("%")<CR>
-nnoremap <leader>q :bd<CR>
-nnoremap <leader>t :set filetype=
+
+" modify zsh configuration
+nnoremap <leader>zz :e $HOME/dotfiles/softlinks/.zshrc<CR>
+nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
+
+" modify git stuff
 nnoremap <leader>g :vert G<CR>
 nnoremap <leader>l :vert G log --oneline<CR>
 nnoremap <leader>r :vert G rebase --interactive origin/HEAD<CR>
 nnoremap <leader>c :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
+
+" <leader>o - open - fuzzy find files
+nnoremap <leader>o :FZF<CR>
+
+" <leader>m - monologue - scratch pad for reflecting
+nnoremap <leader>m :e $HOME/monologue.md<CR>
+
+" <leader>f - yank path - take the path and yank to register
+nnoremap <leader>f :let @*=expand("%")<CR>:let @0=expand("%")<CR>
+
+" <leader>q - quit - close buffer and go to the next one
+nnoremap <leader>q :bd<CR>
+
+" <leader>t - fileType - force the current syntax to a type
+nnoremap <leader>t :set filetype=
 
 " Spelling
 autocmd Filetype gitcommit setlocal spell
