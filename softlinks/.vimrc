@@ -198,8 +198,8 @@ nnoremap <leader>o :FZF<CR>
 " <leader>m - monologue - scratch pad for reflecting
 nnoremap <leader>m :e $HOME/monologue.md<CR>
 
-" <leader>f - yank path - take the path and yank to register
-nnoremap <leader>f :let @*=expand("%")<CR>:let @0=expand("%")<CR>
+" yp - yank path - yank current path and put it on the clipboard too
+nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 
 " <leader>q - quit - close buffer and go to the next one
 nnoremap <leader>q :bd<CR>
