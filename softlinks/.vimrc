@@ -4,7 +4,7 @@
 " FZF has a workaround for jumplists which worked with leader as <tab>
 " Workaround: https://github.com/junegunn/fzf.vim/blob/1e054c1d075d87903647db9320116d360eb8b024/autoload/fzf/vim.vim#L1311
 " let mapleader = "\<tab>"
-let mapleader = "\<space>"
+let mapleader = "r"
 " nnoremap H execute 'normal! \<C-o>'
 " nnoremap L execute 'normal! \<C-i>'
 
