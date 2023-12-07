@@ -179,15 +179,11 @@ autocmd Filetype haml     setlocal foldmethod=indent
 nnoremap <leader> "+
 
 " modify vim configuration
-nnoremap <leader>vv :e $HOME/dotfiles/softlinks/.vimrc<CR>
-nnoremap <leader>vu :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
-nnoremap <leader>vr :source $MYVIMRC<CR>
-nnoremap <leader>vp :exec 'edit ' . plug_dir<CR>
-nnoremap <leader>vc :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
+nnoremap <leader>v :e $HOME/dotfiles/softlinks/.vimrc<CR>
+nnoremap <leader>b :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
 
 " modify zsh configuration
-nnoremap <leader>zz :e $HOME/dotfiles/softlinks/.zshrc<CR>
-nnoremap <leader>zl :e $HOME/.zshrc.local<CR>
+nnoremap <leader>z :e $HOME/dotfiles/softlinks/.zshrc<CR>
 
 " modify git stuff
 nnoremap <leader>g :vert G<CR>
