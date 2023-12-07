@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ret -euo pipefail
+set -euo pipefail
 
 # Changes include files modified since master AND anything that's been modified on disk
 changes=$(
