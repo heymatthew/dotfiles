@@ -177,6 +177,7 @@ autocmd Filetype haml     setlocal foldmethod=indent
 
 " <leader>yy - <leader>p - yank or paste system clipboard
 nnoremap <leader> "+
+vnoremap <leader> "+
 
 " modify vim configuration
 nnoremap <leader>v :e $HOME/dotfiles/softlinks/.vimrc<CR>
