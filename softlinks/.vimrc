@@ -191,8 +191,8 @@ nnoremap <leader>l :vert G log --oneline<CR>
 nnoremap <leader>r :vert G rebase --interactive origin/HEAD<CR>
 nnoremap <leader>c :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
 
-" <leader>o - open - fuzzy find files
-nnoremap <leader>o :FZF<CR>
+" go - go to file - fuzzy find by file name
+nnoremap go :FZF<CR>
 
 " <leader>m - monologue - scratch pad for reflecting
 nnoremap <leader>m :e $HOME/monologue.md<CR>
