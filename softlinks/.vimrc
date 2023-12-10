@@ -1,13 +1,5 @@
 " .vimrc configuration file
 
-" Warning: <tab> and <C-i> are treated the same by term, jumplists use this
-" FZF has a workaround for jumplists which worked with leader as <tab>
-" Workaround: https://github.com/junegunn/fzf.vim/blob/1e054c1d075d87903647db9320116d360eb8b024/autoload/fzf/vim.vim#L1311
-" let mapleader = "\<tab>"
-let mapleader = "r"
-" nnoremap H execute 'normal! \<C-o>'
-" nnoremap L execute 'normal! \<C-i>'
-
 let plug_executable=expand('~/.vim/autoload/plug.vim')
 if !filereadable(plug_executable)
     echo "Installing plug"
@@ -175,37 +167,32 @@ autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
 
-" <leader>yy - <leader>p - yank or paste system clipboard
-nnoremap <leader> "+
-vnoremap <leader> "+
+" <space>yy - <space>p - yank or paste system clipboard
+nnoremap <space> "+
+vnoremap <space> "+
 
-" modify vim configuration
-nnoremap <leader>v :e $HOME/dotfiles/softlinks/.vimrc<CR>
-nnoremap <leader>b :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
+" rework configs
+nnoremap rv :e $HOME/dotfiles/softlinks/.vimrc<CR>
+nnoremap rt :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
+nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
 
-" modify zsh configuration
-nnoremap <leader>z :e $HOME/dotfiles/softlinks/.zshrc<CR>
-
-" modify git stuff
-nnoremap <leader>g :vert G<CR>
-nnoremap <leader>l :vert G log --oneline<CR>
-nnoremap <leader>r :vert G rebase --interactive origin/HEAD<CR>
-nnoremap <leader>c :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
+" git integration
+nnoremap gs :vert G<CR>
+nnoremap gl :vert G log --oneline<CR>
+nnoremap gr :vert G rebase --interactive origin/HEAD<CR>
+nnoremap gc :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
 
 " go - go to file - fuzzy find by file name
 nnoremap go :FZF<CR>
 
-" <leader>m - monologue - scratch pad for reflecting
-nnoremap <leader>m :e $HOME/monologue.md<CR>
+" rm - monologue - scratch pad for reflecting
+nnoremap rs :e $HOME/scratchpad.md<CR>
 
 " yp - yank path - yank current path and put it on the clipboard too
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 
-" <leader>q - quit - close buffer and go to the next one
-nnoremap <leader>q :bd<CR>
-
-" <leader>t - fileType - force the current syntax to a type
-nnoremap <leader>t :set filetype=
+" Q - quit - close buffer and go to the next one
+nnoremap Q :bd<CR>
 
 " Spelling
 autocmd Filetype gitcommit setlocal spell
