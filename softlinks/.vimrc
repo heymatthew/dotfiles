@@ -178,7 +178,7 @@ nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
 
 " git integration
 nnoremap gs :vert G<CR>
-nnoremap gl :vert G log --oneline<CR>
+nnoremap gl :vert G log --oneline -100<CR>
 nnoremap gr :vert G rebase --interactive origin/HEAD<CR>
 nnoremap gc :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
 
