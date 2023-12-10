@@ -175,12 +175,12 @@ vnoremap <space> "+
 nnoremap rv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap rt :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
 nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
+nnoremap rc :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
 
 " git integration
 nnoremap gs :vert G<CR>
 nnoremap gl :vert G log --oneline -100<CR>
 nnoremap gr :vert G rebase --interactive origin/HEAD<CR>
-nnoremap gc :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
 
 " go - go to file - fuzzy find by file name
 nnoremap go :FZF<CR>
