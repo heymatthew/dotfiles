@@ -16,7 +16,7 @@
 	verbose = true
 	template = ~/.gitmessage
 [push]
-	default = simple
+	default = upstream
 	autoSetupRemote = true
 [pull]
 	rebase = true
