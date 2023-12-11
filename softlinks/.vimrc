@@ -167,6 +167,7 @@ autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
 
+" n.b. remapping g here breaks "gg"
 " <space>yy - <space>p - yank or paste system clipboard
 nnoremap <space> "+
 vnoremap <space> "+
@@ -190,6 +191,9 @@ nnoremap rs :e $HOME/scratchpad.md<CR>
 
 " yp - yank path - yank current path and put it on the clipboard too
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
+
+" yog - toggle layout with Goyo
+nnoremap yog :Goyo<CR>
 
 " Q - quit - close buffer and go to the next one
 nnoremap Q :bd<CR>
