@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# Files include anything that isn't in .gitignore
+files=$(
+  git ls-files
+  git status --porcelain | cut -c4-
+)
+
+if [ -z "$files" ]; then
+  exit 1
+else
+  echo "$files" | sort | uniq | tr " " "\n"
+fi
