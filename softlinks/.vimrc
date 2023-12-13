@@ -167,35 +167,33 @@ autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
 
-" n.b. remapping g here breaks "gg"
-" <space>yy - <space>p - yank or paste system clipboard
+" space - read/write clipboard
 nnoremap <space> "+
+" visual space - read/write clipboard
 vnoremap <space> "+
-
-" rework configs
+" read vimrc
 nnoremap rv :e $HOME/dotfiles/softlinks/.vimrc<CR>
+" read theme
 nnoremap rt :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
+" read zshrc
 nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
+" read commit - edit commit template
 nnoremap rc :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
-
-" git integration
+" git status
 nnoremap gs :vert G<CR>
+" git log
 nnoremap gl :vert G log --oneline -100<CR>
+" git rebase
 nnoremap gr :vert G rebase --interactive origin/HEAD<CR>
-
-" go - go to file - fuzzy find by file name
+" go - fuzzy find file
 nnoremap go :FZF<CR>
-
-" rm - monologue - scratch pad for reflecting
+" read scatchpad
 nnoremap rs :e $HOME/scratchpad.md<CR>
-
-" yp - yank path - yank current path and put it on the clipboard too
+" yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
-
-" yog - toggle layout with Goyo
+" switch goyo - mnemonic riffs from tpope's unimpaired
 nnoremap yog :Goyo<CR>
-
-" Q - quit - close buffer and go to the next one
+" quit buffer
 nnoremap Q :bd<CR>
 
 " Spelling
