@@ -38,14 +38,6 @@ Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes 
 Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
 call plug#end()
 
-nnoremap <F2> :call SyntaxAttr()<CR>
-
-" Hide search results
-nnoremap <BACKSPACE> :nohlsearch<CR>
-
-" Switch to the file you just had open
-nnoremap \ <C-^>
-
 " Dark mode isn't as good for your eyes as you believe
 " https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
 " FIXME: Extract to function, detect system
@@ -62,9 +54,6 @@ augroup vim_fugitive " for tpope/vim-fugitive
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
 
-  vmap <C-f> y:silent   Ggrep "<C-r>0"<CR>zz
-  nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
-
   " Show diffs since master in quickfix list
   command Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
 
@@ -77,17 +66,6 @@ augroup ale " for w0rp/ale
   let g:ale_set_loclist = 0                  " don't clobber location list
   let g:ale_set_quickfix = 0                 " don't clobber quickfix list
   let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
-
-  " Move between linting errors
-  nnoremap ]r :ALENextWrap<CR>
-  nnoremap [r :ALEPreviousWrap<CR>
-augroup END
-
-augroup easy_align " for junegunn/vim-easy-align
-  " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-  vmap <Enter> <Plug>(EasyAlign)
-  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-  nmap ga <Plug>(EasyAlign)
 augroup END
 
 " Move default where splits open
@@ -115,9 +93,6 @@ autocmd VimResized * wincmd =
 " ...and new splits that might open, e.g. v from netrw
 let s:resize_exceptions = ['qf', 'loc', 'fugitive']
 autocmd WinNew * if index(s:resize_exceptions, &ft) == -1 | wincmd = | endif
-" GoldenRatio mnemonic, <C-w>- is like <C-w>=
-let g:golden_ratio_autocommand = 0
-nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 
 " Reload vimrc on edits
 " credit http://howivim.com/2016/damian-conway
@@ -193,8 +168,29 @@ nnoremap rs :e $HOME/scratchpad.md<CR>
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 " switch goyo - mnemonic riffs from tpope's unimpaired
 nnoremap yog :Goyo<CR>
+" next eRror - mnemonic riffs from tpope's unimpaired
+nnoremap ]r :ALENextWrap<CR>
+" previous eRror - mnemonic riffs from tpope's unimpaired
+nnoremap [r :ALEPreviousWrap<CR>
 " quit buffer
 nnoremap Q :bd<CR>
+" display syntax of element under the cursor
+nnoremap <F2> :call SyntaxAttr()<CR>
+" clear search highlghts
+nnoremap <BACKSPACE> :nohlsearch<CR>
+" toggle previous file
+nnoremap \ <C-^>
+" find word under cursor
+nnoremap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
+" visual find
+vnoremap <C-f> y:silent   Ggrep "<C-r>0"<CR>zz
+" visual interactive align - vip<Enter>
+vnoremap <Enter> <Plug>(EasyAlign)
+" interactive align text object - gaip
+nnoremap ga <Plug>(EasyAlign)
+" GoldenRatio mnemonic, <C-w>- is like <C-w>=
+let g:golden_ratio_autocommand = 0
+nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 
 " Spelling
 autocmd Filetype gitcommit setlocal spell
