@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 
-git trunk
-git restore --source "origin/$1" .
+REVIEW_TARGET="origin/$1"
+MERGE_BASE=$(git merge-base origin/HEAD "$REVIEW_TARGET")
+git checkout "$MERGE_BASE"
+git restore --source "$REVIEW_TARGET" .
