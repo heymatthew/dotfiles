@@ -29,7 +29,6 @@ Plug 'w0rp/ale',      { 'as': 'vim-ale' }
 Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
-let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
 Plug 'heymatthew/vim-blinkenlights'
 Plug 'junegunn/vader.vim'              " Vimscript test framework
@@ -37,6 +36,13 @@ Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
 Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
 call plug#end()
+
+let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+let g:golden_ratio_autocommand = 0
+let g:ale_set_highlights = 0               " remove highlights
+let g:ale_set_loclist = 0                  " don't clobber location list
+let g:ale_set_quickfix = 0                 " don't clobber quickfix list
+let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 
 " Dark mode isn't as good for your eyes as you believe
 " https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
@@ -62,10 +68,6 @@ augroup vim_fugitive " for tpope/vim-fugitive
 augroup END
 
 augroup ale " for w0rp/ale
-  let g:ale_set_highlights = 0               " remove highlights
-  let g:ale_set_loclist = 0                  " don't clobber location list
-  let g:ale_set_quickfix = 0                 " don't clobber quickfix list
-  let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 augroup END
 
 " Move default where splits open
@@ -73,8 +75,6 @@ set splitright   " vertical windows go right
 set splitbelow   " horizontal windows go below
 " help files
 autocmd FileType help wincmd L
-" New splits
-nnoremap <C-w>n :vert new<CR>
 
 " Show line numbers in files, help, and netrw
 set number
@@ -189,8 +189,9 @@ vnoremap <Enter> <Plug>(EasyAlign)
 " interactive align text object - gaip
 nnoremap ga <Plug>(EasyAlign)
 " GoldenRatio mnemonic, <C-w>- is like <C-w>=
-let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+" remap - <C-w>n splits are vertical
+nnoremap <C-w>n :vert new<CR>
 
 " Spelling
 autocmd Filetype gitcommit setlocal spell
