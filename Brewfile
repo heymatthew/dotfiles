@@ -44,6 +44,7 @@ brew "syncthing"  # keep stuff synced across machines
 brew "termshark"  # cli replacement for wireshark
 brew "tig"
 brew "tree"
+brew "trippy"     # network analysis replacement for traceroute and ping
 brew "vim"
 brew "watch"
 brew "wget"
