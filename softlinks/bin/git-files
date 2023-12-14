@@ -2,14 +2,16 @@
 
 set -euo pipefail
 
-# Files include anything that isn't in .gitignore
+# n.b. files include anything on disk that isn't in .gitignore
 files=$(
   git ls-files
-  git status --porcelain | cut -c4-
+  git status --porcelain | grep "??" | cut -c4- | xargs find
 )
 
 if [ -z "$files" ]; then
   exit 1
 else
+  # FIXME: Remove double slashes, find appends // to the final result
+  # Because this is cosmetic on unix systems I'm not so worried
   echo "$files" | sort | uniq | tr " " "\n"
 fi
