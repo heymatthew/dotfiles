@@ -81,12 +81,6 @@ set number
 autocmd FileType help setlocal number
 let g:netrw_bufsettings = 'number'
 
-" Using search or page up/downcenters the window
-nnoremap n nzz
-nnoremap N Nzz
-nnoremap <C-u> <C-u>zz
-nnoremap <C-d> <C-d>zz
-
 " Window resize events make splits equal
 " https://hachyderm.io/@tpope/109784416506853805
 autocmd VimResized * wincmd =
@@ -190,8 +184,18 @@ vnoremap <Enter> <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
 " GoldenRatio mnemonic, <C-w>- is like <C-w>=
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
-" remap - <C-w>n splits are vertical
+" enhancement - <C-w>n splits are vertical
 nnoremap <C-w>n :vert new<CR>
+" enhancement - next search centers page
+nnoremap n nzz
+" enhancement - reverse search centers page
+nnoremap N Nzz
+" enhancement - page up centers page
+nnoremap <C-u> <C-u>zz
+" enhancement - page down centers page
+nnoremap <C-d> <C-d>zz
+" enhancement - pasting over a visual selection keeps content
+vnoremap <silent> <expr> p <sid>VisualPut()
 
 " Spelling
 autocmd Filetype gitcommit setlocal spell
@@ -228,11 +232,10 @@ function! RestoreRegister()
   let @" = s:restore_reg
   return ''
 endfunction
-function! s:Repl()
+function! s:VisualPut()
   let s:restore_reg = @"
   return "p@=RestoreRegister()\<CR>"
 endfunction
-vmap <silent> <expr> p <sid>Repl()
 
 " Insert timestamps after cursor
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
