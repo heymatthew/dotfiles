@@ -125,6 +125,7 @@ set showcmd                " show command on bottom right as it's typed
 set belloff=all            " I find terminal bells irritating
 set mouse=a                " Looks like this is part of neovim defaults
 set shortmess-=S           " show search matches, see https://stackoverflow.com/a/4671112
+set history=1000           " 1000 lines of command line and search history saved
 
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
@@ -212,13 +213,9 @@ autocmd Filetype markdown  setlocal spell
 " Vim autojump to last position VIM was at when opening a file.
 " See --> http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 "
-" Tell vim to remember certain things when we exit
-" '1000  : marks will be remembered for up to 200 previously edited files
-" "100 :  will save up to 100 lines for each register
-" :5000:  up to 5000 lines of command-line history will be remembered
-" %    :  saves and restores the buffer list
-" n... :  where to save the viminfo files
-set viminfo='1000,\"100,:5000,n~/.vim/info
+" Persist ~/.vim/info with 1000 file marks, 100 lines per register
+" See https://vimhelp.org/options.txt.html#%27viminfo%27
+set viminfo='1000,<100,n~/.vim/info
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
