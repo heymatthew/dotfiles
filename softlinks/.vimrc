@@ -61,7 +61,6 @@ augroup vim_fugitive " for tpope/vim-fugitive
   autocmd QuickFixCmdPost l*    cwindow
 
   " Show diffs since master in quickfix list
-  command Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
 
   " Always use vertical diffs
   set diffopt+=vertical
@@ -197,6 +196,15 @@ nnoremap <C-d> <C-d>zz
 " enhancement - pasting over a visual selection keeps content
 vnoremap <silent> <expr> p <sid>VisualPut()
 
+" focus - close all buffers but the current one
+command! Focus wa|%bd|e#
+" changes - quickfix jumplist of hunks since branching
+command! Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+" now - insert timestamp after cursor
+command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+" today - insert iso date after cursor
+command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
+
 " Spelling
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype markdown  setlocal spell
@@ -238,8 +246,6 @@ function! s:VisualPut()
 endfunction
 
 " Insert timestamps after cursor
-command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
-command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 inoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 inoremap <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
@@ -249,9 +255,6 @@ cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
-
-" Focus command to close all buffers but the current one
-command! Focus wa|%bd|e#
 
 " Git commit message stuff
 function! GitHumans()
