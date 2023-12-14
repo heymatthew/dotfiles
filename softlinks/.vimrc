@@ -44,13 +44,7 @@ let g:ale_set_loclist = 0                  " don't clobber location list
 let g:ale_set_quickfix = 0                 " don't clobber quickfix list
 let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 
-" Dark mode isn't as good for your eyes as you believe
-" https://www.wired.co.uk/article/dark-mode-chrome-android-ios-science
-" FIXME: Extract to function, detect system
-if !empty($LC_APPEARANCE)
-  exec 'set background=' . $LC_APPEARANCE
-endif
-
+" vim auto sets background=light|dark based on terminal theme
 colorscheme blinkenlights
 set colorcolumn=120
 
