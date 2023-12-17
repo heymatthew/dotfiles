@@ -48,20 +48,9 @@ let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 colorscheme blinkenlights
 set colorcolumn=120
 
-augroup vim_fugitive " for tpope/vim-fugitive
-  " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
-  autocmd!
-  autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost l*    cwindow
-
-  " Show diffs since master in quickfix list
-
-  " Always use vertical diffs
-  set diffopt+=vertical
-augroup END
-
-augroup ale " for w0rp/ale
-augroup END
+" open location/quickfix after :make, :grep, :lvimgrep and friends
+autocmd QuickFixCmdPost [^l]* cwindow
+autocmd QuickFixCmdPost l*    cwindow
 
 " Move default where splits open
 set splitright   " vertical windows go right
@@ -120,6 +109,7 @@ set belloff=all            " I find terminal bells irritating
 set mouse=a                " Looks like this is part of neovim defaults
 set shortmess-=S           " show search matches, see https://stackoverflow.com/a/4671112
 set history=1000           " 1000 lines of command line and search history saved
+set diffopt+=vertical      " vertical diffs
 
 " set textwidth=100         " Automatically insert newlines
 " set colorcolumn=100       " Show 100th char visually
