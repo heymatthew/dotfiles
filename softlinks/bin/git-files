@@ -3,15 +3,13 @@
 set -euo pipefail
 
 # n.b. files include anything on disk that isn't in .gitignore
-files=$(
-  git ls-files
-  git status --porcelain | grep "??" | cut -c4- | xargs find
-)
+files=$(git ls-files)
+files+=$(git status --porcelain | grep "??" | cut -c4- | xargs find) || true
 
 if [ -z "$files" ]; then
-  exit 1
+    exit 1
 else
-  # FIXME: Remove double slashes, find appends // to the final result
-  # Because this is cosmetic on unix systems I'm not so worried
-  echo "$files" | sort | uniq | tr " " "\n"
+    # FIXME: Remove double slashes, find appends // to the final result
+    # Because this is cosmetic on unix systems I'm not so worried
+    echo "$files" | sort | uniq | tr " " "\n"
 fi
