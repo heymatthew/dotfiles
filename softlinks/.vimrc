@@ -22,6 +22,7 @@ Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and 
 Plug 'tpope/vim-surround'              " Delete, or insert around text objects
 Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
 Plug 'tpope/vim-vinegar'               " Better file browser
+Plug 'tpope/vim-dispatch'              " Builds and tests with asynchronous adapters: https://vimeo.com/63116209
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
 Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
@@ -35,6 +36,7 @@ Plug 'junegunn/vader.vim'              " Vimscript test framework
 Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
 Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
+Plug 'preservim/vim-pencil'            " Extensions to vim to make writing better
 call plug#end()
 
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
@@ -144,10 +146,10 @@ nnoremap go :FZF<CR>
 nnoremap rs :e $HOME/scratchpad.md<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
-" toggle goyo - mnemonic riffs from tpope's unimpaired
-nnoremap yog :Goyo<CR>
 " toggle ale - mnemonic riffs from tpope's unimpaired
 nnoremap yoa :ALEToggleBuffer<CR>
+" toggle goyo and soft pencil- mnemonic riffs from tpope's unimpaired
+nnoremap yog :Goyo<CR>:TogglePencil<CR>
 " next eRror - mnemonic riffs from tpope's unimpaired
 nnoremap ]r :ALENextWrap<CR>
 " previous eRror - mnemonic riffs from tpope's unimpaired
