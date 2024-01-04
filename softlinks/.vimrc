@@ -144,8 +144,10 @@ nnoremap go :FZF<CR>
 nnoremap rs :e $HOME/scratchpad.md<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
-" switch goyo - mnemonic riffs from tpope's unimpaired
+" toggle goyo - mnemonic riffs from tpope's unimpaired
 nnoremap yog :Goyo<CR>
+" toggle ale - mnemonic riffs from tpope's unimpaired
+nnoremap yoa :ALEToggleBuffer<CR>
 " next eRror - mnemonic riffs from tpope's unimpaired
 nnoremap ]r :ALENextWrap<CR>
 " previous eRror - mnemonic riffs from tpope's unimpaired
