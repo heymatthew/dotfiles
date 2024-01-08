@@ -21,6 +21,7 @@ Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
 Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and roman numerals. 7<C-a> will jump a week.
 Plug 'tpope/vim-surround'              " Delete, or insert around text objects
 Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
+Plug 'tpope/vim-eunuch'                " Utils and typing shebang line causes file type re-detection with +x
 Plug 'tpope/vim-vinegar'               " Better file browser
 Plug 'tpope/vim-dispatch'              " Builds and tests with asynchronous adapters: https://vimeo.com/63116209
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
