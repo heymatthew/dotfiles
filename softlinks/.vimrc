@@ -169,7 +169,7 @@ nnoremap <BACKSPACE> :nohlsearch<CR>
 " toggle previous file
 nnoremap \ <C-^>
 " find word under cursor
-nnoremap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
+nnoremap <C-f> :silent Ggrep <cWORD><CR>
 " visual find
 vnoremap <C-f> y:silent   Ggrep "<C-r>0"<CR>zz
 " visual interactive align - vip<Enter>
