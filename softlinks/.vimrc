@@ -171,7 +171,7 @@ nnoremap \ <C-^>
 " find word under cursor
 nnoremap <C-f> :silent Ggrep <cWORD><CR>
 " visual find
-vnoremap <C-f> y:silent   Ggrep "<C-r>0"<CR>zz
+vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
 " visual interactive align - vip<Enter>
 vnoremap <Enter> <Plug>(EasyAlign)
 " interactive align text object - gaip
