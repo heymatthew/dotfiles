@@ -122,6 +122,7 @@ set foldmethod=syntax
 autocmd BufRead * normal zR
 autocmd Filetype fugitive setlocal foldmethod=manual
 autocmd Filetype haml     setlocal foldmethod=indent
+autocmd Filetype sh       setlocal foldmethod=indent
 
 " space - read/write clipboard
 nnoremap <space> "+
