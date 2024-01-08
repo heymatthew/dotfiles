@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+# TODO: Rework with exponential backoff
+until "$@"; do sleep 1; done
