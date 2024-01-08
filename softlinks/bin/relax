@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# See also "relax"
+# See also "try"
 
 set -euo pipefail
 
 # TODO: Rework with exponential backoff
-until "$@"; do sleep 1; done
+while "$@"; do sleep 1; done
