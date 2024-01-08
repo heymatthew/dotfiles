@@ -144,6 +144,8 @@ nnoremap gl :vert G log --oneline origin/HEAD...<CR>
 " i.e. nnoremap gl exec ":G log --oneline " . (system("git ref-parse HEAD") == system("git rev-parse origin/HEAD") ? "origin/HEAD..." : "-100")<CR>
 " git rebase
 nnoremap gr :vert G rebase --interactive origin/HEAD<CR>
+" git blame
+nnoremap gb :G blame<CR>
 " go - fuzzy find file
 nnoremap go :FZF<CR>
 " read scatchpad
