@@ -128,7 +128,7 @@ autocmd Filetype sh       setlocal foldmethod=indent
 " Mapping Principles (WIP)
 " 1. Common usage should use chords or single key presses
 " 2. Less common things should be two character mnemonics
-" 3. Uncommon useful things should be leader-based commands
+" 3. Uncommon useful things should be leader-based or vim commands
 
 " space - read/write clipboard
 nnoremap <space> "+
