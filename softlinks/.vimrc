@@ -49,7 +49,6 @@ let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 
 " vim auto sets background=light|dark based on terminal theme
 colorscheme blinkenlights
-set colorcolumn=120
 
 " open location/quickfix after :make, :grep, :lvimgrep and friends
 autocmd QuickFixCmdPost [^l]* cwindow
@@ -96,26 +95,28 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 autocmd FileType ruby :iabbrev <buffer> puts puts # FIXME: commit = death<ESC>F#<LEFT>i
 autocmd FileType ruby :iabbrev <buffer> binding binding # FIXME: commit = death<ESC>F#<LEFT>i
 
-set scrolloff=5            " 5 lines always visible at top and bottom
-set sidescrolloff=5        " 5 characters always visible left and right when scrollwrap is set
-set nojoinspaces           " Single space after period when using J
-set hlsearch               " Highlight my searches :)
-set ignorecase             " Search case insensitive...
-set smartcase              " ... but not it begins with upper case
-set magic                  " Allows pattern matching with special characters
-set autoindent             " indent on newlines
-set smartindent            " recognise syntax of files
-set noswapfile nobackup    " git > swapfile, git > backup files
-set wrap linebreak nolist  " wrap words, incompatable with visible whitespace (list and listchars)
-set showcmd                " show command on bottom right as it's typed
-set belloff=all            " I find terminal bells irritating
-set mouse=a                " Looks like this is part of neovim defaults
-set shortmess-=S           " show search matches, see https://stackoverflow.com/a/4671112
-set history=1000           " 1000 lines of command line and search history saved
-set diffopt+=vertical      " vertical diffs
+set scrolloff=5                     " 5 lines always visible at top and bottom
+set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
+set nojoinspaces                    " Single space after period when using J
+set hlsearch                        " Highlight my searches :)
+set ignorecase                      " Search case insensitive...
+set smartcase                       " ... but not it begins with upper case
+set magic                           " Allows pattern matching with special characters
+set autoindent                      " indent on newlines
+set smartindent                     " recognise syntax of files
+set noswapfile nobackup             " git > swapfile, git > backup files
+set wrap linebreak nolist           " wrap words, incompatable with visible whitespace (list and listchars)
+set showcmd                         " show command on bottom right as it's typed
+set belloff=all                     " I find terminal bells irritating
+set mouse=a                         " Looks like this is part of neovim defaults
+set shortmess-=S                    " show search matches, see https://stackoverflow.com/a/4671112
+set history=1000                    " 1000 lines of command line and search history saved
+set diffopt+=vertical               " vertical diffs
+set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
+set colorcolumn=120                 " Show 100th char visually
+set nomodeline modelines=0          " Disable modelines as a security precaution
 
 " set textwidth=100         " Automatically insert newlines
-" set colorcolumn=100       " Show 100th char visually
 
 " Set foldmethod but expand all when opening files
 set foldmethod=syntax
@@ -209,10 +210,6 @@ command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype markdown  setlocal spell
 
-" Persist ~/.vim/info with 1000 file marks, 100 lines per register
-" See https://vimhelp.org/options.txt.html#%27viminfo%27
-set viminfo='1000,<100,n~/.vim/info
-
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
 function! PositionCursor()
@@ -222,10 +219,6 @@ function! PositionCursor()
   endif
 endfunction
 autocmd BufWinEnter * call PositionCursor()
-
-" Disable modelines as a security precaution
-" from https://github.com/thoughtbot/dotfiles/blob/main/vimrc
-set nomodeline modelines=0
 
 " visual paste doesn't clobber what you've got in the paste buffer
 " credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
