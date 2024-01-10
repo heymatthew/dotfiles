@@ -2,8 +2,8 @@
 
 let plug_executable=expand('~/.vim/autoload/plug.vim')
 if !filereadable(plug_executable)
-    echo "Installing plug"
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  echo "Installing plug"
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 let plug_dir = '~/.vim/plugged'
