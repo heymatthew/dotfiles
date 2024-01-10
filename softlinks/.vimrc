@@ -47,8 +47,12 @@ let g:ale_set_loclist = 0                  " don't clobber location list
 let g:ale_set_quickfix = 0                 " don't clobber quickfix list
 let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 
-" vim auto sets background=light|dark based on terminal theme
+" detects background=light|dark from on terminal theme
+" manually toggle background with yob
 colorscheme blinkenlights
+highlight HabitChange guifg=love cterm=underline
+match HabitChange /recieve/
+match HabitChange /recieve_message_chain/
 
 " open location/quickfix after :make, :grep, :lvimgrep and friends
 autocmd QuickFixCmdPost [^l]* cwindow
@@ -234,11 +238,6 @@ function! s:VisualPut()
   let s:restore_reg = @"
   return "p@=RestoreRegister()\<CR>"
 endfunction
-
-" Immediate feedback to correct habits
-highlight HabitChange guifg=love cterm=underline
-match HabitChange /recieve/
-match HabitChange /recieve_message_chain/
 
 " Git commit message stuff
 function! GitHumans()
