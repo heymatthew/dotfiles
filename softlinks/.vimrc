@@ -196,6 +196,10 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-d> <C-d>zz
 " enhancement - pasting over a visual selection keeps content
 vnoremap <silent> <expr> p <sid>VisualPut()
+" insert timestamp in command and insert mode
+noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+" insert datestamp in command and insert mode
+noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
@@ -230,12 +234,6 @@ function! s:VisualPut()
   let s:restore_reg = @"
   return "p@=RestoreRegister()\<CR>"
 endfunction
-
-" Insert timestamps after cursor
-inoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
-inoremap <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
-cnoremap <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
-cnoremap <C-d> <C-r>=strftime('%Y-%m-%d')<CR>
 
 " Immediate feedback to correct habits
 highlight HabitChange guifg=love cterm=underline
