@@ -26,6 +26,7 @@ Plug 'tpope/vim-dadbod'                " Database from your vim
 Plug 'tpope/vim-dispatch'              " Builds and tests with asynchronous adapters: https://vimeo.com/63116209
 Plug 'tpope/vim-eunuch'                " Utils and typing shebang line causes file type re-detection with +x
 Plug 'tpope/vim-fugitive'              " Git
+Plug 'tpope/vim-obsession'             " Makes sessions easier to manage with :Obsess
 Plug 'tpope/vim-rails'                 " For rails codebases
 Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
 Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
