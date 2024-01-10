@@ -209,9 +209,6 @@ command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype markdown  setlocal spell
 
-" Vim autojump to last position VIM was at when opening a file.
-" See --> http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-"
 " Persist ~/.vim/info with 1000 file marks, 100 lines per register
 " See https://vimhelp.org/options.txt.html#%27viminfo%27
 set viminfo='1000,<100,n~/.vim/info
