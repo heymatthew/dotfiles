@@ -52,9 +52,6 @@ let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 " detects background=light|dark from on terminal theme
 " manually toggle background with yob
 colorscheme blinkenlights
-highlight HabitChange guifg=love cterm=underline
-match HabitChange /recieve/
-match HabitChange /recieve_message_chain/
 
 " open location/quickfix after :make, :grep, :lvimgrep and friends
 autocmd QuickFixCmdPost [^l]* cwindow
@@ -154,8 +151,6 @@ nnoremap gs :vert G<CR>
 nnoremap gl :vert G log --oneline origin/HEAD...<CR>
 " TODO migrate gl to recognise if you're on origin/HEAD
 " i.e. nnoremap gl exec ":G log --oneline " . (system("git ref-parse HEAD") == system("git rev-parse origin/HEAD") ? "origin/HEAD..." : "-100")<CR>
-" git rebase
-nnoremap gr :vert G rebase --interactive origin/HEAD<CR>
 " git blame
 nnoremap gb :G blame<CR>
 " go - fuzzy find file
@@ -255,3 +250,9 @@ function! GitHumans()
  let humans = map(humans, '"Co-Authored-By: " . v:val')
  return humans
 endfunction
+
+" Deprecations and Habit Changes
+highlight HabitChange guifg=love cterm=underline
+match HabitChange /recieve/
+match HabitChange /recieve_message_chain/
+nnoremap gr :echo 'Deprecated: Prefer ru from git pane'<CR>
