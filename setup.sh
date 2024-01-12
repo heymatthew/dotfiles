@@ -79,10 +79,6 @@ echo "TODO:
 * Bump inotify limits for entr http://eradman.com/entrproject/limits.html
 * Skim MacOS Security & Privacy Guide https://github.com/drduh/macOS-Security-and-Privacy-Guide
 * Set Firefox sync Device Name to '$hostname' about:preferences#sync
-* Set github creds for Rhubarb
-  - Create token https://github.com/settings/tokens/new
-  - Set netrc
-    > echo 'machine api.github.com login heymatthew password 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' >> ~/.netrc
 * Set Syncthing Device Name to '$hostname' http://localhost:8384/
 * Set hidden menu with minimalist menu bar
 * Set API token in Exercism
@@ -98,4 +94,10 @@ echo "TODO:
   * https://github.com/asdf-vm/asdf-ruby
   * https://github.com/asdf-vm/asdf-nodejs
   * https://github.com/asdf-community/asdf-python
+* Set github creds for Rhubarb
+  - Create token https://github.com/settings/tokens/new
+  - Update ~/.netrc with:
+    machine api.github.com
+      login heymatthew
+      password <TOKEN>
 "
