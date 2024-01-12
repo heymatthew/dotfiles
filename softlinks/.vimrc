@@ -216,6 +216,12 @@ command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " today - insert iso date after cursor
 command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 
+" Behaviour overrides
+" rebase upstream - Prefer rebase default branach to @{upstream}
+" FIXME: Run `:Git origin-head-update` if origin/HEAD not present
+" FIXME: Fall back on fugitive map `ru` if triangular workflow
+autocmd Filetype fugitive nmap <buffer> ru :Git rebase --interactive origin/HEAD<CR>
+
 " Spelling
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype markdown  setlocal spell
