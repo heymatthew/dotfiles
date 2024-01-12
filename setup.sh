@@ -51,7 +51,7 @@ echo "installing npm packages..."
 
 echo "installing julia packages..."
 script_dir=$(dirname $BASH_SOURCE)
-$julia_cmd "$script_dir/setup-julia.jl"
+$julia_cmd "$script_dir/julia-setup.jl"
 
 echo "installing vim/nvim plugins..."
 /opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"
