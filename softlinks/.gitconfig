@@ -1,6 +1,20 @@
 [include]
 	# templated for per-machine git settings
 	path = ~/.gitconfig.local
+[core]
+	excludesfile = ~/.gitignore
+	pager = less -iXFR
+[init]
+	defaultBranch = trunk
+[pull]
+	rebase = true
+[push]
+	default = current
+[rebase]
+	updateRefs = true
+[commit]
+	verbose = true
+	template = ~/.gitmessage
 [alias]
 	wip = !git add . && git commit -m WIP
 	trunk = !git fetch && git checkout $(git origin-head)
@@ -13,20 +27,3 @@
 	feature = git fetch && git checkout -b origin/HEAD
 	focus = !git branch | grep -v "^*" | xargs git branch -d
 	hub = !gh
-[commit]
-	verbose = true
-	template = ~/.gitmessage
-[push]
-	default = simple
-	autoSetupRemote = true
-[pull]
-	rebase = true
-[init]
-	defaultBranch = trunk
-[core]
-	excludesfile = ~/.gitignore
-	pager = less -iXFR
-[branch]
-	autoSetupMerge = simple
-[rebase]
-	updateRefs = true
