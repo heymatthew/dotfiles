@@ -1,13 +1,11 @@
 " .vimrc configuration file
 
-let plug_executable=expand('~/.vim/autoload/plug.vim')
-if !filereadable(plug_executable)
-  echo "Installing plug"
+if !filereadable(expand('~/.vim/autoload/plug.vim'))
+  echom "Installing plug"
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
 let plug_dir = '~/.vim/plugged'
-
 call plug#begin(plug_dir)
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
 Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
