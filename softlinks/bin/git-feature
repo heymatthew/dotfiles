@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-DESC=$1
+NAME=$1
 
-if [ -z "$DESC" ]; then
+if [ -z "$NAME" ]; then
   # If we're not creating a branch, then list branches
   git branch --format "%(refname:short)"
   exit 0
 fi
 
-git fetch
-git checkout "origin/HEAD" -b "$DESC"
+git checkout -b "$NAME" "origin/HEAD"
