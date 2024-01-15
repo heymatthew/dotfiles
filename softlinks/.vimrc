@@ -218,6 +218,7 @@ command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 autocmd Filetype fugitive nmap <buffer> ru :Git rebase --interactive origin/HEAD<CR>
 
 " Spelling
+set spelllang=en_nz
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype markdown  setlocal spell
 
