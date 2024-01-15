@@ -219,6 +219,11 @@ autocmd Filetype fugitive nmap <buffer> ru :Git rebase --interactive origin/HEAD
 set spelllang=en_nz
 autocmd Filetype gitcommit setlocal spell
 autocmd Filetype markdown  setlocal spell
+set thesaurus=~/.vim/thesaurus.txt
+if !filereadable(&thesaurus)
+  echom "Downloading thesaurus file"
+  silent !curl -fLo ~/.vim/thesaurus.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
+endif
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
