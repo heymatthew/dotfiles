@@ -71,7 +71,7 @@ let g:netrw_bufsettings = 'number'
 autocmd VimResized * wincmd =
 " ...and new splits that might open, e.g. v from netrw
 let s:resize_exceptions = ['qf', 'loc', 'fugitive']
-autocmd WinNew * if index(s:resize_exceptions, &ft) == -1 | wincmd = | endif
+autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
 
 " Reload vimrc on edits
 " credit http://howivim.com/2016/damian-conway
@@ -223,7 +223,7 @@ autocmd Filetype markdown  setlocal spell
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
 function! PositionCursor()
-  if index(s:cursor_exceptions, &ft) == -1 && line("'\"") <= line("$")
+  if index(s:cursor_exceptions, &filetype) == -1 && line("'\"") <= line("$")
     normal! g`"
     return 1
   endif
