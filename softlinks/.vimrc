@@ -141,8 +141,6 @@ nnoremap rv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap rt :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
 " read zshrc
 nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
-" read commit - edit commit template
-nnoremap rc :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
 " git status
 nnoremap gs :vert G<CR>
 " git log
@@ -209,6 +207,9 @@ command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " today - insert iso date after cursor
 command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 
+" edit commit template
+autocmd filetype fugitive nmap <buffer> ct :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
+
 " Spelling
 set spelllang=en_nz
 autocmd Filetype gitcommit setlocal spell
@@ -254,3 +255,4 @@ highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
 nnoremap gr :echo 'Deprecated: Prefer ru from git pane'<CR>
+nnoremap rc :echo 'Deprecated: Prefer ct from git pane'<CR>
