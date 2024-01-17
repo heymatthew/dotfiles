@@ -214,6 +214,8 @@ autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<
                                          \ :e .git/message<CR>
                                          \ ggi<C-r>=GitHumans()<CR>
                                          \ <ESC>gg
+" force reload git pane (mirror netrw)
+autocmd filetype fugitive nmap <buffer> <C-l> :Git<CR>
 
 " Spelling
 set spelllang=en_nz
