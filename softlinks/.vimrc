@@ -144,7 +144,7 @@ nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
 " git status
 nnoremap gs :vert G<CR>
 " git log
-nnoremap gl :vert G log --oneline origin/HEAD...<CR>
+nnoremap gl :vert G log --oneline -100<CR>
 " TODO migrate gl to recognise if you're on origin/HEAD
 " i.e. nnoremap gl exec ":G log --oneline " . (system("git ref-parse HEAD") == system("git rev-parse origin/HEAD") ? "origin/HEAD..." : "-100")<CR>
 " git blame
