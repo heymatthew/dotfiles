@@ -24,7 +24,6 @@
 [rebase]
 	updateRefs = true
 [commit]
-	verbose = true
 	template = ~/.gitmessage
 [branch]
 	autoSetupMerge = true
