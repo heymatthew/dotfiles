@@ -208,7 +208,12 @@ command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 
 " edit commit template
-autocmd filetype fugitive nmap <buffer> ct :e ~/.gitmessage<CR>ggi<C-r>=GitHumans()<CR>
+autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
+                                         \ :!cp ~/.gitmessage .git/message<CR>
+                                         \ :!git config commit.template=.git/message<CR>
+                                         \ :e .git/message<CR>
+                                         \ ggi<C-r>=GitHumans()<CR>
+                                         \ <ESC>gg
 
 " Spelling
 set spelllang=en_nz
