@@ -216,6 +216,8 @@ autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<
                                          \ <ESC>gg
 " force reload git pane (mirror netrw)
 autocmd filetype fugitive nmap <buffer> <C-l> :Git<CR>
+" Remove deprecated commands to unclog tab completion
+try | delcommand Gbrowse | catch | endtry
 
 " Spelling
 set spelllang=en_nz
