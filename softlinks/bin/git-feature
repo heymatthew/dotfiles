@@ -8,4 +8,4 @@ if [ -z "$NAME" ]; then
   exit 0
 fi
 
-git checkout -b "$NAME" "origin/HEAD"
+git switch -c "$NAME" "origin/HEAD"
