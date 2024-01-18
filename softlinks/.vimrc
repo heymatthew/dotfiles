@@ -51,50 +51,16 @@ let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 " manually toggle background with yob
 colorscheme blinkenlights
 
-" open location/quickfix after :make, :grep, :lvimgrep and friends
-autocmd QuickFixCmdPost [^l]* cwindow
-autocmd QuickFixCmdPost l*    cwindow
-
-" Move default where splits open
+" Prefer splitting down or right
 set splitright   " vertical windows go right
 set splitbelow   " horizontal windows go below
 " help files
 autocmd FileType help wincmd L
 
-" Show line numbers in files, help, and netrw
+" Set line numbers where possible
 set number
 autocmd FileType help setlocal number
 let g:netrw_bufsettings = 'number'
-
-" Window resize events make splits equal
-" https://hachyderm.io/@tpope/109784416506853805
-autocmd VimResized * wincmd =
-" ...and new splits that might open, e.g. v from netrw
-let s:resize_exceptions = ['qf', 'loc', 'fugitive']
-autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
-
-" Reload vimrc on edits
-" credit http://howivim.com/2016/damian-conway
-autocmd! BufWritePost $MYVIMRC source $MYVIMRC
-autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $MYVIMRC
-autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
-
-" Whitespace management
-set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-
-" Filetype detection
-autocmd BufNewFile,BufRead .env* setlocal filetype=sh
-
-" Debugging
-autocmd FileType ruby :iabbrev <buffer> puts puts # FIXME: commit = death<ESC>F#<LEFT>i
-autocmd FileType ruby :iabbrev <buffer> binding binding # FIXME: commit = death<ESC>F#<LEFT>i
 
 set scrolloff=5                     " 5 lines always visible at top and bottom
 set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
@@ -205,7 +171,6 @@ command! Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HE
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " today - insert iso date after cursor
 command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
-
 " edit commit template
 autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
                                          \ :!cp ~/.gitmessage .git/message<CR>
@@ -213,15 +178,47 @@ autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<
                                          \ :e .git/message<CR>
                                          \ ggi<C-r>=GitHumans()<CR>
                                          \ <ESC>gg
-" force reload git pane (mirror netrw)
+" <C-l> refreshes git pane, like netrw refresh
 autocmd filetype fugitive nmap <buffer> <C-l> :Git<CR>
+" spellcheck commit messages
+autocmd Filetype gitcommit setlocal spell
+" spellcheck markdown
+autocmd Filetype markdown  setlocal spell
+" restore cursor position on file open
+autocmd BufWinEnter * call PositionCursor()
+" Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
+autocmd VimResized * wincmd =
+" ...and new splits that might open, e.g. v from netrw
+let s:resize_exceptions = ['qf', 'loc', 'fugitive']
+autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
+" reload vimrc on edits, credit http://howivim.com/2016/damian-conway
+autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $MYVIMRC
+" reload plugins on save
+autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
+
+" Whitespace management
+set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+
+" Filetype detection overrides
+autocmd BufNewFile,BufRead .env* setlocal filetype=sh
+
+" Debugging reminders
+autocmd FileType ruby :iabbrev <buffer> puts puts # FIXME: commit = death<ESC>F#<LEFT>i
+autocmd FileType ruby :iabbrev <buffer> binding binding # FIXME: commit = death<ESC>F#<LEFT>i
+
 " Remove deprecated commands to unclog tab completion
 try | delcommand Gbrowse | catch | endtry
 
 " Spelling
 set spelllang=en_nz
-autocmd Filetype gitcommit setlocal spell
-autocmd Filetype markdown  setlocal spell
 set thesaurus=~/.vim/thesaurus.txt
 if !filereadable(&thesaurus)
   echom "Downloading thesaurus file"
@@ -236,7 +233,6 @@ function! PositionCursor()
     return 1
   endif
 endfunction
-autocmd BufWinEnter * call PositionCursor()
 
 " visual paste doesn't clobber what you've got in the paste buffer
 " credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
