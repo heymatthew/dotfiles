@@ -46,6 +46,7 @@ let g:ale_set_highlights = 0               " remove highlights
 let g:ale_set_loclist = 0                  " don't clobber location list
 let g:ale_set_quickfix = 0                 " don't clobber quickfix list
 let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
+let g:pencil#wrapModeDefault = 'soft'      " prefer soft wrap
 
 " detects background=light|dark from on terminal theme
 " manually toggle background with yob
