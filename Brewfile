@@ -46,6 +46,7 @@ brew "termshark"  # cli replacement for wireshark
 brew "tig"
 brew "tree"
 brew "trippy"     # network analysis replacement for traceroute and ping
+brew "vale"       # Linter for English https://vale.sh/
 brew "vim"
 brew "watch"
 brew "wget"

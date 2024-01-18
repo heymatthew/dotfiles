@@ -46,12 +46,12 @@ echo "brew bundle..."
 echo "stowing dotfiles..."
 /opt/homebrew/bin/stow softlinks
 
-echo "installing npm packages..."
-/opt/homebrew/bin/npm install -g write-good
-
 echo "installing julia packages..."
 script_dir=$(dirname $BASH_SOURCE)
 $julia_cmd "$script_dir/julia-setup.jl"
+
+echo "Installing vale linters..."
+vale sync
 
 echo "installing vim/nvim plugins..."
 /opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"
