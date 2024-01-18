@@ -82,8 +82,7 @@ set diffopt+=vertical               " vertical diffs
 set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
 set colorcolumn=120                 " Show 100th char visually
 set nomodeline modelines=0          " Disable modelines as a security precaution
-
-" set textwidth=100         " Automatically insert newlines
+" set textwidth=100                 " hard wrap
 
 " Set foldmethod but expand all when opening files
 set foldmethod=syntax
