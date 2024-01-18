@@ -159,10 +159,10 @@ nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 nnoremap yoa :ALEToggleBuffer<CR>
 " toggle goyo and soft pencil- mnemonic riffs from tpope's unimpaired
 nnoremap yog :Goyo<CR>:TogglePencil<CR>
-" next eRror - mnemonic riffs from tpope's unimpaired
-nnoremap ]r :ALENextWrap<CR>
-" previous eRror - mnemonic riffs from tpope's unimpaired
-nnoremap [r :ALEPreviousWrap<CR>
+" Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
+nnoremap ]a :ALENextWrap<CR>
+" Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
+nnoremap [a :ALEPreviousWrap<CR>
 " quit buffer
 nnoremap Q :bd<CR>
 " display syntax of element under the cursor
