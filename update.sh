@@ -8,10 +8,6 @@ fi
 echo "vim..."
 vim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdateBinaries") | qa'
 
-echo "npm..."
-npm install -g npm # update npm itself
-npm update -g      # update global packages
-
 echo "julia..."
 julia -e 'using Pkg; Pkg.update()'
 
