@@ -176,7 +176,7 @@ autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<
                                          \ :!cp ~/.gitmessage .git/message<CR>
                                          \ :!git config commit.template=.git/message<CR>
                                          \ :e .git/message<CR>
-                                         \ ggi<C-r>=GitHumans()<CR>
+                                         \ Go<C-r>=GitHumans()<CR>
                                          \ <ESC>gg
 " <C-l> refreshes git pane, like netrw refresh
 autocmd filetype fugitive nmap <buffer> <C-l> :Git<CR>
