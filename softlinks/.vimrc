@@ -100,11 +100,11 @@ nnoremap <space> "+
 " visual space - read/write clipboard
 vnoremap <space> "+
 " read vimrc
-nnoremap rv :e $HOME/dotfiles/softlinks/.vimrc<CR>
+nnoremap rv :edit $HOME/dotfiles/softlinks/.vimrc<CR>
 " read theme
 nnoremap rt :edit ~/.vim/plugged/vim-blinkenlights/colors/blinkenlights.vim<CR>
 " read zshrc
-nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
+nnoremap rz :edit $HOME/dotfiles/softlinks/.zshrc<CR>
 " git status
 nnoremap gs :vert G<CR>
 " git log
@@ -116,7 +116,7 @@ nnoremap gb :G blame<CR>
 " go - fuzzy find file
 nnoremap go :FZF<CR>
 " read scatchpad
-nnoremap rs :e $HOME/scratchpad.md<CR>
+nnoremap rs :edit $HOME/scratchpad.md<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 " toggle ale - mnemonic riffs from tpope's unimpaired
@@ -174,7 +174,7 @@ command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
                                          \ :!cp ~/.gitmessage .git/message<CR>
                                          \ :!git config commit.template=.git/message<CR>
-                                         \ :e .git/message<CR>
+                                         \ :edit .git/message<CR>
                                          \ Go<C-r>=GitHumans()<CR>
                                          \ <ESC>gg
 " <C-l> refreshes git pane, like netrw refresh
