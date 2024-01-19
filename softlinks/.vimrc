@@ -5,8 +5,7 @@ if !filereadable(expand('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
-let plug_dir = '~/.vim/plugged'
-call plug#begin(plug_dir)
+call plug#begin('~/.vim/plugged')
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
 Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
 Plug 'junegunn/fzf.vim'                " Defaults
@@ -103,7 +102,7 @@ vnoremap <space> "+
 " read vimrc
 nnoremap rv :e $HOME/dotfiles/softlinks/.vimrc<CR>
 " read theme
-nnoremap rt :exec 'edit ' . plug_dir . '/vim-blinkenlights/colors/blinkenlights.vim'<CR>
+nnoremap rt :edit ~/.vim/plugged/vim-blinkenlights/colors/blinkenlights.vim<CR>
 " read zshrc
 nnoremap rz :e $HOME/dotfiles/softlinks/.zshrc<CR>
 " git status
@@ -214,9 +213,6 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 autocmd FileType ruby :iabbrev <buffer> puts puts # FIXME: commit = death<ESC>F#<LEFT>i
 autocmd FileType ruby :iabbrev <buffer> binding binding # FIXME: commit = death<ESC>F#<LEFT>i
 
-" Remove deprecated commands to unclog tab completion
-try | delcommand Gbrowse | catch | endtry
-
 " Spelling
 set spelllang=en_nz
 set thesaurus=~/.vim/thesaurus.txt
@@ -260,3 +256,8 @@ match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
 nnoremap gr :echo 'Deprecated: Prefer ru from git pane'<CR>
 nnoremap rc :echo 'Deprecated: Prefer ct from git pane'<CR>
+" Remove deprecated fugitive commands to unclog tab completion
+" see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
+try | delcommand Gbrowse | catch | endtry
+try | delcommand Gremove | catch | endtry
+try | delcommand Grename | catch | endtry
