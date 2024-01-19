@@ -37,6 +37,19 @@ tee ~/.gitconfig.local >/dev/null <<EOF
 EOF
 vim ~/.gitconfig.local
 
+echo "netrc config..."
+echo "editing .netrc config in vim 🤔, press enter to continue..."
+read -r
+tee ~/.netrc >/dev/null <<EOF
+# vim-rhubarb requires repo permissions
+# plugin: https://github.com/tpope/vim-rhubarb
+# tokens: https://github.com/settings/tokens
+machine api.github.com
+  login heymatthew
+  password <TOKEN from https://github.com/settings/tokens/new>
+EOF
+vim ~/.netrc
+
 echo "installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -94,10 +107,4 @@ echo "TODO:
   * https://github.com/asdf-vm/asdf-ruby
   * https://github.com/asdf-vm/asdf-nodejs
   * https://github.com/asdf-community/asdf-python
-* Set github creds for Rhubarb
-  - Create token https://github.com/settings/tokens/new
-  - Update ~/.netrc with:
-    machine api.github.com
-      login heymatthew
-      password <TOKEN>
 "
