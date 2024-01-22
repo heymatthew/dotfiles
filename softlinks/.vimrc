@@ -33,6 +33,7 @@ Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and 
 Plug 'tpope/vim-surround'              " Delete, or insert around text objects
 Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
 Plug 'tpope/vim-vinegar'               " Better file browser
+Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'w0rp/ale',      { 'as': 'vim-ale' }
