@@ -54,8 +54,8 @@ colorscheme blinkenlights
 " Prefer splitting down or right
 set splitright   " vertical windows go right
 set splitbelow   " horizontal windows go below
-" help files
 autocmd FileType help wincmd L
+nnoremap <C-w>f :vertical wincmd f<CR>
 
 " Set line numbers where possible
 set number
