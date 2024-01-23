@@ -59,6 +59,11 @@ echo "brew bundle..."
 echo "stowing dotfiles..."
 /opt/homebrew/bin/stow softlinks
 
+echo "configuring exercism..."
+echo "go here: https://exercism.org/settings/api_cli"
+read -r -p  "what is your exercism token? " exercism_token
+echo exercism configure --token="$exercism_token"
+
 echo "installing julia packages..."
 script_dir=$(dirname $BASH_SOURCE)
 $julia_cmd "$script_dir/julia-setup.jl"
