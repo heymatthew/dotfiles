@@ -37,13 +37,12 @@ tee ~/.gitconfig.local >/dev/null <<EOF
 EOF
 vim ~/.gitconfig.local
 
-echo "netrc config..."
+echo "vim-rhubarb requires repo permissions"
+echo "plugin: https://github.com/tpope/vim-rhubarb"
+echo "tokens: https://github.com/settings/tokens"
 echo "editing .netrc config in vim 🤔, press enter to continue..."
 read -r
 tee ~/.netrc >/dev/null <<EOF
-# vim-rhubarb requires repo permissions
-# plugin: https://github.com/tpope/vim-rhubarb
-# tokens: https://github.com/settings/tokens
 machine api.github.com
   login heymatthew
   password <TOKEN from https://github.com/settings/tokens/new>
