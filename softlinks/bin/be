@@ -5,5 +5,9 @@ set -euo pipefail
 # Install deps if needed
 bundle check > /dev/null || bundle install
 
+if [[ -e "yarn.lock" ]]; then
+    yarn check > /dev/null || yarn install
+fi
+
 # Just shorthand for running "bundle exec ..." commands
 bundle exec "$@"
