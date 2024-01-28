@@ -175,7 +175,7 @@ autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<
                                          \ Go<C-r>=GitHumans()<CR>
                                          \ <ESC>gg
 " git log
-autocmd filetype fugitive nnoremap gl :vert G log --oneline -100<CR>
+autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
 " <C-l> refreshes git pane, like netrw refresh
 autocmd filetype fugitive nmap <buffer> <C-l> :Git<CR>
 " spellcheck commit messages
