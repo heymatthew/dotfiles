@@ -212,8 +212,9 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 autocmd FileType ruby :iabbrev <buffer> puts puts # FIXME: commit = death<ESC>F#<LEFT>i
 autocmd FileType ruby :iabbrev <buffer> binding binding # FIXME: commit = death<ESC>F#<LEFT>i
 
-" Spelling
+" Writing
 set spelllang=en_nz
+set dictionary=/usr/share/dict/words
 set thesaurus=~/.vim/thesaurus.txt
 if !filereadable(&thesaurus)
   echom "Downloading thesaurus file"
