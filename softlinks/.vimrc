@@ -261,3 +261,4 @@ nnoremap rc :echo 'Deprecated: Prefer ct from git pane'<CR>
 try | delcommand Gbrowse | catch | endtry
 try | delcommand Gremove | catch | endtry
 try | delcommand Grename | catch | endtry
+try | delcommand Gmove | catch | endtry
