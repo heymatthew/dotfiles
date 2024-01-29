@@ -30,6 +30,7 @@ brew "mplayer"
 brew "mpv"        # command line media player https://mpv.io/
 brew "mr"         # manage multiple git repos
 brew "mtr"
+brew "mutt"       # email
 brew "ncdu"
 brew "neovim"
 brew "netcat"     # gnu netcat > osx netcat
