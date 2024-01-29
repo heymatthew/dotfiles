@@ -100,20 +100,16 @@ autocmd Filetype sh       setlocal foldmethod=indent
 nnoremap <space> "+
 " visual space - read/write clipboard
 vnoremap <space> "+
-" read vimrc
-nnoremap rv :edit $HOME/dotfiles/softlinks/.vimrc<CR>
-" read theme
-nnoremap rt :edit ~/.vim/plugged/vim-blinkenlights/colors/blinkenlights.vim<CR>
-" read zshrc
-nnoremap rz :edit $HOME/dotfiles/softlinks/.zshrc<CR>
-" git status
-nnoremap gs :vert G<CR>
-" git blame
-nnoremap gb :G blame<CR>
-" go - fuzzy find file
-nnoremap go :FZF<CR>
-" read scatchpad
-nnoremap rs :edit $HOME/scratchpad.md<CR>
+" go to vimrc
+nnoremap gov :edit $HOME/dotfiles/softlinks/.vimrc<CR>
+" go to zshrc
+nnoremap goz :edit $HOME/dotfiles/softlinks/.zshrc<CR>
+" go to scatchpad
+nnoremap gos :edit $HOME/scratchpad.md<CR>
+" goo - fuzzy find file
+nnoremap goo :FZF<CR>
+" fuzzy find vim plugins
+nnoremap gop :FZF ~/.vim/plugged<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 " toggle ale - mnemonic riffs from tpope's unimpaired
@@ -158,6 +154,10 @@ vnoremap <silent> <expr> p <sid>VisualPut()
 noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " insert datestamp in command and insert mode
 noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
+" git status
+nnoremap gs :vert G<CR>
+" git blame
+nnoremap gb :G blame<CR>
 
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
