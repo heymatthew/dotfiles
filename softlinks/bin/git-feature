@@ -8,4 +8,5 @@ if [ -z "$NAME" ]; then
   exit 0
 fi
 
+# Central workflow assumed, push to branch but upstream to default branch
 git switch -c "$NAME" "origin/HEAD"
