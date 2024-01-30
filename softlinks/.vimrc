@@ -101,15 +101,13 @@ nnoremap <space> "+
 " visual space - read/write clipboard
 vnoremap <space> "+
 " go to vimrc
-nnoremap gov :edit $HOME/dotfiles/softlinks/.vimrc<CR>
+nnoremap cv :edit $HOME/dotfiles/softlinks/.vimrc<CR>
 " go to zshrc
-nnoremap goz :edit $HOME/dotfiles/softlinks/.zshrc<CR>
+nnoremap cz :edit $HOME/dotfiles/softlinks/.zshrc<CR>
 " go to scatchpad
-nnoremap gos :edit $HOME/scratchpad.md<CR>
+nnoremap cm :edit $HOME/scratchpad.md<CR>
 " goo - fuzzy find file
-nnoremap goo :FZF<CR>
-" fuzzy find vim plugins
-nnoremap gop :FZF ~/.vim/plugged<CR>
+nnoremap go :FZF<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 " toggle quickfix
