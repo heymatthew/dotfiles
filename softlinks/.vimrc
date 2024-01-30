@@ -197,6 +197,9 @@ autocmd! BufWritePost $MYVIMRC source $MYVIMRC
 autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $MYVIMRC
 " reload plugins on save
 autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
+" open location/quickfix after :make, :grep, :lvimgrep and friends
+autocmd! QuickFixCmdPost [^l]* cwindow
+autocmd! QuickFixCmdPost l*    cwindow
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
