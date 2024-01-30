@@ -3,12 +3,8 @@
 	path = ~/.gitconfig.local
 [alias]
 	wip = !git add . && git commit -m WIP
-	trunk = !git fetch && git checkout $(git origin-head)
-	origin-head = !cat .git/origin-head 2>/dev/null || (git origin-head-update && cat .git/origin-head)
-	origin-head-update = !git origin-head-get > .git/origin-head
-	origin-head-get = !echo "origin/$(git remote set-head origin -a | awk '{print $4}')"
+	trunk = !git checkout origin/HEAD
 	stat = status --porcelain
-	sync = !git fetch && git rebase --interactive origin/HEAD
 	lg = log --oneline
 	focus = !git branch | grep -v "^*" | xargs git branch -d
 	hub = !gh
