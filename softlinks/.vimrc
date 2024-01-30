@@ -160,7 +160,7 @@ nnoremap gs :vert G<CR>
 nnoremap gb :G blame<CR>
 
 " w!! saves as sudo
-cmap w!! w !sudo tee > /dev/null %
+cnoremap w!! w !sudo tee > /dev/null %
 
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
