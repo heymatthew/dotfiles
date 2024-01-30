@@ -158,6 +158,8 @@ noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 nnoremap gs :vert G<CR>
 " git blame
 nnoremap gb :G blame<CR>
+" open github commands
+nnoremap gh :G hub 
 
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
