@@ -111,7 +111,7 @@ nnoremap go :FZF<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 " toggle quickfix
-nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>' : ':cclose<CR>'
+nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
 " toggle ale - mnemonic riffs from tpope's unimpaired
 nnoremap yoa :ALEToggleBuffer<CR>
 " toggle goyo and soft pencil- mnemonic riffs from tpope's unimpaired
