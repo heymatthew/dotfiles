@@ -161,6 +161,9 @@ nnoremap gs :vert G<CR>
 " git blame
 nnoremap gb :G blame<CR>
 
+" w!! saves as sudo
+cmap w!! w !sudo tee > /dev/null %
+
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
 " changes - quickfix jumplist of hunks since branching
