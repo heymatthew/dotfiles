@@ -157,9 +157,9 @@ noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 " git status
 nnoremap gs :vert G<CR>
 " git blame
-nnoremap gb :G blame<CR>
+nnoremap gb :Git blame<CR>
 " open github commands
-nnoremap gh :G hub 
+nnoremap gh :Git hub 
 
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
@@ -167,7 +167,7 @@ cnoremap w!! w !sudo tee > /dev/null %
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
 " changes - quickfix jumplist of hunks since branching
-command! Changes exec ':G difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
 " now - insert timestamp after cursor
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " today - insert iso date after cursor
