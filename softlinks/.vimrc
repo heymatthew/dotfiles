@@ -112,6 +112,8 @@ nnoremap goo :FZF<CR>
 nnoremap gop :FZF ~/.vim/plugged<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
+" toggle quickfix
+nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>' : ':cclose<CR>'
 " toggle ale - mnemonic riffs from tpope's unimpaired
 nnoremap yoa :ALEToggleBuffer<CR>
 " toggle goyo and soft pencil- mnemonic riffs from tpope's unimpaired
