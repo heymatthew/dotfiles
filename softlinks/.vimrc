@@ -175,7 +175,7 @@ command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
 " edit commit template
 autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
                                          \ :!cp ~/.gitmessage .git/message<CR>
-                                         \ :!git config commit.template=.git/message<CR>
+                                         \ :!git config commit.template '.git/message'<CR>
                                          \ :edit .git/message<CR>
                                          \ Go<C-r>=GitHumans()<CR>
                                          \ <ESC>gg
