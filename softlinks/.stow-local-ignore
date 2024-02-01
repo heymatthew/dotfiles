@@ -1,0 +1,19 @@
+# From stow -vvvvv
+#   Ignoring path segment .gitignore
+#   dotfiles/softlinks/.stow-local-ignore didn't exist
+#   /Users/matthewgray/.stow-global-ignore didn't exist
+#   Using built-in ignore list
+#     Ignore list regexp for paths:    /(?^:(^|/)(^/COPYING|^/README.*|^/LICENSE.*|^/\.stow\-local\-ignore$)(/|$))/
+#     Ignore list regexp for segments: /(?^:^(#.*#|_darcs|\.git|\.hg|.+~|\.#.+|RCS|CVS|\.svn|.+,v|\.cvsignore|\.gitignore)$)/
+# 
+
+# Ignore list for paths
+COPYING
+README.*
+LICENSE.*
+.stow-local-ignore
+
+# Ignore list for segments:
+\.git
+\.hg
+\.svn
