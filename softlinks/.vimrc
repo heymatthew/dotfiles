@@ -46,7 +46,8 @@ let g:ale_set_highlights = 0               " remove highlights
 let g:ale_set_loclist = 0                  " don't clobber location list
 let g:ale_set_quickfix = 0                 " don't clobber quickfix list
 let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
-let g:pencil#wrapModeDefault = 'soft'      " prefer soft wrap
+let g:pencil#wrapModeDefault = 'hard'      " prefer hard wrap
+let g:pencil#autoformat = 1                " autoformat prose as you write it
 
 " detects background=light|dark from on terminal theme
 " manually toggle background with yob
@@ -115,7 +116,7 @@ nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>:
 " toggle ale - mnemonic riffs from tpope's unimpaired
 nnoremap yoa :ALEToggleBuffer<CR>
 " toggle goyo and soft pencil- mnemonic riffs from tpope's unimpaired
-nnoremap yog :Goyo<CR>:TogglePencil<CR>
+nnoremap yog :Goyo<CR>
 " Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
 nnoremap ]a :ALENextWrap<CR>
 " Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
@@ -202,6 +203,9 @@ autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 " open location/quickfix after :make, :grep, :lvimgrep and friends
 autocmd! QuickFixCmdPost [^l]* cwindow
 autocmd! QuickFixCmdPost l*    cwindow
+" goyo on also turns on pencil
+autocmd! User GoyoEnter nested :PencilHard
+autocmd! User GoyoLeave nested :NoPencil
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
