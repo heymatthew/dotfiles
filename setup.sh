@@ -56,7 +56,7 @@ echo "brew bundle..."
 /opt/homebrew/bin/brew bundle
 
 echo "stowing dotfiles..."
-/opt/homebrew/bin/stow softlinks
+/opt/homebrew/bin/stow -v softlinks
 
 echo "configuring exercism..."
 echo "go here: https://exercism.org/settings/api_cli"
