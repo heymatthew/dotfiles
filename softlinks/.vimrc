@@ -159,8 +159,6 @@ noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 nnoremap gs :vert G<CR>
 " git blame
 nnoremap gb :Git blame<CR>
-" open github commands
-nnoremap gh :Git hub 
 
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
@@ -184,6 +182,8 @@ autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<
 autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
 " <C-l> refreshes git pane, like netrw refresh
 autocmd filetype fugitive nmap <buffer> <C-l> :Git<CR>
+" open github commands
+autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
 " spellcheck commit messages
 autocmd Filetype gitcommit setlocal spell
 " spellcheck markdown
