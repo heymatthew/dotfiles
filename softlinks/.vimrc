@@ -206,12 +206,9 @@ autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 autocmd! QuickFixCmdPost [^l]* cwindow
 autocmd! QuickFixCmdPost l*    cwindow
 " goyo on also turns on pencil
-autocmd! User GoyoEnter nested :PencilHard
-autocmd! User GoyoEnter nested :Limelight
-autocmd! User GoyoEnter nested :DittoOn
-autocmd! User GoyoLeave nested :NoPencil
-autocmd! User GoyoLeave nested :Limelight!
-autocmd! User GoyoEnter nested :DittoOff
+
+autocmd! User GoyoEnter nested call <SID>ProseOn()
+autocmd! User GoyoLeave nested call <SID>ProseOff()
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
@@ -266,6 +263,18 @@ function! GitHumans()
  let humans = filter(humans, {index, val -> val !~ 'noreply'})
  let humans = map(humans, '"Co-Authored-By: " . v:val')
  return humans
+endfunction
+
+function! s:ProseOn()
+  PencilHard
+  DittoOn
+  Limelight
+endfunction
+
+function! s:ProseOff()
+  NoPencil
+  DittoOff
+  Limelight!
 endfunction
 
 " Deprecations and Habit Changes
