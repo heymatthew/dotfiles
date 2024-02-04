@@ -11,6 +11,7 @@ Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
 Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
+Plug 'junegunn/limelight.vim'          " Hyperfocus writing
 Plug 'junegunn/vader.vim'              " Vimscript test framework
 Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
 Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
@@ -205,7 +206,9 @@ autocmd! QuickFixCmdPost [^l]* cwindow
 autocmd! QuickFixCmdPost l*    cwindow
 " goyo on also turns on pencil
 autocmd! User GoyoEnter nested :PencilHard
+autocmd! User GoyoEnter nested :Limelight
 autocmd! User GoyoLeave nested :NoPencil
+autocmd! User GoyoLeave nested :Limelight!
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
