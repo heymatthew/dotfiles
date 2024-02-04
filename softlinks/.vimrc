@@ -7,6 +7,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
+Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
 Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
@@ -207,8 +208,10 @@ autocmd! QuickFixCmdPost l*    cwindow
 " goyo on also turns on pencil
 autocmd! User GoyoEnter nested :PencilHard
 autocmd! User GoyoEnter nested :Limelight
+autocmd! User GoyoEnter nested :DittoOn
 autocmd! User GoyoLeave nested :NoPencil
 autocmd! User GoyoLeave nested :Limelight!
+autocmd! User GoyoEnter nested :DittoOff
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
