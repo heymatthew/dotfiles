@@ -60,6 +60,9 @@ set splitright   " vertical windows go right
 set splitbelow   " horizontal windows go below
 autocmd FileType help wincmd L
 nnoremap <C-w>f :vertical wincmd f<CR>
+nnoremap <C-w>d :vertical wincmd d<CR>
+nnoremap <C-w>] :vertical wincmd ]<CR>
+nnoremap <C-w>^ :vertical wincmd ^<CR>
 
 " Set line numbers where possible
 set number
