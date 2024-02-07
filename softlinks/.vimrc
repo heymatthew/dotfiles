@@ -63,6 +63,7 @@ nnoremap <C-w>f :vertical wincmd f<CR>
 nnoremap <C-w>d :vertical wincmd d<CR>
 nnoremap <C-w>] :vertical wincmd ]<CR>
 nnoremap <C-w>^ :vertical wincmd ^<CR>
+nnoremap <C-w>F :vertical wincmd F<CR>
 
 " Set line numbers where possible
 set number
