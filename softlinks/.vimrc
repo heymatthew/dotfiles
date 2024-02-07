@@ -105,11 +105,11 @@ nnoremap <space> "+
 " visual space - read/write clipboard
 vnoremap <space> "+
 " go to vimrc
-nnoremap cv :edit $HOME/dotfiles/softlinks/.vimrc<CR>
+nnoremap <leader>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
 " go to zshrc
-nnoremap cz :edit $HOME/dotfiles/softlinks/.zshrc<CR>
+nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
 " go to scatchpad
-nnoremap cm :edit $HOME/scratchpad.md<CR>
+nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
 " goo - fuzzy find file
 nnoremap go :FZF<CR>
 " yank path
@@ -162,7 +162,6 @@ noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 nnoremap gs :vert G<CR>
 " git blame
 nnoremap gb :Git blame<CR>
-
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -230,10 +229,10 @@ autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>mdA # FIXME: commit 
 " Writing
 set spelllang=en_nz
 set dictionary=/usr/share/dict/words
-set thesaurus=~/.vim/thesaurus.txt
+set thesaurus=~/.vim/thesaurus/mthesaur.txt
 if !filereadable(&thesaurus)
   echom "Downloading thesaurus file"
-  silent !curl -fLo ~/.vim/thesaurus.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
+  silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
 endif
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
