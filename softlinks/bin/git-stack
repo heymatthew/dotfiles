@@ -1,20 +1,14 @@
 #!/usr/bin/env bash
 
 # git stack - Apply a command to all branches from your current checkout
-# e.g. git stack push -f
+# example: git stack push origin -f
+# executes: git push origin -f namespace/feature namespace/feature-prepatory-refactor
 
-branch_stack=""
-commits=$(git log --pretty=format:"%H" origin/HEAD..HEAD)
-for ref in $commits; do
-    branches=$(git for-each-ref --points-at "$ref" --format '%(refname)')
-    [[ -n "$branches" ]] && branch_stack+=" $branches"
-done
-
+branch_stack=$(git log --decorate-refs-exclude=HEAD --format='%D' "@{upstream}"... | awk "NF")
 if [ $# -eq 0 ]; then
     echo "$branch_stack"
     exit 0
 fi
 
-for b in $branch_stack; do
-  git "$@" "origin $b"
-done
+branches=$(tr '\n' ' ' <<< "$branch_stack")
+git "$@" "$branches"
