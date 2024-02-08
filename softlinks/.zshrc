@@ -177,7 +177,7 @@ fi
 
 # hose things that match string
 # e.g. nerf ruby
-alias nerf='pkill -if'
+alias nerf='pkill -9 -i -f'
 
 # .envrc files contain secrets, if direnv exists export them on directory traversal
 if which direnv > /dev/null; then
