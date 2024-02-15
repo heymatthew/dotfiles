@@ -272,11 +272,13 @@ endfunction
 function! s:ProseOn()
   DittoOn
   Limelight
+  set wrap
 endfunction
 
 function! s:ProseOff()
   DittoOff
   Limelight!
+  set nowrap
 endfunction
 
 " Deprecations and Habit Changes
