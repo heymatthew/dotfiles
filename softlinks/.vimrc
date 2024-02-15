@@ -163,8 +163,6 @@ noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 nnoremap gs :vert G<CR>
 " git blame
 nnoremap gb :Git blame<CR>
-" z- thesaurus, mnemonic z= spelling lookup
-nnoremap z- viwA<C-x><C-t>
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -231,7 +229,7 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>mdA # FIXME: commit = death<ESC>`da
 autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>mdA # FIXME: commit = death<ESC>`da
 
-" Writing
+" Writing Prose
 set spelllang=en_nz
 set dictionary=/usr/share/dict/words
 set thesaurus=~/.vim/thesaurus/mthesaur.txt
@@ -239,6 +237,10 @@ if !filereadable(&thesaurus)
   echom "Downloading thesaurus file"
   silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
 endif
+" z- thesaurus, mnemonic z= spelling lookup
+nnoremap z- viwA<C-x><C-t>
+" K dictionary lookup word under cursor
+autocmd Filetype markdown setlocal nnoremap K :!dict <cword>
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
