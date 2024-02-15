@@ -163,6 +163,8 @@ noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 nnoremap gs :vert G<CR>
 " git blame
 nnoremap gb :Git blame<CR>
+" z- thesaurus, mnemonic z= spelling lookup
+nnoremap z- viwA<C-x><C-t>
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
 
