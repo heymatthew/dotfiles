@@ -9,7 +9,7 @@
 	focus = !git branch | grep -v "^*" | xargs git branch -d
 	hub = !gh
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.gitconfig_ignore
 	pager = less -iXFR
 [init]
 	defaultBranch = trunk
