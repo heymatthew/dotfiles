@@ -65,7 +65,7 @@ echo exercism configure --token="$exercism_token"
 
 echo "installing julia packages..."
 script_dir=$(dirname $BASH_SOURCE)
-$julia_cmd "$script_dir/julia-setup.jl"
+/opt/homebrew/bin/julia "$script_dir/julia-setup.jl"
 
 echo "Installing vale linters..."
 vale sync
