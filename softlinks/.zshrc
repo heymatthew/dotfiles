@@ -98,7 +98,7 @@ fi
 
 # Conditionally load files
 [ -e ~/.config/local/env ] && source ~/.config/local/env
-[ -e ~/.zshrc.local ]      && source ~/.zshrc.local
+[ -e ~/.zshrc_local ]      && source ~/.zshrc_local
 [ -f ~/.fzf.zsh ]          && source ~/.fzf.zsh
 
 function rehash() {
