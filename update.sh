@@ -8,6 +8,9 @@ fi
 echo "vim..."
 vim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdateBinaries") | qa'
 
+echo "restowing dotfiles..."
+/opt/homebrew/bin/stow -v softlinks
+
 echo "julia..."
 julia -e 'using Pkg; Pkg.update()'
 
