@@ -240,7 +240,7 @@ endif
 " z- thesaurus, mnemonic z= spelling lookup
 nnoremap z- viwA<C-x><C-t>
 " K dictionary lookup word under cursor
-autocmd Filetype markdown setlocal nnoremap K :!dict <cword>
+autocmd Filetype markdown nnoremap <buffer> K :!dict <cword>
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
