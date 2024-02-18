@@ -64,7 +64,7 @@ read -r -p  "what is your exercism token? " exercism_token
 echo exercism configure --token="$exercism_token"
 
 echo "installing julia packages..."
-script_dir=$(dirname $BASH_SOURCE)
+script_dir=$(dirname "${BASH_SOURCE[0]}")
 /opt/homebrew/bin/julia "$script_dir/julia-setup.jl"
 
 echo "Installing vale linters..."
