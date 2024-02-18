@@ -208,7 +208,7 @@ autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 " open location/quickfix after :make, :grep, :lvimgrep and friends
 autocmd! QuickFixCmdPost [^l]* cwindow
 autocmd! QuickFixCmdPost l*    cwindow
-
+" Setup prose mappings for Goyo
 autocmd! User GoyoEnter nested call <SID>ProseOn()
 autocmd! User GoyoLeave nested call <SID>ProseOff()
 
