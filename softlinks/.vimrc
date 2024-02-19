@@ -165,6 +165,8 @@ nnoremap gs :vert G<CR>
 nnoremap gb :Git blame<CR>
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
+" <C-[> populates quickfix with references, mnemonic <C-]> go to tag
+nnoremap <C-[> :ALEFindReferences -quickfix<CR>
 
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
