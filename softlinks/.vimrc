@@ -167,6 +167,8 @@ nnoremap gb :Git blame<CR>
 cnoremap w!! w !sudo tee > /dev/null %
 " <C-[> populates quickfix with references, mnemonic <C-]> go to tag
 autocmd filetype ruby,go nnoremap <buffer> <C-[> :ALEFindReferences -quickfix<CR>
+" <C-]> calls uses LSP rather than tags
+autocmd filetype ruby,go nnoremap <buffer> <C-]> :ALEGoToDefinition<CR>
 
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
