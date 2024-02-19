@@ -1,6 +1,9 @@
 [include]
 	# templated for per-machine git settings
-	path = ~/.gitconfig.local
+	path = ~/.git_local
+[core]
+	excludesfile = ~/.git_ignore
+	pager = less -iXFR
 [alias]
 	wip = !git add . && git commit -m WIP
 	trunk = !git checkout origin/HEAD
@@ -8,9 +11,6 @@
 	lg = log --oneline
 	focus = !git branch | grep -v "^*" | xargs git branch -d
 	hub = !gh
-[core]
-	excludesfile = ~/.gitconfig_ignore
-	pager = less -iXFR
 [init]
 	defaultBranch = trunk
 [pull]
