@@ -169,6 +169,8 @@ cnoremap w!! w !sudo tee > /dev/null %
 autocmd filetype ruby,go nnoremap <buffer> <C-[> :ALEFindReferences -quickfix<CR>
 " <C-]> calls uses LSP rather than tags
 autocmd filetype ruby,go nnoremap <buffer> <C-]> :ALEGoToDefinition<CR>
+" Format markdown with pandoc. FIXME: pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
+autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
 
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
