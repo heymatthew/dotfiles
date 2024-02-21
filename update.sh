@@ -11,6 +11,9 @@ vim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdat
 echo "restowing dotfiles..."
 /opt/homebrew/bin/stow -v softlinks
 
+echo "update prose linter..."
+vale sync
+
 echo "julia..."
 julia -e 'using Pkg; Pkg.update()'
 
