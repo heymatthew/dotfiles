@@ -2,7 +2,7 @@
 	# templated for per-machine git settings
 	path = ~/.git_local
 [core]
-	excludesfile = ~/.git_ignore
+	excludesfile = ~/.gitexcludes
 	pager = less -iXFR
 [alias]
 	wip = !git add . && git commit -m WIP
