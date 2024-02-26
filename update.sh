@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+script_dir=$(dirname "$0")
+cd "$script_dir" || exit 1
+
 if which aws-vault > /dev/null && [ -n "$AWS_PROFILE" ]; then
   echo "rotating aws keys..."
   aws-vault rotate "$AWS_PROFILE"
@@ -18,6 +21,7 @@ echo "julia..."
 julia -e 'using Pkg; Pkg.update()'
 
 echo "brew..."
+brew bundle
 brew upgrade
 brew upgrade --cask
 brew cleanup
