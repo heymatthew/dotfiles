@@ -49,6 +49,7 @@ brew "tree"
 brew "trippy"     # network analysis replacement for traceroute and ping
 brew "vale"       # Linter for English https://vale.sh/
 brew "vim"
+brew "vint"       # Linter for vim
 brew "watch"
 brew "wget"
 brew "zsh"
