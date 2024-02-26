@@ -5,10 +5,6 @@ set -euo pipefail
 # Install deps if needed
 bundle check > /dev/null || bundle install
 
-# LSP - https://langserver.org
-# Ruby using Solargraph - https://solargraph.org/
-which solargraph > /dev/null || gem install solargraph
-
 if [[ -e "yarn.lock" ]]; then
     yarn check > /dev/null || yarn install
 fi

@@ -165,10 +165,6 @@ nnoremap gs :vert G<CR>
 nnoremap gb :Git blame<CR>
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
-" <C-[> populates quickfix with references, mnemonic <C-]> go to tag
-autocmd filetype ruby,go nnoremap <buffer> <C-[> :ALEFindReferences -quickfix<CR>
-" <C-]> calls uses LSP rather than tags
-autocmd filetype ruby,go nnoremap <buffer> <C-]> :ALEGoToDefinition<CR>
 " Format markdown with pandoc. FIXME: pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
 autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
 " Format json files with jq
