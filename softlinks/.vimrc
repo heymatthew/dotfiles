@@ -1,7 +1,8 @@
 " .vimrc configuration file
+" vint: -ProhibitAutocmdWithNoGroup
 
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
-  echom "Installing plug"
+  echom 'Installing plug'
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
@@ -238,7 +239,7 @@ set spelllang=en_nz
 set dictionary=/usr/share/dict/words
 set thesaurus=~/.vim/thesaurus/mthesaur.txt
 if !filereadable(&thesaurus)
-  echom "Downloading thesaurus file"
+  echom 'Downloading thesaurus file'
   silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
 endif
 " z- thesaurus, mnemonic z= spelling lookup
@@ -249,7 +250,7 @@ autocmd Filetype markdown nnoremap <buffer> K :!dict <cword>
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
 function! PositionCursor()
-  if index(s:cursor_exceptions, &filetype) == -1 && line("'\"") <= line("$")
+  if index(s:cursor_exceptions, &filetype) == -1 && line("'\"") <= line('$')
     normal! g`"
     return 1
   endif
