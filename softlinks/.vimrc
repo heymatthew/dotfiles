@@ -199,7 +199,7 @@ autocmd Filetype markdown setlocal spell
 " restore cursor position on file open
 autocmd BufWinEnter * call PositionCursor()
 " Turn off syntax highlighting in large files
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | endif
+autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal foldmethod=manual | echo 'chonky file: syntax off, fold manual' | endif
 " Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
 autocmd VimResized * wincmd =
 " ...and new splits that might open, e.g. v from netrw
