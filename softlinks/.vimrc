@@ -234,6 +234,12 @@ autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>mdA # FIXME: commit = death<ESC>`da
 autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>mdA # FIXME: commit = death<ESC>`da
 
+" Cludges and workarounds
+" FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
+autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
+" <C-l> toggles syntax too, ruby's syntax parser can get slow
+autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
+
 " Writing Prose
 set spelllang=en_nz
 set dictionary=/usr/share/dict/words
