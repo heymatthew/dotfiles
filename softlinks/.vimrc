@@ -192,6 +192,8 @@ autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
 autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
 " open github commands
 autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
+" create empty commit, good for 
+autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
 " spellcheck commit messages
 autocmd Filetype gitcommit setlocal spell
 " spellcheck markdown
