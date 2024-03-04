@@ -250,10 +250,33 @@ if !filereadable(&thesaurus)
   echom 'Downloading thesaurus file'
   silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
 endif
-" z- thesaurus, mnemonic z= spelling lookup
-nnoremap z- viwA<C-x><C-t>
 " K dictionary lookup word under cursor
 autocmd Filetype markdown nnoremap <buffer> K :!dict <cword>
+" Experimental thesaurus lookup
+if filereadable(&thesaurus)
+  let thesaurus = {}
+
+  for line in readfile(&thesaurus)
+    let parts = split(line, ',')
+    let [word, synonyms] = [parts[0], parts[1:]]
+    let thesaurus[word] = synonyms
+  endfor
+
+  " FIXME: This works, but there's a bug to squash
+  " SyntaxError - E492: Not an editor command: <selected_word> (see vim-jp/vim-vimlparser)
+  function! Suggest(thesaurus, word)
+    let synonyms = a:thesaurus[a:word][:&lines - 2]
+    let synonyms = map(synonyms, { i, synonym -> (i+1) . '. ' . synonym })
+    let choice = inputlist(synonyms)
+    let replace = a:thesaurus[a:word][choice-1]
+    echo "\nYou selected " . replace
+    exec 'normal! ciw' . replace
+  endfunction
+
+  " z- thesaurus, mnemonic z= spelling lookup
+  " Alternative to nnoremap z- viwA<C-x><C-t>
+  nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
+endif
 
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
