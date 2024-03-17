@@ -120,6 +120,8 @@ nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
 " toggle ale - mnemonic riffs from tpope's unimpaired
 nnoremap yoa :ALEToggleBuffer<CR>
+" Toggle edit and write, similar to https://hemingwayapp.com
+nnoremap <expr> yoe ToggleEditToWrite()
 " toggle goyo - mnemonic riffs from tpope's unimpaired
 nnoremap yog :Goyo<CR>
 " Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
@@ -215,9 +217,9 @@ autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 " open location/quickfix after :make, :grep, :lvimgrep and friends
 autocmd! QuickFixCmdPost [^l]* cwindow
 autocmd! QuickFixCmdPost l*    cwindow
-" Setup prose mappings for Goyo
-autocmd! User GoyoEnter nested call <SID>ProseOn()
-autocmd! User GoyoLeave nested call <SID>ProseOff()
+" turn on limelight when using Goyo
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
@@ -307,16 +309,18 @@ function! GitHumans()
  return humans
 endfunction
 
-function! s:ProseOn()
-  DittoOn
-  Limelight
-  set wrap
-endfunction
-
-function! s:ProseOff()
-  DittoOff
-  Limelight!
-  set nowrap
+function! ToggleEditToWrite()
+  if &spell
+    set nospell
+    ALEDisable
+    Limelight!
+    " DittoOff
+  else
+    set spell
+    ALEEnable
+    Limelight
+    " DittoOn
+  endif
 endfunction
 
 " Deprecations and Habit Changes
