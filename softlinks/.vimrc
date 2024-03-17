@@ -93,9 +93,10 @@ set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 0
 " Set foldmethod but expand all when opening files
 set foldmethod=syntax
 autocmd BufRead * normal zR
-autocmd Filetype fugitive setlocal foldmethod=manual
-autocmd Filetype haml     setlocal foldmethod=indent
-autocmd Filetype sh       setlocal foldmethod=indent
+autocmd Filetype fugitive   setlocal foldmethod=manual
+autocmd Filetype haml       setlocal foldmethod=indent
+autocmd Filetype sh         setlocal foldmethod=indent
+autocmd Filetype eruby.yaml setlocal foldmethod=indent
 
 " Mapping Principles (WIP)
 " 1. Common usage should use chords or single key presses
