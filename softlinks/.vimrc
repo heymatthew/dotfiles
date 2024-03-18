@@ -201,8 +201,6 @@ autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub
 autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
 " spellcheck commit messages
 autocmd Filetype gitcommit setlocal spell
-" spellcheck markdown
-autocmd Filetype markdown setlocal spell
 " restore cursor position on file open
 autocmd BufWinEnter * call PositionCursor()
 " Turn off syntax highlighting in large files
