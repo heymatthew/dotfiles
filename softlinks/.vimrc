@@ -315,12 +315,12 @@ function! ToggleEditToWrite()
     set nospell
     ALEDisable
     Limelight!
-    " DittoOff
+    DittoOff
   else
     set spell
     ALEEnable
     Limelight
-    " DittoOn
+    Ditto
   endif
 endfunction
 
