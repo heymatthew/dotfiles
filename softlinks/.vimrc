@@ -112,6 +112,8 @@ nnoremap <leader>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
 nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
 " go to scatchpad
 nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
+" go to plugins
+nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
 " goo - fuzzy find file
 nnoremap go :FZF<CR>
 " yank path
