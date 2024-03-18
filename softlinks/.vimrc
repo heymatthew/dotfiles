@@ -13,7 +13,6 @@ Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
 Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
-Plug 'junegunn/limelight.vim'          " Hyperfocus writing
 Plug 'junegunn/vader.vim'              " Vimscript test framework
 Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
 Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
@@ -218,9 +217,6 @@ autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 " open location/quickfix after :make, :grep, :lvimgrep and friends
 autocmd! QuickFixCmdPost [^l]* cwindow
 autocmd! QuickFixCmdPost l*    cwindow
-" turn on limelight when using Goyo
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
 
 " Whitespace management
 set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
@@ -314,12 +310,10 @@ function! ToggleEditToWrite()
   if &spell
     set nospell
     ALEDisable
-    Limelight!
     DittoOff
   else
     set spell
     ALEEnable
-    Limelight
     Ditto
   endif
 endfunction
