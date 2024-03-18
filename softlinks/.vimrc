@@ -96,6 +96,7 @@ autocmd Filetype fugitive   setlocal foldmethod=manual
 autocmd Filetype haml       setlocal foldmethod=indent
 autocmd Filetype sh         setlocal foldmethod=indent
 autocmd Filetype eruby.yaml setlocal foldmethod=indent
+autocmd FileType help       setlocal conceallevel=0
 
 " Mapping Principles (WIP)
 " 1. Common usage should use chords or single key presses
