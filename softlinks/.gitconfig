@@ -13,6 +13,9 @@
 	hub = !gh
 [init]
 	defaultBranch = trunk
+[diff]
+	# https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+	algorithm = histogram
 [pull]
 	rebase = true
 [push]

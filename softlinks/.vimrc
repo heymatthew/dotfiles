@@ -87,6 +87,7 @@ set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg 
 set colorcolumn=120                 " Show 100th char visually
 set nomodeline modelines=0          " Disable modelines as a security precaution
 set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
+set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
 " set textwidth=100                 " hard wrap
 
 " Set foldmethod but expand all when opening files
