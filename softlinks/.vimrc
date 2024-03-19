@@ -208,8 +208,10 @@ autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | set
 " Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
 autocmd VimResized * wincmd =
 " ...and new splits that might open, e.g. v from netrw
-let s:resize_exceptions = ['qf', 'loc', 'fugitive']
+let s:resize_exceptions = ['qf', 'loc', 'fugitive', 'help']
 autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
+" ...and help windows are 90 chars wide
+autocmd FileType help vertical resize 90
 " reload vimrc on edits, credit http://howivim.com/2016/damian-conway
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC
 autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $MYVIMRC
