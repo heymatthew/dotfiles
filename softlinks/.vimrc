@@ -312,11 +312,13 @@ function! GitHumans()
 endfunction
 
 function! ToggleEditToWrite()
-  if &spell
+  if &spell || g:ale_enabled
+    echo 'Writer focus'
     set nospell
     ALEDisable
     DittoOff
   else
+    echo 'Editor focus'
     set spell
     ALEEnable
     Ditto
