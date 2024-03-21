@@ -246,6 +246,11 @@ autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
 " <C-l> toggles syntax too, ruby's syntax parser can get slow
 autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
 
+" K uses dictionary for markdown
+autocmd Filetype markdown setlocal keywordprg=dict
+" K uses ri for ruby
+autocmd Filetype ruby setlocal keywordprg=ri
+
 " Writing Prose
 set spelllang=en_nz
 set dictionary=/usr/share/dict/words
