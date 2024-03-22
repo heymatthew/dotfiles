@@ -89,6 +89,7 @@ set nomodeline modelines=0          " Disable modelines as a security precaution
 set foldminlines=3                  " Folds only operate on blocks more than 3 lines long
 set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
 set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+set cdpath="~/src"                  " cd to directories under ~src without explicit path
 " set textwidth=100                 " hard wrap
 
 " Set foldmethod but expand all when opening files
