@@ -334,8 +334,6 @@ endfunction
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
-nnoremap gr :echo 'Deprecated: Prefer ru from git pane'<CR>
-nnoremap rc :echo 'Deprecated: Prefer ct from git pane'<CR>
 " Remove deprecated fugitive commands to unclog tab completion
 " see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
 try | delcommand Gbrowse | catch | endtry
