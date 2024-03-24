@@ -247,10 +247,12 @@ autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
 " <C-l> toggles syntax too, ruby's syntax parser can get slow
 autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
 
-" K uses dictionary for markdown
-autocmd Filetype markdown setlocal keywordprg=dict
 " K uses ri for ruby
 autocmd Filetype ruby setlocal keywordprg=ri
+" K uses dictionary for markdown
+autocmd Filetype markdown setlocal keywordprg=dict
+" markdown complete ignores case for matches but uses the context
+autocmd Filetype markdown setlocal ignorecase infercase
 
 " Writing Prose
 set spelllang=en_nz
