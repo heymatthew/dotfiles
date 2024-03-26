@@ -178,6 +178,8 @@ cnoremap w!! w !sudo tee > /dev/null %
 autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
 " Format json files with jq
 autocmd FileType json setlocal formatprg=jq
+" Workaround: Allow other content to load in :Git pane, https://github.com/tpope/vim-fugitive/issues/2272
+autocmd BufEnter * if &filetype == 'fugitive' | set nowinfixbuf | endif
 
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
