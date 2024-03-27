@@ -16,6 +16,9 @@
 [diff]
 	# https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
 	algorithm = histogram
+[merge]
+	#  https://ductile.systems/zdiff3/
+	conflictstyle = zdiff3
 [pull]
 	rebase = true
 [push]
