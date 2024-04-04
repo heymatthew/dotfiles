@@ -239,8 +239,8 @@ autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwid
 autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
 " Debugging reminders
-autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>mdA # FIXME: commit = death<ESC>`da
-autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>mdA # FIXME: commit = death<ESC>`da
+autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
+autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
 
 " Cludges and workarounds
 " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
