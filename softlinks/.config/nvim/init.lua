@@ -25,3 +25,17 @@ indent_opts({ file_type = 'sh', indent = 4 })
 indent_opts({ file_type = 'julia', indent = 4 })
 indent_opts({ file_type = 'gitconfig', indent = 4, expand_tab = false })
 indent_opts({ file_type = 'lua', indent = 4 })
+
+local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+print("Plugins: " .. lazy_path)
+if not vim.loop.fs_stat(lazy_path) then
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazy_path,
+    })
+end
+vim.opt.rtp:prepend(lazy_path)
