@@ -57,4 +57,9 @@ require('pckr').add {
     'tpope/vim-unimpaired',            -- <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
     'tpope/vim-vinegar',               -- Better file browser
     'dense-analysis/ale',              -- Linteger integration
+    { 'rose-pine/neovim',
+        config = function()
+            vim.cmd.colorscheme 'rose-pine'
+        end
+    }
 }
