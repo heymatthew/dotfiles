@@ -25,6 +25,10 @@ indent_opts({ file_type = 'julia', indent = 4 })
 indent_opts({ file_type = 'gitconfig', indent = 4, expand_tab = false })
 indent_opts({ file_type = 'lua', indent = 4 })
 
+vim.opt.splitright = true       -- vertical windows go right
+vim.opt.splitbelow = true       -- horizontal windows go below
+vim.cmd "autocmd! FileType help wincmd L | vertical resize 90"
+
 local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 print('Plugin Directory: '.. pckr_path)
 if not vim.loop.fs_stat(pckr_path) then
