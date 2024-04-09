@@ -110,8 +110,8 @@ autocmd FileType help       setlocal conceallevel=0
 nnoremap <space> "+
 " visual space - read/write clipboard
 vnoremap <space> "+
-" go to vimrc
-nnoremap <leader>v :edit $MYVIMRC<CR>
+" go to vimrc, follow symlinks
+nnoremap <leader>v :execute 'edit ' . resolve($MYVIMRC)<CR>
 " go to zshrc
 nnoremap <leader>z :edit $HOME/.zshrc<CR>
 " go to scatchpad
@@ -219,6 +219,7 @@ autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | end
 autocmd FileType help vertical resize 90
 " reload vimrc on edits, credit http://howivim.com/2016/damian-conway
 autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $HOME/dotfiles/softlinks/.vimrc
 " reload plugins on save
 autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
 " open location/quickfix after :make, :grep, :lvimgrep and friends
