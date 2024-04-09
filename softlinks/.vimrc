@@ -169,7 +169,7 @@ noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " insert datestamp in command and insert mode
 noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
 " git status
-nnoremap gs :vert G<CR>
+nnoremap gs :vert Git<CR>
 " git blame
 nnoremap gb :Git blame<CR>
 " w!! saves as sudo
