@@ -23,16 +23,35 @@ indent_opts({ file_type = 'julia', indent = 4 })
 indent_opts({ file_type = 'gitconfig', indent = 4, expand_tab = false })
 indent_opts({ file_type = 'lua', indent = 4 })
 
-local lazy_path = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-print("Plugins: " .. lazy_path)
-if not vim.loop.fs_stat(lazy_path) then
-    vim.fn.system({
-        "git",
-        "clone",
-        "--filter=blob:none",
-        "https://github.com/folke/lazy.nvim.git",
-        "--branch=stable", -- latest stable release
-        lazy_path,
-    })
+local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+if not vim.loop.fs_stat(pckr_path) then
+vim.fn.system({
+    'git',
+    'clone',
+    "--filter=blob:none",
+    'https://github.com/lewis6991/pckr.nvim',
+    pckr_path
+})
 end
-vim.opt.rtp:prepend(lazy_path)
+vim.opt.rtp:prepend(pckr_path)
+
+require('pckr').add {
+    'tpope/vim-abolish',               -- Word conversions, including snake to pascal case
+    'tpope/vim-characterize',          -- UTF8 outputs for ga binding
+    'tpope/vim-commentary',            -- Toggle comments on lines
+    'tpope/vim-dadbod',                -- Database from your vim
+    'tpope/vim-dispatch',              -- Builds and tests with asynchronous adapters: https://vimeo.com/63116209
+    'tpope/vim-eunuch',                -- Utils and typing shebang line causes file type re-detection with +x
+    'tpope/vim-fugitive',              -- Git
+    'tpope/vim-jdaddy',                -- JSON text objects (aj) and pretty print (gqaj) for json
+    'tpope/vim-obsession',             -- Makes sessions easier to manage with :Obsess
+    'tpope/vim-rails',                 -- For rails codebases
+    'tpope/vim-repeat',                -- Lets you use . for surround and other plugins
+    'tpope/vim-rhubarb',               -- Github extension for fugitive
+    'tpope/vim-sensible',              -- Good defaults, love your work tpope!
+    'tpope/vim-speeddating',           -- <ctrl>a and <ctrl>x works on dates and roman numerals. 7<C-a> will jump a week.
+    'tpope/vim-surround',              -- Delete, or insert around text objects
+    'tpope/vim-unimpaired',            -- <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
+    'tpope/vim-vinegar',               -- Better file browser
+    'dense-analysis/ale',              -- Linteger integration
+}
