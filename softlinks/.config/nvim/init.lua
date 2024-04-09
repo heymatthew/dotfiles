@@ -1,5 +1,7 @@
 -- Quick iteration on nvim config, credit http://howivim.com/2016/damian-conway
 vim.api.nvim_set_keymap('n', '<leader>v', ':edit $MYVIMRC<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<leader>p', ':edit ' .. vim.fn.stdpath("data") .. '<CR>', {noremap = true, silent = true})
+
 vim.cmd 'autocmd! BufWritePost $MYVIMRC source $MYVIMRC'
 
 function indent_opts(args)
@@ -24,6 +26,7 @@ indent_opts({ file_type = 'gitconfig', indent = 4, expand_tab = false })
 indent_opts({ file_type = 'lua', indent = 4 })
 
 local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+print('Plugin Directory: '.. pckr_path)
 if not vim.loop.fs_stat(pckr_path) then
 vim.fn.system({
     'git',
