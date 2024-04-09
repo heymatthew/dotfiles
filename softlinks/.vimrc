@@ -12,7 +12,9 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
 Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
+Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
+Plug 'junegunn/fzf',  { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
 Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
@@ -39,9 +41,7 @@ Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY
 Plug 'tpope/vim-vinegar'               " Better file browser
 Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
-Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
-Plug 'w0rp/ale',      { 'as': 'vim-ale' }
-Plug 'junegunn/fzf',  { 'as': 'vim-fzf', 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
+Plug 'w0rp/ale',                       " Linter
 call plug#end()
 
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
