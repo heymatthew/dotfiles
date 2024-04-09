@@ -190,6 +190,8 @@ cnoremap w!! w !sudo tee > /dev/null %
 command! Focus wa|%bd|e#
 " changes - quickfix jumplist of hunks since branching
 command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+" gC - list changes from normal mode
+nnoremap gC :Changes<CR>
 " now - insert timestamp after cursor
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " today - insert iso date after cursor
