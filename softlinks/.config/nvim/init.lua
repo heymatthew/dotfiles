@@ -43,6 +43,7 @@ end
 vim.opt.rtp:prepend(pckr_path)
 
 require('pckr').add {
+    'dense-analysis/ale',              -- Linteger integration
     'michaeljsmith/vim-indent-object', -- Select indents as an object
     'tpope/vim-abolish',               -- Word conversions, including snake to pascal case
     'tpope/vim-characterize',          -- UTF8 outputs for ga binding
