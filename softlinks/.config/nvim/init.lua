@@ -43,6 +43,7 @@ end
 vim.opt.rtp:prepend(pckr_path)
 
 require('pckr').add {
+    'michaeljsmith/vim-indent-object', -- Select indents as an object
     'tpope/vim-abolish',               -- Word conversions, including snake to pascal case
     'tpope/vim-characterize',          -- UTF8 outputs for ga binding
     'tpope/vim-commentary',            -- Toggle comments on lines
@@ -59,7 +60,6 @@ require('pckr').add {
     'tpope/vim-surround',              -- Delete, or insert around text objects
     'tpope/vim-unimpaired',            -- <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
     'tpope/vim-vinegar',               -- Better file browser
-    'dense-analysis/ale',              -- Linteger integration
 
     { 'tpope/vim-fugitive',
         config = function()
@@ -96,6 +96,7 @@ require('pckr').add {
     },
 
     { 'rose-pine/neovim',
+        as = 'rose-pine',
         config = function()
             vim.cmd.colorscheme 'rose-pine'
         end
