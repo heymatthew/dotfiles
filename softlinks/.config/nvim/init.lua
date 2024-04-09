@@ -1,9 +1,6 @@
 -- Quick iteration on nvim config, credit http://howivim.com/2016/damian-conway
 vim.api.nvim_set_keymap('n', '<leader>v', ':edit $MYVIMRC<CR>', {noremap = true, silent = true})
-vim.api.nvim_create_autocmd('BufWritePost', {
-    pattern = '$MYVIMRC',
-    callback = function() vim.cmd('source $MYVIMRC') end
-})
+vim.cmd 'autocmd! BufWritePost $MYVIMRC source $MYVIMRC'
 
 function indent_opts(args)
     vim.api.nvim_create_autocmd('FileType', {
