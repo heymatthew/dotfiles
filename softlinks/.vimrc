@@ -3,6 +3,10 @@
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
   echom 'Installing plug'
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  try | source $MYVIMRC | catch | endtry
+  PlugInstall
+  source $MYVIMRC 
+  finish
 endif
 
 call plug#begin('~/.vim/plugged')
