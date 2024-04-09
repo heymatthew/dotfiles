@@ -1,5 +1,4 @@
 " .vimrc configuration file
-" vint: -ProhibitAutocmdWithNoGroup
 
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
   echom 'Installing plug'
@@ -53,14 +52,16 @@ let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 colorscheme blinkenlights
 
 " Prefer splitting down or right
-set splitright   " vertical windows go right
-set splitbelow   " horizontal windows go below
-autocmd FileType help wincmd L
-nnoremap <C-w>f :vertical wincmd f<CR>
-nnoremap <C-w>d :vertical wincmd d<CR>
-nnoremap <C-w>] :vertical wincmd ]<CR>
-nnoremap <C-w>^ :vertical wincmd ^<CR>
-nnoremap <C-w>F :vertical wincmd F<CR>
+augroup vimrc_splits | autocmd!
+  set splitright   " vertical windows go right
+  set splitbelow   " horizontal windows go below
+  autocmd FileType help wincmd L
+  nnoremap <C-w>f :vertical wincmd f<CR>
+  nnoremap <C-w>d :vertical wincmd d<CR>
+  nnoremap <C-w>] :vertical wincmd ]<CR>
+  nnoremap <C-w>^ :vertical wincmd ^<CR>
+  nnoremap <C-w>F :vertical wincmd F<CR>
+augroup END
 
 " Set line numbers where possible
 " set number
@@ -93,15 +94,17 @@ set cdpath="~/src"                  " cd to directories under ~src without expli
 set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
 set noruler                         " not using this, unset form tpope/vim-sensible
 
-" Set foldmethod but expand all when opening files
-set foldmethod=syntax
-autocmd BufRead * normal zR
-autocmd Filetype fugitive   setlocal foldmethod=manual
-autocmd Filetype haml       setlocal foldmethod=indent
-autocmd Filetype sh         setlocal foldmethod=indent
-autocmd Filetype eruby.yaml setlocal foldmethod=indent
-autocmd Filetype eruby      setlocal foldmethod=indent
-autocmd FileType help       setlocal conceallevel=0
+augroup vimrc_folds | autocmd!
+  " Set foldmethod but expand all when opening files
+  set foldmethod=syntax
+  autocmd BufRead * normal zR
+  autocmd Filetype fugitive   setlocal foldmethod=manual
+  autocmd Filetype haml       setlocal foldmethod=indent
+  autocmd Filetype sh         setlocal foldmethod=indent
+  autocmd Filetype eruby.yaml setlocal foldmethod=indent
+  autocmd Filetype eruby      setlocal foldmethod=indent
+  autocmd FileType help       setlocal conceallevel=0
+augroup END
 
 " Mapping Principles (WIP)
 " 1. Common usage should use chords or single key presses
@@ -176,13 +179,6 @@ nnoremap gs :vert Git<CR>
 nnoremap gb :Git blame<CR>
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
-" Format markdown with pandoc. FIXME: pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
-autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
-" Format json files with jq
-autocmd FileType json setlocal formatprg=jq
-" Workaround: Allow other content to load in any pane, https://github.com/tpope/vim-fugitive/issues/2272
-autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
-
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
 " changes - quickfix jumplist of hunks since branching
@@ -191,73 +187,82 @@ command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD 
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " today - insert iso date after cursor
 command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
-" edit commit template
-autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
-                                         \ :!cp ~/.gitmessage .git/message<CR>
-                                         \ :!git config commit.template '.git/message'<CR>
-                                         \ :edit .git/message<CR>
-                                         \ Go<C-r>=GitHumans()<CR>
-                                         \ <ESC>gg
-" git log
-autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
-" <C-l> refreshes git pane, like netrw refresh
-autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
-" open github commands
-autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
-" create empty commit, good for 
-autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
-" spellcheck commit messages
-autocmd Filetype gitcommit setlocal spell
-" restore cursor position on file open
-autocmd BufWinEnter * call PositionCursor()
-" Turn off syntax highlighting in large files
-autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal foldmethod=manual | echo 'chonky file: syntax off, fold manual' | endif
-" Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
-autocmd VimResized * wincmd =
-" ...and new splits that might open, e.g. v from netrw
-let s:resize_exceptions = ['qf', 'loc', 'fugitive', 'help']
-autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
-" ...and help windows are 90 chars wide
-autocmd FileType help vertical resize 90
-" reload vimrc on edits, credit http://howivim.com/2016/damian-conway
-autocmd! BufWritePost $MYVIMRC source $MYVIMRC
-autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $HOME/dotfiles/softlinks/.vimrc
-" reload plugins on save
-autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
-" open location/quickfix after :make, :grep, :lvimgrep and friends
-autocmd! QuickFixCmdPost [^l]* cwindow
-autocmd! QuickFixCmdPost l*    cwindow
 
-" Whitespace management
-set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+augroup vimrc | autocmd!
+  " Format markdown with pandoc. FIXME: pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
+  autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
+  " Format json files with jq
+  autocmd FileType json setlocal formatprg=jq
+  " Workaround: Allow other content to load in any pane, https://github.com/tpope/vim-fugitive/issues/2272
+  autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
+  " edit commit template
+  autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
+                                           \ :!cp ~/.gitmessage .git/message<CR>
+                                           \ :!git config commit.template '.git/message'<CR>
+                                           \ :edit .git/message<CR>
+                                           \ Go<C-r>=GitHumans()<CR>
+                                           \ <ESC>gg
+  " git log
+  autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
+  " <C-l> refreshes git pane, like netrw refresh
+  autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
+  " open github commands
+  autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
+  " create empty commit, good for 
+  autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
+  " spellcheck commit messages
+  autocmd Filetype gitcommit setlocal spell
+  " restore cursor position on file open
+  autocmd BufWinEnter * call PositionCursor()
+  " Turn off syntax highlighting in large files
+  autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal foldmethod=manual | echo 'chonky file: syntax off, fold manual' | endif
+  " Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
+  autocmd VimResized * wincmd =
+  " ...and new splits that might open, e.g. v from netrw
+  let s:resize_exceptions = ['qf', 'loc', 'fugitive', 'help']
+  autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
+  " ...and help windows are 90 chars wide
+  autocmd FileType help vertical resize 90
+  " reload vimrc on edits, credit http://howivim.com/2016/damian-conway
+  autocmd! BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $HOME/dotfiles/softlinks/.vimrc
+  " reload plugins on save
+  autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
+  " open location/quickfix after :make, :grep, :lvimgrep and friends
+  autocmd! QuickFixCmdPost [^l]* cwindow
+  autocmd! QuickFixCmdPost l*    cwindow
 
-" Filetype detection overrides
-autocmd BufNewFile,BufRead .env* setlocal filetype=sh
+  " Whitespace management
+  set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 
-" Debugging reminders
-autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
-autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
+  " Filetype detection overrides
+  autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
-" Cludges and workarounds
-" FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
-autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
-" <C-l> toggles syntax too, ruby's syntax parser can get slow
-autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
+  " Debugging reminders
+  autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
+  autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
 
-" K uses ri for ruby
-autocmd Filetype ruby setlocal keywordprg=ri
-" K uses dictionary for markdown
-autocmd Filetype markdown setlocal keywordprg=dict
-" markdown complete ignores case for matches but uses the context
-autocmd Filetype markdown setlocal ignorecase infercase
+  " Cludges and workarounds
+  " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
+  autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
+  " <C-l> toggles syntax too, ruby's syntax parser can get slow
+  autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
+
+  " K uses ri for ruby
+  autocmd Filetype ruby setlocal keywordprg=ri
+  " K uses dictionary for markdown
+  autocmd Filetype markdown setlocal keywordprg=dict
+  " markdown complete ignores case for matches but uses the context
+  autocmd Filetype markdown setlocal ignorecase infercase
+augroup END
 
 " Writing Prose
 set spelllang=en_nz
