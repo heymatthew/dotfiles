@@ -91,6 +91,7 @@ set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 0
 set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
 set cdpath="~/src"                  " cd to directories under ~src without explicit path
 set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
+set noruler                         " not using this, unset form tpope/vim-sensible
 
 " Set foldmethod but expand all when opening files
 set foldmethod=syntax
