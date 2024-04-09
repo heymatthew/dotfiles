@@ -61,7 +61,7 @@ require('pckr').add {
         config = function()
             vim.cmd [[
                 " git status
-                nnoremap gs :Gedit :<CR>
+                nnoremap gs :vertical Git<CR>
                 " git blame
                 nnoremap gb :Git blame<CR>
                 " <C-l> refreshes git pane, like netrw refresh
