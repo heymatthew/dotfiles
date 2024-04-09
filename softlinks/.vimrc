@@ -100,6 +100,7 @@ autocmd Filetype fugitive   setlocal foldmethod=manual
 autocmd Filetype haml       setlocal foldmethod=indent
 autocmd Filetype sh         setlocal foldmethod=indent
 autocmd Filetype eruby.yaml setlocal foldmethod=indent
+autocmd Filetype eruby      setlocal foldmethod=indent
 autocmd FileType help       setlocal conceallevel=0
 
 " Mapping Principles (WIP)
@@ -236,6 +237,7 @@ autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwid
 autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 
 " Filetype detection overrides
 autocmd BufNewFile,BufRead .env* setlocal filetype=sh
