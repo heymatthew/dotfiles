@@ -45,7 +45,6 @@ require('pckr').add {
     'tpope/vim-dadbod',                -- Database from your vim
     'tpope/vim-dispatch',              -- Builds and tests with asynchronous adapters: https://vimeo.com/63116209
     'tpope/vim-eunuch',                -- Utils and typing shebang line causes file type re-detection with +x
-    'tpope/vim-fugitive',              -- Git
     'tpope/vim-jdaddy',                -- JSON text objects (aj) and pretty print (gqaj) for json
     'tpope/vim-obsession',             -- Makes sessions easier to manage with :Obsess
     'tpope/vim-rails',                 -- For rails codebases
@@ -57,6 +56,41 @@ require('pckr').add {
     'tpope/vim-unimpaired',            -- <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
     'tpope/vim-vinegar',               -- Better file browser
     'dense-analysis/ale',              -- Linteger integration
+
+    { 'tpope/vim-fugitive',
+        config = function()
+            vim.cmd [[
+                " git status
+                nnoremap gs :Gedit :<CR>
+                " git blame
+                nnoremap gb :Git blame<CR>
+                " <C-l> refreshes git pane, like netrw refresh
+                autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
+                " open github commands
+                autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
+                " create empty commit, good for defining a plan
+                autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
+                " changes - quickfix jumplist of hunks since branching
+                command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+                " edit commit template
+                autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
+                                                         \ :!cp ~/.gitmessage .git/message<CR>
+                                                         \ :!git config commit.template '.git/message'<CR>
+                                                         \ :edit .git/message<CR>
+                                                         \ Go<C-r>=GitHumans()<CR>
+                                                         \ <ESC>gg
+                " git log
+                autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
+                " <C-l> refreshes git pane, like netrw refresh
+                autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
+                " open github commands
+                autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
+                " create empty commit, good for 
+                autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
+            ]]
+        end
+    },
+
     { 'rose-pine/neovim',
         config = function()
             vim.cmd.colorscheme 'rose-pine'
