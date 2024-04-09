@@ -63,9 +63,9 @@ nnoremap <C-w>^ :vertical wincmd ^<CR>
 nnoremap <C-w>F :vertical wincmd F<CR>
 
 " Set line numbers where possible
-set number
-autocmd FileType help setlocal number
-let g:netrw_bufsettings = 'number'
+" set number
+" autocmd FileType help setlocal number
+" let g:netrw_bufsettings = 'number'
 
 set scrolloff=5                     " 5 lines always visible at top and bottom
 set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
