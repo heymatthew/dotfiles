@@ -301,7 +301,7 @@ if filereadable(&thesaurus)
     let choice = inputlist(synonyms)
     let replace = a:thesaurus[a:word][choice-1]
     echo "\nYou selected " . replace
-    exec 'normal! ciw' . replace
+    execute 'normal! ciw' . replace
   endfunction
 
   " z- thesaurus, mnemonic z= spelling lookup
