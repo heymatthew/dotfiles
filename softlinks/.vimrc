@@ -56,7 +56,9 @@ let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
 
 " detects background=light|dark from on terminal theme
 " manually toggle background with yob
-colorscheme blinkenlights
+if !has('nvim')
+  colorscheme blinkenlights
+endif
 
 " Prefer splitting down or right
 augroup vimrc_splits | autocmd!
@@ -91,7 +93,6 @@ set belloff=all                     " I find terminal bells irritating
 set shortmess-=S                    " show search matches, see https://stackoverflow.com/a/4671112
 set history=1000                    " 1000 lines of command line and search history saved
 set diffopt+=vertical               " vertical diffs
-set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
 set colorcolumn=120                 " Show 100th char visually
 set nomodeline modelines=0          " Disable modelines as a security precaution
 set foldminlines=3                  " Folds only operate on blocks more than 3 lines long
@@ -100,6 +101,12 @@ set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://l
 set cdpath="~/src"                  " cd to directories under ~src without explicit path
 set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
 set noruler                         " not using this, unset form tpope/vim-sensible
+
+if has('nvim')
+  set shada='1000,<100,n~/.vim/shada  " Persist 1000 marks, and 100 lines per reg across nvim sessions
+else
+  set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
+end
 
 augroup vimrc_folds | autocmd!
   " Set foldmethod but expand all when opening files
@@ -203,7 +210,9 @@ augroup vimrc | autocmd!
   " Format json files with jq
   autocmd FileType json setlocal formatprg=jq
   " Workaround: Allow other content to load in any pane, https://github.com/tpope/vim-fugitive/issues/2272
-  autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
+  if has('winfixbuf')
+    autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
+  endif
   " edit commit template
   autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
                                            \ :!cp ~/.gitmessage .git/message<CR>
