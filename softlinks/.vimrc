@@ -233,13 +233,13 @@ augroup vimrc | autocmd!
   " ...and help windows are 90 chars wide
   autocmd FileType help vertical resize 90
   " reload vimrc on edits, credit http://howivim.com/2016/damian-conway
-  autocmd! BufWritePost $MYVIMRC source $MYVIMRC
-  autocmd! BufWritePost $HOME/dotfiles/softlinks/.vimrc source $HOME/dotfiles/softlinks/.vimrc
+  autocmd BufWritePost $MYVIMRC source $MYVIMRC
+  autocmd BufWritePost resolve($MYVIMRC) source resolve($MYVIMRC)
   " reload plugins on save
-  autocmd! BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
+  autocmd BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
   " open location/quickfix after :make, :grep, :lvimgrep and friends
-  autocmd! QuickFixCmdPost [^l]* cwindow
-  autocmd! QuickFixCmdPost l*    cwindow
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l*    cwindow
 
   " Whitespace management
   set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
