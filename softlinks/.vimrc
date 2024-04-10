@@ -120,6 +120,13 @@ augroup vimrc_folds | autocmd!
   autocmd FileType help       setlocal conceallevel=0
 augroup END
 
+augroup vimrc_iterate | autocmd!
+  " go to vimrc
+  nnoremap <leader>v :edit ~/dotfiles/softlinks/.vimrc<CR>
+  " reload vimrc on edits, credit http://howivim.com/2016/damian-conway
+  autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
+augroup END
+
 " Mapping Principles (WIP)
 " 1. Common usage should use chords or single key presses
 " 2. Less common things should be two character mnemonics
@@ -129,8 +136,6 @@ augroup END
 nnoremap <space> "+
 " visual space - read/write clipboard
 vnoremap <space> "+
-" go to vimrc, follow symlinks
-nnoremap <leader>v :execute 'edit ' . resolve($MYVIMRC)<CR>
 " go to zshrc
 nnoremap <leader>z :edit $HOME/.zshrc<CR>
 " go to scatchpad
@@ -241,9 +246,6 @@ augroup vimrc | autocmd!
   autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
   " ...and help windows are 90 chars wide
   autocmd FileType help vertical resize 90
-  " reload vimrc on edits, credit http://howivim.com/2016/damian-conway
-  autocmd BufWritePost $MYVIMRC source $MYVIMRC
-  autocmd BufWritePost resolve($MYVIMRC) source resolve($MYVIMRC)
   " reload plugins on save
   autocmd BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
   " open location/quickfix after :make, :grep, :lvimgrep and friends
