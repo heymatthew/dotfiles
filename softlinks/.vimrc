@@ -47,6 +47,43 @@ Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes 
 Plug 'w0rp/ale',                       " Linter
 call plug#end()
 
+augroup mods/tpope/vim-fugitive | autocmd!
+  " git status
+  nnoremap gs :vert Git<CR>
+  " git blame
+  nnoremap gb :Git blame<CR>
+  " changes - quickfix jumplist of hunks since branching
+  command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+  " gC - list changes from normal mode
+  nnoremap gC :Changes<CR>
+  " edit commit template
+  autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
+                                           \ :!cp ~/.gitmessage .git/message<CR>
+                                           \ :!git config commit.template '.git/message'<CR>
+                                           \ :edit .git/message<CR>
+                                           \ Go<C-r>=GitHumans()<CR>
+                                           \ <ESC>gg
+  " git log
+  autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
+  " <C-l> refreshes git pane, like netrw refresh
+  autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
+  " open github commands
+  autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
+  " create empty commit, good for 
+  autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
+  " spellcheck commit messages
+  autocmd Filetype gitcommit setlocal spell
+  " Git commit message stuff
+  function! GitHumans()
+   let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
+   let humans = uniq(sort(humans))
+   let humans = filter(humans, {index, val -> val !~ 'noreply'})
+   let humans = map(humans, '"Co-Authored-By: " . v:val')
+   return humans
+  endfunction
+augroup END
+
+
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 let g:golden_ratio_autocommand = 0
 let g:ale_set_highlights = 0               " remove highlights
@@ -188,18 +225,10 @@ vnoremap <silent> <expr> p <sid>VisualPut()
 noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " insert datestamp in command and insert mode
 noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
-" git status
-nnoremap gs :vert Git<CR>
-" git blame
-nnoremap gb :Git blame<CR>
 " w!! saves as sudo
 cnoremap w!! w !sudo tee > /dev/null %
 " focus - close all buffers but the current one
 command! Focus wa|%bd|e#
-" changes - quickfix jumplist of hunks since branching
-command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
-" gC - list changes from normal mode
-nnoremap gC :Changes<CR>
 " now - insert timestamp after cursor
 command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
 " today - insert iso date after cursor
@@ -214,23 +243,6 @@ augroup vimrc | autocmd!
   if has('winfixbuf')
     autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
   endif
-  " edit commit template
-  autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
-                                           \ :!cp ~/.gitmessage .git/message<CR>
-                                           \ :!git config commit.template '.git/message'<CR>
-                                           \ :edit .git/message<CR>
-                                           \ Go<C-r>=GitHumans()<CR>
-                                           \ <ESC>gg
-  " git log
-  autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
-  " <C-l> refreshes git pane, like netrw refresh
-  autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
-  " open github commands
-  autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
-  " create empty commit, good for 
-  autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
-  " spellcheck commit messages
-  autocmd Filetype gitcommit setlocal spell
   " restore cursor position on file open
   autocmd BufWinEnter * call PositionCursor()
   " Turn off syntax highlighting in large files
@@ -334,15 +346,6 @@ endfunction
 function! s:VisualPut()
   let s:restore_reg = @"
   return "p@=RestoreRegister()\<CR>"
-endfunction
-
-" Git commit message stuff
-function! GitHumans()
- let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
- let humans = uniq(sort(humans))
- let humans = filter(humans, {index, val -> val !~ 'noreply'})
- let humans = map(humans, '"Co-Authored-By: " . v:val')
- return humans
 endfunction
 
 function! ToggleEditToWrite()
