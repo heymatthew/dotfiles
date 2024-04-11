@@ -104,6 +104,20 @@ augroup mods/junegunn/fzf | autocmd!
   let g:fzf_preview_window = ['right,50%', 'ctrl-/']
 augroup END
 
+" Cludges and workarounds for slow ruby parsing
+" vim-ruby ships with vim, I just find folds and syntax really slow
+" neovim uses treesitter which has it's own quirks
+if !has('nvim')
+  augroup vim-ruby/vim-ruby | autocmd!
+    " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
+    autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
+    " <C-l> toggles syntax too, ruby's syntax parser can get slow
+    autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
+    " K uses ri for ruby
+    autocmd Filetype ruby setlocal keywordprg=ri
+  augroup END
+endif
+
 " detects background=light|dark from on terminal theme
 " manually toggle background with yob
 if !has('nvim')
@@ -276,14 +290,6 @@ augroup mods/vim | autocmd!
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
 
-  " Cludges and workarounds
-  " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
-  autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
-  " <C-l> toggles syntax too, ruby's syntax parser can get slow
-  autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
-
-  " K uses ri for ruby
-  autocmd Filetype ruby setlocal keywordprg=ri
   " K uses dictionary for markdown
   autocmd Filetype markdown setlocal keywordprg=dict
   " markdown complete ignores case for matches but uses the context
