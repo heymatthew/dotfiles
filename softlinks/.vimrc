@@ -182,10 +182,6 @@ nnoremap <C-w>n :vert new<CR>
 nnoremap n nzz
 " enhancement - reverse search centers page
 nnoremap N Nzz
-" enhancement - page up centers page
-nnoremap <C-u> <C-u>zz
-" enhancement - page down centers page
-nnoremap <C-d> <C-d>zz
 " enhancement - pasting over a visual selection keeps content
 vnoremap <silent> <expr> p <sid>VisualPut()
 " insert timestamp in command and insert mode
