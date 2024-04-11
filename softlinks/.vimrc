@@ -153,7 +153,91 @@ else
   set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
 end
 
-augroup vimrc_folds | autocmd!
+" Mapping Principles (WIP)
+" 1. Common usage should use chords or single key presses
+" 2. Less common things should be two character mnemonics
+" 3. Uncommon useful things should be leader-based or vim commands
+augroup mods/vim | autocmd!
+  " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
+  nnoremap <leader>v :edit ~/dotfiles/softlinks/.vimrc<CR>
+  autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
+  " space - read/write clipboard
+  nnoremap <space> "+
+  " visual space - read/write clipboard
+  vnoremap <space> "+
+  " go to zshrc
+  nnoremap <leader>z :edit $HOME/.zshrc<CR>
+  " go to scatchpad
+  nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
+  " go to plugins
+  nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
+  " yank path
+  nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
+  " toggle quickfix
+  nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
+  " toggle ale - mnemonic riffs from tpope's unimpaired
+  nnoremap yoa :ALEToggleBuffer<CR>
+  " Toggle edit and write, similar to https://hemingwayapp.com
+  nnoremap <expr> yoe ToggleEditToWrite()
+  " toggle goyo - mnemonic riffs from tpope's unimpaired
+  nnoremap yog :Goyo<CR>
+  " Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
+  nnoremap ]a :ALENextWrap<CR>
+  " Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
+  nnoremap [a :ALEPreviousWrap<CR>
+  " quit buffer
+  nnoremap Q :bd<CR>
+  " display syntax of element under the cursor
+  nnoremap <F2> :call SyntaxAttr()<CR>
+  " clear search highlghts
+  nnoremap <BACKSPACE> :nohlsearch<CR>
+  " toggle previous file
+  nnoremap \ <C-^>
+  " find word under cursor
+  nnoremap <C-f> :silent Ggrep <cword><CR>
+  " visual find
+  vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
+  " visual interactive align - vip<Enter>
+  vnoremap <Enter> <Plug>(EasyAlign)
+  " interactive align text object - gaip
+  nnoremap ga <Plug>(EasyAlign)
+  " enhancement - <C-w>n splits are vertical
+  nnoremap <C-w>n :vert new<CR>
+  " enhancement - next search centers page
+  nnoremap n nzz
+  " enhancement - reverse search centers page
+  nnoremap N Nzz
+  " enhancement - pasting over a visual selection keeps content
+  vnoremap <silent> <expr> p <sid>VisualPut()
+  " insert timestamp in command and insert mode
+  noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+  " insert datestamp in command and insert mode
+  noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
+  " w!! saves as sudo
+  cnoremap w!! w !sudo tee > /dev/null %
+
+  " focus - close all buffers but the current one
+  command! Focus wa|%bd|e#
+  " now - insert timestamp after cursor
+  command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+  " today - insert iso date after cursor
+  command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
+
+  " Whitespace management
+  set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+
+  " Debugging reminders
+  autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
+  autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
+
   " Set foldmethod but expand all when opening files
   set foldmethod=syntax
   autocmd BufRead * normal zR
@@ -163,82 +247,10 @@ augroup vimrc_folds | autocmd!
   autocmd Filetype eruby.yaml setlocal foldmethod=indent
   autocmd Filetype eruby      setlocal foldmethod=indent
   autocmd FileType help       setlocal conceallevel=0
-augroup END
 
-augroup vimrc_iterate | autocmd!
-  " go to vimrc
-  nnoremap <leader>v :edit ~/dotfiles/softlinks/.vimrc<CR>
-  " reload vimrc on edits, credit http://howivim.com/2016/damian-conway
-  autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
-augroup END
+  " Filetype detection overrides
+  autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
-" Mapping Principles (WIP)
-" 1. Common usage should use chords or single key presses
-" 2. Less common things should be two character mnemonics
-" 3. Uncommon useful things should be leader-based or vim commands
-
-" space - read/write clipboard
-nnoremap <space> "+
-" visual space - read/write clipboard
-vnoremap <space> "+
-" go to zshrc
-nnoremap <leader>z :edit $HOME/.zshrc<CR>
-" go to scatchpad
-nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
-" go to plugins
-nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
-" yank path
-nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
-" toggle quickfix
-nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
-" toggle ale - mnemonic riffs from tpope's unimpaired
-nnoremap yoa :ALEToggleBuffer<CR>
-" Toggle edit and write, similar to https://hemingwayapp.com
-nnoremap <expr> yoe ToggleEditToWrite()
-" toggle goyo - mnemonic riffs from tpope's unimpaired
-nnoremap yog :Goyo<CR>
-" Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
-nnoremap ]a :ALENextWrap<CR>
-" Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
-nnoremap [a :ALEPreviousWrap<CR>
-" quit buffer
-nnoremap Q :bd<CR>
-" display syntax of element under the cursor
-nnoremap <F2> :call SyntaxAttr()<CR>
-" clear search highlghts
-nnoremap <BACKSPACE> :nohlsearch<CR>
-" toggle previous file
-nnoremap \ <C-^>
-" find word under cursor
-nnoremap <C-f> :silent Ggrep <cword><CR>
-" visual find
-vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
-" visual interactive align - vip<Enter>
-vnoremap <Enter> <Plug>(EasyAlign)
-" interactive align text object - gaip
-nnoremap ga <Plug>(EasyAlign)
-" enhancement - <C-w>n splits are vertical
-nnoremap <C-w>n :vert new<CR>
-" enhancement - next search centers page
-nnoremap n nzz
-" enhancement - reverse search centers page
-nnoremap N Nzz
-" enhancement - pasting over a visual selection keeps content
-vnoremap <silent> <expr> p <sid>VisualPut()
-" insert timestamp in command and insert mode
-noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
-" insert datestamp in command and insert mode
-noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
-" w!! saves as sudo
-cnoremap w!! w !sudo tee > /dev/null %
-" focus - close all buffers but the current one
-command! Focus wa|%bd|e#
-" now - insert timestamp after cursor
-command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
-" today - insert iso date after cursor
-command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
-
-augroup vimrc | autocmd!
   " Format markdown with pandoc. FIXME: pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
   autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
   " Format json files with jq
@@ -263,24 +275,6 @@ augroup vimrc | autocmd!
   " open location/quickfix after :make, :grep, :lvimgrep and friends
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
-
-  " Whitespace management
-  set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-
-  " Filetype detection overrides
-  autocmd BufNewFile,BufRead .env* setlocal filetype=sh
-
-  " Debugging reminders
-  autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
-  autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
 
   " Cludges and workarounds
   " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
