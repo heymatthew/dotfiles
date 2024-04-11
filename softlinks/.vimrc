@@ -15,6 +15,7 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'bronson/vim-visual-star-search'  " Vim multiline search
 Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
+Plug 'dense-analysis/ale',             " Linter
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
 Plug 'junegunn/fzf',  { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
@@ -44,7 +45,6 @@ Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY
 Plug 'tpope/vim-vinegar'               " Better file browser
 Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
-Plug 'w0rp/ale',                       " Linter
 call plug#end()
 
 augroup mods/tpope/vim-fugitive | autocmd!
