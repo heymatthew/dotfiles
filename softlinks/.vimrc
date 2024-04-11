@@ -83,9 +83,15 @@ augroup mods/tpope/vim-fugitive | autocmd!
   endfunction
 augroup END
 
+augroup mods/roman/golden-ratio | autocmd!
+  " Disable golden ratio by default
+  let g:golden_ratio_autocommand = 0
+  " GoldenRatio mnemonic, <C-w>- is like <C-w>=
+  nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+augroup END
 
 let g:fzf_preview_window = ['right,50%', 'ctrl-/']
-let g:golden_ratio_autocommand = 0
+
 let g:ale_set_highlights = 0               " remove highlights
 let g:ale_set_loclist = 0                  " don't clobber location list
 let g:ale_set_quickfix = 0                 " don't clobber quickfix list
@@ -211,8 +217,6 @@ vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
 vnoremap <Enter> <Plug>(EasyAlign)
 " interactive align text object - gaip
 nnoremap ga <Plug>(EasyAlign)
-" GoldenRatio mnemonic, <C-w>- is like <C-w>=
-nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 " enhancement - <C-w>n splits are vertical
 nnoremap <C-w>n :vert new<CR>
 " enhancement - next search centers page
