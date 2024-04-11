@@ -90,12 +90,19 @@ augroup mods/roman/golden-ratio | autocmd!
   nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 augroup END
 
-let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+augroup mods/dense-analysis/ale | autocmd!
+  let g:ale_set_highlights = 0               " remove highlights
+  let g:ale_set_loclist = 0                  " don't clobber location list
+  let g:ale_set_quickfix = 0                 " don't clobber quickfix list
+  let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
+augroup END
 
-let g:ale_set_highlights = 0               " remove highlights
-let g:ale_set_loclist = 0                  " don't clobber location list
-let g:ale_set_quickfix = 0                 " don't clobber quickfix list
-let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
+augroup mods/junegunn/fzf | autocmd!
+  " go - fuzzy find file
+  nnoremap go :FZF<CR>
+  " Configure popup window
+  let g:fzf_preview_window = ['right,50%', 'ctrl-/']
+augroup END
 
 " detects background=light|dark from on terminal theme
 " manually toggle background with yob
@@ -185,8 +192,6 @@ nnoremap <leader>z :edit $HOME/.zshrc<CR>
 nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
 " go to plugins
 nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
-" goo - fuzzy find file
-nnoremap go :FZF<CR>
 " yank path
 nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
 " toggle quickfix
