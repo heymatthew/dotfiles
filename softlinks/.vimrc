@@ -81,6 +81,12 @@ augroup mods/tpope/vim-fugitive | autocmd!
    let humans = map(humans, '"Co-Authored-By: " . v:val')
    return humans
   endfunction
+  " Remove deprecated fugitive commands to unclog tab completion
+  " see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
+  try | delcommand Gbrowse | catch | endtry
+  try | delcommand Gremove | catch | endtry
+  try | delcommand Grename | catch | endtry
+  try | delcommand Gmove | catch | endtry
 augroup END
 
 augroup mods/roman/golden-ratio | autocmd!
@@ -372,9 +378,3 @@ endfunction
 highlight HabitChange guifg=love cterm=underline
 match HabitChange /recieve/
 match HabitChange /recieve_message_chain/
-" Remove deprecated fugitive commands to unclog tab completion
-" see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
-try | delcommand Gbrowse | catch | endtry
-try | delcommand Gremove | catch | endtry
-try | delcommand Grename | catch | endtry
-try | delcommand Gmove | catch | endtry
