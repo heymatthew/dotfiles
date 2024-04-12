@@ -101,6 +101,60 @@ augroup mods/dense-analysis/ale | autocmd!
   let g:ale_set_loclist = 0                  " don't clobber location list
   let g:ale_set_quickfix = 0                 " don't clobber quickfix list
   let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
+  " toggle ale - mnemonic riffs from tpope's unimpaired
+  nnoremap yoa :ALEToggleBuffer<CR>
+  " Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
+  nnoremap ]a :ALENextWrap<CR>
+  " Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
+  nnoremap [a :ALEPreviousWrap<CR>
+augroup END
+
+augroup mods/writing | autocmd!
+  " Toggle edit and write, similar to https://hemingwayapp.com
+  nnoremap <expr> yoe ToggleEditToWrite()
+  function! ToggleEditToWrite()
+    if &spell || g:ale_enabled
+      echo 'Writer focus'
+      set nospell
+      ALEDisable
+      DittoOff
+    else
+      echo 'Editor focus'
+      set spell
+      ALEEnable
+      Ditto
+    endif
+  endfunction
+  " Writing Prose
+  set spelllang=en_nz
+  set dictionary=/usr/share/dict/words
+  set thesaurus=~/.vim/thesaurus/mthesaur.txt
+  if !filereadable(&thesaurus)
+    echom 'Downloading thesaurus file'
+    silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
+  endif
+  " Experimental thesaurus lookup
+  if filereadable(&thesaurus)
+    let thesaurus = {}
+    for line in readfile(&thesaurus)
+      let parts = split(line, ',')
+      let [word, synonyms] = [parts[0], parts[1:]]
+      let thesaurus[word] = synonyms
+    endfor
+    " FIXME: This works, but there's a bug to squash
+    " SyntaxError - E492: Not an editor command: <selected_word> (see vim-jp/vim-vimlparser)
+    function! Suggest(thesaurus, word)
+      let synonyms = a:thesaurus[a:word][:&lines - 2]
+      let synonyms = map(synonyms, { i, synonym -> (i+1) . '. ' . synonym })
+      let choice = inputlist(synonyms)
+      let replace = a:thesaurus[a:word][choice-1]
+      echo "\nYou selected " . replace
+      execute 'normal! ciw' . replace
+    endfunction
+    " z- thesaurus, mnemonic z= spelling lookup
+    " Alternative to nnoremap z- viwA<C-x><C-t>
+    nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
+  endif
 augroup END
 
 augroup mods/junegunn/fzf | autocmd!
@@ -195,16 +249,8 @@ augroup mods/vim | autocmd!
   nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
   " toggle quickfix
   nnoremap <expr> yoq QuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
-  " toggle ale - mnemonic riffs from tpope's unimpaired
-  nnoremap yoa :ALEToggleBuffer<CR>
-  " Toggle edit and write, similar to https://hemingwayapp.com
-  nnoremap <expr> yoe ToggleEditToWrite()
   " toggle goyo - mnemonic riffs from tpope's unimpaired
   nnoremap yog :Goyo<CR>
-  " Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
-  nnoremap ]a :ALENextWrap<CR>
-  " Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
-  nnoremap [a :ALEPreviousWrap<CR>
   " quit buffer
   nnoremap Q :bd<CR>
   " display syntax of element under the cursor
@@ -309,41 +355,6 @@ augroup mods/vim | autocmd!
   endfunction
 augroup END
 
-" Writing Prose
-set spelllang=en_nz
-set dictionary=/usr/share/dict/words
-set thesaurus=~/.vim/thesaurus/mthesaur.txt
-if !filereadable(&thesaurus)
-  echom 'Downloading thesaurus file'
-  silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
-endif
-
-" Experimental thesaurus lookup
-if filereadable(&thesaurus)
-  let thesaurus = {}
-
-  for line in readfile(&thesaurus)
-    let parts = split(line, ',')
-    let [word, synonyms] = [parts[0], parts[1:]]
-    let thesaurus[word] = synonyms
-  endfor
-
-  " FIXME: This works, but there's a bug to squash
-  " SyntaxError - E492: Not an editor command: <selected_word> (see vim-jp/vim-vimlparser)
-  function! Suggest(thesaurus, word)
-    let synonyms = a:thesaurus[a:word][:&lines - 2]
-    let synonyms = map(synonyms, { i, synonym -> (i+1) . '. ' . synonym })
-    let choice = inputlist(synonyms)
-    let replace = a:thesaurus[a:word][choice-1]
-    echo "\nYou selected " . replace
-    execute 'normal! ciw' . replace
-  endfunction
-
-  " z- thesaurus, mnemonic z= spelling lookup
-  " Alternative to nnoremap z- viwA<C-x><C-t>
-  nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
-endif
-
 " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
 function! PositionCursor()
@@ -362,20 +373,6 @@ endfunction
 function! s:VisualPut()
   let s:restore_reg = @"
   return "p@=RestoreRegister()\<CR>"
-endfunction
-
-function! ToggleEditToWrite()
-  if &spell || g:ale_enabled
-    echo 'Writer focus'
-    set nospell
-    ALEDisable
-    DittoOff
-  else
-    echo 'Editor focus'
-    set spell
-    ALEEnable
-    Ditto
-  endif
 endfunction
 
 " Deprecations and Habit Changes
