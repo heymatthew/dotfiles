@@ -47,7 +47,150 @@ Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
 call plug#end()
 
-augroup mods/tpope/vim-fugitive | autocmd!
+augroup mods/vim | autocmd!
+  """"""""""""""""""""""""""""""""""""""""
+  " 1. Configuration
+  set scrolloff=5                     " 5 lines always visible at top and bottom
+  set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
+  set nojoinspaces                    " Single space after period when using J
+  set hlsearch                        " Highlight my searches :)
+  set ignorecase                      " Search case insensitive...
+  set smartcase                       " ... but not it begins with upper case
+  set magic                           " Allows pattern matching with special characters
+  set autoindent                      " indent on newlines
+  set smartindent                     " recognise syntax of files
+  set noswapfile nobackup             " git > swapfile, git > backup files
+  set wrap linebreak nolist           " wrap words, incompatable with visible whitespace (list and listchars)
+  set showcmd                         " show command on bottom right as it's typed
+  set belloff=all                     " I find terminal bells irritating
+  set shortmess-=S                    " show search matches, see https://stackoverflow.com/a/4671112
+  set history=1000                    " 1000 lines of command line and search history saved
+  set diffopt+=vertical               " vertical diffs
+  set colorcolumn=120                 " Show 100th char visually
+  set nomodeline modelines=0          " Disable modelines as a security precaution
+  set foldminlines=3                  " Folds only operate on blocks more than 3 lines long
+  set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
+  set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+  set cdpath="~/src"                  " cd to directories under ~src without explicit path
+  set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
+  set noruler                         " not using this, unset form tpope/vim-sensible
+  let g:ale_set_highlights = 0               " remove highlights
+  let g:ale_set_loclist = 0                  " don't clobber location list
+  let g:ale_set_quickfix = 0                 " don't clobber quickfix list
+  let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
+  " Prefer splitting down or right
+  set splitright   " vertical windows go right
+  set splitbelow   " horizontal windows go below
+  autocmd FileType help wincmd L
+  nnoremap <C-w>f :vertical wincmd f<CR>
+  nnoremap <C-w>d :vertical wincmd d<CR>
+  nnoremap <C-w>] :vertical wincmd ]<CR>
+  nnoremap <C-w>^ :vertical wincmd ^<CR>
+  nnoremap <C-w>F :vertical wincmd F<CR>
+
+  " Whitespace management
+  set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype html      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
+  autocmd Filetype eruby     setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+
+  " Writing Prose
+  set spelllang=en_nz
+  set dictionary=/usr/share/dict/words
+  set thesaurus=~/.vim/thesaurus/mthesaur.txt
+  " markdown complete ignores case for matches but uses the context
+  autocmd Filetype markdown setlocal ignorecase infercase
+
+  if has('nvim')
+    " Persist 1000 marks, and 100 lines per reg across nvim sessions
+    set shada='1000,<100,n~/.vim/shada 
+  else
+    " Persist 1000 marks, and 100 lines per reg across sessions
+    set viminfo='1000,<100,n~/.vim/info
+    " note, vim detects background=light|dark from terminal theme
+    " manually toggle background with yob
+    colorscheme blinkenlights
+    " Cludges and workarounds for slow ruby parsing
+    " vim-ruby ships with vim, I just find folds and syntax really slow
+    " neovim uses treesitter which has it's own quirks
+    " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
+    autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
+    " <C-l> toggles syntax too, ruby's syntax parser can get slow
+    autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
+  end
+
+  " Debugging reminders
+  autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
+  autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
+
+  " Set foldmethod but expand all when opening files
+  set foldmethod=syntax
+  autocmd BufRead * normal zR
+  autocmd Filetype fugitive   setlocal foldmethod=manual
+  autocmd Filetype haml       setlocal foldmethod=indent
+  autocmd Filetype sh         setlocal foldmethod=indent
+  autocmd Filetype eruby.yaml setlocal foldmethod=indent
+  autocmd Filetype eruby      setlocal foldmethod=indent
+  autocmd FileType help       setlocal conceallevel=0
+
+  " Filetype detection overrides
+  autocmd BufNewFile,BufRead .env* setlocal filetype=sh
+  " Workaround: Allow other content to load in any pane, https://github.com/tpope/vim-fugitive/issues/2272
+  if has('winfixbuf')
+    autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
+  endif
+  " Turn off syntax highlighting in large files
+  autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal foldmethod=manual | echo 'chonky file: syntax off, fold manual' | endif
+  " Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
+  autocmd VimResized * wincmd =
+  " ...and new splits that might open, e.g. v from netrw
+  let s:resize_exceptions = ['qf', 'loc', 'fugitive', 'help']
+  autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
+  " ...and help windows are 90 chars wide
+  autocmd FileType help vertical resize 90
+  " reload plugins on save
+  autocmd BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
+  " open location/quickfix after :make, :grep, :lvimgrep and friends
+  autocmd QuickFixCmdPost [^l]* cwindow
+  autocmd QuickFixCmdPost l*    cwindow
+
+  " FIXME: use pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
+  autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
+  autocmd Filetype ruby     setlocal keywordprg=ri     " Lookup docs with ri
+  autocmd FileType json     setlocal formatprg=jq      " Format json files with jq
+  autocmd Filetype markdown setlocal keywordprg=dict   " K uses dictionary for markdown
+
+  " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+  " restore cursor position on file open
+  autocmd BufWinEnter * call PositionCursor()
+
+  " Deprecations and Habit Changes
+  highlight HabitChange guifg=love cterm=underline
+  match HabitChange /recieve/
+  match HabitChange /recieve_message_chain/
+
+  " Remove deprecated fugitive commands to unclog tab completion
+  " see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
+  try | delcommand Gbrowse | catch | endtry
+  try | delcommand Gremove | catch | endtry
+  try | delcommand Grename | catch | endtry
+  try | delcommand Gmove | catch | endtry
+
+  """"""""""""""""""""""""""""""""""""""""
+  " 2. Custom Mappigns
+
+  " Mapping Principles (WIP)
+  " 1. Common usage should use chords or single key presses
+  " 2. Less common things should be two character mnemonics
+  " 3. Uncommon useful things should be leader-based or vim commands
+
   " git status
   nnoremap gs :vert Git<CR>
   " git blame
@@ -73,62 +216,19 @@ augroup mods/tpope/vim-fugitive | autocmd!
   autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
   " spellcheck commit messages
   autocmd Filetype gitcommit setlocal spell
-  " Git commit message stuff
-  function! GitHumans()
-   let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
-   let humans = uniq(sort(humans))
-   let humans = filter(humans, {index, val -> val !~ 'noreply'})
-   let humans = map(humans, '"Co-Authored-By: " . v:val')
-   return humans
-  endfunction
-  " Remove deprecated fugitive commands to unclog tab completion
-  " see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
-  try | delcommand Gbrowse | catch | endtry
-  try | delcommand Gremove | catch | endtry
-  try | delcommand Grename | catch | endtry
-  try | delcommand Gmove | catch | endtry
-augroup END
-
-augroup mods/roman/golden-ratio | autocmd!
   " Disable golden ratio by default
   let g:golden_ratio_autocommand = 0
   " GoldenRatio mnemonic, <C-w>- is like <C-w>=
   nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
-augroup END
-
-augroup mods/dense-analysis/ale | autocmd!
-  let g:ale_set_highlights = 0               " remove highlights
-  let g:ale_set_loclist = 0                  " don't clobber location list
-  let g:ale_set_quickfix = 0                 " don't clobber quickfix list
-  let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
   " toggle ale - mnemonic riffs from tpope's unimpaired
   nnoremap yoa :ALEToggleBuffer<CR>
   " Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
   nnoremap ]a :ALENextWrap<CR>
   " Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
   nnoremap [a :ALEPreviousWrap<CR>
-augroup END
-
-augroup mods/writing | autocmd!
   " Toggle edit and write, similar to https://hemingwayapp.com
   nnoremap <expr> yoe ToggleEditToWrite()
-  function! ToggleEditToWrite()
-    if &spell || g:ale_enabled
-      echo 'Writer focus'
-      set nospell
-      ALEDisable
-      DittoOff
-    else
-      echo 'Editor focus'
-      set spell
-      ALEEnable
-      Ditto
-    endif
-  endfunction
-  " Writing Prose
-  set spelllang=en_nz
-  set dictionary=/usr/share/dict/words
-  set thesaurus=~/.vim/thesaurus/mthesaur.txt
+  " thesaurus
   if !filereadable(&thesaurus)
     echom 'Downloading thesaurus file'
     silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
@@ -141,60 +241,14 @@ augroup mods/writing | autocmd!
       let [word, synonyms] = [parts[0], parts[1:]]
       let thesaurus[word] = synonyms
     endfor
-    " FIXME: This works, but there's a bug to squash
-    " SyntaxError - E492: Not an editor command: <selected_word> (see vim-jp/vim-vimlparser)
-    function! Suggest(thesaurus, word)
-      let synonyms = a:thesaurus[a:word][:&lines - 2]
-      let synonyms = map(synonyms, { i, synonym -> (i+1) . '. ' . synonym })
-      let choice = inputlist(synonyms)
-      let replace = a:thesaurus[a:word][choice-1]
-      echo "\nYou selected " . replace
-      execute 'normal! ciw' . replace
-    endfunction
     " z- thesaurus, mnemonic z= spelling lookup
     " Alternative to nnoremap z- viwA<C-x><C-t>
     nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
   endif
-augroup END
-
-augroup mods/junegunn/fzf | autocmd!
   " go - fuzzy find file
   nnoremap go :FZF<CR>
   " Configure popup window
   let g:fzf_preview_window = ['right,50%', 'ctrl-/']
-augroup END
-
-" Cludges and workarounds for slow ruby parsing
-" vim-ruby ships with vim, I just find folds and syntax really slow
-" neovim uses treesitter which has it's own quirks
-if !has('nvim')
-  augroup vim-ruby/vim-ruby | autocmd!
-    " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
-    autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
-    " <C-l> toggles syntax too, ruby's syntax parser can get slow
-    autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
-    " K uses ri for ruby
-    autocmd Filetype ruby setlocal keywordprg=ri
-  augroup END
-endif
-
-" Prefer splitting down or right
-augroup vimrc_splits | autocmd!
-  set splitright   " vertical windows go right
-  set splitbelow   " horizontal windows go below
-  autocmd FileType help wincmd L
-  nnoremap <C-w>f :vertical wincmd f<CR>
-  nnoremap <C-w>d :vertical wincmd d<CR>
-  nnoremap <C-w>] :vertical wincmd ]<CR>
-  nnoremap <C-w>^ :vertical wincmd ^<CR>
-  nnoremap <C-w>F :vertical wincmd F<CR>
-augroup END
-
-" Mapping Principles (WIP)
-" 1. Common usage should use chords or single key presses
-" 2. Less common things should be two character mnemonics
-" 3. Uncommon useful things should be leader-based or vim commands
-augroup mods/vim | autocmd!
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
   nnoremap <leader>v :edit ~/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
@@ -240,81 +294,26 @@ augroup mods/vim | autocmd!
   noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
   " w!! saves as sudo
   cnoremap w!! w !sudo tee > /dev/null %
-
   " focus - close all buffers but the current one
   command! Focus wa|%bd|e#
   " now - insert timestamp after cursor
   command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
   " today - insert iso date after cursor
   command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
+  " Toggle quickfix
+  nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
+  " enhancement - pasting over a visual selection keeps content
+  vnoremap <silent> <expr> p <sid>VisualPut()
 
-  " Whitespace management
-  set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-  autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype html      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype eruby     setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-
-  " Debugging reminders
-  autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
-  autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
-
-  " Set foldmethod but expand all when opening files
-  set foldmethod=syntax
-  autocmd BufRead * normal zR
-  autocmd Filetype fugitive   setlocal foldmethod=manual
-  autocmd Filetype haml       setlocal foldmethod=indent
-  autocmd Filetype sh         setlocal foldmethod=indent
-  autocmd Filetype eruby.yaml setlocal foldmethod=indent
-  autocmd Filetype eruby      setlocal foldmethod=indent
-  autocmd FileType help       setlocal conceallevel=0
-
-  " Filetype detection overrides
-  autocmd BufNewFile,BufRead .env* setlocal filetype=sh
-
-  " Format markdown with pandoc. FIXME: pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
-  autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
-  " Format json files with jq
-  autocmd FileType json setlocal formatprg=jq
-  " Workaround: Allow other content to load in any pane, https://github.com/tpope/vim-fugitive/issues/2272
-  if has('winfixbuf')
-    autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
-  endif
-  " Turn off syntax highlighting in large files
-  autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal foldmethod=manual | echo 'chonky file: syntax off, fold manual' | endif
-  " Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
-  autocmd VimResized * wincmd =
-  " ...and new splits that might open, e.g. v from netrw
-  let s:resize_exceptions = ['qf', 'loc', 'fugitive', 'help']
-  autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
-  " ...and help windows are 90 chars wide
-  autocmd FileType help vertical resize 90
-  " reload plugins on save
-  autocmd BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
-  " open location/quickfix after :make, :grep, :lvimgrep and friends
-  autocmd QuickFixCmdPost [^l]* cwindow
-  autocmd QuickFixCmdPost l*    cwindow
-
-  " K uses dictionary for markdown
-  autocmd Filetype markdown setlocal keywordprg=dict
-  " markdown complete ignores case for matches but uses the context
-  autocmd Filetype markdown setlocal ignorecase infercase
+  """"""""""""""""""""""""""""""""""""""""
+  " 3. Functions
 
   " toggle quickfix
-  nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   function IsQuickfixClosed()
     let quickfix_windows = filter(getwininfo(), { i, v -> v.quickfix && v.tabnr == tabpagenr() })
     return empty(quickfix_windows)
   endfunction
 
-  " enhancement - pasting over a visual selection keeps content
-  vnoremap <silent> <expr> p <sid>VisualPut()
   " visual paste doesn't clobber what you've got in the paste buffer
   " credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
   function! RestoreRegister()
@@ -326,9 +325,6 @@ augroup mods/vim | autocmd!
     return "p@=RestoreRegister()\<CR>"
   endfunction
 
-  " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-  " restore cursor position on file open
-  autocmd BufWinEnter * call PositionCursor()
   let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
   function! PositionCursor()
     if index(s:cursor_exceptions, &filetype) == -1 && line("'\"") <= line('$')
@@ -337,45 +333,36 @@ augroup mods/vim | autocmd!
     endif
   endfunction
 
-  " Deprecations and Habit Changes
-  highlight HabitChange guifg=love cterm=underline
-  match HabitChange /recieve/
-  match HabitChange /recieve_message_chain/
+  function! GitHumans()
+   let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
+   let humans = uniq(sort(humans))
+   let humans = filter(humans, {index, val -> val !~ 'noreply'})
+   let humans = map(humans, '"Co-Authored-By: " . v:val')
+   return humans
+  endfunction
+
+  function! ToggleEditToWrite()
+    if &spell || g:ale_enabled
+      echo 'Writer focus'
+      set nospell
+      ALEDisable
+      DittoOff
+    else
+      echo 'Editor focus'
+      set spell
+      ALEEnable
+      Ditto
+    endif
+  endfunction
+
+  " FIXME: This works, but there's a bug to squash
+  " SyntaxError - E492: Not an editor command: <selected_word> (see vim-jp/vim-vimlparser)
+  function! Suggest(thesaurus, word)
+    let synonyms = a:thesaurus[a:word][:&lines - 2]
+    let synonyms = map(synonyms, { i, synonym -> (i+1) . '. ' . synonym })
+    let choice = inputlist(synonyms)
+    let replace = a:thesaurus[a:word][choice-1]
+    echo "\nYou selected " . replace
+    execute 'normal! ciw' . replace
+  endfunction
 augroup END
-
-set scrolloff=5                     " 5 lines always visible at top and bottom
-set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
-set nojoinspaces                    " Single space after period when using J
-set hlsearch                        " Highlight my searches :)
-set ignorecase                      " Search case insensitive...
-set smartcase                       " ... but not it begins with upper case
-set magic                           " Allows pattern matching with special characters
-set autoindent                      " indent on newlines
-set smartindent                     " recognise syntax of files
-set noswapfile nobackup             " git > swapfile, git > backup files
-set wrap linebreak nolist           " wrap words, incompatable with visible whitespace (list and listchars)
-set showcmd                         " show command on bottom right as it's typed
-set belloff=all                     " I find terminal bells irritating
-set shortmess-=S                    " show search matches, see https://stackoverflow.com/a/4671112
-set history=1000                    " 1000 lines of command line and search history saved
-set diffopt+=vertical               " vertical diffs
-set colorcolumn=120                 " Show 100th char visually
-set nomodeline modelines=0          " Disable modelines as a security precaution
-set foldminlines=3                  " Folds only operate on blocks more than 3 lines long
-set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
-set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-set cdpath="~/src"                  " cd to directories under ~src without explicit path
-set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
-set noruler                         " not using this, unset form tpope/vim-sensible
-
-if has('nvim')
-  set shada='1000,<100,n~/.vim/shada  " Persist 1000 marks, and 100 lines per reg across nvim sessions
-else
-  set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
-end
-
-" detects background=light|dark from on terminal theme
-" manually toggle background with yob
-if !has('nvim')
-  colorscheme blinkenlights
-endif
