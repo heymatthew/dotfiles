@@ -178,12 +178,6 @@ if !has('nvim')
   augroup END
 endif
 
-" detects background=light|dark from on terminal theme
-" manually toggle background with yob
-if !has('nvim')
-  colorscheme blinkenlights
-endif
-
 " Prefer splitting down or right
 augroup vimrc_splits | autocmd!
   set splitright   " vertical windows go right
@@ -195,37 +189,6 @@ augroup vimrc_splits | autocmd!
   nnoremap <C-w>^ :vertical wincmd ^<CR>
   nnoremap <C-w>F :vertical wincmd F<CR>
 augroup END
-
-set scrolloff=5                     " 5 lines always visible at top and bottom
-set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
-set nojoinspaces                    " Single space after period when using J
-set hlsearch                        " Highlight my searches :)
-set ignorecase                      " Search case insensitive...
-set smartcase                       " ... but not it begins with upper case
-set magic                           " Allows pattern matching with special characters
-set autoindent                      " indent on newlines
-set smartindent                     " recognise syntax of files
-set noswapfile nobackup             " git > swapfile, git > backup files
-set wrap linebreak nolist           " wrap words, incompatable with visible whitespace (list and listchars)
-set showcmd                         " show command on bottom right as it's typed
-set belloff=all                     " I find terminal bells irritating
-set shortmess-=S                    " show search matches, see https://stackoverflow.com/a/4671112
-set history=1000                    " 1000 lines of command line and search history saved
-set diffopt+=vertical               " vertical diffs
-set colorcolumn=120                 " Show 100th char visually
-set nomodeline modelines=0          " Disable modelines as a security precaution
-set foldminlines=3                  " Folds only operate on blocks more than 3 lines long
-set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
-set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-set cdpath="~/src"                  " cd to directories under ~src without explicit path
-set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
-set noruler                         " not using this, unset form tpope/vim-sensible
-
-if has('nvim')
-  set shada='1000,<100,n~/.vim/shada  " Persist 1000 marks, and 100 lines per reg across nvim sessions
-else
-  set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
-end
 
 " Mapping Principles (WIP)
 " 1. Common usage should use chords or single key presses
@@ -247,8 +210,6 @@ augroup mods/vim | autocmd!
   nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
   " yank path
   nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
-  " toggle quickfix
-  nnoremap <expr> yoq QuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " toggle goyo - mnemonic riffs from tpope's unimpaired
   nnoremap yog :Goyo<CR>
   " quit buffer
@@ -273,8 +234,6 @@ augroup mods/vim | autocmd!
   nnoremap n nzz
   " enhancement - reverse search centers page
   nnoremap N Nzz
-  " enhancement - pasting over a visual selection keeps content
-  vnoremap <silent> <expr> p <sid>VisualPut()
   " insert timestamp in command and insert mode
   noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
   " insert datestamp in command and insert mode
@@ -327,8 +286,6 @@ augroup mods/vim | autocmd!
   if has('winfixbuf')
     autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
   endif
-  " restore cursor position on file open
-  autocmd BufWinEnter * call PositionCursor()
   " Turn off syntax highlighting in large files
   autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal foldmethod=manual | echo 'chonky file: syntax off, fold manual' | endif
   " Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
@@ -349,33 +306,76 @@ augroup mods/vim | autocmd!
   " markdown complete ignores case for matches but uses the context
   autocmd Filetype markdown setlocal ignorecase infercase
 
-  function QuickfixClosed()
+  " toggle quickfix
+  nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
+  function IsQuickfixClosed()
     let quickfix_windows = filter(getwininfo(), { i, v -> v.quickfix && v.tabnr == tabpagenr() })
     return empty(quickfix_windows)
   endfunction
+
+  " enhancement - pasting over a visual selection keeps content
+  vnoremap <silent> <expr> p <sid>VisualPut()
+  " visual paste doesn't clobber what you've got in the paste buffer
+  " credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
+  function! RestoreRegister()
+    let @" = s:restore_reg
+    return ''
+  endfunction
+  function! s:VisualPut()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<CR>"
+  endfunction
+
+  " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+  " restore cursor position on file open
+  autocmd BufWinEnter * call PositionCursor()
+  let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
+  function! PositionCursor()
+    if index(s:cursor_exceptions, &filetype) == -1 && line("'\"") <= line('$')
+      normal! g`"
+      return 1
+    endif
+  endfunction
+
+  " Deprecations and Habit Changes
+  highlight HabitChange guifg=love cterm=underline
+  match HabitChange /recieve/
+  match HabitChange /recieve_message_chain/
 augroup END
 
-" See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
-function! PositionCursor()
-  if index(s:cursor_exceptions, &filetype) == -1 && line("'\"") <= line('$')
-    normal! g`"
-    return 1
-  endif
-endfunction
+set scrolloff=5                     " 5 lines always visible at top and bottom
+set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
+set nojoinspaces                    " Single space after period when using J
+set hlsearch                        " Highlight my searches :)
+set ignorecase                      " Search case insensitive...
+set smartcase                       " ... but not it begins with upper case
+set magic                           " Allows pattern matching with special characters
+set autoindent                      " indent on newlines
+set smartindent                     " recognise syntax of files
+set noswapfile nobackup             " git > swapfile, git > backup files
+set wrap linebreak nolist           " wrap words, incompatable with visible whitespace (list and listchars)
+set showcmd                         " show command on bottom right as it's typed
+set belloff=all                     " I find terminal bells irritating
+set shortmess-=S                    " show search matches, see https://stackoverflow.com/a/4671112
+set history=1000                    " 1000 lines of command line and search history saved
+set diffopt+=vertical               " vertical diffs
+set colorcolumn=120                 " Show 100th char visually
+set nomodeline modelines=0          " Disable modelines as a security precaution
+set foldminlines=3                  " Folds only operate on blocks more than 3 lines long
+set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
+set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+set cdpath="~/src"                  " cd to directories under ~src without explicit path
+set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
+set noruler                         " not using this, unset form tpope/vim-sensible
 
-" visual paste doesn't clobber what you've got in the paste buffer
-" credit https://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/#prevent-replacing-paste-buffer-on-paste
-function! RestoreRegister()
-  let @" = s:restore_reg
-  return ''
-endfunction
-function! s:VisualPut()
-  let s:restore_reg = @"
-  return "p@=RestoreRegister()\<CR>"
-endfunction
+if has('nvim')
+  set shada='1000,<100,n~/.vim/shada  " Persist 1000 marks, and 100 lines per reg across nvim sessions
+else
+  set viminfo='1000,<100,n~/.vim/info " Persist 1000 marks, and 100 lines per reg across sessions
+end
 
-" Deprecations and Habit Changes
-highlight HabitChange guifg=love cterm=underline
-match HabitChange /recieve/
-match HabitChange /recieve_message_chain/
+" detects background=light|dark from on terminal theme
+" manually toggle background with yob
+if !has('nvim')
+  colorscheme blinkenlights
+endif
