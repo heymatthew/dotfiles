@@ -194,7 +194,7 @@ augroup mods/vim | autocmd!
   " yank path
   nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
   " toggle quickfix
-  nnoremap <expr> yoq empty(filter(getwininfo(), 'v:val.quickfix')) ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
+  nnoremap <expr> yoq QuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " toggle ale - mnemonic riffs from tpope's unimpaired
   nnoremap yoa :ALEToggleBuffer<CR>
   " Toggle edit and write, similar to https://hemingwayapp.com
@@ -302,6 +302,11 @@ augroup mods/vim | autocmd!
   autocmd Filetype markdown setlocal keywordprg=dict
   " markdown complete ignores case for matches but uses the context
   autocmd Filetype markdown setlocal ignorecase infercase
+
+  function QuickfixClosed()
+    let quickfix_windows = filter(getwininfo(), { i, v -> v.quickfix && v.tabnr == tabpagenr() })
+    return empty(quickfix_windows)
+  endfunction
 augroup END
 
 " Writing Prose
