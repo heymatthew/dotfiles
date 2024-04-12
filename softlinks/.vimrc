@@ -317,8 +317,7 @@ if !filereadable(&thesaurus)
   echom 'Downloading thesaurus file'
   silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
 endif
-" z_ - Dictionary lookup word under cursor
-nnoremap z_ :!dict <cword><CR>
+
 " Experimental thesaurus lookup
 if filereadable(&thesaurus)
   let thesaurus = {}
