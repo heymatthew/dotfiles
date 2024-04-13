@@ -1,5 +1,13 @@
 " .vimrc configuration file
 
+" ==[ Table of contents ]=======================================================
+" Plugins ..................... 3rd party libraries
+" Settings .................... Default behaviours
+" Custom Mappings ............. Extend functionality with hotkeys
+" Functions ................... Behaviours with 1+ editor actions
+
+
+" ==[ Plugins ]=================================================================
 if !filereadable(expand('~/.vim/autoload/plug.vim'))
   echom 'Installing plug'
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -47,9 +55,14 @@ Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
 Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
 call plug#end()
 
+
 augroup mods/vim | autocmd!
-  """"""""""""""""""""""""""""""""""""""""
-  " 1. Configuration
+  " ==[ Settings ]================================================================
+  " Setting principles (WIP)
+  " 1. Minimalism and consistency
+  " 2. Portability
+  " 3. Stability
+
   set scrolloff=5                     " 5 lines always visible at top and bottom
   set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
   set nojoinspaces                    " Single space after period when using J
@@ -74,10 +87,14 @@ augroup mods/vim | autocmd!
   set cdpath="~/src"                  " cd to directories under ~src without explicit path
   set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
   set noruler                         " not using this, unset form tpope/vim-sensible
-  let g:ale_set_highlights = 0               " remove highlights
-  let g:ale_set_loclist = 0                  " don't clobber location list
-  let g:ale_set_quickfix = 0                 " don't clobber quickfix list
-  let g:ale_virtualtext_cursor = 'disabled'  " don't show virtual text with errors
+
+  let g:ale_set_highlights = 0                       " remove highlights
+  let g:ale_set_loclist = 0                          " don't clobber location list
+  let g:ale_set_quickfix = 0                         " don't clobber quickfix list
+  let g:ale_virtualtext_cursor = 'disabled'          " don't show virtual text with errors
+  let g:golden_ratio_autocommand = 0                 " disable golden ratio by default
+  let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
+
   " Prefer splitting down or right
   set splitright   " vertical windows go right
   set splitbelow   " horizontal windows go below
@@ -138,10 +155,13 @@ augroup mods/vim | autocmd!
   autocmd Filetype sh         setlocal foldmethod=indent
   autocmd Filetype eruby.yaml setlocal foldmethod=indent
   autocmd Filetype eruby      setlocal foldmethod=indent
-  autocmd FileType help       setlocal conceallevel=0
+
+  " Don't hide syntax for |:links| and *:marks* in help files
+  autocmd FileType help setlocal conceallevel=0
 
   " Filetype detection overrides
   autocmd BufNewFile,BufRead .env* setlocal filetype=sh
+
   " Workaround: Allow other content to load in any pane, https://github.com/tpope/vim-fugitive/issues/2272
   if has('winfixbuf')
     autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
@@ -183,9 +203,8 @@ augroup mods/vim | autocmd!
   try | delcommand Grename | catch | endtry
   try | delcommand Gmove | catch | endtry
 
-  """"""""""""""""""""""""""""""""""""""""
-  " 2. Custom Mappigns
 
+  " ==[ Custom Mappings ]=========================================================
   " Mapping Principles (WIP)
   " 1. Common usage should use chords or single key presses
   " 2. Less common things should be two character mnemonics
@@ -216,8 +235,6 @@ augroup mods/vim | autocmd!
   autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
   " spellcheck commit messages
   autocmd Filetype gitcommit setlocal spell
-  " Disable golden ratio by default
-  let g:golden_ratio_autocommand = 0
   " GoldenRatio mnemonic, <C-w>- is like <C-w>=
   nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
   " toggle ale - mnemonic riffs from tpope's unimpaired
@@ -247,8 +264,6 @@ augroup mods/vim | autocmd!
   endif
   " go - fuzzy find file
   nnoremap go :FZF<CR>
-  " Configure popup window
-  let g:fzf_preview_window = ['right,50%', 'ctrl-/']
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
   nnoremap <leader>v :edit ~/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
@@ -305,8 +320,11 @@ augroup mods/vim | autocmd!
   " enhancement - pasting over a visual selection keeps content
   vnoremap <silent> <expr> p <sid>VisualPut()
 
-  """"""""""""""""""""""""""""""""""""""""
-  " 3. Functions
+
+  " ==[ Functions ]=============================================================
+  " Function Principles (WIP)
+  " 1. Behaviours should be named with VerbNoun
+  " 2. Checks prefix with Is or Has
 
   " toggle quickfix
   function IsQuickfixClosed()
