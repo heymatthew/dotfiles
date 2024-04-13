@@ -219,12 +219,13 @@ augroup mods/vim | autocmd!
   " gC - list changes from normal mode
   nnoremap gC :Changes<CR>
   " edit commit template
-  autocmd filetype fugitive nmap <buffer> ct :!cp ~/.git/message .git/message.bak<CR>
-                                           \ :!cp ~/.gitmessage .git/message<CR>
-                                           \ :!git config commit.template '.git/message'<CR>
-                                           \ :edit .git/message<CR>
-                                           \ Go<C-r>=GitHumans()<CR>
-                                           \ <ESC>gg
+  autocmd filetype fugitive nmap <buffer> ct
+    \ :!cp ~/.git/message .git/message.bak<CR>
+    \ :!cp ~/.gitmessage .git/message<CR>
+    \ :!git config commit.template '.git/message'<CR>
+    \ :edit .git/message<CR>
+    \ Go<C-r>=GitHumans()<CR>
+    \ <ESC>gg
   " git log
   autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
   " <C-l> refreshes git pane, like netrw refresh
