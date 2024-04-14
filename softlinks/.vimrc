@@ -328,7 +328,7 @@ augroup mods/vim | autocmd!
   " 2. Checks prefix with Is or Has
 
   " toggle quickfix
-  function IsQuickfixClosed()
+  function! IsQuickfixClosed()
     let quickfix_windows = filter(getwininfo(), { i, v -> v.quickfix && v.tabnr == tabpagenr() })
     return empty(quickfix_windows)
   endfunction
