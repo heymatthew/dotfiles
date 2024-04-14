@@ -214,10 +214,14 @@ augroup mods/vim | autocmd!
   nnoremap gs :vert Git<CR>
   " git blame
   nnoremap gb :Git blame<CR>
-  " changes - quickfix jumplist of hunks since branching
+  " changes (gC) - quickfix jumplist of hunks since branching
   command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
-  " gC - list changes from normal mode
   nnoremap gC :Changes<CR>
+  " upstream diffsplit (du)
+  command! DiffsplitUpstream exec ':Gdiffsplit ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+  nnoremap du :DiffsplitUpstream<CR>
+  " diff changes (dc)
+  nnoremap dc :Gdiffsplit<CR>
   " edit commit template
   autocmd filetype fugitive nmap <buffer> ct
     \ :!cp ~/.git/message .git/message.bak<CR>
