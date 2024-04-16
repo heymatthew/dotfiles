@@ -212,9 +212,9 @@ augroup mods/vim | autocmd!
 
   " git status
   " nnoremap gs :vert Git<CR>
-  nnoremap gs :Gedit :<CR>
+  nnoremap gS :Gedit :<CR>
   " git blame
-  nnoremap gb :Git blame<CR>
+  nnoremap gB :Git blame<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
   command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
   nnoremap gC :Changes<CR>
