@@ -211,7 +211,8 @@ augroup mods/vim | autocmd!
   " 3. Uncommon useful things should be leader-based or vim commands
 
   " git status
-  nnoremap gs :vert Git<CR>
+  " nnoremap gs :vert Git<CR>
+  nnoremap gs :Gedit :<CR>
   " git blame
   nnoremap gb :Git blame<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
