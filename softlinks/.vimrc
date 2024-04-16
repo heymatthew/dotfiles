@@ -59,7 +59,7 @@ call plug#end()
 augroup mods/vim | autocmd!
   " ==[ Settings ]================================================================
   " Setting principles (WIP)
-  " 1. Minimalism and consistency
+  " 1. Interface minimalism and consistency
   " 2. Portability
   " 3. Stability
 
