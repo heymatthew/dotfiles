@@ -232,7 +232,7 @@ augroup mods/vim | autocmd!
     \ Go<C-r>=GitHumans()<CR>
     \ <ESC>gg
   " git log
-  autocmd filetype fugitive nnoremap <buffer> gl :vert G log --oneline -100<CR>
+  autocmd filetype fugitive nnoremap <buffer> gl :G log --oneline -100<CR>
   " <C-l> refreshes git pane, like netrw refresh
   autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
   " open github commands
