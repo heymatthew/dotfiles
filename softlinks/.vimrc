@@ -220,7 +220,7 @@ augroup mods/vim | autocmd!
   nnoremap gC :Changes<CR>
   " upstream diffsplit (du)
   command! DiffsplitUpstream exec ':Gdiffsplit ' . systemlist('git merge-base origin/HEAD HEAD')[0]
-  nnoremap du :DiffsplitUpstream<CR>
+  nnoremap dU :DiffsplitUpstream<CR>
   " diff changes (dc)
   nnoremap dc :Gdiffsplit<CR>
   " edit commit template
