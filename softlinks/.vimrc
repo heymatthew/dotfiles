@@ -154,6 +154,7 @@ augroup mods/vim | autocmd!
   autocmd Filetype haml       setlocal foldmethod=indent
   autocmd Filetype sh         setlocal foldmethod=indent
   autocmd Filetype eruby.yaml setlocal foldmethod=indent
+  autocmd Filetype yaml       setlocal foldmethod=indent
   autocmd Filetype eruby      setlocal foldmethod=indent
 
   " Don't hide syntax for |:links| and *:marks* in help files
