@@ -85,8 +85,8 @@ augroup mods/vim | autocmd!
   set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
   set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
   set cdpath="~/src"                  " cd to directories under ~src without explicit path
-  set jumpoptions+=stack              " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
   set noruler                         " not using this, unset form tpope/vim-sensible
+  " set jumpoptions+=stack            " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
 
   let g:ale_set_highlights = 0                       " remove highlights
   let g:ale_set_loclist = 0                          " don't clobber location list
