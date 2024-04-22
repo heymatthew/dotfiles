@@ -279,7 +279,7 @@ augroup mods/vim | autocmd!
   " visual space - read/write clipboard
   vnoremap <space> "+
   " go to zshrc
-  nnoremap <leader>z :edit $HOME/.zshrc<CR>
+  nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
   " go to scatchpad
   nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
   " go to plugins
