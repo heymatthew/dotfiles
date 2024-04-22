@@ -274,16 +274,16 @@ augroup mods/vim | autocmd!
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
   nnoremap <leader>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
-  " space - read/write clipboard
-  nnoremap <space> "+
-  " visual space - read/write clipboard
-  vnoremap <space> "+
   " go to zshrc
   nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
   " go to scatchpad
   nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
   " go to plugins
   nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
+  " space - read/write clipboard
+  nnoremap <space> "+
+  " visual space - read/write clipboard
+  vnoremap <space> "+
   " yank path
   nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
   " toggle goyo - mnemonic riffs from tpope's unimpaired
