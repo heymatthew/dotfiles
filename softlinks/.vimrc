@@ -272,7 +272,7 @@ augroup mods/vim | autocmd!
   " go - fuzzy find file
   nnoremap go :FZF<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
-  nnoremap <leader>v :edit ~/dotfiles/softlinks/.vimrc<CR>
+  nnoremap <leader>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
   " space - read/write clipboard
   nnoremap <space> "+
