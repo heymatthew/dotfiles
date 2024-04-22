@@ -54,7 +54,7 @@ running_context() {
   if [[ "$1" =~ "^vim" || "$1" =~ "^fg" ]]; then
     # Vim and fg don't help add context
   else
-    set_context "%m Σ $1"
+    set_context "Σ $1"
   fi
 }
 
