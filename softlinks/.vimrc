@@ -7,57 +7,58 @@
 " Functions ................... Behaviours with 1+ editor actions
 
 
-" ==[ Plugins ]=================================================================
-if !filereadable(expand('~/.vim/autoload/plug.vim'))
-  echom 'Installing plug'
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  try
-    source ~/.vim/autoload/plug.vim
-    source $MYVIMRC
-  catch
-    PlugInstall | source $MYVIMRC 
-  endtry
-  finish
-endif
+augroup mods/plugins
+  " ==[ Plugins ]=================================================================
+  if !filereadable(expand('~/.vim/autoload/plug.vim'))
+    echom 'Installing plug'
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    try
+      source ~/.vim/autoload/plug.vim
+      source $MYVIMRC
+    catch
+      PlugInstall | source $MYVIMRC 
+    endtry
+    finish
+  endif
 
-call plug#begin('~/.vim/plugged')
-Plug 'bronson/vim-visual-star-search'  " Vim multiline search
-Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
-Plug 'dense-analysis/ale',             " Linter
-Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
-Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
- Plug 'luxed/ayu-vim'                   " Paper-like colourscheme
-Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
-Plug 'junegunn/fzf.vim'                " Defaults
-Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
-Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
-Plug 'junegunn/vader.vim'              " Vimscript test framework
-Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
-Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
-Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
-Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
-Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
-Plug 'tpope/vim-commentary'            " Toggle comments on lines
-Plug 'tpope/vim-dadbod'                " Database from your vim
-Plug 'tpope/vim-dispatch'              " Builds and tests with asynchronous adapters: https://vimeo.com/63116209
-Plug 'tpope/vim-eunuch'                " Utils and typing shebang line causes file type re-detection with +x
-Plug 'tpope/vim-fugitive'              " Git
-Plug 'tpope/vim-jdaddy'                " JSON text objects (aj) and pretty print (gqaj) for json
-Plug 'tpope/vim-obsession'             " Makes sessions easier to manage with :Obsess
-Plug 'tpope/vim-rails'                 " For rails codebases
-Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
-Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
-Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
-Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and roman numerals. 7<C-a> will jump a week.
-Plug 'tpope/vim-surround'              " Delete, or insert around text objects
-Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-Plug 'tpope/vim-vinegar'               " Better file browser
-Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
-Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
-call plug#end()
+  call plug#begin('~/.vim/plugged')
+  Plug 'bronson/vim-visual-star-search'  " Vim multiline search
+  Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
+  Plug 'dense-analysis/ale',             " Linter
+  Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
+  Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
+   Plug 'luxed/ayu-vim'                   " Paper-like colourscheme
+  Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
+  Plug 'junegunn/fzf.vim'                " Defaults
+  Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
+  Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
+  Plug 'junegunn/vader.vim'              " Vimscript test framework
+  Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
+  Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
+  Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
+  Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
+  Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
+  Plug 'tpope/vim-commentary'            " Toggle comments on lines
+  Plug 'tpope/vim-dadbod'                " Database from your vim
+  Plug 'tpope/vim-dispatch'              " Builds and tests with asynchronous adapters: https://vimeo.com/63116209
+  Plug 'tpope/vim-eunuch'                " Utils and typing shebang line causes file type re-detection with +x
+  Plug 'tpope/vim-fugitive'              " Git
+  Plug 'tpope/vim-jdaddy'                " JSON text objects (aj) and pretty print (gqaj) for json
+  Plug 'tpope/vim-obsession'             " Makes sessions easier to manage with :Obsess
+  Plug 'tpope/vim-rails'                 " For rails codebases
+  Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
+  Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
+  Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
+  Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and roman numerals. 7<C-a> will jump a week.
+  Plug 'tpope/vim-surround'              " Delete, or insert around text objects
+  Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
+  Plug 'tpope/vim-vinegar'               " Better file browser
+  Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
+  Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
+  call plug#end()
+augroup END
 
-
-augroup mods/vim | autocmd!
+augroup mods/settings | autocmd!
   " ==[ Settings ]================================================================
   " Setting principles (WIP)
   " 1. Interface minimalism and consistency
@@ -207,8 +208,9 @@ augroup mods/vim | autocmd!
   try | delcommand Gremove | catch | endtry
   try | delcommand Grename | catch | endtry
   try | delcommand Gmove | catch | endtry
+augroup END
 
-
+augroup mods/mappings | autocmd!
   " ==[ Custom Mappings ]=========================================================
   " Mapping Principles (WIP)
   " 1. Common usage should use chords or single key presses
@@ -330,8 +332,9 @@ augroup mods/vim | autocmd!
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " enhancement - pasting over a visual selection keeps content
   vnoremap <silent> <expr> p <sid>VisualPut()
+augroup END
 
-
+augroup mods/functions | autocmd!
   " ==[ Functions ]=============================================================
   " Function Principles (WIP)
   " 1. Behaviours should be named with VerbNoun
