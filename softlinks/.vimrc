@@ -26,7 +26,7 @@ Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
 Plug 'dense-analysis/ale',             " Linter
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
-Plug 'junegunn/fzf',  { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
 Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
