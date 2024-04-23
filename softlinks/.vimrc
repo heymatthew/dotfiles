@@ -26,6 +26,7 @@ Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
 Plug 'dense-analysis/ale',             " Linter
 Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
 Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
+ Plug 'luxed/ayu-vim'                   " Paper-like colourscheme
 Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
 Plug 'junegunn/fzf.vim'                " Defaults
 Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
@@ -88,6 +89,9 @@ augroup mods/vim | autocmd!
   set noruler                         " not using this, unset form tpope/vim-sensible
   " set jumpoptions+=stack            " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
 
+  set termguicolors " true colour support
+  colorscheme ayu
+
   let g:ale_set_highlights = 0                       " remove highlights
   let g:ale_set_loclist = 0                          " don't clobber location list
   let g:ale_set_quickfix = 0                         " don't clobber quickfix list
@@ -133,7 +137,6 @@ augroup mods/vim | autocmd!
     set viminfo='1000,<100,n~/.vim/info
     " note, vim detects background=light|dark from terminal theme
     " manually toggle background with yob
-    colorscheme blinkenlights
     " Cludges and workarounds for slow ruby parsing
     " vim-ruby ships with vim, I just find folds and syntax really slow
     " neovim uses treesitter which has it's own quirks
@@ -193,9 +196,9 @@ augroup mods/vim | autocmd!
   autocmd BufWinEnter * call PositionCursor()
 
   " Deprecations and Habit Changes
-  highlight HabitChange guifg=love cterm=underline
-  match HabitChange /recieve/
-  match HabitChange /recieve_message_chain/
+  " highlight HabitChange guifg=love cterm=underline
+  " match HabitChange /recieve/
+  " match HabitChange /recieve_message_chain/
 
   " Remove deprecated fugitive commands to unclog tab completion
   " see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
