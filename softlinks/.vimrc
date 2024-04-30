@@ -27,7 +27,7 @@ augroup mods/plugins
   Plug 'dense-analysis/ale',             " Linter
   Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
   Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
-   Plug 'luxed/ayu-vim'                   " Paper-like colourscheme
+  Plug 'rose-pine/neovim', { 'as': 'neo-pine' }
   Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
   Plug 'junegunn/fzf.vim'                " Defaults
   Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
@@ -91,7 +91,11 @@ augroup mods/settings | autocmd!
   " set jumpoptions+=stack            " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
 
   set termguicolors " true colour support
-  colorscheme ayu
+  if has('nvim')
+    colorscheme rose-pine
+  else
+    colorscheme blinkenlights
+  end
 
   let g:ale_set_highlights = 0                       " remove highlights
   let g:ale_set_loclist = 0                          " don't clobber location list
