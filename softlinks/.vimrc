@@ -237,6 +237,8 @@ augroup mods/mappings | autocmd!
   nnoremap dC :DiffsplitUpstream<CR>
   " diff changes (dC)
   nnoremap dc :Gdiffsplit<CR>
+  " close fugitive diffs
+  nnoremap dq :call fugitive#DiffClose()<CR>
   " edit commit template
   autocmd filetype fugitive nmap <buffer> ct
     \ :!cp ~/.git/message .git/message.bak<CR>
