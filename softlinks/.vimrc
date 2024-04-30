@@ -92,6 +92,7 @@ augroup mods/settings | autocmd!
 
   set termguicolors " true colour support
   if has('nvim')
+    lua require("rose-pine").setup({ dark_variant = 'moon' })
     colorscheme rose-pine
   else
     colorscheme blinkenlights
