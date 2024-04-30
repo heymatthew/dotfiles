@@ -221,7 +221,9 @@ augroup mods/mappings | autocmd!
   nnoremap gs :vert Git<CR>
   " nnoremap gS :Gedit :<CR>
   " git blame
-  nnoremap gB :Git blame<CR>
+  nnoremap gb :Git blame<CR>
+  " git blame with copy paste detection
+  nnoremap gB :Git blame -C -M<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
   command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
   nnoremap gC :Changes<CR>
