@@ -231,7 +231,7 @@ augroup vimrc/mappings | autocmd!
   " git blame with copy paste detection
   nnoremap gB :Git blame -C -M<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
-  command! Changes exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+  command! Changes call <SID>quickfix_changelist()
   nnoremap gC :Changes<CR>
   " upstream diffsplit (dC)
   command! DiffsplitUpstream exec ':Gdiffsplit ' . systemlist('git merge-base origin/HEAD HEAD')[0]
@@ -406,5 +406,15 @@ augroup vimrc/functions | autocmd!
     let replace = a:thesaurus[a:word][choice-1]
     echo "\nYou selected " . replace
     execute 'normal! ciw' . replace
+  endfunction
+
+  function! s:quickfix_changelist()
+    if !empty(systemlist('git ls-files --unmerged'))
+      Git mergetool
+    else
+      " FIXME: Want to use merge base instead
+      " exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+      Git difftool origin/HEAD
+    endif
   endfunction
 augroup END
