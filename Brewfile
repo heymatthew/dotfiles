@@ -43,7 +43,6 @@ brew "restic"     # Nobody wants backup, everyone wants restore https://restic.n
 brew "shellcheck" # ncjones uses this for linting shell stuff
 brew "stow"       # manage softlinks for dotfiles
 brew "svn"        # required for font-source-code-pro
-brew "syncthing"  # keep stuff synced across machines
 brew "termshark"  # cli replacement for wireshark
 brew "tig"
 brew "tree"
@@ -75,6 +74,7 @@ cask "transmission"         # good for Linux ISOs
 cask "hiddenbar"            # declutter the osx menu bar
 cask "vlc"
 
+# brew "syncthing"          # Great, but not great for work machines as it often breaks policy
 # cask "jupyterlab"         # A Next-Generation Notebook Interface https://jupyter.org/
 # cask "kicad"              # manual install, fab PCBs for http://jlcpcb.com
 # cask "skype"
