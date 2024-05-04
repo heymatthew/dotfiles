@@ -7,7 +7,7 @@
 " Functions ................... Behaviours with 1+ editor actions
 
 
-augroup mods/plugins
+augroup vimrc/plugins
   " ==[ Plugins ]=================================================================
   if !filereadable(expand('~/.vim/autoload/plug.vim'))
     echom 'Installing plug'
@@ -58,7 +58,7 @@ augroup mods/plugins
   call plug#end()
 augroup END
 
-augroup mods/settings | autocmd!
+augroup vimrc/settings | autocmd!
   " ==[ Settings ]================================================================
   " Setting principles (WIP)
   " 1. Interface minimalism
@@ -215,7 +215,7 @@ augroup mods/settings | autocmd!
   try | delcommand Gmove | catch | endtry
 augroup END
 
-augroup mods/mappings | autocmd!
+augroup vimrc/mappings | autocmd!
   " ==[ Custom Mappings ]=========================================================
   " Mapping Principles (WIP)
   " 1. Trial native vim before mapping
@@ -344,7 +344,7 @@ augroup mods/mappings | autocmd!
   vnoremap <silent> <expr> p <sid>VisualPut()
 augroup END
 
-augroup mods/functions | autocmd!
+augroup vimrc/functions | autocmd!
   " ==[ Functions ]=============================================================
   " Function Principles (WIP)
   " 1. Behaviours should be named with VerbNoun
