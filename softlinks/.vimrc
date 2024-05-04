@@ -61,9 +61,9 @@ augroup END
 augroup mods/settings | autocmd!
   " ==[ Settings ]================================================================
   " Setting principles (WIP)
-  " 1. Interface minimalism and consistency
-  " 2. Portability
-  " 3. Stability
+  " 1. Interface minimalism
+  " 2. Portability over monolythic
+  " 3. Experimentation over stability
 
   set scrolloff=5                     " 5 lines always visible at top and bottom
   set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
@@ -218,9 +218,10 @@ augroup END
 augroup mods/mappings | autocmd!
   " ==[ Custom Mappings ]=========================================================
   " Mapping Principles (WIP)
-  " 1. Common usage should use chords or single key presses
-  " 2. Less common things should be two character mnemonics
-  " 3. Uncommon useful things should be leader-based or vim commands
+  " 1. Trial native vim before mapping
+  " 2. Consistency: Rif off existing mnemonics
+  " 3. Common usage: use chords, single or two key mnemonics
+  " 4. Less common: Leader-based or vim commands
 
   " git status
   nnoremap gs :vert Git<CR>
