@@ -21,6 +21,13 @@ augroup vimrc/plugins
     finish
   endif
 
+  " thesaurus
+  set thesaurus=~/.vim/thesaurus/mthesaur.txt
+  if !filereadable(&thesaurus)
+    echom 'Downloading thesaurus file'
+    silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
+  endif
+
   call plug#begin('~/.vim/plugged')
   Plug 'bronson/vim-visual-star-search'  " Vim multiline search
   Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
@@ -131,7 +138,6 @@ augroup vimrc/settings | autocmd!
   " Writing Prose
   set spelllang=en_nz
   set dictionary=/usr/share/dict/words
-  set thesaurus=~/.vim/thesaurus/mthesaur.txt
   " markdown complete ignores case for matches but uses the context
   autocmd Filetype markdown setlocal ignorecase infercase
 
@@ -268,23 +274,9 @@ augroup vimrc/mappings | autocmd!
   nnoremap [a :ALEPreviousWrap<CR>
   " Toggle edit and write, similar to https://hemingwayapp.com
   nnoremap <expr> yoe ToggleEditToWrite()
-  " thesaurus
-  if !filereadable(&thesaurus)
-    echom 'Downloading thesaurus file'
-    silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
-  endif
-  " Experimental thesaurus lookup
-  if filereadable(&thesaurus)
-    let thesaurus = {}
-    for line in readfile(&thesaurus)
-      let parts = split(line, ',')
-      let [word, synonyms] = [parts[0], parts[1:]]
-      let thesaurus[word] = synonyms
-    endfor
-    " z- thesaurus, mnemonic z= spelling lookup
-    " Alternative to nnoremap z- viwA<C-x><C-t>
-    nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
-  endif
+  " z- thesaurus, mnemonic z= spelling lookup
+  " Alternative to nnoremap z- viwA<C-x><C-t>
+  nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
   " go - fuzzy find file
   nnoremap go :FZF<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
@@ -397,8 +389,15 @@ augroup vimrc/functions | autocmd!
     endif
   endfunction
 
+  " Experimental thesaurus lookup
   " FIXME: This works, but there's a bug to squash
   " SyntaxError - E492: Not an editor command: <selected_word> (see vim-jp/vim-vimlparser)
+  let thesaurus = {}
+  for line in readfile(&thesaurus)
+    let parts = split(line, ',')
+    let [word, synonyms] = [parts[0], parts[1:]]
+    let thesaurus[word] = synonyms
+  endfor
   function! Suggest(thesaurus, word)
     let synonyms = a:thesaurus[a:word][:&lines - 2]
     let synonyms = map(synonyms, { i, synonym -> (i+1) . '. ' . synonym })
