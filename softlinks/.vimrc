@@ -97,6 +97,13 @@ augroup vimrc/settings | autocmd!
   set noruler                         " not using this, unset form tpope/vim-sensible
   " set jumpoptions+=stack            " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
 
+  let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
+  let g:ale_set_highlights = 0                       " remove highlights
+  let g:ale_set_loclist = 0                          " don't clobber location list
+  let g:ale_set_quickfix = 0                         " don't clobber quickfix list
+  let g:ale_virtualtext_cursor = 'disabled'          " don't show virtual text with errors
+  let g:golden_ratio_autocommand = 0                 " disable golden ratio by default
+
   set termguicolors " true colour support
   if has('nvim')
     lua require("rose-pine").setup({ dark_variant = 'moon' })
@@ -104,13 +111,6 @@ augroup vimrc/settings | autocmd!
   else
     colorscheme blinkenlights
   end
-
-  let g:ale_set_highlights = 0                       " remove highlights
-  let g:ale_set_loclist = 0                          " don't clobber location list
-  let g:ale_set_quickfix = 0                         " don't clobber quickfix list
-  let g:ale_virtualtext_cursor = 'disabled'          " don't show virtual text with errors
-  let g:golden_ratio_autocommand = 0                 " disable golden ratio by default
-  let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
 
   " Prefer splitting down or right
   set splitright   " vertical windows go right
