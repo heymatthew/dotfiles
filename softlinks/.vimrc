@@ -103,6 +103,7 @@ augroup vimrc/settings | autocmd!
   let g:ale_set_quickfix = 0                         " don't clobber quickfix list
   let g:ale_virtualtext_cursor = 'disabled'          " don't show virtual text with errors
   let g:golden_ratio_autocommand = 0                 " disable golden ratio by default
+  let g:fugitive_legacy_commands = 0                 " disable fugitive deprecation messages (clogs tab complete)
 
   set termguicolors " true colour support
   if has('nvim')
@@ -212,13 +213,6 @@ augroup vimrc/settings | autocmd!
   " highlight HabitChange guifg=love cterm=underline
   " match HabitChange /recieve/
   " match HabitChange /recieve_message_chain/
-
-  " Remove deprecated fugitive commands to unclog tab completion
-  " see ~/.vim/plugged/vim-fugitive/plugin/fugitive.vim
-  try | delcommand Gbrowse | catch | endtry
-  try | delcommand Gremove | catch | endtry
-  try | delcommand Grename | catch | endtry
-  try | delcommand Gmove | catch | endtry
 augroup END
 
 augroup vimrc/mappings | autocmd!
