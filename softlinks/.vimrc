@@ -254,8 +254,9 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
   " open github commands
   autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
-  " create empty commit, good for 
-  autocmd filetype fugitive nnoremap <buffer> ce :Git commit --allow-empty<CR>
+  " commit plan, good for creating commits ahead of implementation
+  " TODO: bail if local changes, that's not a plan anymore
+  autocmd filetype fugitive nnoremap <buffer> cp :Git commit --allow-empty<CR>
   " spellcheck commit messages
   autocmd Filetype gitcommit setlocal spell
   " GoldenRatio mnemonic, <C-w>- is like <C-w>=
