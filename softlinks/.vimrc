@@ -231,8 +231,7 @@ augroup vimrc/mappings | autocmd!
   " git blame with copy paste detection
   nnoremap gB :Git blame -C -M<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
-  command! Changes call <SID>quickfix_changelist()
-  nnoremap gC :Changes<CR>
+  nnoremap gC :call <SID>quickfix_changelist()<CR>
   " upstream diffsplit (dC)
   command! DiffsplitUpstream exec ':Gdiffsplit ' . systemlist('git merge-base origin/HEAD HEAD')[0]
   nnoremap dC :DiffsplitUpstream<CR>
@@ -403,12 +402,23 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! s:quickfix_changelist()
-    if !empty(systemlist('git ls-files --unmerged'))
+    let remote_check = FugitiveExecute('show-ref', 'origin/HEAD')
+    if remote_check['exit_status'] != 0
+      echo 'Setting up origin/HEAD'
+      call FugitiveExecute('remote', 'set-head', 'origin', '--auto')
+    endif
+
+    let conflict_check = FugitiveExecute('ls-files', '--unmerged')
+    let wip_check = FugitiveExecute('diff-index', 'HEAD', '--')
+    if !empty(conflict_check['stdout'][0])
+      echo 'Conflict changes for ' . conflict_check['git_dir']
       Git mergetool
+    elseif !empty(wip_check['stdout'][0])
+      echo 'Uncommited changes for ' . wip_check['git_dir']
+      Git difftool
     else
-      " FIXME: Want to use merge base instead
-      " exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
-      Git difftool origin/HEAD
+      echo 'Commited changes for ' . wip_check['git_dir']
+      exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
     endif
   endfunction
 augroup END
