@@ -95,6 +95,7 @@ augroup vimrc/settings | autocmd!
   set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
   set cdpath="~/src"                  " cd to directories under ~src without explicit path
   set noruler                         " not using this, unset form tpope/vim-sensible
+  set mouse=                          " turn off mouse
   " set jumpoptions+=stack            " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
 
   let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
