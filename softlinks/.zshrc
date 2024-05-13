@@ -153,7 +153,10 @@ fi
 export KEYTIMEOUT=1
 
 # Setting default editor
-if which vim > /dev/null; then
+if which nvim > /dev/null; then
+  export EDITOR=nvim
+  alias vim=nvim
+elif which vim > /dev/null; then
   export EDITOR=vim
 else
   export EDITOR=vi
