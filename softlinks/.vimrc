@@ -230,6 +230,10 @@ augroup vimrc/mappings | autocmd!
   nnoremap gb :Git blame<CR>
   " git blame with copy paste detection
   nnoremap gB :Git blame -C -M<CR>
+  " find merges from a blame window
+  autocmd filetype fugitiveblame nmap <buffer> m
+    \ ^
+    \ :Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
   nnoremap gC :call <SID>quickfix_changelist()<CR>
   " upstream diffsplit (dC)
