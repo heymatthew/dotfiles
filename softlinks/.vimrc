@@ -234,6 +234,7 @@ augroup vimrc/mappings | autocmd!
   " find merges from a blame window
   autocmd filetype fugitiveblame nmap <buffer> m
     \ ^
+    \ :call <SID>track_default_branch()<CR>
     \ :Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
   nnoremap gC :call <SID>quickfix_changelist()<CR>
