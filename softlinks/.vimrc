@@ -407,11 +407,7 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! s:quickfix_changelist()
-    let remote_check = FugitiveExecute('show-ref', 'origin/HEAD')
-    if remote_check['exit_status'] != 0
-      echo 'Setting up origin/HEAD'
-      call FugitiveExecute('remote', 'set-head', 'origin', '--auto')
-    endif
+    call s:track_default_branch()
 
     let conflict_check = FugitiveExecute('ls-files', '--unmerged')
     let wip_check = FugitiveExecute('diff-index', 'HEAD', '--')
@@ -424,6 +420,14 @@ augroup vimrc/functions | autocmd!
     else
       echo 'Commited changes for ' . wip_check['git_dir']
       exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+    endif
+  endfunction
+
+  function! s:track_default_branch()
+    let remote_check = FugitiveExecute('show-ref', 'origin/HEAD')
+    if remote_check['exit_status'] != 0
+      echo 'Setting up origin/HEAD'
+      call FugitiveExecute('remote', 'set-head', 'origin', '--auto')
     endif
   endfunction
 augroup END
