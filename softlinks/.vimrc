@@ -231,6 +231,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap gb :Git blame<CR>
   " git blame with copy paste detection
   nnoremap gB :Git blame -C -M<CR>
+  " Open commit in Github
+  autocmd filetype fugitiveblame nmap <buffer> gx ^:GBrowse <cword><CR>
   " find merges from a blame window
   autocmd filetype fugitiveblame nmap <buffer> m
     \ ^
