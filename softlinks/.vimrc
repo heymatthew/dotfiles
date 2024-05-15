@@ -1,6 +1,6 @@
 " .vimrc configuration file
 
-" ==[ Table of contents ]=======================================================
+" ==[ Table of contents ]===========================================================================
 " Plugins ..................... 3rd party libraries
 " Settings .................... Default behaviours
 " Custom Mappings ............. Extend functionality with hotkeys
@@ -8,10 +8,12 @@
 
 
 augroup vimrc/plugins
-  " ==[ Plugins ]=================================================================
+  " ==[ Plugins ]===================================================================================
   if !filereadable(expand('~/.vim/autoload/plug.vim'))
     echom 'Installing plug'
-    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    silent !curl --create-dirs
+      \ -fLo ~/.vim/autoload/plug.vim
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     try
       source ~/.vim/autoload/plug.vim
       source $MYVIMRC
@@ -25,7 +27,9 @@ augroup vimrc/plugins
   set thesaurus=~/.vim/thesaurus/mthesaur.txt
   if !filereadable(&thesaurus)
     echom 'Downloading thesaurus file'
-    silent !curl -fLo ~/.vim/thesaurus/mthesaur.txt --create-dirs https://raw.githubusercontent.com/zeke/moby/master/words.txt
+    silent !curl --create-dirs
+      \ -fLo ~/.vim/thesaurus/mthesaur.txt
+      \ https://raw.githubusercontent.com/zeke/moby/master/words.txt
   endif
 
   call plug#begin('~/.vim/plugged')
@@ -47,57 +51,57 @@ augroup vimrc/plugins
   Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
   Plug 'tpope/vim-commentary'            " Toggle comments on lines
   Plug 'tpope/vim-dadbod'                " Database from your vim
-  Plug 'tpope/vim-dispatch'              " Builds and tests with asynchronous adapters: https://vimeo.com/63116209
-  Plug 'tpope/vim-eunuch'                " Utils and typing shebang line causes file type re-detection with +x
-  Plug 'tpope/vim-fugitive'              " Git
-  Plug 'tpope/vim-jdaddy'                " JSON text objects (aj) and pretty print (gqaj) for json
+  Plug 'tpope/vim-dispatch'              " Async adapters for build/test: https://vimeo.com/63116209
+  Plug 'tpope/vim-eunuch'                " Unix utils. Also shebang will set filetype and +x
+  Plug 'tpope/vim-fugitive'              " Git.
+  Plug 'tpope/vim-jdaddy'                " JSON text objects (aj) and pretty print (gqaj)
   Plug 'tpope/vim-obsession'             " Makes sessions easier to manage with :Obsess
   Plug 'tpope/vim-rails'                 " For rails codebases
   Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
   Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
   Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
-  Plug 'tpope/vim-speeddating'           " <ctrl>a and <ctrl>x works on dates and roman numerals. 7<C-a> will jump a week.
-  Plug 'tpope/vim-surround'              " Delete, or insert around text objects
+  Plug 'tpope/vim-speeddating'           " <C-a> / <C-x> for dates and Roman nums. 7<C-a> for 1 week
+  Plug 'tpope/vim-surround'              " Delete, or insert quotes/brackets with text objects
   Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-  Plug 'tpope/vim-vinegar'               " Better file browser
-  Plug 'vim-ruby/vim-ruby'               " make ruby files FAST
+  Plug 'tpope/vim-vinegar'               " Enhancements for netrw
+  Plug 'vim-ruby/vim-ruby'               " Bleading edge syntax highlighting
   Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
   call plug#end()
 augroup END
 
 augroup vimrc/settings | autocmd!
-  " ==[ Settings ]================================================================
+  " ==[ Settings ]==================================================================================
   " Setting principles (WIP)
   " 1. Interface minimalism
   " 2. Portability over monolythic
   " 3. Experimentation over stability
 
-  let mapleader = "\<SPACE>"          " <leader> set to the spacebar
-  set scrolloff=5                     " 5 lines always visible at top and bottom
-  set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
-  set nojoinspaces                    " Single space after period when using J
-  set hlsearch                        " Highlight my searches :)
-  set ignorecase                      " Search case insensitive...
-  set smartcase                       " ... but not it begins with upper case
-  set magic                           " Allows pattern matching with special characters
-  set autoindent                      " indent on newlines
-  set smartindent                     " recognise syntax of files
-  set noswapfile nobackup             " git > swapfile, git > backup files
-  set wrap linebreak nolist           " wrap words, incompatable with visible whitespace (list and listchars)
-  set showcmd                         " show command on bottom right as it's typed
-  set belloff=all                     " I find terminal bells irritating
-  set shortmess-=S                    " show search matches, see https://stackoverflow.com/a/4671112
-  set history=1000                    " 1000 lines of command line and search history saved
-  set diffopt+=vertical               " vertical diffs
-  set colorcolumn=120                 " Show 100th char visually
-  set nomodeline modelines=0          " Disable modelines as a security precaution
-  set foldminlines=3                  " Folds only operate on blocks more than 3 lines long
-  set nrformats-=octal                " Disable octal increment from <C-a>, i.e. 007 -> 010
-  set diffopt+=algorithm:histogram    " Format diffs with histogram algo https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-  set cdpath="~/src"                  " cd to directories under ~src without explicit path
-  set noruler                         " not using this, unset form tpope/vim-sensible
-  set mouse=                          " turn off mouse
-  " set jumpoptions+=stack            " <C-o> behaves like a stack. Jumping throws away <C-i> from :jumps
+  let mapleader = "\<SPACE>"       " <leader> set to the spacebar
+  set scrolloff=5                  " 5 lines always visible at top and bottom
+  set sidescrolloff=5              " 5 characters visible left/right, assuming scrollwrap is set
+  set nojoinspaces                 " Single space after period when using J
+  set hlsearch                     " Highlight my searches :)
+  set ignorecase                   " Search case insensitive...
+  set smartcase                    " ... but not it begins with upper case
+  set magic                        " Allows pattern matching with special characters
+  set autoindent                   " indent on newlines
+  set smartindent                  " recognise syntax of files
+  set noswapfile nobackup          " git > swapfile, git > backup files
+  set wrap linebreak nolist        " wrap words, incompatable w' visible whitespace (list/listchars)
+  set showcmd                      " show command on bottom right as it's typed
+  set belloff=all                  " I find terminal bells irritating
+  set shortmess-=S                 " show search matches, see https://stackoverflow.com/a/4671112
+  set history=1000                 " 1000 lines of command line and search history saved
+  set diffopt+=vertical            " vertical diffs
+  set colorcolumn=100              " Show 100th char visually
+  set nomodeline modelines=0       " Disable modelines as a security precaution
+  set foldminlines=3               " Folds only operate on blocks more than 3 lines long
+  set nrformats-=octal             " Disable octal increment from <C-a>, i.e. 007 -> 010
+  set diffopt+=algorithm:histogram " Format diffs with histogram algo
+                                   " https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
+  set cdpath="~/src"               " cd to directories under ~src without explicit path
+  set noruler                      " not using this, unset form tpope/vim-sensible
+  set mouse=                       " turn off mouse
 
   let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
   let g:ale_set_highlights = 0                       " remove highlights
@@ -105,7 +109,7 @@ augroup vimrc/settings | autocmd!
   let g:ale_set_quickfix = 0                         " don't clobber quickfix list
   let g:ale_virtualtext_cursor = 'disabled'          " don't show virtual text with errors
   let g:golden_ratio_autocommand = 0                 " disable golden ratio by default
-  let g:fugitive_legacy_commands = 0                 " disable fugitive deprecation messages (clogs tab complete)
+  let g:fugitive_legacy_commands = 0                 " don't populate deprecated fugitive commands
 
   set termguicolors " true colour support
   if has('nvim')
@@ -158,7 +162,8 @@ augroup vimrc/settings | autocmd!
     " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
     autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
     " <C-l> toggles syntax too, ruby's syntax parser can get slow
-    autocmd FileType ruby nnoremap <buffer> <C-l> <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
+    autocmd FileType ruby nnoremap <buffer> <C-l>
+      \ <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
   end
 
   " Debugging reminders
@@ -182,7 +187,7 @@ augroup vimrc/settings | autocmd!
   " Filetype detection overrides
   autocmd BufNewFile,BufRead .env* setlocal filetype=sh
 
-  " Workaround: Allow other content to load in any pane, https://github.com/tpope/vim-fugitive/issues/2272
+  " Workaround: Disable protections on windows, https://github.com/tpope/vim-fugitive/issues/2272
   if has('winfixbuf')
     autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
   endif
@@ -218,7 +223,7 @@ augroup vimrc/settings | autocmd!
 augroup END
 
 augroup vimrc/mappings | autocmd!
-  " ==[ Custom Mappings ]=========================================================
+  " ==[ Custom Mappings ]===========================================================================
   " Mapping Principles (WIP)
   " 1. Trial native vim before mapping
   " 2. Consistency: Rif off existing mnemonics
@@ -338,7 +343,7 @@ augroup vimrc/mappings | autocmd!
 augroup END
 
 augroup vimrc/functions | autocmd!
-  " ==[ Functions ]=============================================================
+  " ==[ Functions ]=================================================================================
   " Function Principles (WIP)
   " 1. Behaviours should be named with VerbNoun
   " 2. Checks prefix with Is or Has
