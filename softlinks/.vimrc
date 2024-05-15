@@ -192,7 +192,7 @@ augroup vimrc/settings | autocmd!
     autocmd BufEnter * if &winfixbuf | set nowinfixbuf | endif
   endif
   " Turn off syntax highlighting in large files
-  autocmd BufWinEnter * if line2byte(line("$") + 1) > 1000000 | syntax clear | setlocal foldmethod=manual | echo 'chonky file: syntax off, fold manual' | endif
+  autocmd BufWinEnter * call <SID>ConditionalSyntaxDisable() 
   " Window resize sets equal splits https://hachyderm.io/@tpope/109784416506853805
   autocmd VimResized * wincmd =
   " ...and new splits that might open, e.g. v from netrw
@@ -459,6 +459,16 @@ augroup vimrc/functions | autocmd!
     let monday_epoc = localtime() - days_since_monday * as_seconds
     let weekdays = map(range(0,6), { i -> strftime(format, monday_epoc + i * as_seconds) })
     return weekdays
+  endfunction
+
+  function! s:ConditionalSyntaxDisable()
+    let bytes_per_megabyte = pow(10, 6)
+    let megs = line2byte(line('$') + 1) / bytes_per_megabyte
+    if megs > 1
+      echo printf('%.2fmb chonky file threshold: syntax off, manual folds', megs)
+      syntax clear
+      setlocal foldmethod=manual
+    endif
   endfunction
 
   function! s:OpenScratch()
