@@ -296,9 +296,9 @@ augroup vimrc/mappings | autocmd!
     \ :call <SID>OpenScratch()<CR>
     \ Go<C-r># = 
   " space - read/write clipboard
-  nnoremap <leader> "+
+  nnoremap \ "+
   " visual space - read/write clipboard
-  vnoremap <leader> "+
+  vnoremap \ "+
   " yank path
   nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
   " toggle goyo - mnemonic riffs from tpope's unimpaired
