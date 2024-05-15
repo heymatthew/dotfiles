@@ -443,7 +443,8 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! s:OpenScratch()
-    let scratch_path = $HOME . '/Desktop/scratch-' . Today() . '.md'
+    let week_of_the_year = strftime('%Y-wk%W')
+    let scratch_path = $HOME . '/Documents/scratch-' . week_of_the_year . '.md'
     execute ':edit ' . scratch_path
   endfunction
 augroup END
