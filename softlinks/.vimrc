@@ -288,10 +288,10 @@ augroup vimrc/mappings | autocmd!
   nnoremap <leader>V :edit $HOME/.vim/plugged<CR>
   " go to zshrc
   nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
-  " go to scatchpad
-  nnoremap <leader>s :call <SID>OpenScratch()<CR>
+  " review plan, open scratchpad and review the plan
+  nnoremap <leader>p :call <SID>OpenScratch()<CR>
   " note in scratchpad, coppies file path and lets you edit
-  nmap <leader>n
+  nmap <leader>s
     \ :call <SID>OpenScratch()<CR>
     \ Go<C-r># = 
   " space - read/write clipboard
