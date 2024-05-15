@@ -236,10 +236,10 @@ augroup vimrc/mappings | autocmd!
   " find merges from a blame window
   autocmd filetype fugitiveblame nmap <buffer> m
     \ ^
-    \ :call <SID>track_default_branch()<CR>
+    \ :call <SID>TrackDefaultBranch()<CR>
     \ :Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
-  nnoremap gC :call <SID>quickfix_changelist()<CR>
+  nnoremap gC :call <SID>QuickfixChangelist()<CR>
   " upstream diffsplit (dC)
   command! DiffsplitUpstream exec ':Gdiffsplit ' . systemlist('git merge-base origin/HEAD HEAD')[0]
   nnoremap dC :DiffsplitUpstream<CR>
@@ -287,7 +287,7 @@ augroup vimrc/mappings | autocmd!
   " go to zshrc
   nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
   " go to scatchpad
-  nnoremap <leader>s :call <SID>open_scratch()<CR>
+  nnoremap <leader>s :call <SID>OpenScratch()<CR>
   " go to plugins
   nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
   " space - read/write clipboard
@@ -405,8 +405,8 @@ augroup vimrc/functions | autocmd!
     execute 'normal! ciw' . replace
   endfunction
 
-  function! s:quickfix_changelist()
-    call s:track_default_branch()
+  function! s:QuickfixChangelist()
+    call s:TrackDefaultBranch()
 
     let conflict_check = FugitiveExecute('ls-files', '--unmerged')
     let wip_check = FugitiveExecute('diff-index', 'HEAD', '--')
@@ -430,7 +430,7 @@ augroup vimrc/functions | autocmd!
     return strftime('%Y-%m-%d')
   endfunction
 
-  function! s:track_default_branch()
+  function! s:TrackDefaultBranch()
     let remote_check = FugitiveExecute('show-ref', 'origin/HEAD')
     if remote_check['exit_status'] != 0
       echo 'Setting up origin/HEAD'
@@ -438,7 +438,7 @@ augroup vimrc/functions | autocmd!
     endif
   endfunction
 
-  function! s:open_scratch()
+  function! s:OpenScratch()
     let scratch_path = $HOME . '/Desktop/scratch-' . Today() . '.md'
     execute ':edit ' . scratch_path
   endfunction
