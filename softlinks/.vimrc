@@ -328,10 +328,6 @@ augroup vimrc/mappings | autocmd!
   cnoremap w!! w !sudo tee > /dev/null %
   " focus - close all buffers but the current one
   command! Focus wa|%bd|e#
-  " now - insert timestamp after cursor
-  command! Now normal! a<C-r>=strftime('%Y-%m-%dT%T%z')<CR>
-  " today - insert iso date after cursor
-  command! Today normal! a<C-r>=strftime('%Y-%m-%d')<CR>
   " Toggle quickfix
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " enhancement - pasting over a visual selection keeps content
