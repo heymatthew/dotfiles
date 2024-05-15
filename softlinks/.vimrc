@@ -284,6 +284,8 @@ augroup vimrc/mappings | autocmd!
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
   nnoremap <leader>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
+  " quick edit plugins
+  nnoremap <leader>V :edit $HOME/.vim/plugged<CR>
   " go to zshrc
   nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
   " go to scatchpad
@@ -292,8 +294,6 @@ augroup vimrc/mappings | autocmd!
   nmap <leader>n
     \ :call <SID>OpenScratch()<CR>
     \ Go<C-r># = 
-  " go to plugins
-  nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
   " space - read/write clipboard
   nnoremap <space> "+
   " visual space - read/write clipboard
