@@ -425,10 +425,12 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! Now()
+    " Quick reference - https://strftime.org/
     return strftime('%Y-%m-%dT%T%z')
   endfunction
 
   function! Today()
+    " Quick reference - https://strftime.org/
     return strftime('%Y-%m-%d')
   endfunction
 
