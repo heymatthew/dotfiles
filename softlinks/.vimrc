@@ -441,6 +441,21 @@ augroup vimrc/functions | autocmd!
     endif
   endfunction
 
+  " TODO: Bullet journal.
+  " Template Year, Month, week
+  " Link between them, isolate into folders
+  " Create new filetype
+  " Checkboxes change to complete with <ENTER>
+  " Migration with <LEFT> and <RIGHT> arrows
+  function! Weekdays()
+    let format = '%Y-%m-%d %A' " cheetsheet: https://strftime.org/
+    let days_since_monday = strftime('%w') - 1
+    let as_seconds = 24 * 60 * 60
+    let monday_epoc = localtime() - days_since_monday * as_seconds
+    let weekdays = map(range(0,6), { i -> strftime(format, monday_epoc + i * as_seconds) })
+    return weekdays
+  endfunction
+
   function! s:OpenScratch()
     let week_of_the_year = strftime('%Y-wk%W')
     let scratch_path = $HOME . '/Documents/scratch-' . week_of_the_year . '.md'
