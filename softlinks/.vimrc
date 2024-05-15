@@ -287,7 +287,7 @@ augroup vimrc/mappings | autocmd!
   " go to zshrc
   nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
   " go to scatchpad
-  nnoremap <leader>s :edit $HOME/scratchpad.md<CR>
+  nnoremap <leader>s :call <SID>open_scratch()<CR>
   " go to plugins
   nnoremap <leader>p :edit $HOME/.vim/plugged<CR>
   " space - read/write clipboard
@@ -436,5 +436,10 @@ augroup vimrc/functions | autocmd!
       echo 'Setting up origin/HEAD'
       call FugitiveExecute('remote', 'set-head', 'origin', '--auto')
     endif
+  endfunction
+
+  function! s:open_scratch()
+    let scratch_path = $HOME . '/Desktop/scratch-' . Today() . '.md'
+    execute ':edit ' . scratch_path
   endfunction
 augroup END
