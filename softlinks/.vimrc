@@ -357,9 +357,9 @@ augroup vimrc/functions | autocmd!
     return "p@=RestoreRegister()\<CR>"
   endfunction
 
-  let s:cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
   function! PositionCursor()
-    if index(s:cursor_exceptions, &filetype) == -1 && line("'\"") <= line('$')
+    let cursor_exceptions = ['qf', 'loc', 'fugitive', 'gitcommit', 'gitrebase']
+    if index(cursor_exceptions, &filetype) == -1 && line("'\"") <= line('$')
       normal! g`"
       return 1
     endif
