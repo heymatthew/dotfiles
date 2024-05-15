@@ -289,9 +289,9 @@ augroup vimrc/mappings | autocmd!
   " go to zshrc
   nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
   " scratchpad, review the plan
-  nnoremap <leader>s :call <SID>OpenScratch()<CR>
+  nnoremap <leader>p :call <SID>OpenScratch()<CR>
   " scratchpad, taking notes on the current file path
-  nnoremap <leader>S
+  nnoremap <leader>P
     \ :call <SID>OpenScratch()<CR>
     \ Go<C-r># = 
   " space - read/write clipboard
