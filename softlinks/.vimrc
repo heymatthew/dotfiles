@@ -464,7 +464,7 @@ augroup vimrc/functions | autocmd!
   function! s:ConditionalSyntaxDisable()
     let bytes_per_megabyte = pow(10, 6)
     let megs = line2byte(line('$') + 1) / bytes_per_megabyte
-    if megs > 1
+    if megs > 5
       echo printf('%.2fmb chonky file threshold: syntax off, manual folds', megs)
       syntax clear
       setlocal foldmethod=manual
