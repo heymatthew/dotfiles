@@ -321,9 +321,9 @@ augroup vimrc/mappings | autocmd!
   " enhancement - reverse search centers page
   nnoremap N Nzz
   " insert timestamp in command and insert mode
-  noremap! <C-t> <C-r>=strftime('%Y-%m-%dT%T%z')<CR>
+  noremap! <C-t> <C-r>=Now()<CR>
   " insert datestamp in command and insert mode
-  noremap! <C-d> <C-r>=strftime('%Y-%m-%d %A')<CR>
+  noremap! <C-d> <C-r>=Today()<CR>
   " w!! saves as sudo
   cnoremap w!! w !sudo tee > /dev/null %
   " focus - close all buffers but the current one
@@ -420,6 +420,14 @@ augroup vimrc/functions | autocmd!
       echo 'Commited changes for ' . wip_check['git_dir']
       exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
     endif
+  endfunction
+
+  function! Now()
+    return strftime('%Y-%m-%dT%T%z')
+  endfunction
+
+  function! Today()
+    return strftime('%Y-%m-%d')
   endfunction
 
   function! s:track_default_branch()
