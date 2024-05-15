@@ -76,7 +76,6 @@ augroup vimrc/settings | autocmd!
   " 2. Portability over monolythic
   " 3. Experimentation over stability
 
-  let mapleader = "\<SPACE>"       " <leader> set to the spacebar
   set scrolloff=5                  " 5 lines always visible at top and bottom
   set sidescrolloff=5              " 5 characters visible left/right, assuming scrollwrap is set
   set nojoinspaces                 " Single space after period when using J
@@ -288,16 +287,16 @@ augroup vimrc/mappings | autocmd!
   " go - fuzzy find file
   nnoremap go :FZF<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
-  nnoremap <leader>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
+  nnoremap <SPACE>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
   " quick edit plugins
-  nnoremap <leader>V :edit $HOME/.vim/plugged<CR>
+  nnoremap <SPACE>V :edit $HOME/.vim/plugged<CR>
   " go to zshrc
-  nnoremap <leader>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
+  nnoremap <SPACE>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
   " scratchpad, review the plan
-  nnoremap <leader>p :call <SID>OpenScratch()<CR>
+  nnoremap <SPACE>p :call <SID>OpenScratch()<CR>
   " scratchpad, taking notes on the current file path
-  nnoremap <leader>P
+  nnoremap <SPACE>P
     \ :call <SID>OpenScratch()<CR>
     \ Go<C-r># = 
   " space - read/write clipboard
