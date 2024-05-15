@@ -426,13 +426,11 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! Now()
-    " Quick reference - https://strftime.org/
-    return strftime('%Y-%m-%dT%T%z')
+    return strftime('%Y-%m-%dT%T%z') " cheetsheet: https://strftime.org/
   endfunction
 
   function! Today()
-    " Quick reference - https://strftime.org/
-    return strftime('%Y-%m-%d %A')
+    return strftime('%Y-%m-%d %A') " cheetsheet: https://strftime.org/
   endfunction
 
   function! s:TrackDefaultBranch()
