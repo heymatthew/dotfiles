@@ -302,10 +302,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap Q :bd<CR>
   " display syntax of element under the cursor
   nnoremap <F2> :call SyntaxAttr()<CR>
-  " clear search highlghts
-  nnoremap <BACKSPACE> :nohlsearch<CR>
-  " toggle previous file
-  nnoremap \ <C-^>
+  " go back to pervious file
+  nnoremap <BACKSPACE> <C-^><CR>
   " find word under cursor
   nnoremap <C-f> :silent Ggrep <cword><CR>
   " visual find
