@@ -72,6 +72,7 @@ augroup vimrc/settings | autocmd!
   " 2. Portability over monolythic
   " 3. Experimentation over stability
 
+  let mapleader = "\<SPACE>"          " <leader> set to the spacebar
   set scrolloff=5                     " 5 lines always visible at top and bottom
   set sidescrolloff=5                 " 5 characters always visible left and right when scrollwrap is set
   set nojoinspaces                    " Single space after period when using J
@@ -295,9 +296,9 @@ augroup vimrc/mappings | autocmd!
     \ :call <SID>OpenScratch()<CR>
     \ Go<C-r># = 
   " space - read/write clipboard
-  nnoremap <space> "+
+  nnoremap <leader> "+
   " visual space - read/write clipboard
-  vnoremap <space> "+
+  vnoremap <leader> "+
   " yank path
   nnoremap yp :let @+=expand("%")<CR>:let @"=expand("%")<CR>
   " toggle goyo - mnemonic riffs from tpope's unimpaired
