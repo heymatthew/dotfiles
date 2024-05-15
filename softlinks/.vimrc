@@ -431,7 +431,7 @@ augroup vimrc/functions | autocmd!
 
   function! Today()
     " Quick reference - https://strftime.org/
-    return strftime('%Y-%m-%d')
+    return strftime('%Y-%m-%d %A')
   endfunction
 
   function! s:TrackDefaultBranch()
