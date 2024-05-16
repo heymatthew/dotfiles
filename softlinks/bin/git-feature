@@ -8,5 +8,12 @@ if [ -z "$NAME" ]; then
   exit 0
 fi
 
-# Central workflow assumed, push to branch but upstream to default branch
+# Detect Triangular workflow if 'upstream' present
+upstream=$(git remote -vv | grep upstream)
+if [ -n "$upstream" ]; then
+    git switch -c "$NAME" "upstream/HEAD"
+    exit 0
+fi
+
+# Fall back on central workflow
 git switch -c "$NAME" "origin/HEAD"
