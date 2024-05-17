@@ -159,7 +159,7 @@ augroup vimrc/settings | autocmd!
     " vim-ruby ships with vim, I just find folds and syntax really slow
     " neovim uses treesitter which has it's own quirks
     " FIXME: Report gf on a class in a Rails project opens it, but <C-w>f does not
-    autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
+    " autocmd FileType ruby nmap <buffer> <C-w>f <C-w>vgf
     " <C-l> toggles syntax too, ruby's syntax parser can get slow
     autocmd FileType ruby nnoremap <buffer> <C-l>
       \ <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
@@ -313,8 +313,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap Q :bd<CR>
   " display syntax of element under the cursor
   nnoremap <F2> :call SyntaxAttr()<CR>
-  " go back to pervious file
-  nnoremap <BACKSPACE> <C-^><CR>
+  " clear search highlghts
+  nnoremap <BACKSPACE> :nohlsearch<CR>
   " find word under cursor
   nnoremap <C-f> :silent Ggrep <cword><CR>
   " visual find
