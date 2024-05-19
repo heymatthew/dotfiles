@@ -289,12 +289,12 @@ augroup vimrc/mappings | autocmd!
   " go - fuzzy find file
   nnoremap go :FZF<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
-  nnoremap <SPACE>v :edit $HOME/dotfiles/softlinks/.vimrc<CR>
+  nnoremap <SPACE>v :edit ~/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
   " quick edit plugins
-  nnoremap <SPACE>V :edit $HOME/.vim/plugged<CR>
+  nnoremap <SPACE>V :edit ~/.vim/plugged<CR>
   " go to zshrc
-  nnoremap <SPACE>z :edit $HOME/dotfiles/softlinks/.zshrc<CR>
+  nnoremap <SPACE>z :edit ~/dotfiles/softlinks/.zshrc<CR>
   " scratchpad, review the plan
   nnoremap <SPACE>s :call <SID>OpenScratch()<CR>
   " scratchpad, taking notes on the current file path
@@ -474,7 +474,7 @@ augroup vimrc/functions | autocmd!
 
   function! s:OpenScratch()
     let week_of_the_year = strftime('%Y-wk%W')
-    let scratch_path = $HOME . '/Desktop/scratch-' . week_of_the_year . '.md'
+    let scratch_path = '~/Desktop/scratch-' . week_of_the_year . '.md'
     execute ':edit ' . scratch_path
   endfunction
 augroup END
