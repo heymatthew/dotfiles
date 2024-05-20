@@ -341,6 +341,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " enhancement - pasting over a visual selection keeps content
   vnoremap <silent> <expr> p <sid>VisualPut()
+  " <space><space> toggles markdown checkboxes
+  autocmd filetype markdown nnoremap <buffer> <SPACE><SPACE> :call <SID>ToggleCheckbox()<CR>
 augroup END
 
 augroup vimrc/functions | autocmd!
@@ -476,5 +478,18 @@ augroup vimrc/functions | autocmd!
     let week_of_the_year = strftime('%Y-wk%W')
     let scratch_path = '~/Desktop/scratch-' . week_of_the_year . '.md'
     execute ':edit ' . scratch_path
+  endfunction
+
+  function! s:ToggleCheckbox()
+    let line = getline('.')
+    let checked = '- [x]'
+    let unchecked = '- [ ]'
+    if line =~# ('\V' . checked)
+      let toggled = substitute(line, '\V' . checked, unchecked, '')
+      call setline('.', toggled)
+    elseif line =~# ('\V' . unchecked)
+      let toggled = substitute(line, '\V' . unchecked, checked, '')
+      call setline('.', toggled)
+    end
   endfunction
 augroup END
