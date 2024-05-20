@@ -29,6 +29,6 @@ fi
 #   git push origin -f group/feature
 #   git push origin -f group/prepatory-refactoring
 for branch in "${branches[@]}"; do
-    echo "> git --no-pager" "$@" "$branch"
+    echo "> git" "$@" "$branch"
     git --no-pager "$@" "$branch"
 done
