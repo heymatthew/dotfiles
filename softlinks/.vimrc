@@ -33,39 +33,39 @@ augroup vimrc/plugins
   endif
 
   call plug#begin('~/.vim/plugged')
-  Plug 'bronson/vim-visual-star-search'  " Vim multiline search
-  Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
-  Plug 'dense-analysis/ale',             " Linter
-  Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
-  Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
-  Plug 'rose-pine/neovim', { 'as': 'neo-pine' }
-  Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
-  Plug 'junegunn/fzf.vim'                " Defaults
-  Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
-  Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
-  Plug 'junegunn/vader.vim'              " Vimscript test framework
-  Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
-  Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
-  Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
-  Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
-  Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
-  Plug 'tpope/vim-commentary'            " Toggle comments on lines
-  Plug 'tpope/vim-dadbod'                " Database from your vim
-  Plug 'tpope/vim-dispatch'              " Async adapters for build/test: https://vimeo.com/63116209
-  Plug 'tpope/vim-eunuch'                " Unix utils. Also shebang will set filetype and +x
-  Plug 'tpope/vim-fugitive'              " Git.
-  Plug 'tpope/vim-jdaddy'                " JSON text objects (aj) and pretty print (gqaj)
-  Plug 'tpope/vim-obsession'             " Makes sessions easier to manage with :Obsess
-  Plug 'tpope/vim-rails'                 " For rails codebases
-  Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
-  Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
-  Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
-  Plug 'tpope/vim-speeddating'           " <C-a> / <C-x> for dates and Roman nums. 7<C-a> for 1 week
-  Plug 'tpope/vim-surround'              " Delete, or insert quotes/brackets with text objects
-  Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-  Plug 'tpope/vim-vinegar'               " Enhancements for netrw
-  Plug 'vim-ruby/vim-ruby'               " Bleading edge syntax highlighting
-  Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
+    Plug 'bronson/vim-visual-star-search'  " Vim multiline search
+    Plug 'dbmrq/vim-ditto'                 " Highlight repeated words
+    Plug 'dense-analysis/ale',             " Linter
+    Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
+    Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
+    Plug 'rose-pine/neovim', { 'as': 'neo-pine' }
+    Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
+    Plug 'junegunn/fzf.vim'                " Defaults
+    Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
+    Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
+    Plug 'junegunn/vader.vim'              " Vimscript test framework
+    Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
+    Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
+    Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
+    Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
+    Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
+    Plug 'tpope/vim-commentary'            " Toggle comments on lines
+    Plug 'tpope/vim-dadbod'                " Database from your vim
+    Plug 'tpope/vim-dispatch'              " Async adapters for build/test: https://vimeo.com/63116209
+    Plug 'tpope/vim-eunuch'                " Unix utils. Also shebang will set filetype and +x
+    Plug 'tpope/vim-fugitive'              " Git.
+    Plug 'tpope/vim-jdaddy'                " JSON text objects (aj) and pretty print (gqaj)
+    Plug 'tpope/vim-obsession'             " Makes sessions easier to manage with :Obsess
+    Plug 'tpope/vim-rails'                 " For rails codebases
+    Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
+    Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
+    Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
+    Plug 'tpope/vim-speeddating'           " <C-a> / <C-x> for dates and Roman nums. 7<C-a> for 1 week
+    Plug 'tpope/vim-surround'              " Delete, or insert quotes/brackets with text objects
+    Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
+    Plug 'tpope/vim-vinegar'               " Enhancements for netrw
+    Plug 'vim-ruby/vim-ruby'               " Bleading edge syntax highlighting
+    Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
   call plug#end()
 augroup END
 
