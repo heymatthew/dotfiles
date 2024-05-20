@@ -38,7 +38,6 @@ augroup vimrc/plugins
     Plug 'dense-analysis/ale',             " Linter
     Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
     Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
-    Plug 'rose-pine/neovim', { 'as': 'neo-pine' }
     Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
     Plug 'junegunn/fzf.vim'                " Defaults
     Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
@@ -47,6 +46,7 @@ augroup vimrc/plugins
     Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
     Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
     Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
+    Plug 'rose-pine/neovim', { 'as': 'neo-pine' }
     Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
     Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
     Plug 'tpope/vim-commentary'            " Toggle comments on lines
