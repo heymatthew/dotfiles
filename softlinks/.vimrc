@@ -39,6 +39,7 @@ augroup vimrc/plugins
     Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
     Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
     Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
+    Plug 'preservim/vim-textobj-sentence'  " Extend native sentence objects and motions
     Plug 'junegunn/fzf.vim'                " Defaults
     Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
     Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
@@ -163,6 +164,11 @@ augroup vimrc/settings | autocmd!
     " <C-l> toggles syntax too, ruby's syntax parser can get slow
     autocmd FileType ruby nnoremap <buffer> <C-l>
       \ <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
+
+    " vim-textobj-sentence
+    autocmd FileType markdown call textobj#sentence#init()
+    autocmd FileType text call textobj#sentence#init()
+    autocmd FileType yaml call textobj#sentence#init()
   end
 
   " Debugging reminders
