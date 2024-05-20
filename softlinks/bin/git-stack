@@ -1,14 +1,34 @@
 #!/usr/bin/env bash
 
-# git stack - Apply a command to all branches from your current checkout
-# example: git stack push origin -f
-# executes: git push origin -f namespace/feature namespace/feature-prepatory-refactor
+# git stack - List branches stacked below this one
+# git stack $command - Apply a command to all branches from your current checkout
+#
+# Assumes you've set upstream for trangular or central workflow
+# e.g. git branch --set-upstream-to origin/HEAD
 
-branch_stack=$(git log --decorate-refs-exclude=HEAD --format='%D' "@{upstream}"... | awk "NF")
+set -euo pipefail
+
+branches=()
+for ref in $(git rev-list '@{upstream}'...HEAD --simplify-by-decoration); do
+    for branch in $(git branch --format='%(refname:short)' --points-at "$ref"); do
+        branches+=( "$branch" )
+    done
+done
+
+# example: git stack
+# output:
+#   group/feature
+#   group/prepatory-refactoring
 if [ $# -eq 0 ]; then
-    echo "$branch_stack"
+    printf '%s\n' "${branches[@]}"
     exit 0
 fi
 
-branches=$(tr '\n' ' ' <<< "$branch_stack")
-git "$@" "$branches"
+# example: git stack push origin -f
+# executes:
+#   git push origin -f group/feature
+#   git push origin -f group/prepatory-refactoring
+for branch in "${branches[@]}"; do
+    echo "> git --no-pager" "$@" "$branch"
+    git --no-pager "$@" "$branch"
+done
