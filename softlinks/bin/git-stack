@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # git stack - List branches stacked below this one
+# git stack push - Force push all branches on stack
 # git stack $command - Apply a command to all branches from your current checkout
 #
 # Assumes you've set upstream for trangular or central workflow
@@ -21,6 +22,15 @@ done
 #   group/prepatory-refactoring
 if [ $# -eq 0 ]; then
     printf '%s\n' "${branches[@]}"
+    exit 0
+fi
+
+# example: git stack push
+# executes:
+#   git push origin -f group/feature group/prepatory-refactoring
+if [ $# -eq 1 ] && [ "$1" == "push" ]; then
+    echo "> git push -f origin ${branches[*]}"
+    git push -f origin "${branches[@]}"
     exit 0
 fi
 
