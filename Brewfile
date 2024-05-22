@@ -34,7 +34,6 @@ brew "neovim"
 brew "netcat"     # gnu netcat > osx netcat
 brew "postgresql@15"
 brew "pstree"     # Hirachical list of processes
-brew "ranger"
 brew "rename"
 brew "restic"     # Nobody wants backup, everyone wants restore https://restic.net/
 brew "shellcheck" # ncjones uses this for linting shell stuff
@@ -74,6 +73,7 @@ cask "vlc"
 
 # brew "caddy"       # Open source web server with automatic HTTPS written in Go
 # brew "dive"        # Inspect docker images
+# brew "ranger"      # File browser
 # brew "syncthing"   # Great, but not great for work machines as it often breaks policy
 # cask "jupyterlab"  # A Next-Generation Notebook Interface https://jupyter.org/
 # cask "kicad"       # manual install, fab PCBs for http://jlcpcb.com
