@@ -253,11 +253,8 @@ augroup vimrc/mappings | autocmd!
     \ :Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
   nnoremap gC :call <SID>QuickfixChangelist()<CR>
-  " upstream diffsplit (dC)
-  command! DiffsplitUpstream exec ':Gdiffsplit ' . systemlist('git merge-base origin/HEAD HEAD')[0]
-  nnoremap dC :DiffsplitUpstream<CR>
   " diff changes (dC)
-  nnoremap dc :Gdiffsplit<CR>
+  nnoremap dc :call <SID>DiffBuffer()<CR>
   " close fugitive diffs
   nnoremap dq :call fugitive#DiffClose()<CR>
   " edit commit template
@@ -436,6 +433,17 @@ augroup vimrc/functions | autocmd!
     else
       echo 'Commited changes for ' . wip_check['git_dir']
       exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+    endif
+  endfunction
+
+  function! s:DiffBuffer()
+    call s:TrackDefaultBranch()
+
+    let wip_check = FugitiveExecute('diff-index', 'HEAD', '--')
+    if !empty(wip_check['stdout'][0])
+      Gdiffsplit
+    else
+      exec ':Gdiffsplit ' . systemlist('git merge-base origin/HEAD HEAD')[0]
     endif
   endfunction
 
