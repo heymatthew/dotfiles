@@ -238,6 +238,8 @@ augroup vimrc/mappings | autocmd!
   " git status
   nnoremap gs :vert Git<CR>
   " nnoremap gS :Gedit :<CR>
+  " git log
+  nnoremap <buffer> gl :G log --oneline -100<CR>
   " git blame
   nnoremap gb :Git blame<CR>
   " git blame with copy paste detection
@@ -265,8 +267,6 @@ augroup vimrc/mappings | autocmd!
     \ :edit .git/message<CR>
     \ Go<C-r>=GitHumans()<CR>
     \ <ESC>gg
-  " git log
-  autocmd filetype fugitive nnoremap <buffer> gl :G log --oneline -100<CR>
   " <C-l> refreshes git pane, like netrw refresh
   autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
   " open github commands
