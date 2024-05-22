@@ -185,6 +185,7 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype yaml       setlocal foldmethod=indent
   autocmd Filetype eruby      setlocal foldmethod=indent
   autocmd Filetype vim        setlocal foldmethod=indent
+  autocmd filetype vim        nnoremap <buffer> <C-l> :setlocal foldmethod=indent<CR><C-l>
 
   " Don't hide syntax for |:links| and *:marks* in help files
   autocmd FileType help setlocal conceallevel=0
