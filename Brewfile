@@ -69,6 +69,7 @@ cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
 cask "hiddenbar"            # declutter the osx menu bar
 cask "vlc"
+cask "kitty"                # GPU powered terminal emulator
 
 # brew "caddy"       # Open source web server with automatic HTTPS written in Go
 # brew "dive"        # Inspect docker images
