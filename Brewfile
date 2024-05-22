@@ -7,7 +7,7 @@ brew "asdf"       # Multi language package manager
 brew "aspell"
 brew "awscli"
 brew "coreutils"  # GNU File, Shell, and Text utilities
-brew "ctags"
+brew "ctags-exuberant"
 brew "dict"       # dictionary server protocol (RFC2229) client
 brew "direnv"
 brew "dive"       # inspect docker images
