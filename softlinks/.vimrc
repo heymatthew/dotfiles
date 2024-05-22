@@ -318,10 +318,12 @@ augroup vimrc/mappings | autocmd!
   nnoremap <F2> :call SyntaxAttr()<CR>
   " clear search highlghts
   nnoremap <BACKSPACE> :nohlsearch<CR>
-  " find word under cursor
+  " find selected word, or word under cursor
   nnoremap <C-f> :silent Ggrep <cword><CR>
-  " visual find
   vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
+  " find but but leave open for editing
+  nnoremap f<C-f> yiw:Ggrep "<C-r>0"<LEFT>
+  vnoremap f<C-f> y:Ggrep "<C-r>0"<LEFT>
   " visual interactive align - vip<Enter>
   vnoremap <Enter> <Plug>(EasyAlign)
   " interactive align text object - ==ip, clobbers equalprg single line
