@@ -206,8 +206,6 @@ augroup vimrc/settings | autocmd!
   autocmd WinNew * if index(s:resize_exceptions, &filetype) == -1 | wincmd = | endif
   " ...and help windows are 90 chars wide
   autocmd FileType help vertical resize 90
-  " reload plugins on save
-  autocmd BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
   " open location/quickfix after :make, :grep, :lvimgrep and friends
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
@@ -294,6 +292,7 @@ augroup vimrc/mappings | autocmd!
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
   nnoremap <SPACE>v :edit ~/dotfiles/softlinks/.vimrc<CR>
   autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
+  autocmd BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
   " quick edit plugins
   nnoremap <SPACE>V :edit ~/.vim/plugged<CR>
   " go to zshrc
