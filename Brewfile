@@ -6,7 +6,6 @@ tap 'homebrew/cask-fonts'
 brew "asdf"       # Multi language package manager
 brew "aspell"
 brew "awscli"
-brew "caddy"      # Open source web server with automatic HTTPS written in Go
 brew "coreutils"  # GNU File, Shell, and Text utilities
 brew "ctags"
 brew "dict"       # dictionary server protocol (RFC2229) client
@@ -74,10 +73,11 @@ cask "transmission"         # good for Linux ISOs
 cask "hiddenbar"            # declutter the osx menu bar
 cask "vlc"
 
-# brew "syncthing"          # Great, but not great for work machines as it often breaks policy
-# cask "jupyterlab"         # A Next-Generation Notebook Interface https://jupyter.org/
-# cask "kicad"              # manual install, fab PCBs for http://jlcpcb.com
+# brew "caddy"       # Open source web server with automatic HTTPS written in Go
+# brew "syncthing"   # Great, but not great for work machines as it often breaks policy
+# cask "jupyterlab"  # A Next-Generation Notebook Interface https://jupyter.org/
+# cask "kicad"       # manual install, fab PCBs for http://jlcpcb.com
 # cask "skype"
 # cask "spotify"
-# cask "tunnelblick"        # powers modest VPNs
-# cask "unclack"            # for people with mech keebs, https://unclack.app
+# cask "tunnelblick" # powers modest VPNs
+# cask "unclack"     # for people with mech keebs, https://unclack.app
