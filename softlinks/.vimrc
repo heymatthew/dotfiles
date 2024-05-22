@@ -291,7 +291,7 @@ augroup vimrc/mappings | autocmd!
   nnoremap go :FZF<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
   nnoremap <SPACE>v :edit ~/dotfiles/softlinks/.vimrc<CR>
-  autocmd BufWritePost ~/dotfiles/softlinks/.vimrc source ~/dotfiles/softlinks/.vimrc
+  autocmd BufWritePost ~/dotfiles/softlinks/.vimrc nested source ~/dotfiles/softlinks/.vimrc
   autocmd BufWritePost ~/.vim/plugged/**/* nested source $MYVIMRC
   " quick edit plugins
   nnoremap <SPACE>V :edit ~/.vim/plugged<CR>
