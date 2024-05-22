@@ -10,7 +10,6 @@ brew "coreutils"  # GNU File, Shell, and Text utilities
 brew "ctags-exuberant"
 brew "dict"       # dictionary server protocol (RFC2229) client
 brew "direnv"
-brew "dive"       # inspect docker images
 brew "entr"       # run commands when files change
 brew "exercism"   # develop fluency with coding exercises and mentoring https://exercism.org
 brew "gh"         # github cli https://cli.github.com/
@@ -74,6 +73,7 @@ cask "hiddenbar"            # declutter the osx menu bar
 cask "vlc"
 
 # brew "caddy"       # Open source web server with automatic HTTPS written in Go
+# brew "dive"        # Inspect docker images
 # brew "syncthing"   # Great, but not great for work machines as it often breaks policy
 # cask "jupyterlab"  # A Next-Generation Notebook Interface https://jupyter.org/
 # cask "kicad"       # manual install, fab PCBs for http://jlcpcb.com
