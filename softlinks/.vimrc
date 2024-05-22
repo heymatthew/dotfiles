@@ -383,11 +383,11 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! GitHumans()
-   let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
-   let humans = uniq(sort(humans))
-   let humans = filter(humans, {index, val -> val !~ 'noreply'})
-   let humans = map(humans, '"Co-Authored-By: " . v:val')
-   return humans
+    let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
+    let humans = uniq(sort(humans))
+    let humans = filter(humans, {index, val -> val !~ 'noreply'})
+    let humans = map(humans, '"Co-Authored-By: " . v:val')
+    return humans
   endfunction
 
   function! ToggleEditToWrite()
