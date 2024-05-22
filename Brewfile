@@ -26,7 +26,7 @@ brew "mas"        # App Store control from CLI https://github.com/mas-cli/mas
 brew "moreutils"  # for mr fetch | ts '%Y-%m-%dT%T%z'
 brew "mplayer"
 brew "mpv"        # command line media player https://mpv.io/
-brew "mr"         # manage multiple git repos
+brew "mr"         # my-repos -- manage multiple git repos
 brew "mtr"
 brew "mutt"       # email
 brew "ncdu"
