@@ -184,8 +184,10 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype eruby.yaml setlocal foldmethod=indent
   autocmd Filetype yaml       setlocal foldmethod=indent
   autocmd Filetype eruby      setlocal foldmethod=indent
-  autocmd Filetype vim        setlocal foldmethod=indent
-  autocmd filetype vim        exec 'autocmd! SourcePost ' . expand('%') . ' :setlocal foldmethod=indent'
+
+  let indent_fold = 'setlocal foldmethod=indent'
+  autocmd Filetype vim exec indent_fold
+  autocmd filetype vim exec printf('autocmd! SourcePost %s %s', expand('%'), indent_fold)
 
   " Don't hide syntax for |:links| and *:marks* in help files
   autocmd FileType help setlocal conceallevel=0
