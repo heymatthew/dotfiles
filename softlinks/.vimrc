@@ -348,7 +348,7 @@ augroup vimrc/mappings | autocmd!
   " <enter> toggles markdown checkboxes
   autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>ToggleCheckbox()<CR>
   " Insert <enter> continues checkboxes
-  autocmd filetype markdown inoremap <expr><buffer> <CR> <SID>ContinueLists()
+  autocmd filetype markdown inoremap <buffer> <CR> <C-r>=<SID>ContinueLists()<CR>
 augroup END
 
 augroup vimrc/functions | autocmd!
