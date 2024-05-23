@@ -347,6 +347,8 @@ augroup vimrc/mappings | autocmd!
   vnoremap <silent> <expr> p <sid>VisualPut()
   " <enter> toggles markdown checkboxes
   autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>ToggleCheckbox()<CR>
+  " Insert <enter> continues checkboxes
+  autocmd filetype markdown inoremap <expr><buffer> <CR> <SID>ContinueLists()
 augroup END
 
 augroup vimrc/functions | autocmd!
@@ -506,5 +508,23 @@ augroup vimrc/functions | autocmd!
       let toggled = substitute(line, '\V' . unchecked, checked, '')
       call setline('.', toggled)
     end
+  endfunction
+
+  function! s:ContinueLists()
+    let line = getline('.')
+
+    if line =~# '^\s*- \[.\]'
+      return "\<CR>- [ ] "
+    end
+
+    if line =~# '^\s*-'
+      return "\<CR>- "
+    end
+
+    if line =~# '^\s*\*'
+      return "\<CR>* "
+    end
+
+    return "\<CR>"
   endfunction
 augroup END
