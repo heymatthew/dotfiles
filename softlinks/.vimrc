@@ -325,8 +325,6 @@ augroup vimrc/mappings | autocmd!
   " find but but leave open for editing
   nnoremap f<C-f> yiw:Ggrep "<C-r>0"<LEFT>
   vnoremap f<C-f> y:Ggrep "<C-r>0"<LEFT>
-  " visual interactive align - vip<Enter>
-  vnoremap <Enter> <Plug>(EasyAlign)
   " interactive align text object - ==ip, clobbers equalprg single line
   nnoremap == <Plug>(EasyAlign)
   " enhancement - <C-w>n splits are vertical
