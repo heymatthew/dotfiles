@@ -512,17 +512,17 @@ augroup vimrc/functions | autocmd!
 
   function! s:ContinueLists()
     let line = getline('.')
-    if line =~# '^\s*- \[.\]'
+    if line =~# '^\s*- \[.\]' " Checklist
       return "\<CR>- [ ] "
-    elseif line =~# '^\s*-'
+    elseif line =~# '^\s*-'   " List (-)
       return "\<CR>- "
-    elseif line =~# '^\s*\*'
+    elseif line =~# '^\s*\*'  " List (*)
       return "\<CR>* "
     end
 
     let numbered = matchlist(line, '\v^\s*(\d+)\.')
     echo numbered
-    if len(numbered) > 0
+    if len(numbered) > 0 " Numbering (42.)
       let n = str2nr(numbered[1])
       return printf("\<CR>%d. ", n+1)
     endif
