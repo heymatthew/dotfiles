@@ -525,6 +525,13 @@ augroup vimrc/functions | autocmd!
       return "\<CR>* "
     end
 
+    let numbered = matchlist(line, '\v^\s*(\d+)\.')
+    echo numbered
+    if len(numbered) > 0
+      let n = str2nr(numbered[1])
+      return printf("\<CR>%d. ", n+1)
+    endif
+
     return "\<CR>"
   endfunction
 augroup END
