@@ -348,9 +348,9 @@ augroup vimrc/mappings | autocmd!
   " <enter> toggles markdown checkboxes
   autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>MarkdownToggleCheckbox()<CR>
   " Insert <enter> continues checkboxes
-  autocmd filetype markdown inoremap <buffer> <CR> <C-r>=<SID>MarkdownEnter()<CR>
+  autocmd filetype markdown inoremap <buffer> <CR> <CR><C-r>=<SID>MarkdownListToken()<CR>
   " o continues checkboxes too
-  autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>MarkdownOpen()<CR>
+  autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>MarkdownListToken()<CR>
 augroup END
 
 augroup vimrc/functions | autocmd!
@@ -512,18 +512,9 @@ augroup vimrc/functions | autocmd!
     end
   endfunction
 
-  function! s:MarkdownEnter()
-    let line = getline('.')
-    return "\<CR>" . s:MarkdownListToken(line)
-  endfunction
-
-  function! s:MarkdownOpen()
+  function! s:MarkdownListToken()
     let line = getline(line('.') - 1)
-    return s:MarkdownListToken(line)
-  endfunction
 
-  function! s:MarkdownListToken(line)
-    let line = a:line
     if line =~# '^\s*- \[.\]' " Checklist
       return "- [ ] "
     elseif line =~# '^\s*-'   " List (-)
