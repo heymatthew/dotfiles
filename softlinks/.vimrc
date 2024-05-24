@@ -346,9 +346,11 @@ augroup vimrc/mappings | autocmd!
   " enhancement - pasting over a visual selection keeps content
   vnoremap <silent> <expr> p <sid>VisualPut()
   " <enter> toggles markdown checkboxes
-  autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>ToggleCheckbox()<CR>
+  autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>MarkdownToggleCheckbox()<CR>
   " Insert <enter> continues checkboxes
-  autocmd filetype markdown inoremap <buffer> <CR> <C-r>=<SID>ContinueLists()<CR>
+  autocmd filetype markdown inoremap <buffer> <CR> <C-r>=<SID>MarkdownEnter()<CR>
+  " o continues checkboxes too
+  autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>MarkdownOpen()<CR>
 augroup END
 
 augroup vimrc/functions | autocmd!
@@ -497,7 +499,7 @@ augroup vimrc/functions | autocmd!
     execute ':edit ' . scratch_path
   endfunction
 
-  function! s:ToggleCheckbox()
+  function! s:MarkdownToggleCheckbox()
     let line = getline('.')
     let checked = '- [x]'
     let unchecked = '- [ ]'
@@ -510,23 +512,33 @@ augroup vimrc/functions | autocmd!
     end
   endfunction
 
-  function! s:ContinueLists()
+  function! s:MarkdownEnter()
     let line = getline('.')
+    return "\<CR>" . s:MarkdownListToken(line)
+  endfunction
+
+  function! s:MarkdownOpen()
+    let line = getline(line('.') - 1)
+    return s:MarkdownListToken(line)
+  endfunction
+
+  function! s:MarkdownListToken(line)
+    let line = a:line
     if line =~# '^\s*- \[.\]' " Checklist
-      return "\<CR>- [ ] "
+      return "- [ ] "
     elseif line =~# '^\s*-'   " List (-)
-      return "\<CR>- "
+      return "- "
     elseif line =~# '^\s*\*'  " List (*)
-      return "\<CR>* "
+      return "* "
     end
 
     let numbered = matchlist(line, '\v^\s*(\d+)\.')
     echo numbered
     if len(numbered) > 0 " Numbering (42.)
       let n = str2nr(numbered[1])
-      return printf("\<CR>%d. ", n+1)
+      return printf("%d. ", n+1)
     endif
 
-    return "\<CR>"
+    return ""
   endfunction
 augroup END
