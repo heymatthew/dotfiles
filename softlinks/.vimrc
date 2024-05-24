@@ -512,16 +512,11 @@ augroup vimrc/functions | autocmd!
 
   function! s:ContinueLists()
     let line = getline('.')
-
     if line =~# '^\s*- \[.\]'
       return "\<CR>- [ ] "
-    end
-
-    if line =~# '^\s*-'
+    elseif line =~# '^\s*-'
       return "\<CR>- "
-    end
-
-    if line =~# '^\s*\*'
+    elseif line =~# '^\s*\*'
       return "\<CR>* "
     end
 
