@@ -334,9 +334,9 @@ augroup vimrc/mappings | autocmd!
   " enhancement - reverse search centers page
   nnoremap N Nzz
   " insert timestamp in command and insert mode
-  noremap! <C-t> <C-r>=Now()<CR>
+  noremap! t<C-t> <C-r>=Now()<CR>
   " insert datestamp in command and insert mode
-  noremap! <C-d> <C-r>=Today()<CR>
+  noremap! d<C-d> <C-r>=Today()<CR>
   " w!! saves as sudo
   cnoremap w!! w !sudo tee > /dev/null %
   " focus - close all buffers but the current one
