@@ -513,17 +513,17 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! s:MarkdownListToken()
-    let line = getline(line('.') - 1)
+    let line_above = getline(line('.') - 1)
 
-    if line =~# '^\s*- \[.\]' " Checklist
+    if line_above =~# '^\s*- \[.\]' " Checklist
       return '- [ ] '
-    elseif line =~# '^\s*-'   " List (-)
+    elseif line_above =~# '^\s*-'   " List (-)
       return '- '
-    elseif line =~# '^\s*\*'  " List (*)
+    elseif line_above =~# '^\s*\*'  " List (*)
       return '* '
     end
 
-    let numbered = matchlist(line, '\v^\s*(\d+)\.')
+    let numbered = matchlist(line_above, '\v^\s*(\d+)\.')
     echo numbered
     if len(numbered) > 0 " Numbering (42.)
       let n = str2nr(numbered[1])
