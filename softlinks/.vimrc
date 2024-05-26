@@ -516,20 +516,20 @@ augroup vimrc/functions | autocmd!
     let line = getline(line('.') - 1)
 
     if line =~# '^\s*- \[.\]' " Checklist
-      return "- [ ] "
+      return '- [ ] '
     elseif line =~# '^\s*-'   " List (-)
-      return "- "
+      return '- '
     elseif line =~# '^\s*\*'  " List (*)
-      return "* "
+      return '* '
     end
 
     let numbered = matchlist(line, '\v^\s*(\d+)\.')
     echo numbered
     if len(numbered) > 0 " Numbering (42.)
       let n = str2nr(numbered[1])
-      return printf("%d. ", n+1)
+      return printf('%d. ', n+1)
     endif
 
-    return ""
+    return ''
   endfunction
 augroup END
