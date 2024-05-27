@@ -1,0 +1,52 @@
+Given markdown (single dashed list):
+  - foo
+
+Do (enter from insert):
+  A\<CR>next line
+Expect markdown (opens a new line):
+  - foo
+  - next line
+
+Do (o from normal):
+  oThe 'o' key pressed
+Expect markdown (opens a dashed list):
+  - foo
+  - The 'o' key pressed
+
+Do (O from normal):
+  OThe 'O' key pressed
+Expect markdown (opens a dashed list above):
+  - The 'O' key pressed
+  - foo
+
+
+Given markdown (checklist):
+  - [ ] Buy some milk
+
+Do (o from normal):
+  oThe 'o' key pressed
+Expect (opens a new checklist item):
+  - [ ] Buy some milk
+  - [ ] The 'o' key pressed
+
+Do (enter from normal):
+  \<CR>
+Expect (checks the checkbox):
+  - [x] Buy some milk
+
+
+Given markdown (checked item):
+  - [x] Buy the perfect gift
+Do (enter from normal):
+  \<CR>
+Expect (unchecks the checkbox):
+  - [ ] Buy the perfect gift
+
+" FIXME
+Given text (single dashed list):
+  - foo
+Do text (enter from insert):
+  A\<CR>next line
+Expect text (does not trigger markdown helper):
+  - foo
+  next line
