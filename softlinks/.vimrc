@@ -123,11 +123,6 @@ augroup vimrc/settings | autocmd!
   set splitright   " vertical windows go right
   set splitbelow   " horizontal windows go below
   autocmd FileType help wincmd L
-  nnoremap <C-w>f :vertical wincmd f<CR>
-  nnoremap <C-w>d :vertical wincmd d<CR>
-  nnoremap <C-w>] :vertical wincmd ]<CR>
-  nnoremap <C-w>^ :vertical wincmd ^<CR>
-  nnoremap <C-w>F :vertical wincmd F<CR>
 
   " Whitespace management
   set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
@@ -349,6 +344,13 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>DeriveListFromAbove()<CR>
   " O continues lists above
   autocmd filetype markdown nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
+
+  " Prefer vertical splits
+  nnoremap <C-w>f :vertical wincmd f<CR>
+  nnoremap <C-w>d :vertical wincmd d<CR>
+  nnoremap <C-w>] :vertical wincmd ]<CR>
+  nnoremap <C-w>^ :vertical wincmd ^<CR>
+  nnoremap <C-w>F :vertical wincmd F<CR>
 augroup END
 
 augroup vimrc/functions | autocmd!
