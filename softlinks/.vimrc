@@ -344,9 +344,11 @@ augroup vimrc/mappings | autocmd!
   " <enter> toggles markdown checkboxes
   autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>MarkdownToggleCheckbox()<CR>
   " Insert <enter> continues checkboxes
-  autocmd filetype markdown inoremap <buffer> <CR> <CR><C-r>=<SID>MarkdownListToken()<CR>
-  " o continues checkboxes too
-  autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>MarkdownListToken()<CR>
+  autocmd filetype markdown inoremap <buffer> <CR> <CR><C-r>=<SID>DeriveListFromAbove()<CR>
+  " o continues lists below
+  autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>DeriveListFromAbove()<CR>
+  " O continues lists above
+  autocmd filetype markdown nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
 augroup END
 
 augroup vimrc/functions | autocmd!
@@ -508,18 +510,26 @@ augroup vimrc/functions | autocmd!
     end
   endfunction
 
-  function! s:MarkdownListToken()
+  function! s:DeriveListFromAbove()
     let line_above = getline(line('.') - 1)
+    return ListTokenFrom(line_above)
+  endfunction
 
-    if line_above =~# '^\s*- \[.\]' " Checklist
+  function! s:DeriveListFromBelow()
+    let line_below = getline(line('.') + 1)
+    return ListTokenFrom(line_below)
+  endfunction
+
+  function! ListTokenFrom(adjacent_line)
+    if a:adjacent_line =~# '^\s*- \[.\]' " Checklist
       return '- [ ] '
-    elseif line_above =~# '^\s*-'   " List (-)
+    elseif a:adjacent_line =~# '^\s*-'   " List (-)
       return '- '
-    elseif line_above =~# '^\s*\*'  " List (*)
+    elseif a:adjacent_line =~# '^\s*\*'  " List (*)
       return '* '
     end
 
-    let numbered = matchlist(line_above, '\v^\s*(\d+)\.')
+    let numbered = matchlist(a:adjacent_line, '\v^\s*(\d+)\.')
     echo numbered
     if len(numbered) > 0 " Numbering (42.)
       let n = str2nr(numbered[1])
