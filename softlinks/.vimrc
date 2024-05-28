@@ -298,8 +298,9 @@ augroup vimrc/mappings | autocmd!
   nnoremap <SPACE>s :call <SID>OpenScratch()<CR>
   " scratchpad, taking notes on the current file path
   nnoremap <SPACE>S
+    \ :let interesting_file = expand('%') . ':' . line('.')<CR>
     \ :call <SID>OpenScratch()<CR>
-    \ Go<C-r># = 
+    \ Go\| <C-r>=interesting_file<CR> \|  \|<LEFT><LEFT>
   " space - read/write clipboard
   nnoremap <SPACE> "+
   " visual space - read/write clipboard
