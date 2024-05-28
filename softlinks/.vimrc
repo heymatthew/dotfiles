@@ -235,7 +235,7 @@ augroup vimrc/mappings | autocmd!
   nnoremap gs :vert Git<CR>
   " nnoremap gS :Gedit :<CR>
   " git log
-  nnoremap <buffer> gl :G log --oneline -100<CR>
+  nnoremap gl :G log --oneline -100<CR>
   " git blame
   nnoremap gb :Git blame<CR>
   " git blame with copy paste detection, ignoring whitespace
