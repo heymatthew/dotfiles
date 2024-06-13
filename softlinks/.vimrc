@@ -460,7 +460,11 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! Today()
-    return strftime('%Y-%m-%d %A') " cheetsheet: https://strftime.org/
+    return strftime('%Y-%m-%d') " cheetsheet: https://strftime.org/
+  endfunction
+
+  function! DayOfTheWeek()
+    return strftime('%A') " cheetsheet: https://strftime.org/
   endfunction
 
   function! s:TrackDefaultBranch()
