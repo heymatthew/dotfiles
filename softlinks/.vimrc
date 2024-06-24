@@ -217,6 +217,9 @@ augroup vimrc/settings | autocmd!
   " restore cursor position on file open
   autocmd BufWinEnter * call PositionCursor()
 
+  " Set title on terminal to focused buffer filename
+  autocmd BufEnter * :set title | let &titlestring = 'v:' . NiceBufferName()
+
   " Deprecations and Habit Changes
   " highlight HabitChange guifg=love cterm=underline
   " match HabitChange /recieve/
@@ -546,5 +549,10 @@ augroup vimrc/functions | autocmd!
     endif
 
     return ''
+  endfunction
+
+  function! NiceBufferName()
+    let full_path = expand('%')
+    return substitute(full_path, $HOME, '~', '')
   endfunction
 augroup END
