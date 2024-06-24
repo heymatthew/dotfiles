@@ -235,8 +235,7 @@ augroup vimrc/mappings | autocmd!
   " 4. Less common: Leader-based or vim commands
 
   " git status
-  nnoremap gs :vert Git<CR>
-  " nnoremap gS :Gedit :<CR>
+  nnoremap gs :Git<CR>
   " git log
   nnoremap gl :G log --oneline -100<CR>
   " git blame
