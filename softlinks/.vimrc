@@ -219,7 +219,7 @@ augroup vimrc/settings | autocmd!
   autocmd BufWinEnter * call PositionCursor()
 
   " Set title on terminal to focused buffer filename
-  autocmd BufEnter * :set title | let &titlestring = 'v:' . NiceBufferName()
+  autocmd VimEnter,WinEnter * :set title | let &titlestring = 'v:' . NicePwd()
 
   " Deprecations and Habit Changes
   " highlight HabitChange guifg=love cterm=underline
@@ -551,8 +551,8 @@ augroup vimrc/functions | autocmd!
     return ''
   endfunction
 
-  function! NiceBufferName()
-    let full_path = expand('%')
-    return substitute(full_path, $HOME, '~', '')
+  function! NicePwd()
+    let pwd = execute('pwd')
+    return substitute(pwd, $HOME, '~', '')
   endfunction
 augroup END
