@@ -113,7 +113,8 @@ augroup vimrc/settings | autocmd!
 
   set termguicolors " true colour support
   if has('nvim')
-    lua require("rose-pine").setup({ dark_variant = 'moon' })
+    " lua require("rose-pine").setup({ dark_variant = 'moon' })
+    lua require("rose-pine").setup()
     colorscheme rose-pine
   else
     colorscheme blinkenlights
