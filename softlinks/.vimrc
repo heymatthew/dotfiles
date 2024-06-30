@@ -325,9 +325,9 @@ augroup vimrc/mappings | autocmd!
   nnoremap f<C-f> yiw:Ggrep "<C-r>0"<LEFT>
   vnoremap f<C-f> y:Ggrep "<C-r>0"<LEFT>
   " interactive align text object - ==ip, clobbers equalprg single line
-  nnoremap == <Plug>(EasyAlign)
+  nnoremap = <Plug>(EasyAlign)
   " inner paragraph easy align, very common
-  nnoremap === <Plug>(EasyAlign)ip*
+  nnoremap == =
   " enhancement - <C-w>n splits are vertical
   nnoremap <C-w>n :vert new<CR>
   " enhancement - next search centers page
