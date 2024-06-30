@@ -21,7 +21,7 @@ brew "go"
 brew "htop"            # prettier top, with colour
 brew "hugo"            # static website generator
 brew "iftop"           # top for your network interfaces
-brew "jq"
+brew "jq"              # json formatter and queries
 brew "mas"             # App Store control from CLI https://github.com/mas-cli/mas
 brew "moreutils"       # for mr fetch | ts '%Y-%m-%dT%T%z'
 brew "mplayer"
@@ -45,14 +45,14 @@ brew "tree"
 brew "trippy"          # network analysis replacement for traceroute and ping
 brew "vale"            # Linter for English https://vale.sh/
 brew "vim"
-brew "vint"            # Linter for vim
+brew "vint"            # Linter for vimscript
 brew "watch"
 brew "wget"
 brew "zsh"
 
 brew "lua"
-brew "busted"   # Unit testing in Lua
-brew "luacheck" # Linter for Lua
+brew "busted"   # Lua Unit testing
+brew "luacheck" # Lua Linter
 
 cask "anki"
 cask "audacity"
