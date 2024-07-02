@@ -1,0 +1,29 @@
+import = [ "~/.config/alacritty/rose-pine-dawn.toml" ]
+
+[font]
+size = 13.0
+
+[font.normal]
+family = "Source Code Pro"
+style = "Regular"
+
+[font.bold]
+family = "Source Code Pro"
+style = "Bold"
+
+# [font.normal]
+# family = "M+ 2m"
+# style = "light"
+
+# [font.bold]
+# family = "M+ 2m"
+# style = "regular"
+
+# [font.bold_italic]
+# family = "M+ 2m"
+# style = "Bold Italic"
+
+# [font.italic]
+# family = "M+ 2m"
+# style = "Italic"
+
