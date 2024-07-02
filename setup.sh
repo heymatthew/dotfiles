@@ -93,6 +93,8 @@ echo "TODO:
   * Set Appearance > General > Theme to 'Minimal'
   * Set Profiles > * > Colors > Cursor Colors
   * Remap 'Close' to Cmd+Shift+W, System Settings > Keyboard Shortcuts > App Shortcuts
+* Alacritty
+  * Rice app icon https://github.com/dfl0/mac-icons/blob/main/alacritty/icons/faithful/alacritty_faithful_256.png
 * Bump inotify limits for entr http://eradman.com/entrproject/limits.html
 * Skim MacOS Security & Privacy Guide https://github.com/drduh/macOS-Security-and-Privacy-Guide
 * Set Firefox sync Device Name to '$hostname' about:preferences#sync
