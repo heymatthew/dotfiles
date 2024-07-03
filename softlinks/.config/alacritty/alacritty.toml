@@ -1,4 +1,4 @@
-import = [ "~/.config/alacritty/rose-pine-dawn.toml" ]
+import = [ "~/.config/alacritty/theme.toml" ]
 
 [font]
 size = 13.0

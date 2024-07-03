@@ -19,3 +19,6 @@ Brewfile.lock.json
 
 # neovim plugins
 softlinks/.config/nvim/autoload/
+
+# theme set by terminal_profile
+softlinks/.config/alacritty/theme.toml

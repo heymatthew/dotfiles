@@ -199,15 +199,27 @@ if which gcloud > /dev/null; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-# Credit: https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
-terminal_profile() { echo -e "\033]1337;SetProfile=$1\a" }
-
 # Set iterm colours
 # n.b. LC_APPEARANCE is a hack. SSH accepts LC_* by default so hosts can be dark mode aware
 # n.b. iterm themes MUST be lowercase 'light' and 'dark' for reuse in vimrc's background setup
 # see https://iterm2.com/documentation-escape-codes.html
-alias dark='export LC_APPEARANCE=dark && terminal_profile dark'
-alias light='export LC_APPEARANCE=light && terminal_profile light'
+if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
+  terminal_profile() {
+    export LC_APPEARANCE="$1"
+    # Credit: https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
+    echo -e "\033]1337;SetProfile=$1\a"
+  }
+elif [[ "$TERM" == "alacritty" ]]; then
+  terminal_profile() {
+    export LC_APPEARANCE="$1"
+    [[ "$1" == "dark" ]] && theme="rose-pine.toml" || theme="rose-pine-dawn.toml"
+    ln -sf ~/.config/alacritty/$theme ~/.config/alacritty/theme.toml
+    touch ~/.config/alacritty/alacritty.toml
+  }
+fi
+alias dark='terminal_profile dark'
+alias light='terminal_profile light'
+
 if [ -z "$SSH_CLIENT" ]; then
   # Detect OSX dark mode
   appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
