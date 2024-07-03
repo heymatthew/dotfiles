@@ -7,7 +7,6 @@ brew "asdf"            # Multi language package manager
 brew "aspell"
 brew "awscli"
 brew "coreutils"       # GNU File, Shell, and Text utilities
-brew "universal-ctags" # Maintained https://github.com/universal-ctags/ctags
 brew "dict"            # dictionary server protocol (RFC2229) client
 brew "direnv"
 brew "entr"            # run commands when files change
@@ -43,6 +42,7 @@ brew "termshark"       # cli replacement for wireshark
 brew "tig"
 brew "tree"
 brew "trippy"          # network analysis replacement for traceroute and ping
+brew "universal-ctags" # Maintained https://github.com/universal-ctags/ctags
 brew "vale"            # Linter for English https://vale.sh/
 brew "vim"
 brew "vint"            # Linter for vimscript
@@ -61,15 +61,15 @@ cask "font-hack"            # nice looking fixed width font
 cask "font-mplus"           # narrow fixed width for retina
 cask "font-source-code-pro" # adobe backed fixed width font
 cask "gimp"                 # image editing software
+cask "hiddenbar"            # declutter the osx menu bar
 cask "julia"                # Dynamic programming language
 cask "keepassxc"            # compatible with keepassx files
-cask "linearmouse"          # tune sensitivity and acceleration
 cask "keepingyouawake"      # keeps the screen on for presentations
+cask "kitty"                # GPU powered terminal emulator
+cask "linearmouse"          # tune sensitivity and acceleration
 cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
-cask "hiddenbar"            # declutter the osx menu bar
 cask "vlc"
-cask "kitty"                # GPU powered terminal emulator
 
 # brew "caddy"       # Open source web server with automatic HTTPS written in Go
 # brew "dive"        # Inspect docker images
