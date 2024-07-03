@@ -215,6 +215,8 @@ elif [[ "$TERM" == "alacritty" ]]; then
     ln -sf ~/.config/alacritty/$theme ~/.config/alacritty/theme.toml
     touch ~/.config/alacritty/alacritty.toml
   }
+else
+  terminal_profile() { echo "unknown terminal" }
 fi
 alias dark='terminal_profile dark'
 alias light='terminal_profile light'
