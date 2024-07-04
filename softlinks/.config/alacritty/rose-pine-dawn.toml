@@ -1,6 +1,14 @@
 # Colors section of "Alacritty - TOML configuration file format"
 # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
 
+[font.normal]
+family = "Source Code Pro"
+style = "Medium"
+
+[font.bold]
+family = "Source Code Pro"
+style = "Bold"
+
 [colors.primary]
 foreground = "#575279"
 background = "#faf4ed"
