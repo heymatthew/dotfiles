@@ -47,7 +47,6 @@ augroup vimrc/plugins
     Plug 'junegunn/vim-easy-align'         " Align paragraph = with gaip=
     Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
     Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
-    Plug 'rose-pine/neovim', { 'as': 'neo-pine' }
     Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
     Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
     Plug 'tpope/vim-commentary'            " Toggle comments on lines
@@ -111,14 +110,7 @@ augroup vimrc/settings | autocmd!
   let g:golden_ratio_autocommand = 0                 " disable golden ratio by default
   let g:fugitive_legacy_commands = 0                 " don't populate deprecated fugitive commands
 
-  set termguicolors " true colour support
-  if has('nvim')
-    " lua require("rose-pine").setup({ dark_variant = 'moon' })
-    lua require("rose-pine").setup()
-    colorscheme rose-pine
-  else
-    colorscheme blinkenlights
-  end
+  colorscheme blinkenlights
 
   " Prefer splitting down or right
   set splitright   " vertical windows go right
