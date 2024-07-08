@@ -1,14 +1,6 @@
 # Colors section of "Alacritty - TOML configuration file format"
 # https://github.com/alacritty/alacritty/blob/master/extra/man/alacritty.5.scd#colors
 
-[font.normal]
-family = "Source Code Pro"
-style = "Regular"
-
-[font.bold]
-family = "Source Code Pro"
-style = "Medium"
-
 [colors.primary]
 foreground = "#e0def4"
 background = "#191724"
@@ -80,4 +72,3 @@ blue = "#9ccfd8"
 magenta = "#c4a7e7"
 cyan = "#ebbcba"
 white = "#e0def4"
-

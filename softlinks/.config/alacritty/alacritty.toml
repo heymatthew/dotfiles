@@ -1,4 +1,21 @@
 import = [ "~/.config/alacritty/theme.toml" ]
 
 [font]
-size = 13.0
+size = 14.0
+
+[font.offset]
+y = 1
+[font.normal]
+family = "M+ 2m"
+style = "light"
+[font.bold]
+family = "M+ 2m"
+style = "bold"
+
+# [font.normal]
+# family = "Source Code Pro"
+# style = "Medium"
+# [font.bold]
+# family = "Source Code Pro"
+# style = "Bold"
+
