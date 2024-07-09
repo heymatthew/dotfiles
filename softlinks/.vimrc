@@ -155,7 +155,6 @@ augroup vimrc/settings | autocmd!
     " vim-textobj-sentence
     autocmd FileType markdown call textobj#sentence#init()
     autocmd FileType text call textobj#sentence#init()
-    autocmd FileType yaml call textobj#sentence#init()
   end
 
   " Debugging reminders
