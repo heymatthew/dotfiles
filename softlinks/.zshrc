@@ -47,16 +47,8 @@ set_context() {
   print -Pn "\e]0;$1\a" # window title
   print -Pn "\e]1;$1\a" # window pane
 }
-directory_context() {
-  vcs_info && set_context "%m:%~ $vcs_info_msg_0_"
-}
-running_context() {
-  if [[ "$1" =~ "^vim" || "$1" =~ "^fg" ]]; then
-    # Vim and fg don't help add context
-  else
-    set_context "Σ $1"
-  fi
-}
+directory_context() { vcs_info && set_context "%m:%~ $vcs_info_msg_0_" }
+running_context() { set_context "Σ $1" }
 
 # setopt prompt_subst # allow vcs_info_msg_0_ to be used in PS1
 precmd_functions+=(directory_context)
