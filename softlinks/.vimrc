@@ -48,6 +48,7 @@ augroup vimrc/plugins
     Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
     Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
     Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
+    Plug 'tpope/vim-bundler'               " Great ways to do gem stuff
     Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
     Plug 'tpope/vim-commentary'            " Toggle comments on lines
     Plug 'tpope/vim-dadbod'                " Database from your vim
