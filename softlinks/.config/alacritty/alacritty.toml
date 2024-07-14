@@ -5,9 +5,10 @@ size = 14.0
 
 [font.offset]
 y = 1
+
 [font.normal]
 family = "M+ 2m"
-style = "light"
+style = "regular"
 [font.bold]
 family = "M+ 2m"
 style = "bold"
