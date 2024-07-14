@@ -8,8 +8,8 @@ if which aws-vault > /dev/null && [ -n "$AWS_PROFILE" ]; then
   aws-vault rotate "$AWS_PROFILE"
 fi
 
-echo "vim..."
-vim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdateBinaries") | qa'
+echo "neovim plugins..."
+nvim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdateBinaries") | qa'
 
 echo "restowing dotfiles..."
 /opt/homebrew/bin/stow -v softlinks
