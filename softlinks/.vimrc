@@ -1,3 +1,5 @@
+scriptencoding utf8
+
 " .vimrc configuration file
 
 " ==[ Table of contents ]===========================================================================
@@ -213,6 +215,11 @@ augroup vimrc/settings | autocmd!
   " Set title on terminal to focused buffer filename
   autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
 
+  " Terminal enters insert mode automatically
+  autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
+  autocmd BufLeave                      term://* stopinsert
+  autocmd TermOpen * setlocal statusline=%{b:term_title}
+
   " Deprecations and Habit Changes
   " highlight HabitChange guifg=love cterm=underline
   " match HabitChange /recieve/
@@ -349,6 +356,11 @@ augroup vimrc/mappings | autocmd!
   nnoremap <C-w>] :vertical wincmd ]<CR>
   nnoremap <C-w>^ :vertical wincmd ^<CR>
   nnoremap <C-w>F :vertical wincmd F<CR>
+
+  " Double Escape and jj leave insert mode in terminal
+  tnoremap <ESC><ESC> <C-\><C-N>
+  " Ctrl + w actions in terminal windows
+  tnoremap <C-w> <C-\><C-N><C-w>
 augroup END
 
 augroup vimrc/functions | autocmd!
