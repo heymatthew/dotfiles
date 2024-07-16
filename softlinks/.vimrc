@@ -269,7 +269,7 @@ augroup vimrc/mappings | autocmd!
   " <C-l> refreshes git pane, like netrw refresh
   autocmd filetype fugitive nnoremap <buffer> <C-l> :Git<CR><C-l>
   " open github commands
-  autocmd filetype fugitive nnoremap <buffer> gh<Space> :Git hub 
+  autocmd filetype fugitive nnoremap <buffer> gh<SPACE> :Git hub 
   " commit plan, good for creating commits ahead of implementation
   " TODO: bail if local changes, that's not a plan anymore
   autocmd filetype fugitive nnoremap <buffer> cp :Git commit --allow-empty<CR>
