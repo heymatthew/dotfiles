@@ -234,6 +234,8 @@ augroup vimrc/mappings | autocmd!
   " 3. Common usage: use chords, single or two key mnemonics
   " 4. Less common: Leader-based or vim commands
 
+  " git command
+  nnoremap g<SPACE> :Git 
   " git status
   nnoremap gs :Git<CR>
   " git log
