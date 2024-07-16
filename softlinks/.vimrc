@@ -216,9 +216,9 @@ augroup vimrc/settings | autocmd!
   autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
 
   " Terminal enters insert mode automatically
-  autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
-  autocmd BufLeave                      term://* stopinsert
-  autocmd TermOpen * setlocal statusline=%{b:term_title}
+  autocmd WinEnter term://* startinsert
+  autocmd WinLeave term://* stopinsert
+  autocmd WinEnter term://* setlocal statusline=%{b:term_title}
 
   " Deprecations and Habit Changes
   " highlight HabitChange guifg=love cterm=underline
