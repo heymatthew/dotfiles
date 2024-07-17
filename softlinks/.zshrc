@@ -17,6 +17,9 @@ export REPORTTIME=1 # seconds
 export REPORTMEMORY=10240 # kb, ~10mb
 export TIMEFMT='mem:%Mk time:%E (user:%U/kernel:%S)'
 
+# Prefer Docker text to fancy loading bars
+export BUILDKIT_PROGRESS=plain
+
 # man zshoptions
 setopt hist_ignore_all_dups # when running a command again, removes previous refs to it
 setopt hist_save_no_dups    # kill duplicates on save
