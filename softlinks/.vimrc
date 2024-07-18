@@ -364,8 +364,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap <C-w>^ :vertical wincmd ^<CR>
   nnoremap <C-w>F :vertical wincmd F<CR>
 
-  " Double Escape and jj leave insert mode in terminal
-  tnoremap <ESC><ESC> <C-\><C-N>
+  " CTRL Escape will leave insert mode in terminal
+  tnoremap <C-ESC> <C-\><C-N>
   " Ctrl + w actions in terminal windows
   tnoremap <C-w> <C-\><C-N><C-w>
 
