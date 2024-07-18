@@ -160,6 +160,7 @@ fi
 if [[ `uname` == "Darwin" ]]; then # OSX
   # Fix GPG agent detection
   # see https://github.com/pstadler/keybase-gpg-github/issues/11
+  # and https://www.systutorials.com/docs/linux/man/1-gpg-agent/
   GPG_TTY=$(tty)
   export GPG_TTY
 
