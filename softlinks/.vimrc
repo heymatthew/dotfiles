@@ -252,6 +252,11 @@ augroup vimrc/mappings | autocmd!
     \ ^
     \ :call <SID>TrackDefaultBranch()<CR>
     \ :Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
+  " find merges in a new tab (varient of m above)
+  autocmd filetype fugitiveblame nmap <buffer> M
+    \ ^
+    \ :call <SID>TrackDefaultBranch()<CR>
+    \ :tab Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
   nnoremap gC :call <SID>QuickfixChangelist()<CR>
   " diff changes (dC)
