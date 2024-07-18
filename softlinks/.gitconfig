@@ -30,12 +30,3 @@
 	template = ~/.gitmessage
 [branch]
 	autoSetupMerge = true
-
-# Some Flick teams have requirements for commit signing
-# https://git-scm.com/docs/git-config#_example
-[includeIf "hasconfig:remote.*.url:git@github.com:FlickElectric/*"]
-[user]
-	signingkey = 06125FDEAAD948E8
-[commit]
-	template = ~/.gitmessage
-	gpgsign = true
