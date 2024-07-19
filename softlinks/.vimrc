@@ -296,7 +296,7 @@ augroup vimrc/mappings | autocmd!
   " go - fuzzy find file
   nnoremap go :FZF<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
-  nnoremap <SPACE>v :edit ~/dotfiles/softlinks/.vimrc<CR>
+  nnoremap <SPACE>v :call ConfigureVim()<CR>
   autocmd BufWritePost .vimrc nested source %
   autocmd BufWritePost ~/.vim/plugged/**/*.vim nested source %
   " quick edit plugins
@@ -568,5 +568,13 @@ augroup vimrc/functions | autocmd!
   function! NicePwd()
     let pwd = execute('pwd')
     return substitute(pwd, $HOME, '~', '')
+  endfunction
+
+  function! ConfigureVim()
+    if expand('%:t') ==# '.vimrc'
+      edit ~/dotfiles/softlinks/.config/nvim/init.vim
+    else
+      edit ~/dotfiles/softlinks/.vimrc
+    endif
   endfunction
 augroup END
