@@ -176,8 +176,8 @@ fi
 # e.g. nerf ruby
 alias nerf='pkill -9 -i -f'
 
-# ssh keys unlock for 8h at a time
-alias ssh-add='ssh-add -t 8h'
+# ssh keys unlock for 12h at a time
+alias ssh-add='ssh-add -t 12h'
 
 # .envrc files contain secrets, if direnv exists export them on directory traversal
 if which direnv > /dev/null; then
