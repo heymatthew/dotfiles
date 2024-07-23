@@ -17,6 +17,7 @@ brew "git-plus"        # git multi, git semvar, git relation, git old-branches, 
 brew "git-workspace"
 brew "gnupg"
 brew "go"
+brew "hadolint"        # Linter for Dockerfile
 brew "htop"            # prettier top, with colour
 brew "hugo"            # static website generator
 brew "iftop"           # top for your network interfaces
