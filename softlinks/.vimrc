@@ -315,6 +315,8 @@ augroup vimrc/mappings | autocmd!
   autocmd BufWritePost ~/.vim/plugged/**/*.vim nested source %
   " quick edit plugins
   nnoremap <SPACE>V :edit ~/.vim/plugged<CR>
+  " quick edit blinkenlights
+  nnoremap <SPACE>b :edit ~/.vim/plugged/vim-blinkenlights/colors/blinkenlights.vim<CR>
   " go to zshrc
   nnoremap <SPACE>z :edit ~/dotfiles/softlinks/.zshrc<CR>
   " scratchpad, review the plan
