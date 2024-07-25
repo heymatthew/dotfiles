@@ -279,10 +279,9 @@ augroup vimrc/mappings | autocmd!
   nnoremap dq :call fugitive#DiffClose()<CR>
   " edit commit template
   autocmd filetype fugitive nmap <buffer> ct
-    \ :!cp ~/.git/message .git/message.bak<CR>
-    \ :!cp ~/.gitmessage .git/message<CR>
-    \ :!git config commit.template '.git/message'<CR>
-    \ :edit .git/message<CR>
+    \ :!cp ~/.gitmessage .gitmessage.bak<CR>
+    \ :!cp ~/dotfiles/templates/gitmessage .gitmessage<CR>
+    \ :edit ~/.gitmessage<CR>
     \ Go<C-r>=GitHumans()<CR>
     \ <ESC>gg
   " <C-l> refreshes git pane, like netrw refresh

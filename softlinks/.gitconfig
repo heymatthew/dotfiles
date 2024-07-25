@@ -1,6 +1,7 @@
 [include]
-	# templated for per-machine git settings
 	path = ~/.gitlocal
+[commit]
+	template = ~/.gitmessage
 [core]
 	excludesfile = ~/.gitexcludes
 	pager = less -iXFR
@@ -26,7 +27,7 @@
 	default = current
 [rebase]
 	updateRefs = true
-[commit]
-	template = ~/.gitmessage
 [branch]
 	autoSetupMerge = true
+[remote]
+	pushdefault = origin

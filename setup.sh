@@ -58,6 +58,9 @@ echo "brew bundle..."
 echo "stowing dotfiles..."
 /opt/homebrew/bin/stow -v softlinks
 
+echo "templating gitmessage..."
+cp templates/gitmessage ~/.gitmessage
+
 echo "configuring exercism..."
 echo "go here: https://exercism.org/settings/api_cli"
 read -r -p  "what is your exercism token? " exercism_token
