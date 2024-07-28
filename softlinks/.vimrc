@@ -582,7 +582,7 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! NicePwd()
-    let pwd = execute('pwd')
+    let pwd = systemlist('pwd')[0]
     return substitute(pwd, $HOME, '~', '')
   endfunction
 
