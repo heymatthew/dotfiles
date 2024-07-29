@@ -156,8 +156,11 @@ augroup vimrc/settings | autocmd!
       \ <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
 
     " vim-textobj-sentence
-    autocmd FileType markdown call textobj#sentence#init()
-    autocmd FileType text call textobj#sentence#init()
+    " FIXME: Disabled for now. Understand this error before turning back on:
+    " Error detected while processing BufRead Autocommands for "*.md"..FileType Autocommands for "markdown"..function textobj#sentence#init:
+    " line 73: E117: Unknown function: textobj#user#plugin
+    " autocmd FileType markdown call textobj#sentence#init()
+    " autocmd FileType text call textobj#sentence#init()
   end
 
   " Debugging reminders
