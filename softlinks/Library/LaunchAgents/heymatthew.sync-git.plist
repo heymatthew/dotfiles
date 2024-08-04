@@ -3,13 +3,13 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>nz.matthew.plist</string>
+  <string>heymatthew.sync-git.plist</string>
 
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
     <string>-c</string>
-    <string>$HOME/bin/sync-repos</string>
+    <string>$HOME/bin/sync-git</string>
   </array>
 
   <!-- hourly -->

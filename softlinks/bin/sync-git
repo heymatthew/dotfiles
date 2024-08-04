@@ -13,4 +13,4 @@ export PATH="/opt/homebrew/bin:$PATH"
     echo "run: mr fetch -q -j 4"
     mr fetch -q -j 4 | grep --line-buffered -v '^$'
     echo "complete"
-} | ts '%Y-%m-%dT%T%z:' >> "$HOME/myrepos.log" 2>&1
+} | ts '%Y-%m-%dT%T%z:' >> "$HOME/log/sync-git.log" 2>&1

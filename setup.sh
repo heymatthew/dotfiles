@@ -58,6 +58,9 @@ echo "brew bundle..."
 echo "stowing dotfiles..."
 /opt/homebrew/bin/stow -v softlinks
 
+echo "creating log dir..."
+mkdir "$HOME/log"
+
 echo "templating gitmessage..."
 cp templates/gitmessage ~/.gitmessage
 
