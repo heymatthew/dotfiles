@@ -3,7 +3,7 @@ export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
 # CD from anywhere
-cdpath=(~ ~/Desktop ~/src)
+cdpath=(~ ~/Desktop ~/forge)
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 

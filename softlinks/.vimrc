@@ -40,7 +40,7 @@ augroup vimrc/plugins
     Plug 'dense-analysis/ale',             " Linter
     Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
     Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
-    Plug 'junegunn/fzf',  { 'dir': '~/src/fzf', 'do': 'yes \| ./install' }
+    Plug 'junegunn/fzf',  { 'dir': '~/forge/fzf', 'do': 'yes \| ./install' }
     Plug 'preservim/vim-textobj-sentence'  " Extend native sentence objects and motions
     Plug 'junegunn/fzf.vim'                " Defaults
     Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
@@ -101,7 +101,7 @@ augroup vimrc/settings | autocmd!
   set nrformats-=octal             " Disable octal increment from <C-a>, i.e. 007 -> 010
   set diffopt+=algorithm:histogram " Format diffs with histogram algo
                                    " https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-  set cdpath="~/src"               " cd to directories under ~src without explicit path
+  set cdpath="~/forge"             " cd to directories under ~/forge without explicit path
   set mouse=                       " turn off mouse
 
   let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
