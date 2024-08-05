@@ -36,6 +36,7 @@ brew "postgresql@15"
 brew "pstree"          # Hirachical list of processes
 brew "rename"
 brew "restic"          # Nobody wants backup, everyone wants restore https://restic.net/
+brew "sed"             # GNU sed > Apple sed
 brew "shellcheck"      # ncjones uses this for linting shell stuff
 brew "stow"            # manage softlinks for dotfiles
 brew "svn"             # required for font-source-code-pro
