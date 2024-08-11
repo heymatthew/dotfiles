@@ -176,6 +176,7 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype eruby.yaml setlocal foldmethod=indent
   autocmd Filetype yaml       setlocal foldmethod=indent
   autocmd Filetype eruby      setlocal foldmethod=indent
+  autocmd Filetype markdown   setlocal foldmethod=manual
 
   let indent_fold = 'setlocal foldmethod=indent'
   autocmd Filetype vim exec indent_fold
