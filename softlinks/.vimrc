@@ -167,6 +167,10 @@ augroup vimrc/settings | autocmd!
   autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
   autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
 
+  " Common Abbreviations
+  autocmd FileType gitcommit :iabbrev <buffer> prr Preparatory Refactoring
+  cabbrev prr preparatory-refactoring
+
   " Set foldmethod but expand all when opening files
   set foldmethod=syntax
   autocmd BufRead * normal zR
