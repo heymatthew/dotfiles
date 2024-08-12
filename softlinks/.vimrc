@@ -261,7 +261,9 @@ augroup vimrc/mappings | autocmd!
   " git status
   nnoremap gs :Git<CR>
   " git log
-  nnoremap gl :G log --oneline -100<CR>
+  nnoremap gl :Git log --oneline -100<CR>
+  " git log, new tab
+  nnoremap gL :tab Git log --oneline -100<CR>
   " git blame
   nnoremap gb :Git blame<CR>
   " git blame with copy paste detection, ignoring whitespace
