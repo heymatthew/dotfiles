@@ -271,12 +271,10 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype git*,fugitive* nnoremap <buffer> gx :GBrowse <cword><CR>
   " find merges from a blame window
   autocmd filetype fugitiveblame nmap <buffer> m
-    \ ^
     \ :call <SID>TrackDefaultBranch()<CR>
     \ :Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
   " find merges in a new tab (varient of m above)
   autocmd filetype fugitiveblame nmap <buffer> M
-    \ ^
     \ :call <SID>TrackDefaultBranch()<CR>
     \ :tab Git log <cword>..origin/head --ancestry-path --merges --reverse<CR>
   " changes (gC) - quickfix jumplist of hunks since branching
