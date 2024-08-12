@@ -7,7 +7,8 @@
 	pager = less -iXFR
 [alias]
 	wip = !git add . && git commit -m WIP
-	trunk = !git checkout origin/HEAD
+	trunk = !echo 'deprecated: git head'
+	head = !git checkout origin/HEAD
 	stat = status --porcelain
 	lg = log --oneline
 	focus = !git branch | grep -v "^*" | xargs git branch -d
