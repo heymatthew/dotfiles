@@ -213,8 +213,7 @@ augroup vimrc/settings | autocmd!
   autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
   autocmd Filetype ruby     setlocal keywordprg=ri     " Lookup docs with ri
   autocmd FileType json     setlocal formatprg=jq      " Format json files with jq
-  autocmd Filetype markdown setlocal keywordprg=dict   " K uses dictionary for markdown
-  " TODO: Consider using `open dict://$1` to pull up OSX dictionary
+  autocmd Filetype markdown setlocal keywordprg=define " custom command, OSX dictionary
 
   " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
   " restore cursor position on file open
