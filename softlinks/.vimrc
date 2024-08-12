@@ -268,8 +268,7 @@ augroup vimrc/mappings | autocmd!
   " git blame with copy paste detection, ignoring whitespace
   nnoremap gB :Git blame -C -M -w<CR>
   " gx opens commits in github for git, fugitive, and blame windows
-  autocmd filetype git,fugitive,fugitiveblame
-    \ nnoremap <buffer> gx :GBrowse <cword><CR>
+  autocmd filetype git*,fugitive* nnoremap <buffer> gx :GBrowse <cword><CR>
   " find merges from a blame window
   autocmd filetype fugitiveblame nmap <buffer> m
     \ ^
