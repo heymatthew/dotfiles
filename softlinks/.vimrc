@@ -343,8 +343,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap Q :bd<CR>
   " display syntax of element under the cursor
   nnoremap <F2> :call SyntaxAttr()<CR>
-  " clear search highlghts
-  nnoremap <BACKSPACE> :nohlsearch<CR>
+  " clear search highlghts, preview, and quickfix
+  nnoremap <BACKSPACE> :cclose<CR>:pclose<CR>:nohlsearch<CR>
   " find selected word, or word under cursor
   nnoremap <C-f> :silent Ggrep <cword><CR>
   vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
