@@ -101,7 +101,7 @@ augroup vimrc/settings | autocmd!
   set nrformats-=octal             " Disable octal increment from <C-a>, i.e. 007 -> 010
   set diffopt+=algorithm:histogram " Format diffs with histogram algo
                                    " https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-  set cdpath="~/forge"             " cd to directories under ~/forge without explicit path
+  set cdpath+=~/forge              " cd to directories under ~/forge without explicit path
   set mouse=                       " turn off mouse
 
   let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
@@ -363,8 +363,10 @@ augroup vimrc/mappings | autocmd!
   nnoremap N Nzz
   " w!! saves as sudo
   cnoremap w!! w !sudo tee > /dev/null %
-  " focus - close all buffers but the current one
+  " Focus - close all buffers but the current one
   command! Focus wa|%bd|e#
+  " Merges - find what merged to mainline for a ref under cursor
+  command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
   " Toggle quickfix
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " enhancement - pasting over a visual selection keeps content
