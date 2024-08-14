@@ -72,6 +72,7 @@ cask "linearmouse"          # tune sensitivity and acceleration
 cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
 cask "vlc"
+cask "wezterm"
 
 # brew "caddy"       # Open source web server with automatic HTTPS written in Go
 # brew "dive"        # Inspect docker images
