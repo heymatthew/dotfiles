@@ -129,9 +129,10 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype sh        setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
   autocmd Filetype julia     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
   autocmd Filetype gitconfig setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
-  autocmd Filetype lua       setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
   autocmd Filetype html      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
   autocmd Filetype eruby     setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype lua       setlocal expandtab   tabstop=3 softtabstop=3 shiftwidth=3
+  " https://github.com/luarocks/lua-style-guide?tab=readme-ov-file#indentation-and-formatting
 
   " Writing Prose
   set spelllang=en_nz
