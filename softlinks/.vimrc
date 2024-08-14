@@ -316,6 +316,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
   " go - fuzzy find file
   nnoremap go :FZF<CR>
+  " gh - fuzzy find jump history, clobbers 'start characterwise select'
+  nnoremap gh :Jumps<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
   nnoremap <SPACE>v :call ConfigureVim()<CR>
   autocmd BufWritePost .vimrc nested source %
