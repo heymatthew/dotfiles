@@ -207,6 +207,10 @@ if [[ "$TERM_PROGRAM" == "iTerm.app" ]]; then
     # Credit: https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
     echo -e "\033]1337;SetProfile=$1\a"
   }
+elif [[ "$TERM_PROGRAM" == "WezTerm" ]]; then
+  terminal_profile() {
+    echo "TODO: Implement terminal_profile() for WezTerm"
+  }
 elif [[ "$TERM" == "alacritty" ]]; then
   terminal_profile() {
     export LC_APPEARANCE="$1"
