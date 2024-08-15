@@ -1,7 +1,11 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.font = wezterm.font("M+ 2m", { weight = "Bold" })
+config.font = wezterm.font_with_fallback({
+   { family = "M+ 2m", weight = "Bold" },
+   { family = "Apple Color Emoji" },
+   { family = "Noto Color Emoji" },
+})
 config.automatically_reload_config = true
 config.adjust_window_size_when_changing_font_size = false
 config.font_size = 14.0
