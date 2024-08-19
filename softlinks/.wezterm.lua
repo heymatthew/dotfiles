@@ -22,23 +22,12 @@ local theme = wezterm.plugin.require('https://github.com/neapsix/wezterm').dawn
 config.window_frame = theme.window_frame()
 config.colors = theme.colors()
 
--- Use SUPER to open links
+-- SUPER mod will open links
+local left_click = { streak = 1, button = "Left" }
 config.mouse_bindings = {
-  {
-   event = { Up = { streak = 1, button = "Left" } },
-   mods = "NONE",
-   action = wezterm.action.DisableDefaultAssignment,
-  },
-  {
-     event = { Up = { streak = 1, button = "Left" } },
-     mods = "SUPER",
-     action = wezterm.action.OpenLinkAtMouseCursor,
-  },
-  {
-      event = { Down = { streak = 1, button = "Left" } },
-      mods = "SUPER",
-      action = wezterm.action.Nop,
-  },
+  { mods = "NONE", event = { Up = left_click }, action = wezterm.action.DisableDefaultAssignment },
+  { mods = "SUPER", event = { Up = left_click }, action = wezterm.action.OpenLinkAtMouseCursor },
+  { mods = "SUPER", event = { Down = left_click }, action = wezterm.action.Nop },
 }
 
 -- and finally, return the configuration to wezterm
