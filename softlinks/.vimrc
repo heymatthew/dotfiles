@@ -576,10 +576,12 @@ augroup vimrc/functions | autocmd!
   function! ListTokenFrom(adjacent_line)
     if a:adjacent_line =~# '^\s*- \[.\]' " Checklist
       return '- [ ] '
-    elseif a:adjacent_line =~# '^\s*-'   " List (-)
+    elseif a:adjacent_line =~# '^\s*-'
       return '- '
-    elseif a:adjacent_line =~# '^\s*\*'  " List (*)
+    elseif a:adjacent_line =~# '^\s*\*'
       return '* '
+    elseif a:adjacent_line =~# '^\s*>'
+      return '> '
     end
 
     let numbered = matchlist(a:adjacent_line, '\v^\s*(\d+)\.')
