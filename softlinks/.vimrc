@@ -220,13 +220,16 @@ augroup vimrc/settings | autocmd!
   " restore cursor position on file open
   autocmd BufWinEnter * call PositionCursor()
 
-  " Set title on terminal to focused buffer filename
-  autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
-
   " Terminal enters insert mode automatically
   autocmd WinEnter term://* startinsert
   autocmd WinLeave term://* stopinsert
-  autocmd WinEnter term://* setlocal statusline=%{b:term_title}
+
+  " FIXME: WezTerm shows control characters instead
+  " Set title on terminal to focused buffer filename
+  if $TERM_PROGRAM !=# 'WezTerm'
+    autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
+    autocmd WinEnter term://* setlocal statusline=%{b:term_title}
+  endif
 
   " Deprecations and Habit Changes
   " highlight HabitChange guifg=love cterm=underline
