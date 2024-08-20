@@ -266,6 +266,10 @@ augroup vimrc/mappings | autocmd!
   nnoremap N Nzz
   " enhancement - pasting over a visual selection keeps content
   vnoremap <silent> <expr> p <sid>VisualPut()
+  " enhancement - gf opens files that don't exist
+  nnoremap gf :e <cfile><CR>
+  " Enhancements - <C-w>f opens files that don't exist
+  nnoremap <C-w>f :vertical split <cfile><CR>
 
   " git command
   nnoremap g<SPACE> :Git 
@@ -387,7 +391,6 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype markdown nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
 
   " Prefer vertical splits
-  nnoremap <C-w>f :vertical wincmd f<CR>
   nnoremap <C-w>d :vertical wincmd d<CR>
   nnoremap <C-w>] :vertical wincmd ]<CR>
   nnoremap <C-w>^ :vertical wincmd ^<CR>
