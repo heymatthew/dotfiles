@@ -97,7 +97,7 @@ augroup vimrc/settings | autocmd!
   set diffopt+=vertical            " vertical diffs
   set colorcolumn=100              " Show 100th char visually
   set nomodeline modelines=0       " Disable modelines as a security precaution
-  set foldminlines=3               " Folds only operate on blocks more than 3 lines long
+  set foldminlines=1               " Folds only operate on blocks more than 1 lines long
   set nrformats-=octal             " Disable octal increment from <C-a>, i.e. 007 -> 010
   set diffopt+=algorithm:histogram " Format diffs with histogram algo
                                    " https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
