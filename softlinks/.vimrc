@@ -255,7 +255,6 @@ augroup vimrc/mappings | autocmd!
   " 1. Trial native vim before mapping
   " 2. Consistency: Rif off existing mnemonics
   " 3. Common usage: use chords, single or two key mnemonics
-  " 4. Less common: Leader-based or vim commands
 
   " git command
   nnoremap g<SPACE> :Git 
