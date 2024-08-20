@@ -101,8 +101,7 @@ augroup vimrc/settings | autocmd!
   set nrformats-=octal             " Disable octal increment from <C-a>, i.e. 007 -> 010
   set diffopt+=algorithm:histogram " Format diffs with histogram algo
                                    " https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
-  set cdpath+=~                    " cd under ~/ without explicit path
-  set cdpath+=~/forge              " ...and ~/forge
+  set cdpath+=~/forge              " cd can resolve files under ~/forge
   set mouse=                       " turn off mouse
 
   let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
