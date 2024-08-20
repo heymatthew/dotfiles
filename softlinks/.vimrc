@@ -258,6 +258,15 @@ augroup vimrc/mappings | autocmd!
   " 2. Consistency: Rif off existing mnemonics
   " 3. Common usage: use chords, single or two key mnemonics
 
+  " enhancement - <C-w>n splits are vertical
+  nnoremap <C-w>n :vert new<CR>
+  " enhancement - next search centers page
+  nnoremap n nzz
+  " enhancement - reverse search centers page
+  nnoremap N Nzz
+  " enhancement - pasting over a visual selection keeps content
+  vnoremap <silent> <expr> p <sid>VisualPut()
+
   " git command
   nnoremap g<SPACE> :Git 
   " git status
@@ -360,12 +369,6 @@ augroup vimrc/mappings | autocmd!
   nnoremap = <Plug>(EasyAlign)
   " let == go through to :equalprg so you can still align stuff
   nnoremap == =
-  " enhancement - <C-w>n splits are vertical
-  nnoremap <C-w>n :vert new<CR>
-  " enhancement - next search centers page
-  nnoremap n nzz
-  " enhancement - reverse search centers page
-  nnoremap N Nzz
   " w!! saves as sudo
   cnoremap w!! w !sudo tee > /dev/null %
   " Focus - close all buffers but the current one
@@ -374,8 +377,6 @@ augroup vimrc/mappings | autocmd!
   command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
   " Toggle quickfix
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
-  " enhancement - pasting over a visual selection keeps content
-  vnoremap <silent> <expr> p <sid>VisualPut()
   " <enter> toggles markdown checkboxes
   autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>MarkdownToggleCheckbox()<CR>
   " Insert <enter> continues checkboxes
