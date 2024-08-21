@@ -330,7 +330,7 @@ augroup vimrc/mappings | autocmd!
   " Alternative to nnoremap z- viwA<C-x><C-t>
   nnoremap z- :call Suggest(thesaurus, expand('<cword>'))<CR>
   " go - fuzzy find file
-  nnoremap go :FZF<CR>
+  nnoremap go :Files<CR>
   " gO - fuzzy find previously opened files
   nnoremap gO :History<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
