@@ -79,7 +79,7 @@ augroup vimrc/settings | autocmd!
   " 2. Portability over monolythic
   " 3. Experimentation over stability
 
-  set scrolloff=100                " 5 lines always visible at top and bottom
+  set scrolloff=5                  " 5 lines always visible at top and bottom
   set sidescrolloff=5              " 5 characters visible left/right, assuming scrollwrap is set
   set nojoinspaces                 " Single space after period when using J
   set hlsearch                     " Highlight my searches :)
@@ -266,6 +266,11 @@ augroup vimrc/mappings | autocmd!
   nnoremap gf :e <cfile><CR>
   " enhancements - <C-w>f opens files that don't exist
   nnoremap <C-w>f :vertical split <cfile><CR>
+  " enhancement - zz perma-center's cursor centered
+  nnoremap zz :set scrolloff=100<CR>
+  " enhancement - zt and zb resets zz
+  nnoremap zb :set scrolloff=5<CR>zb
+  nnoremap zt :set scrolloff=5<CR>zt
 
   " git command
   nnoremap g<SPACE> :Git 
