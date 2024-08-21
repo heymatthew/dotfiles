@@ -79,7 +79,7 @@ augroup vimrc/settings | autocmd!
   " 2. Portability over monolythic
   " 3. Experimentation over stability
 
-  set scrolloff=5                  " 5 lines always visible at top and bottom
+  set scrolloff=100                " 5 lines always visible at top and bottom
   set sidescrolloff=5              " 5 characters visible left/right, assuming scrollwrap is set
   set nojoinspaces                 " Single space after period when using J
   set hlsearch                     " Highlight my searches :)
@@ -260,10 +260,6 @@ augroup vimrc/mappings | autocmd!
 
   " enhancement - <C-w>n splits are vertical
   nnoremap <C-w>n :vert new<CR>
-  " enhancement - next search centers page
-  nnoremap n nzz
-  " enhancement - reverse search centers page
-  nnoremap N Nzz
   " enhancement - pasting over a visual selection keeps content
   vnoremap <silent> <expr> p <sid>VisualPut()
   " enhancement - gf opens files that don't exist
@@ -365,7 +361,7 @@ augroup vimrc/mappings | autocmd!
   nnoremap <BACKSPACE> :cclose<CR>:pclose<CR>:nohlsearch<CR>
   " find selected word, or word under cursor
   nnoremap <C-f> :silent Ggrep <cword><CR>
-  vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
+  vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>
   " find but but leave open for editing
   nnoremap f<C-f> yiw:Ggrep "<C-r>0"<LEFT>
   vnoremap f<C-f> y:Ggrep "<C-r>0"<LEFT>
