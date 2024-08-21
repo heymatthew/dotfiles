@@ -392,6 +392,7 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype markdown nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
 
   " Prefer vertical splits
+  nnoremap <C-w>f :vertical wincmd f<CR>
   nnoremap <C-w>d :vertical wincmd d<CR>
   nnoremap <C-w>] :vertical wincmd ]<CR>
   nnoremap <C-w>^ :vertical wincmd ^<CR>
