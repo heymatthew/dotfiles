@@ -224,12 +224,10 @@ augroup vimrc/settings | autocmd!
   autocmd WinEnter term://* startinsert
   autocmd WinLeave term://* stopinsert
 
-  " FIXME: WezTerm shows control characters instead
-  " Set title on terminal to focused buffer filename
-  if $TERM_PROGRAM !=# 'WezTerm'
-    autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
-    autocmd WinEnter term://* setlocal statusline=%{b:term_title}
-  endif
+  " FIXME: WezTerm makes you choose zsh or vim to set title
+  " Find a way to make this work for both
+  autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
+  autocmd WinEnter term://* setlocal statusline=%{b:term_title}
 
   " Deprecations and Habit Changes
   " highlight HabitChange guifg=love cterm=underline
