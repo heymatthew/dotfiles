@@ -264,7 +264,7 @@ augroup vimrc/mappings | autocmd!
   vnoremap <silent> <expr> p <sid>VisualPut()
   " enhancement - gf opens files that don't exist
   nnoremap gf :e <cfile><CR>
-  " Enhancements - <C-w>f opens files that don't exist
+  " enhancements - <C-w>f opens files that don't exist
   nnoremap <C-w>f :vertical split <cfile><CR>
 
   " git command
