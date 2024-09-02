@@ -359,8 +359,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap Q :bd<CR>
   " display syntax of element under the cursor
   nnoremap <F2> :call SyntaxAttr()<CR>
-  " clear search highlghts, preview, and quickfix
-  nnoremap <BACKSPACE> :cclose<CR>:pclose<CR>:nohlsearch<CR>
+  " Clear serach highlights, quickfix, and friends
+  nnoremap <BACKSPACE> :call CloseHelperWindows()<CR>
   " find selected word, or word under cursor
   nnoremap <C-f> :silent Ggrep <cword><CR>
   vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>
@@ -612,5 +612,22 @@ augroup vimrc/functions | autocmd!
     else
       edit ~/dotfiles/softlinks/.vimrc
     endif
+  endfunction
+
+  function! CloseHelperWindows()
+    if &hlsearch
+      set nohlsearch
+      return
+    endif
+
+    " Git pane
+    if bufnr(':') > 0
+      bdelete :
+    endif
+
+    " Quickfix, location list, and preview windows
+    cclose
+    lclose
+    pclose
   endfunction
 augroup END
