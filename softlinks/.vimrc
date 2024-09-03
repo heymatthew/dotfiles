@@ -621,9 +621,7 @@ augroup vimrc/functions | autocmd!
     endif
 
     " Git pane
-    if bufnr(':') > 0
-      bdelete :
-    endif
+    try | bdelete : | catch | endtry
 
     " Quickfix, location list, and preview windows
     cclose
