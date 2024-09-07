@@ -581,6 +581,10 @@ augroup vimrc/functions | autocmd!
   endfunction
 
   function! ListTokenFrom(adjacent_line)
+    if &paste
+      return ''
+    endif
+
     if a:adjacent_line =~# '^\s*- \[.\]' " Checklist
       return '- [ ] '
     elseif a:adjacent_line =~# '^\s*-'
