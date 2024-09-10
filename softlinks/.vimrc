@@ -212,8 +212,9 @@ augroup vimrc/settings | autocmd!
 
   " FIXME: use pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
   autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
-  autocmd Filetype ruby     setlocal keywordprg=ri     " Lookup docs with ri
-  autocmd FileType json     setlocal formatprg=jq      " Format json files with jq
+  autocmd Filetype ruby     setlocal keywordprg=ri       " Lookup docs with ri
+  autocmd FileType json     setlocal formatprg=jq        " Format json files with jq
+  autocmd FileType sql      setlocal formatprg=pg_format " Format json files with jq
   autocmd Filetype markdown setlocal keywordprg=define " custom command, OSX dictionary
 
   " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
