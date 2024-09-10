@@ -359,8 +359,10 @@ augroup vimrc/mappings | autocmd!
   nnoremap Q :bd<CR>
   " display syntax of element under the cursor
   nnoremap <F2> :call SyntaxAttr()<CR>
-  " Clear serach highlights, quickfix, and friends
-  nnoremap <BACKSPACE> :call CloseHelperWindows()<CR>
+  " Clear serach highlights, quickfix, and friends.
+  " note, it looks like :noh does not work within a vimscript function
+  nnoremap <expr> <BACKSPACE> JustHappened('BACKSPACE') ? ':call CloseHelperWindows()<CR>' : ':noh<CR>'
+  " nnoremap <BACKSPACE> :call Noh()<CR>
   " find selected word, or word under cursor
   nnoremap <C-f> :silent Ggrep <cword><CR>
   vnoremap <C-f> y:silent Ggrep "<C-r>0"<CR>
@@ -618,12 +620,16 @@ augroup vimrc/functions | autocmd!
     endif
   endfunction
 
-  function! CloseHelperWindows()
-    if &hlsearch
-      set nohlsearch
-      return
-    endif
+  let s:just_happened_lookup = {}
+  function! JustHappened(context)
+    let this_run = strftime('%s')
+    let last_run = get(s:just_happened_lookup, a:context, 0)
+    let elapsed_time = this_run - last_run
+    let s:just_happened_lookup[a:context] = this_run
+    return elapsed_time < 2 " seconds
+  endfunction
 
+  function! CloseHelperWindows()
     " Git pane
     try | bdelete : | catch | endtry
 
