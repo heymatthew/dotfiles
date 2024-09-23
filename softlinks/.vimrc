@@ -40,6 +40,7 @@ augroup vimrc/plugins
     Plug 'dense-analysis/ale',             " Linter
     Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
     Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
+    Plug 'heymatthew/vim-wordsmith'        " Thesaurus, etc.
     Plug 'junegunn/fzf',  { 'dir': '~/forge/fzf', 'do': 'yes \| ./install' }
     Plug 'preservim/vim-textobj-sentence'  " Extend native sentence objects and motions
     Plug 'junegunn/fzf.vim'                " Defaults
@@ -324,9 +325,6 @@ augroup vimrc/mappings | autocmd!
   nnoremap [a :ALEPreviousWrap<CR>
   " Toggle edit and write, similar to https://hemingwayapp.com
   nnoremap <expr> yoe ToggleEditToWrite()
-  " z- thesaurus, mnemonic z= spelling lookup
-  " Alternative to nnoremap z- viwA<C-x><C-t>
-  nnoremap z- :call Suggest(expand('<cword>'))<CR>
   " go - fuzzy find file
   nnoremap go :Files<CR>
   " gO - fuzzy find previously opened files
@@ -458,27 +456,6 @@ augroup vimrc/functions | autocmd!
       ALEEnable
       Ditto
     endif
-  endfunction
-
-  " Experimental thesaurus lookup
-  " FIXME: This works, but there's a bug to squash
-  " SyntaxError - E492: Not an editor command: <selected_word> (see vim-jp/vim-vimlparser)
-  let s:thesaurus = {}
-  function! Suggest(word)
-    if len(s:thesaurus) == 0
-      for line in readfile(&thesaurus)
-        let parts = split(line, ',')
-        let [word, synonyms] = [parts[0], parts[1:]]
-        let s:thesaurus[word] = synonyms
-      endfor
-    endif
-
-    let synonyms = s:thesaurus[a:word][:&lines - 2]
-    let synonyms = map(synonyms, { i, synonym -> (i+1) . '. ' . synonym })
-    let choice = inputlist(synonyms)
-    let replace = s:thesaurus[a:word][choice-1]
-    echo "\nYou selected " . replace
-    execute 'normal! ciw' . replace
   endfunction
 
   function! s:QuickfixChangelist()
