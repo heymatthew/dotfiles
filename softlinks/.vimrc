@@ -68,7 +68,6 @@ augroup vimrc/plugins
     Plug 'tpope/vim-surround'              " Delete, or insert quotes/brackets with text objects
     Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
     Plug 'tpope/vim-vinegar'               " Enhancements for netrw
-    Plug 'vim-ruby/vim-ruby'               " Bleading edge syntax highlighting
     Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
   call plug#end()
 augroup END
