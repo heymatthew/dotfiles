@@ -91,6 +91,11 @@ echo "TODO:
 * Add ssh key to https://github.com/settings/keys
 * Add ssh key to https://gitlab.com/-/profile/keys
 * Add ssh key to remote hosts ~/.ssh/authorized_keys
+* Run crontab -e and set:
+    # Hourly from Monday through Friday
+    0 * * * 1-5 ~FIXME/bin/sync-git
+    # Daily at Midday
+    0 12 * * * /opt/homebrew/sbin/logrotate -s ~FIXME/logrotate.status ~FIXME/dotfiles/config/logrotate.conf
 * iTerm2
   * Install Rosé Pine https://github.com/rose-pine/iterm
   * Create profiles 'dark' from moon and 'light' from dawn
