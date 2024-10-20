@@ -300,8 +300,7 @@ augroup vimrc/mappings | autocmd!
   nnoremap dq :call fugitive#DiffClose()<CR>
   " edit commit template
   autocmd filetype fugitive nmap <buffer> ct
-    \ :!cp ~/.gitmessage .gitmessage.bak<CR>
-    \ :!cp ~/dotfiles/templates/gitmessage .gitmessage<CR>
+    \ :!cp ~/.gitmessage ~/.gitmessage.bak<CR>
     \ :edit ~/.gitmessage<CR>
     \ Go<C-r>=GitHumans()<CR>
     \ <ESC>gg
