@@ -262,7 +262,7 @@ augroup vimrc/mappings | autocmd!
   " enhancement - pasting over a visual selection keeps content
   vnoremap <silent> <expr> p <sid>VisualPut()
   " enhancement - gf opens files that don't exist
-  nnoremap gf :e <cfile><CR>
+  autocmd filetype markdown nnoremap <buffer> gf :e <cfile><CR>
   " enhancements - <C-w>f opens files that don't exist
   nnoremap <C-w>f :vertical split <cfile><CR>
   " enhancement - zz toggles center cursor, zt and zb reset
