@@ -51,7 +51,6 @@ augroup vimrc/plugins
     Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
     Plug 'roman/golden-ratio'              " Splits follow golden ratio rules
     Plug 'tpope/vim-abolish'               " Word conversions, including snake to pascal case
-    Plug 'tpope/vim-bundler'               " :Bundle hooks, also path and tags include bundled gems
     Plug 'tpope/vim-characterize'          " UTF8 outputs for ga binding
     Plug 'tpope/vim-commentary'            " Toggle comments on lines
     Plug 'tpope/vim-dadbod'                " Database from your vim
@@ -69,6 +68,10 @@ augroup vimrc/plugins
     Plug 'tpope/vim-unimpaired'            " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
     Plug 'tpope/vim-vinegar'               " Enhancements for netrw
     Plug 'vim-scripts/SyntaxAttr.vim'      " Display syntax highlighting attributes under cursor
+
+    " FIXME: Spams with escape codes on vim startup
+    " i.e. ^[[3;1R^[[>41;2500;0c^[]10;rgb:5679/527d/76aa^[\^[]11;rgb:f9eb/f528/eeac^[\
+    " Plug 'tpope/vim-bundler'               " :Bundle hooks, also path and tags include bundled gems
   call plug#end()
 augroup END
 
