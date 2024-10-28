@@ -535,7 +535,7 @@ augroup vimrc/functions | autocmd!
 
   function! s:OpenScratch()
     let week_of_the_year = strftime('%Y-wk%W')
-    let scratch_path = '~/Desktop/scratch-' . week_of_the_year . '.md'
+    let scratch_path = '~/Documents/scratch-' . week_of_the_year . '.md'
     execute ':edit ' . scratch_path
   endfunction
 
