@@ -93,7 +93,6 @@ augroup vimrc/settings | autocmd!
   set smartindent                  " recognise syntax of files
   set noswapfile nobackup          " git > swapfile, git > backup files
   set wrap linebreak nolist        " wrap words, incompatable w' visible whitespace (list/listchars)
-  set breakindent                  " wraped words have the same indent
   set showcmd                      " show command on bottom right as it's typed
   set belloff=all                  " I find terminal bells irritating
   set shortmess-=S                 " show search matches, see https://stackoverflow.com/a/4671112
