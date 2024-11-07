@@ -287,6 +287,10 @@ augroup vimrc/mappings | autocmd!
   nnoremap gB :Git blame -C -M -w<CR>
   " gx opens commits in github for git, fugitive, and blame windows
   autocmd filetype git*,fugitive* nnoremap <buffer> gx :GBrowse <cword><CR>
+  " dp runs git push (diff put)
+  autocmd filetype fugitive nnoremap <buffer> dp :Git push<CR>
+  " do runs git pull (diff obtain)
+  autocmd filetype fugitive nnoremap <buffer> do :Git pull<CR>
   " find merges from a blame window
   autocmd filetype fugitiveblame nmap <buffer> m
     \ :call <SID>TrackDefaultBranch()<CR>
