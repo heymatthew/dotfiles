@@ -141,6 +141,8 @@ augroup vimrc/settings | autocmd!
   set dictionary=/usr/share/dict/words
   " markdown complete ignores case for matches but uses the context
   autocmd Filetype markdown setlocal ignorecase infercase
+  " wraped words have the same indent as prevoius line
+  autocmd Filetype markdown setlocal breakindent
 
   if has('nvim')
     " Persist 1000 marks, and 100 lines per reg across nvim sessions
