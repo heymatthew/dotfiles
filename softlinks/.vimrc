@@ -167,6 +167,10 @@ augroup vimrc/settings | autocmd!
     " line 73: E117: Unknown function: textobj#user#plugin
     " autocmd FileType markdown call textobj#sentence#init()
     " autocmd FileType text call textobj#sentence#init()
+
+    let g:dispatch_compilers = { 'be rspec' : 'rspec' ,
+                               \ 'be': 'ruby',
+                               \ 'be rubocop': 'ruby' }
   end
 
   " Debugging reminders
