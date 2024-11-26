@@ -1,6 +1,9 @@
 # .gitignore file for a host
 # Named .gitexcludes after the git config pragma
 
-.DS_Store
 Session.vim
 tags
+
+# Make .DS_Store files visible in these repos.
+# When stowing dotfiles this has been painful, I want to git clean -df
+# .DS_Store

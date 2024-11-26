@@ -55,6 +55,9 @@ echo "installing homebrew..."
 echo "brew bundle..."
 /opt/homebrew/bin/brew bundle
 
+echo "removing .DS_Store files in softlinks"
+find softlinks -name ".DS_Store" -depth -exec rm -f {} \;
+
 echo "stowing dotfiles..."
 /opt/homebrew/bin/stow -v softlinks
 
