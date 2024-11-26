@@ -107,13 +107,13 @@ augroup vimrc/settings | autocmd!
   set cdpath+=~/forge              " cd can resolve files under ~/forge
   set mouse=                       " turn off mouse
 
-  let g:fzf_preview_window = ['right,50%', 'ctrl-/'] " configure popup window
-  let g:ale_set_highlights = 0                       " remove highlights
-  let g:ale_set_loclist = 0                          " don't clobber location list
-  let g:ale_set_quickfix = 0                         " don't clobber quickfix list
-  let g:ale_virtualtext_cursor = 'disabled'          " don't show virtual text with errors
-  let g:golden_ratio_autocommand = 0                 " disable golden ratio by default
-  let g:fugitive_legacy_commands = 0                 " don't populate deprecated fugitive commands
+  let g:fzf_preview_window = []             " disable fzf preview window
+  let g:ale_set_highlights = 0              " remove highlights
+  let g:ale_set_loclist = 0                 " don't clobber location list
+  let g:ale_set_quickfix = 0                " don't clobber quickfix list
+  let g:ale_virtualtext_cursor = 'disabled' " don't show virtual text with errors
+  let g:golden_ratio_autocommand = 0        " disable golden ratio by default
+  let g:fugitive_legacy_commands = 0        " don't populate deprecated fugitive commands
 
   colorscheme blinkenlights
 
