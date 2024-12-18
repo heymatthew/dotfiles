@@ -61,6 +61,7 @@ augroup vimrc/plugins
     Plug 'tpope/vim-rails'                 " For rails codebases
     Plug 'tpope/vim-repeat'                " Lets you use . for surround and other plugins
     Plug 'tpope/vim-rhubarb'               " Github extension for fugitive
+    Plug 'tpope/vim-rsi'                   " Readline (Emacsish) key bindings for commands
     Plug 'tpope/vim-sensible'              " Good defaults, love your work tpope!
     Plug 'tpope/vim-speeddating'           " <C-a> / <C-x> for dates and Roman nums. 7<C-a> for 1 week
     Plug 'tpope/vim-surround'              " Delete, or insert quotes/brackets with text objects
