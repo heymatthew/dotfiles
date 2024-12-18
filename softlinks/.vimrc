@@ -366,10 +366,6 @@ augroup vimrc/mappings | autocmd!
   nnoremap === <Plug>(EasyAlign)ip*
   " w!! saves as sudo
   cnoremap w!! w !sudo tee > /dev/null %
-  " Focus - close all buffers but the current one
-  command! Focus wa|%bd|e#
-  " Merges - find what merged to mainline for a ref under cursor
-  command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
   " Toggle quickfix
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " <enter> toggles markdown checkboxes
@@ -380,6 +376,10 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>DeriveListFromAbove()<CR>
   " O continues lists above
   autocmd filetype markdown nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
+  " Focus - close all buffers but the current one
+  command! Focus wa|%bd|e#
+  " Merges - find what merged to mainline for a ref under cursor
+  command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
 
   " Prefer vertical splits
   nnoremap <C-w>f :vertical wincmd f<CR>
