@@ -42,7 +42,6 @@ augroup vimrc/plugins
     Plug 'heymatthew/vim-blinkenlights'    " Muted colourscheme
     Plug 'heymatthew/vim-wordsmith'        " Thesaurus, etc.
     Plug 'junegunn/fzf',  { 'dir': '~/forge/fzf', 'do': 'yes \| ./install' }
-    Plug 'preservim/vim-textobj-sentence'  " Extend native sentence objects and motions
     Plug 'junegunn/fzf.vim'                " Defaults
     Plug 'junegunn/goyo.vim'               " Distraction free writing in vim
     Plug 'junegunn/gv.vim'                 " git graph with :GV, :GV!, :GV?
@@ -160,13 +159,6 @@ augroup vimrc/settings | autocmd!
     " <C-l> toggles syntax too, ruby's syntax parser can get slow
     autocmd FileType ruby nnoremap <buffer> <C-l>
       \ <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
-
-    " vim-textobj-sentence
-    " FIXME: Disabled for now. Understand this error before turning back on:
-    " Error detected while processing BufRead Autocommands for "*.md"..FileType Autocommands for "markdown"..function textobj#sentence#init:
-    " line 73: E117: Unknown function: textobj#user#plugin
-    " autocmd FileType markdown call textobj#sentence#init()
-    " autocmd FileType text call textobj#sentence#init()
 
     let g:dispatch_compilers = { 'be rspec' : 'rspec' ,
                                \ 'be': 'ruby',
