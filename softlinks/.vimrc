@@ -235,20 +235,6 @@ augroup vimrc/settings | autocmd!
   " highlight HabitChange guifg=love cterm=underline
   " match HabitChange /recieve/
   " match HabitChange /recieve_message_chain/
-
-  if has('nvim')
-    autocmd Filetype ruby call StartRubyLSP()
-
-    " FIXME: It looks like some of this is working in rails projects, however
-    " it looks like refactor rename (grr), refactor actions (gra),
-    " and find references (grr) are not. Figure out if this is unsupported by
-    " the plugin and iterate.
-    " Plugin: https://github.com/Shopify/ruby-lsp
-    function! StartRubyLSP()
-      !gem list -i ruby-lsp > /dev/null || gem install ruby-lsp
-      lua vim.lsp.start({ name = 'ruby-language-server', cmd = {'ruby-lsp'} })
-    endfunction
-  endif
 augroup END
 
 augroup vimrc/mappings | autocmd!
