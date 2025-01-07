@@ -59,7 +59,7 @@ precmd_functions+=(directory_context)
 preexec_functions+=(running_context)
 
 # Prompt reflects exit codes
-PS1='%1d %(?.%F{black}.%F{red})λ%f '
+PS1='%1d %(?.%F{reset_color}.%F{red})λ%f '
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
