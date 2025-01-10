@@ -393,8 +393,8 @@ augroup vimrc/mappings | autocmd!
   " Ctrl + w actions in terminal windows
   tnoremap <C-w> <C-\><C-N><C-w>
 
-  " Tripple star (***) is shorthand for non greedy search
-  cnoremap *** \{-}
+  " <C-*> is shorthand for non greedy search
+  cnoremap <C-*> \{-}
 augroup END
 
 augroup vimrc/functions | autocmd!
