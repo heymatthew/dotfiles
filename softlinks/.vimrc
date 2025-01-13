@@ -231,10 +231,8 @@ augroup vimrc/settings | autocmd!
   autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
   autocmd WinEnter term://* setlocal statusline=%{b:term_title}
 
-  " Deprecations and Habit Changes
-  " highlight HabitChange guifg=love cterm=underline
-  " match HabitChange /recieve/
-  " match HabitChange /recieve_message_chain/
+  " Disable templates for new go files
+  let g:go_template_autocreate = 0
 augroup END
 
 augroup vimrc/mappings | autocmd!
