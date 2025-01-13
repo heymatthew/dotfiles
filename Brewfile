@@ -63,23 +63,25 @@ cask "docker"
 cask "font-hack"            # nice looking fixed width font
 cask "font-mplus"           # narrow fixed width for retina
 cask "font-source-code-pro" # adobe backed fixed width font
+cask "ghostty"              # zig terminal emulator
 cask "gimp"                 # image editing software
 cask "hiddenbar"            # declutter the osx menu bar
 cask "julia"                # Dynamic programming language
 cask "keepassxc"            # compatible with keepassx files
 cask "keepingyouawake"      # keeps the screen on for presentations
-cask "kitty"                # GPU powered terminal emulator
 cask "linearmouse"          # tune sensitivity and acceleration
 cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
 cask "vlc"
-cask "wezterm"
+
+# cask "wezterm"     # Terminal emulator without splits
+# cask "kitty"       # Fast but fiddly terminal emulator
+# cask "iterm2"      # Bloated slow terminal emulator with AI
 
 # brew "caddy"       # Open source web server with automatic HTTPS written in Go
 # brew "dive"        # Inspect docker images
 # brew "ranger"      # File browser
 # brew "syncthing"   # Great, but not great for work machines as it often breaks policy
-# cask "iterm2"      # Bloated slow terminal emulator with AI
 # cask "jupyterlab"  # A Next-Generation Notebook Interface https://jupyter.org/
 # cask "kicad"       # manual install, fab PCBs for http://jlcpcb.com
 # cask "skype"
