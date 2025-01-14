@@ -214,6 +214,7 @@ augroup vimrc/settings | autocmd!
   autocmd FileType markdown setlocal formatprg=pandoc\ --from=markdown\ --to=markdown-simple_tables
   autocmd FileType json     setlocal formatprg=jq
   autocmd FileType sql      setlocal formatprg=pg_format
+  autocmd FileType xml      setlocal formatprg=xmllint\ --format\ -
 
   autocmd Filetype ruby     setlocal keywordprg=ri
   autocmd Filetype markdown setlocal keywordprg=define   " custom command, OSX dictionary
