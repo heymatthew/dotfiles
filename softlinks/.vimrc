@@ -212,9 +212,10 @@ augroup vimrc/settings | autocmd!
   autocmd QuickFixCmdPost l*    cwindow
 
   autocmd FileType markdown setlocal formatprg=pandoc\ --from=markdown\ --to=markdown-simple_tables
-  autocmd Filetype ruby     setlocal keywordprg=ri       " Lookup docs with ri
-  autocmd FileType json     setlocal formatprg=jq        " Format json files with jq
-  autocmd FileType sql      setlocal formatprg=pg_format " Format sql files with pg_format
+  autocmd FileType json     setlocal formatprg=jq
+  autocmd FileType sql      setlocal formatprg=pg_format
+
+  autocmd Filetype ruby     setlocal keywordprg=ri
   autocmd Filetype markdown setlocal keywordprg=define   " custom command, OSX dictionary
 
   " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
