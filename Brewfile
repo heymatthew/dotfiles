@@ -33,6 +33,7 @@ brew "mutt"            # email
 brew "ncdu"
 brew "neovim"
 brew "netcat"          # gnu netcat > osx netcat
+brew "pandoc"          # markdown formatter, but also used to convert between formats
 brew "pgformatter"     # pg_format command to format sql
 brew "postgresql@15"
 brew "pstree"          # Hirachical list of processes
