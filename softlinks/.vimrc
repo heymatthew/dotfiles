@@ -211,8 +211,7 @@ augroup vimrc/settings | autocmd!
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
 
-  " FIXME: use pipe_tables https://pandoc.org/chunkedhtml-demo/8.9-tables.html
-  autocmd FileType markdown setlocal formatprg=pandoc\ --from\ markdown\ --to\ markdown
+  autocmd FileType markdown setlocal formatprg=pandoc\ --from=markdown\ --to=markdown-simple_tables
   autocmd Filetype ruby     setlocal keywordprg=ri       " Lookup docs with ri
   autocmd FileType json     setlocal formatprg=jq        " Format json files with jq
   autocmd FileType sql      setlocal formatprg=pg_format " Format json files with pg_format
