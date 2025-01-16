@@ -1,2 +1,7 @@
 theme = dark:catppuccin-mocha,light:catppuccin-latte
 scrollback-limit = 20000000
+
+# https://ghostty.org/docs/config/reference#font-feature
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
