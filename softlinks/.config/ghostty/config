@@ -1,2 +1,2 @@
-# window-theme: light
-theme = dark:catppuccin-frappe,light:catppuccin-latte
+theme = dark:catppuccin-mocha,light:catppuccin-latte
+scrollback-limit = 20000000
