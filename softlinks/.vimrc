@@ -227,8 +227,7 @@ augroup vimrc/settings | autocmd!
   autocmd WinEnter term://* startinsert
   autocmd WinLeave term://* stopinsert
 
-  " FIXME: WezTerm makes you choose zsh or vim to set title
-  " Find a way to make this work for both
+  " Current folder visible in terminal tab
   autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
   autocmd WinEnter term://* setlocal statusline=%{b:term_title}
 
