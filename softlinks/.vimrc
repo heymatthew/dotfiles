@@ -330,9 +330,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap <SPACE>s :call <SID>OpenScratch()<CR>
   " scratchpad, taking notes on the current file path
   nnoremap <SPACE>S
-    \ :let interesting_file = expand('%') . ':' . line('.')<CR>
-    \ :call <SID>OpenScratch()<CR>
-    \ Go\| <C-r>=interesting_file<CR> \|  \|<LEFT><LEFT>
+    \ :let line_ref = expand('%') . ':' . line('.')<CR>
+    \ :call <SID>OpenScratch(line_ref)<CR>
   " space - read/write clipboard
   nnoremap <SPACE> "+
   " visual space - read/write clipboard
@@ -518,10 +517,14 @@ augroup vimrc/functions | autocmd!
     endif
   endfunction
 
-  function! s:OpenScratch()
+  function! s:OpenScratch(...)
     let week_of_the_year = strftime('%Y-wk%W')
     let scratch_path = '~/Documents/scratch-' . week_of_the_year . '.md'
     execute ':edit ' . scratch_path
+    if a:0
+      let table_row = '| ' . a:1 . ' | |'
+      call append('$', [table_row])
+    endif
   endfunction
 
   function! s:MarkdownToggleCheckbox()
