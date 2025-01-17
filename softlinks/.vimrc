@@ -360,9 +360,6 @@ augroup vimrc/mappings | autocmd!
   nnoremap = <Plug>(EasyAlign)
   " let == go through to :equalprg so you can still align stuff
   nnoremap == =
-  " TODO Deprecate === when gq works with pandoc tables
-  " === runs easyalign over paragraph for a character
-  nnoremap === <Plug>(EasyAlign)ip*
   " w!! saves as sudo
   cnoremap w!! w !sudo tee > /dev/null %
   " Toggle quickfix
