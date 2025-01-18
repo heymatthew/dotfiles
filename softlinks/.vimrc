@@ -523,7 +523,7 @@ augroup vimrc/functions | autocmd!
     execute ':edit ' . scratch_path
     if a:0
       let table_row = '| ' . a:1 . ' | |'
-      call append('$', [table_row])
+      execute 'normal Go' . table_row
     endif
   endfunction
 
