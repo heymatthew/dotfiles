@@ -3,6 +3,7 @@
 
 tap 'homebrew/cask-fonts'
 
+brew "aerc"            # Email
 brew "asdf"            # Multi language package manager
 brew "aspell"
 brew "awscli"
