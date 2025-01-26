@@ -89,6 +89,10 @@ touch ~/.hushlogin
 echo "Your public ssh key is stored in ~/.ssh/id_ed25519.pub"
 cat ~/.ssh/id_ed25519.pub
 
+echo "Starting background services"
+brew services start syncthing
+brew services start dbus
+
 echo "TODO:
 * Copy over ~/.ssh/config
 * Add ssh key to https://github.com/settings/keys
@@ -120,10 +124,9 @@ echo "TODO:
 * Set API token in Exercism
   * https://exercism.io/my/settings
   * exercism configure --token=YOUR_TOKEN
-* Finish setting up brew applications
+* Finish setting up postgres from brew
   * brew link postgresql@15
   * brew services start postgresql@15
-  * brew services start syncthing
 * Add repos with 'mr register XYZ'
 * Setup github cli with 'gh auth login'
 * Setup asdf

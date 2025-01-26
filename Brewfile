@@ -24,7 +24,6 @@ brew "htop"            # prettier top, with colour
 brew "hugo"            # static website generator
 brew "iftop"           # top for your network interfaces
 brew "jq"              # json formatter and queries
-brew "libsecret"       # secret-tool cli, for aerc keepass integration
 brew "mas"             # App Store control from CLI https://github.com/mas-cli/mas
 brew "moreutils"       # for mr fetch | ts '%Y-%m-%dT%T%z'
 brew "mplayer"
@@ -55,6 +54,9 @@ brew "vint"            # Linter for vimscript
 brew "watch"
 brew "wget"
 brew "zsh"
+
+brew "dbus"      # dbus-launch cli, used for secret-tool keepass integration
+brew "libsecret" # secret-tool cli, used for aerc keepass integration
 
 brew "lua"
 brew "busted"   # Lua Unit testing
