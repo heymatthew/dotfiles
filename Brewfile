@@ -63,6 +63,7 @@ cask "anki"
 cask "audacity"
 cask "docker"
 cask "font-hack"            # nice looking fixed width font
+cask "font-merriweather"    # modern serif font
 cask "font-mplus"           # narrow fixed width for retina
 cask "font-source-code-pro" # adobe backed fixed width font
 cask "ghostty"              # zig terminal emulator
