@@ -5,3 +5,6 @@ scrollback-limit = 20000000
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
+
+# I install this as a cask through brew, no need to prompt
+auto-update = off
