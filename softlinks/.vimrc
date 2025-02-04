@@ -373,8 +373,8 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>DeriveListFromAbove()<CR>
   " O continues lists above
   autocmd filetype markdown nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
-  " Focus - close all buffers but the current one
-  command! Focus wa|%bd|e#
+  " BufOnly - close all buffers but the current one
+  command! BufOnly wa|%bd|e#
   " Merges - find what merged to mainline for a ref under cursor
   command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
 
