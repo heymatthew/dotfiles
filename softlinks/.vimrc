@@ -163,9 +163,7 @@ augroup vimrc/settings | autocmd!
     autocmd FileType ruby nnoremap <buffer> <C-l>
       \ <C-l>:setlocal syntax=off<CR>:setlocal syntax=on<CR>
 
-    let g:dispatch_compilers = { 'be rspec' : 'rspec' ,
-                               \ 'be': 'ruby',
-                               \ 'be rubocop': 'ruby' }
+    let g:dispatch_compilers = { 'be' : '', 'bundle exec': '' }
   end
 
   " Debugging reminders
