@@ -251,6 +251,7 @@ augroup vimrc/mappings | autocmd!
   autocmd filetype markdown nnoremap <buffer> gf :e <cfile><CR>
   " enhancements - <C-w>f opens files that don't exist
   nnoremap <C-w>f :vertical split <cfile><CR>
+
   " enhancement - zz toggles center cursor, zt and zb reset
   nnoremap zz :let &scrolloff = (&scrolloff == 999 ? 5 : 999)<CR>
   nnoremap zb :set scrolloff=5<CR>zb
