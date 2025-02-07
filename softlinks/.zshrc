@@ -184,8 +184,9 @@ if which direnv > /dev/null; then
 fi
 
 # If asdf exists, init shims and autocompletion
+# https://asdf-vm.com/guide/getting-started.html
 if which asdf > /dev/null; then
-  source $(brew --prefix asdf)/libexec/asdf.sh
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fi
 
 # Advice from
