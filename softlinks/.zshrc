@@ -1,6 +1,7 @@
 # Locale
-export LANG=en_US
-export LC_CTYPE=$LANG.UTF-8
+export LANG=en_NZ
+export LC_CTYPE="$LANG.UTF-8"
+export LC_ALL="$LANG.UTF-8"
 
 # CD from anywhere
 cdpath=(~ ~/forge)
