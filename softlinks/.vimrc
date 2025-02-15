@@ -145,6 +145,7 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype markdown setlocal ignorecase infercase
   " wraped words have the same indent as prevoius line
   autocmd Filetype markdown setlocal breakindent
+  autocmd Filetype mail setlocal textwidth=78
 
   if has('nvim')
     " Persist 1000 marks, and 100 lines per reg across nvim sessions
