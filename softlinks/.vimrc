@@ -320,15 +320,13 @@ augroup vimrc/mappings | autocmd!
   " gO - fuzzy find previously opened files
   nnoremap gO :History<CR>
   " quick edit and reload for fast iteration. Credit http://howivim.com/2016/damian-conway
-  nnoremap <SPACE>v :call ConfigureVim()<CR>
+  nnoremap cv :call ConfigureVim()<CR>
   autocmd BufWritePost .vimrc nested source %
   autocmd BufWritePost ~/.vim/plugged/**/*.vim nested source %
   " quick edit plugins
-  nnoremap <SPACE>V :edit ~/.vim/plugged<CR>
-  " quick edit blinkenlights
-  nnoremap <SPACE>b :edit ~/.vim/plugged/vim-blinkenlights/colors/blinkenlights.vim<CR>
+  nnoremap cV :edit ~/.vim/plugged<CR>
   " go to zshrc
-  nnoremap <SPACE>z :edit ~/dotfiles/softlinks/.zshrc<CR>
+  nnoremap cz :edit ~/dotfiles/softlinks/.zshrc<CR>
   " scratchpad, review the plan
   nnoremap <SPACE>s :call <SID>OpenScratch()<CR>
   " scratchpad, taking notes on the current file path
