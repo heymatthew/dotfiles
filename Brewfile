@@ -58,9 +58,6 @@ brew "watch"
 brew "wget"
 brew "zsh"
 
-brew "dbus"      # dbus-launch cli, used for secret-tool keepass integration
-brew "libsecret" # secret-tool cli, used for aerc keepass integration
-
 brew "lua"
 brew "busted"   # Lua Unit testing
 brew "luacheck" # Lua Linter

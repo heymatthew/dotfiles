@@ -91,7 +91,6 @@ cat ~/.ssh/id_ed25519.pub
 
 echo "Starting background services"
 brew services start syncthing
-brew services start dbus
 
 echo "TODO:
 * Copy over ~/.ssh/config
