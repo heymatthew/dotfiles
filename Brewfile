@@ -4,7 +4,6 @@
 tap 'homebrew/cask-fonts'
 
 brew "aerc"            # Text based email
-brew "catimg"          # Convert images to ascii
 brew "less"            # gnu less gives me --wordwrap
 
 brew "asdf"            # Multi language package manager
