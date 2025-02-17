@@ -4,8 +4,6 @@
 tap 'homebrew/cask-fonts'
 
 brew "aerc"            # Text based email
-brew "less"            # gnu less gives me --wordwrap
-
 brew "asdf"            # Multi language package manager
 brew "aspell"
 brew "awscli"
@@ -26,6 +24,7 @@ brew "htop"            # prettier top, with colour
 brew "hugo"            # static website generator
 brew "iftop"           # top for your network interfaces
 brew "jq"              # json formatter and queries
+brew "less"            # gnu less gives me --wordwrap
 brew "mas"             # App Store control from CLI https://github.com/mas-cli/mas
 brew "moreutils"       # for mr fetch | ts '%Y-%m-%dT%T%z'
 brew "mplayer"
