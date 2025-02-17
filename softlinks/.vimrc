@@ -323,14 +323,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap cv :call ConfigureVim()<CR>
   autocmd BufWritePost .vimrc nested source %
   autocmd BufWritePost ~/.vim/plugged/**/*.vim nested source %
-  " quick edit plugins
-  nnoremap cV :edit ~/.vim/plugged<CR>
-  " go to zshrc
-  nnoremap cz :edit ~/dotfiles/softlinks/.zshrc<CR>
-  " scratchpad, review the plan
-  nnoremap <SPACE>s :call <SID>OpenScratch()<CR>
   " scratchpad, taking notes on the current file path
-  nnoremap <SPACE>S
+  nnoremap <SPACE>z
     \ :let line_ref = expand('%') . ':' . line('.')<CR>
     \ :call <SID>OpenScratch(line_ref)<CR>
   " space - read/write clipboard
