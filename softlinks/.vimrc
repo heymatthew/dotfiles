@@ -127,6 +127,7 @@ augroup vimrc/settings | autocmd!
   " Whitespace management
   set                                 expandtab   tabstop=2 softtabstop=2 shiftwidth=2
   autocmd Filetype markdown  setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
+  autocmd Filetype mail      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
   autocmd Filetype go        setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
   autocmd Filetype perl      setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
   autocmd Filetype ruby      setlocal expandtab   tabstop=2 softtabstop=2 shiftwidth=2
@@ -142,9 +143,10 @@ augroup vimrc/settings | autocmd!
   set spelllang=en_nz
   set dictionary=/usr/share/dict/words
   " markdown complete ignores case for matches but uses the context
-  autocmd Filetype markdown setlocal ignorecase infercase
+  autocmd Filetype markdown,mail setlocal ignorecase infercase
   " wraped words have the same indent as prevoius line
   autocmd Filetype markdown setlocal breakindent
+  " mail wraps at 78 chars
   autocmd Filetype mail setlocal textwidth=78
 
   if has('nvim')
@@ -185,6 +187,7 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype yaml       setlocal foldmethod=indent
   autocmd Filetype eruby      setlocal foldmethod=indent
   autocmd Filetype markdown   setlocal foldmethod=manual
+  autocmd Filetype mail       setlocal foldmethod=manual
 
   let indent_fold = 'setlocal foldmethod=indent'
   autocmd Filetype vim exec indent_fold
@@ -213,13 +216,13 @@ augroup vimrc/settings | autocmd!
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
 
-  autocmd FileType markdown setlocal formatprg=pandoc\ --from=markdown\ --to=markdown-simple_tables-grid_tables-multiline_tables
-  autocmd FileType json     setlocal formatprg=jq
-  autocmd FileType sql      setlocal formatprg=pg_format
-  autocmd FileType xml      setlocal formatprg=xmllint\ --format\ -
+  autocmd FileType markdown,mail setlocal formatprg=pandoc\ --from=markdown\ --to=markdown-simple_tables-grid_tables-multiline_tables
+  autocmd FileType json          setlocal formatprg=jq
+  autocmd FileType sql           setlocal formatprg=pg_format
+  autocmd FileType xml           setlocal formatprg=xmllint\ --format\ -
 
-  autocmd Filetype ruby     setlocal keywordprg=ri
-  autocmd Filetype markdown setlocal keywordprg=define   " custom command, OSX dictionary
+  autocmd Filetype ruby          setlocal keywordprg=ri
+  autocmd Filetype markdown,mail setlocal keywordprg=define   " custom command, OSX dictionary
 
   " See https://vim.fandom.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
   " restore cursor position on file open
@@ -358,13 +361,13 @@ augroup vimrc/mappings | autocmd!
   " Toggle quickfix
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
   " <enter> toggles markdown checkboxes
-  autocmd filetype markdown nnoremap <buffer> <ENTER> :call <SID>MarkdownToggleCheckbox()<CR>
+  autocmd filetype markdown,mail nnoremap <buffer> <ENTER> :call <SID>MarkdownToggleCheckbox()<CR>
   " Insert <enter> continues checkboxes
-  autocmd filetype markdown inoremap <buffer> <CR> <CR><C-r>=<SID>DeriveListFromAbove()<CR>
+  autocmd filetype markdown,mail inoremap <buffer> <CR> <CR><C-r>=<SID>DeriveListFromAbove()<CR>
   " o continues lists below
-  autocmd filetype markdown nnoremap <buffer> o o<C-r>=<SID>DeriveListFromAbove()<CR>
+  autocmd filetype markdown,mail nnoremap <buffer> o o<C-r>=<SID>DeriveListFromAbove()<CR>
   " O continues lists above
-  autocmd filetype markdown nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
+  autocmd filetype markdown,mail nnoremap <buffer> O O<C-r>=<SID>DeriveListFromBelow()<CR>
   " BufOnly - close all buffers but the current one
   command! BufOnly wa|%bd|e#
   " Merges - find what merged to mainline for a ref under cursor
