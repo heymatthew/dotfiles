@@ -538,6 +538,54 @@ augroup vimrc/functions | autocmd!
     end
   endfunction
 
+  function! Mktable(...)
+    " Default values if no arguments provided
+    let columns = a:0 ? a:1 : 3
+    let rows = a:0 > 1 ? a:2 : 3
+
+    " Validate inputs
+    if columns <= 0 || rows <= 0
+      echoerr 'Number of columns and rows must be positive'
+      return
+    endif
+
+    " Create header row
+    let header = ''
+    for i in range(columns)
+        let header .= '|      '
+    endfor
+    let header .= '|'
+
+    " Create separator row
+    let sep = ''
+    for i in range(columns)
+        let sep .= '|------'
+    endfor
+    let sep .= '|'
+
+    " Create data rows
+    let data = ''
+    for i in range(rows - 1)
+      let row = ''
+      for j in range(columns)
+        let row .= '|      '
+      endfor
+      let row .= '|'
+      let data .= row . "\n"
+    endfor
+
+    " Combine all rows
+    let table = header . "\n" . sep . "\n" . data
+
+    " Delete current contents and insert table
+    execute '%delete'
+    call append(0, split(table, '\n'))
+
+    " Move cursor to first cell
+    call cursor(1, 2)
+  endfunction
+  command! -nargs=* Mktable call Mktable(<f-args>)
+
   function! s:DeriveListFromAbove()
     let line_above = getline(line('.') - 1)
     return ListTokenFrom(line_above)
