@@ -8,7 +8,7 @@ scriptencoding utf8
 " Custom Mappings ............. Extend functionality with hotkeys
 " Functions ................... Behaviours with 1+ editor actions
 
-
+" n.b. autocmd! reset missing as plugins manage reload
 augroup vimrc/plugins
   " ==[ Plugins ]===================================================================================
   if !filereadable(expand('~/.vim/autoload/plug.vim'))
