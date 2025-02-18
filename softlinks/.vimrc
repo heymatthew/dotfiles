@@ -216,7 +216,7 @@ augroup vimrc/settings | autocmd!
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
 
-  autocmd FileType markdown,mail setlocal formatprg=pandoc\ --from=commonmark\ --to=markdown-simple_tables-multiline_tables-pipe_tables+grid_tables
+  autocmd FileType markdown,mail setlocal formatprg=pandoc\ --from=markdown\ --to=commonmark_x
   autocmd FileType json          setlocal formatprg=jq
   autocmd FileType sql           setlocal formatprg=pg_format
   autocmd FileType xml           setlocal formatprg=xmllint\ --format\ -
