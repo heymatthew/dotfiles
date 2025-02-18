@@ -54,6 +54,7 @@ brew "universal-ctags" # Maintained https://github.com/universal-ctags/ctags
 brew "vale"            # Linter for English https://vale.sh/
 brew "vim"
 brew "vint"            # Linter for vimscript
+brew "w3m"             # Text based browser
 brew "watch"
 brew "wget"
 brew "zsh"
