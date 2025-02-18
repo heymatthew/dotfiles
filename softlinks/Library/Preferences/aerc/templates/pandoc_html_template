@@ -3,6 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code {
+      background: #f4f5f6;
+      border-radius: .4rem;
+      font-size: 86%;
+      margin: 0 .2rem;
+      padding: .2rem .5rem;
+      white-space: nowrap;
+    }
+
+    pre {
+      background: #f4f5f6;
+      border-left: 0.3rem solid #9b4dca;
+      overflow-y: hidden;
+    }
+
+    pre > code {
+      border-radius: 0;
+      display: block;
+      padding: 1rem 1.5rem;
+      white-space: pre;
+    }
+
+    hr {
+      border: 0;
+      border-top: 0.1rem solid #f4f5f6;
+      margin: 3.0rem 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    table {
+      border-spacing: 0;
+      display: block;
+      overflow-x: auto;
+      text-align: left;
+      width: 100%;
+    }
+
+    td, th {
+      border-bottom: 0.1rem solid #e1e1e1;
+      padding: 1.2rem 1.5rem;
+    }
+
+    td:first-child,
+    th:first-child {
+      padding-left: 0;
+    }
+
+    td:last-child,
+    th:last-child {
+      padding-right: 0;
+    }
+  </style>
 </head>
 <body>
   $body$
