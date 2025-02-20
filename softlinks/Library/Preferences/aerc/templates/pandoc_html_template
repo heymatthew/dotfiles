@@ -58,6 +58,12 @@
     th:last-child {
       padding-right: 0;
     }
+
+    blockquote {
+      margin: 2em 1em;
+      padding-left: 15px;
+      border-left: 3px solid #ccc;
+    }
   </style>
 </head>
 <body>
