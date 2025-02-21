@@ -4,6 +4,39 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+
+    .main {
+      max-width: 80ch;
+      line-height: 1.75;
+    }
+
+    h1,h2,h3 {
+      font-family: "Zilla Slab";
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    /* Margin from 2nd heading onwards */
+    h1+h1,h2,h3 {
+      margin: 3em 0 1em;
+    }
+
+    strong {
+      text-decoration: underline #9b4dca;
+      text-underline-offset: 0.2em;
+    }
+
+    p,ul,ol {
+      font-family: "Zilla Slab";
+      font-weight: 300;
+      margin-bottom: 1em;
+    }
+
+    ul li {
+      list-style-type: "➜ ";
+    }
+
     code {
       background: #f4f5f6;
       border-radius: .4rem;
@@ -44,10 +77,8 @@
       width: 100%;
     }
 
-    td, th {
-      border-bottom: 0.1rem solid #e1e1e1;
-      padding: 1.2rem 1.5rem;
-    }
+    th { border-bottom: 0.1rem solid #e1e1e1; }
+    th, td { padding: 0.5rem 1rem; }
 
     td:first-child,
     th:first-child {
@@ -67,6 +98,8 @@
   </style>
 </head>
 <body>
+<div class="main">
   $body$
+</main>
 </body>
 </html>
