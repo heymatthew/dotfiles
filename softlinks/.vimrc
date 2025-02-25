@@ -331,7 +331,8 @@ augroup vimrc/mappings | autocmd!
   autocmd BufWritePost .vimrc nested source %
   autocmd BufWritePost ~/.vim/plugged/**/*.vim nested source %
   " scratchpad, taking notes on the current file path
-  nnoremap cz
+  nnoremap cz :call <SID>OpenScratch()<CR>
+  nnoremap cZ
     \ :let line_ref = expand('%') . ':' . line('.')<CR>
     \ :call <SID>OpenScratch(line_ref)<CR>
   " space - read/write clipboard
