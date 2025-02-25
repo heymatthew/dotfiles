@@ -23,6 +23,7 @@ brew "hadolint"        # Linter for Dockerfile
 brew "htop"            # prettier top, with colour
 brew "hugo"            # static website generator
 brew "iftop"           # top for your network interfaces
+brew "jack"            # take audio output of software and send it to another
 brew "jq"              # json formatter and queries
 brew "less"            # gnu less gives me --wordwrap
 brew "mas"             # App Store control from CLI https://github.com/mas-cli/mas
