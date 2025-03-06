@@ -30,5 +30,6 @@
 	updateRefs = true
 [branch]
 	autoSetupMerge = true
+	sort = -committerdate
 [remote]
 	pushdefault = origin
