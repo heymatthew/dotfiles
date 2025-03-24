@@ -456,8 +456,8 @@ augroup vimrc/functions | autocmd!
       echo 'Conflict changes for ' . conflict_check['git_dir']
       Git mergetool
     elseif !empty(wip_check['stdout'][0])
-      echo 'Uncommited changes for ' . wip_check['git_dir']
-      Git difftool
+      echo 'Local changes for ' . wip_check['git_dir']
+      Git difftool HEAD
     else
       echo 'Commited changes for ' . wip_check['git_dir']
       exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
