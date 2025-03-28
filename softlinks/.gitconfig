@@ -7,7 +7,6 @@
 	pager = less -iXFR
 [alias]
 	wip = !git add . && git commit -m WIP
-	trunk = !echo 'deprecated: git head'
 	head = !git checkout origin/HEAD
 	stat = status --porcelain
 	lg = log --oneline
@@ -15,7 +14,7 @@
 	hub = !gh
 	trace = !git log $1..origin/head --ancestry-path --merges --reverse
 [init]
-	defaultBranch = trunk
+	defaultBranch = main
 [diff]
 	# https://luppeng.wordpress.com/2020/10/10/when-to-use-each-of-the-git-diff-algorithms/
 	algorithm = histogram
