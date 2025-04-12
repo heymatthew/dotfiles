@@ -147,7 +147,7 @@ augroup vimrc/settings | autocmd!
   " wraped words have the same indent as prevoius line
   autocmd Filetype markdown setlocal breakindent
   " mail wraps at 78 chars
-  autocmd Filetype mail setlocal textwidth=78
+  autocmd Filetype mail,markdown setlocal textwidth=78
 
   if has('nvim')
     " Persist 1000 marks, and 100 lines per reg across nvim sessions
@@ -220,7 +220,7 @@ augroup vimrc/settings | autocmd!
   autocmd QuickFixCmdPost [^l]* cwindow
   autocmd QuickFixCmdPost l*    cwindow
 
-  autocmd FileType markdown,mail setlocal formatprg=pandoc\ --from=markdown\ --to=commonmark_x
+  autocmd FileType markdown,mail setlocal formatprg=pandoc\ --from=markdown\ --to=commonmark_x\ --columns=78
   autocmd FileType json          setlocal formatprg=jq
   autocmd FileType sql           setlocal formatprg=pg_format
   autocmd FileType xml           setlocal formatprg=xmllint\ --format\ -
