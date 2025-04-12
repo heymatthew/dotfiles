@@ -365,6 +365,8 @@ augroup vimrc/mappings | autocmd!
   cnoremap w!! w !sudo tee > /dev/null %
   " Toggle quickfix
   nnoremap <expr> yoq IsQuickfixClosed() ? ':copen<CR>:resize 10%<CR>' : ':cclose<CR>'
+  " Alternative buffer, y and ^ are same key on 40%. Clobbers scroll [count] lines up in buffer.
+  nnoremap <C-y> <C-^>
   " <enter> toggles markdown checkboxes
   autocmd filetype markdown,mail nnoremap <buffer> <ENTER> :call <SID>MarkdownToggleCheckbox()<CR>
   " Insert <enter> continues checkboxes
