@@ -316,10 +316,10 @@ augroup vimrc/mappings | autocmd!
   nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
   " toggle ale - mnemonic riffs from tpope's unimpaired
   nnoremap yoa :ALEToggleBuffer<CR>
-  " Ale next - mnemonic riffs from tpope's unimpaired, clobbers :next
-  nnoremap ]a :ALENextWrap<CR>
-  " Ale previous - mnemonic riffs from tpope's unimpaired, clobbers :previous
-  nnoremap [a :ALEPreviousWrap<CR>
+  " Ale next - mnemonic riffs from tpope's unimpaired, clobbers exhange lines
+  nnoremap ]e :ALENextWrap<CR>
+  " Ale previous - mnemonic riffs from tpope's unimpaired, clobbers exhange lines
+  nnoremap [e :ALEPreviousWrap<CR>
   " Toggle edit and write, similar to https://hemingwayapp.com
   nnoremap <expr> yoe ToggleEditToWrite()
   " go - fuzzy find file
