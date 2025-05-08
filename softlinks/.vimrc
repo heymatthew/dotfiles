@@ -379,6 +379,10 @@ augroup vimrc/mappings | autocmd!
   command! BufOnly wa|%bd|e#
   " Merges - find what merged to mainline for a ref under cursor
   command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
+" Setup Dispatch with TCR. Run with `<CR>
+command! -nargs=+ -complete=file TCR execute 'FocusDispatch ' . <q-args> . ' && git add . || git checkout .'
+" Convenience map to quickly populate TCR
+nnoremap t<CR> :TCR 
 
   " Prefer vertical splits
   nnoremap <C-w>f :vertical wincmd f<CR>
