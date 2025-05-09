@@ -9,7 +9,6 @@ brew "aspell"
 brew "awscli"
 brew "coreutils"       # GNU File, Shell, and Text utilities
 brew "dict"            # dictionary server protocol (RFC2229) client
-brew "direnv"
 brew "entr"            # run commands when files change
 brew "exercism"        # develop fluency with coding exercises and mentoring https://exercism.org
 brew "gh"              # github cli https://cli.github.com/
