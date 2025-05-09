@@ -1,0 +1,18 @@
+#!/usr/bin/env osascript
+
+-- iPhone 13 mini screen dimension in points
+set targetWidth to 375
+set targetHeight to 812
+
+try
+    tell application "System Events"
+        set frontAppProcess to first application process whose frontmost is true
+        set frontAppName to name of frontAppProcess
+        set frontWindow to window 1 of frontAppProcess
+        set size of frontWindow to {targetWidth, targetHeight}
+        tell frontAppProcess to activate -- A gentler way to ensure it's active
+    end tell
+
+on error errMsg number errNum
+    log "AppleScript Error: " & errMsg & " (Number: " & errNum & ")"
+end try
