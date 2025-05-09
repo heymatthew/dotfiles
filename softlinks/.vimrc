@@ -48,6 +48,8 @@ augroup vimrc/plugins
     Plug 'junegunn/gv.vim'                        " git graph with :GV, :GV!, :GV?
     Plug 'junegunn/vader.vim'                     " Vimscript test framework
     Plug 'junegunn/vim-easy-align'                " Align paragraph = with gaip=
+    Plug 'mhinz/vim-signify'                      " Faster than gitgutter
+    set updatetime=100                            " FIXME move to settings
     Plug 'michaeljsmith/vim-indent-object'        " Select indents as an object
     Plug 'roman/golden-ratio'                     " Splits follow golden ratio rules
     Plug 'tpope/vim-abolish'                      " Word conversions, including snake to pascal case
