@@ -70,6 +70,7 @@ cask "font-hack"            # nice looking fixed width font
 cask "font-merriweather"    # modern serif font
 cask "font-mplus"           # narrow fixed width for retina
 cask "font-source-code-pro" # adobe backed fixed width font
+cask "font-zilla-slab"
 cask "ghostty"              # zig terminal emulator
 cask "gimp"                 # image editing software
 cask "hiddenbar"            # declutter the osx menu bar
