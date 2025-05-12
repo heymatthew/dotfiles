@@ -459,17 +459,36 @@ augroup vimrc/functions | autocmd!
     call s:TrackDefaultBranch()
 
     let conflict_check = FugitiveExecute('ls-files', '--unmerged')
-    let wip_check = FugitiveExecute('diff-index', 'HEAD', '--')
     if !empty(conflict_check['stdout'][0])
-      echo 'Conflict changes for ' . conflict_check['git_dir']
+      echo 'Conflict markers'
       Git mergetool
-    elseif !empty(wip_check['stdout'][0])
-      echo 'Local changes for ' . wip_check['git_dir']
-      Git difftool HEAD
-    else
-      echo 'Commited changes for ' . wip_check['git_dir']
-      exec ':Git difftool ' . systemlist('git merge-base origin/HEAD HEAD')[0]
+      return
     endif
+
+    let wip_check = FugitiveExecute('diff-index', 'HEAD', '--')
+    if !empty(wip_check['stdout'][0])
+      echo 'Local changes'
+      Git difftool HEAD
+      return
+    endif
+
+    let head = FugitiveExecute('rev-parse', 'HEAD')['stdout'][0]
+    let push_base = FugitiveExecute('merge-base', 'HEAD', '@{push}')['stdout'][0]
+    if head != push_base
+      echo 'Unpushed changes'
+      echo push_base
+      exec ':Git difftool ' . push_base
+      return
+    endif
+
+    let upstream_base = FugitiveExecute('merge-base', 'HEAD', '@{upstream}')['stdout'][0]
+    if head != upstream_base
+      echo 'Unmerged changes'
+      exec ':Git difftool ' . upstream_base
+      return
+    endif
+
+    echo 'No changes detected.'
   endfunction
 
   function! s:DiffBuffer()
