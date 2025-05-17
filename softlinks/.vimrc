@@ -384,7 +384,7 @@ augroup vimrc/mappings | autocmd!
 " Setup Dispatch with TCR. Run with `<CR>
 command! -nargs=+ -complete=file TCR execute 'FocusDispatch ' . <q-args> . ' && git add . || git checkout .'
 " Convenience map to quickly populate TCR
-nnoremap t<CR> :TCR 
+nnoremap t<SPACE> :TCR 
 
   " Prefer vertical splits
   nnoremap <C-w>f :vertical wincmd f<CR>
