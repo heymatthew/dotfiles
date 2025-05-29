@@ -14,3 +14,4 @@ practice_words = File.read("/usr/share/dict/words").lines.map(&:downcase).reject
 practice_words.each do |word|
   puts word
 end
+puts "==> https://ranelpadon.github.io/ngram-type/"
