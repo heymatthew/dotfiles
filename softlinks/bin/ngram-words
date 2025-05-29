@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+alphabet = Set.new("abcdefghijklmnopqrstuvwxyz".chars)
+if ARGV.first.nil?
+  puts "Please supply letters you want to practice"
+  exit(1)
+end
+
+keys = Set.new(ARGV.first.chars)
+exclusions = alphabet - keys
+
+filter = Regexp.new("[#{exclusions.join}]")
+practice_words = File.read("/usr/share/dict/words").lines.map(&:downcase).reject { |l| l.length > 4 || l.match(filter) }
+practice_words.each do |word|
+  puts word
+end
