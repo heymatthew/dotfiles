@@ -1,5 +1,13 @@
 #!/usr/bin/env ruby
 
+# ngram-words
+# Problem: You want to practice home row on a non standard keyboard, e.g. Hands
+# Down Gold and need a word list that covers those letters.
+#
+# input: ngram-words asdfljk
+# output: a list of words containing only those letters
+# use "custom" on https://ranelpadon.github.io/ngram-type/"
+
 alphabet = Set.new("abcdefghijklmnopqrstuvwxyz".chars)
 if ARGV.first.nil?
   puts "Please supply letters you want to practice"
@@ -14,4 +22,3 @@ practice_words = File.read("/usr/share/dict/words").lines.map(&:downcase).reject
 practice_words.each do |word|
   puts word
 end
-puts "==> https://ranelpadon.github.io/ngram-type/"
