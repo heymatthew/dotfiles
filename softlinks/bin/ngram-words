@@ -1,24 +1,56 @@
 #!/usr/bin/env ruby
 
-# ngram-words
-# Problem: You want to practice home row on a non standard keyboard, e.g. Hands
-# Down Gold and need a word list that covers those letters.
-#
-# input: ngram-words asdfljk
-# output: a list of words containing only those letters
-# use "custom" on https://ranelpadon.github.io/ngram-type/"
-
-alphabet = Set.new("abcdefghijklmnopqrstuvwxyz".chars)
-if ARGV.first.nil?
-  puts "Please supply letters you want to practice"
-  exit(1)
+class Side < Data.define(:value, :weight)
 end
 
-keys = Set.new(ARGV.first.chars)
-exclusions = alphabet - keys
+class Dice
+  def initialize(sides)
+    @sides = sides
+    @weight_sum = sides.map(&:weight).sum
+  end
 
-filter = Regexp.new("[#{exclusions.join}]")
-practice_words = File.read("/usr/share/dict/words").lines.map(&:downcase).reject { |l| l.length > 4 || l.match(filter) }
-practice_words.each do |word|
-  puts word
+  def roll
+    threshold = rand(@weight_sum)
+    @sides.each do |side|
+      threshold = threshold - side.weight
+      if threshold <= 0
+        return side.value
+      end
+    end
+    raise "Invalid state, ran out of sides ;_;"
+  end
 end
+
+class Dictionary
+  def initialize(letters, dice)
+    raise "Cannot roll without letters" unless letters.length > 0
+    @letters = letters
+    @dice = dice
+  end
+
+  def next_word
+    word = ""
+    letter_count = @dice.roll
+    while letter_count >= 0 do
+      word += @letters.sample(letter_count).join
+      letter_count = letter_count - word.length
+    end
+    word
+  end
+end
+
+# Based on rounded word count from 3 refreshes of Peter's Online Typing course
+# see https://www.typing-lessons.org/lesson_1.html
+dice = Dice.new([
+  Side.new(value: 4, weight: 5),  # 4 letter words 5% of the time
+  Side.new(value: 3, weight: 60), # 3 letter words 60% of the time
+  Side.new(value: 2, weight: 30), # 2 letter words 30% of the time
+  Side.new(value: 1, weight: 5),  # 1 letter words 5% of the time
+])
+
+# Custom keys are input, i.e. press home row to practice home row
+# see https://sites.google.com/alanreiser.com/handsdown/home/hands-down-neu
+letters = Set.new(ARGV.first.chars)
+
+dictionary = Dictionary.new(letters.to_a, dice)
+puts 50.times.map { dictionary.next_word }.join(" ")
