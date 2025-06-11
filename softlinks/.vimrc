@@ -116,6 +116,7 @@ augroup vimrc/settings | autocmd!
   let g:ale_virtualtext_cursor = 'disabled' " don't show virtual text with errors
   let g:golden_ratio_autocommand = 0        " disable golden ratio by default
   let g:fugitive_legacy_commands = 0        " don't populate deprecated fugitive commands
+  let g:go_fmt_fail_silently = 0            " don't show location list when gofmt fails
 
   colorscheme blinkenlights
   " colorscheme catppuccin_latte
