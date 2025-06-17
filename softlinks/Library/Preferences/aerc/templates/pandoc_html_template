@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,300;0,700;1,300;1,700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
     .main {
       max-width: 80ch;
@@ -29,7 +29,7 @@
 
     p,ul,ol {
       font-family: "Zilla Slab";
-      font-weight: 300;
+      font-weight: 400;
       margin-bottom: 1em;
     }
 
