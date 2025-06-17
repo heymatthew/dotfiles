@@ -1,4 +1,4 @@
-theme = dark:catppuccin-mocha,light:catppuccin-latte
+theme = dark:yui-dark,light:yui-light
 scrollback-limit = 20000000
 
 # https://ghostty.org/docs/config/reference#font-feature

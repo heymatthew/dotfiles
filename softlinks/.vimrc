@@ -41,6 +41,7 @@ augroup vimrc/plugins
     Plug 'dense-analysis/ale',                    " Linter
     Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
     Plug 'heymatthew/vim-blinkenlights'           " Muted colourscheme
+    Plug 'cideM/yui'                              " Minimal color scheme inspired by the Field Notes Rams Notebook
     Plug 'heymatthew/vim-wordsmith'               " Thesaurus, etc.
     Plug 'junegunn/fzf',  { 'dir': '~/forge/fzf', 'do': 'yes \| ./install' }
     Plug 'junegunn/fzf.vim'                       " Defaults
@@ -118,7 +119,9 @@ augroup vimrc/settings | autocmd!
   let g:fugitive_legacy_commands = 0        " don't populate deprecated fugitive commands
   let g:go_fmt_fail_silently = 0            " don't show location list when gofmt fails
 
-  colorscheme blinkenlights
+  " FIXME: Raise PR upstream to toggle on background change
+  colorscheme yui
+  " colorscheme blinkenlights
   " colorscheme catppuccin_latte
   " colorscheme catppuccin_mocha
 
