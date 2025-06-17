@@ -30,6 +30,7 @@
     p,ul,ol {
       font-family: "Zilla Slab";
       font-weight: 400;
+      font-size: 16px;
       margin-bottom: 1em;
     }
 
