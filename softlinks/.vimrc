@@ -41,7 +41,7 @@ augroup vimrc/plugins
     Plug 'dense-analysis/ale',                    " Linter
     Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
     Plug 'heymatthew/vim-blinkenlights'           " Muted colourscheme
-    Plug 'cideM/yui'                              " Minimal color scheme inspired by the Field Notes Rams Notebook
+    Plug 'heymatthew/vim-yui'                     " (forked) Minimal color scheme inspired by the Field Notes Rams Notebook
     Plug 'heymatthew/vim-wordsmith'               " Thesaurus, etc.
     Plug 'junegunn/fzf',  { 'dir': '~/forge/fzf', 'do': 'yes \| ./install' }
     Plug 'junegunn/fzf.vim'                       " Defaults
@@ -385,10 +385,15 @@ augroup vimrc/mappings | autocmd!
   command! BufOnly wa|%bd|e#
   " Merges - find what merged to mainline for a ref under cursor
   command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
-  " Setup Dispatch with TCR. Run with `<CR>
+  " Setup Dispatch with TCR. Run with `<CR> (or t<CR>)
   command! -nargs=+ -complete=file TCR execute 'FocusDispatch ' . <q-args> . ' && git add . || git checkout .'
   " Convenience map to quickly populate TCR
-  nnoremap t<SPACE> :TCR 
+  nnoremap t<CR> :TCR 
+  " ...and FocusDispatch
+  nnoremap d<CR> :FocusDispatch 
+  " Execute with t<TAB> or d<TAB>
+  nnoremap d<TAB> :Dispatch<CR>
+  nnoremap t<TAB> :Dispatch<CR>
 
   " Prefer vertical splits
   nnoremap <C-w>f :vertical wincmd f<CR>
