@@ -108,6 +108,7 @@ export GOPATH="$HOME/.go"
 # Personal programs
 export PATH="$HOME/bin:$PATH"
 export PATH="$GOPATH/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
 
 export PATH="/opt/homebrew/sbin:$PATH"
