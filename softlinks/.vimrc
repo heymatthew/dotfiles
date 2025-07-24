@@ -308,7 +308,7 @@ augroup vimrc/mappings | autocmd!
   " edit commit template
   autocmd filetype fugitive nmap <buffer> ct
     \ :!cp ~/.gitmessage ~/.gitmessage.bak<CR>
-    \ :!cp ~/templates/gitmessage ~/.gitmessage<CR>
+    \ :!cp ~/dotfiles/templates/gitmessage ~/.gitmessage<CR>
     \ :edit ~/.gitmessage<CR>
     \ <ESC>gg
   " <C-l> refreshes git pane, like netrw refresh
