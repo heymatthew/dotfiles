@@ -285,6 +285,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap gB :Git blame -C -M -w<CR>
   " gx opens commits in github for git, fugitive, and blame windows
   autocmd filetype git*,fugitive* nnoremap <buffer> gx :GBrowse <cword><CR>
+  " <C-x><C-u> opens users as co-authors
+  set completefunc=s:CompleteCoauthors
   " dp runs git push (diff put)
   autocmd filetype fugitive nnoremap <buffer> dp :Git push<CR>
   " do runs git pull (diff obtain)
@@ -435,14 +437,6 @@ augroup vimrc/functions | autocmd!
       normal! g`"
       return 1
     endif
-  endfunction
-
-  function! GitHumans()
-    let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
-    let humans = uniq(sort(humans))
-    let humans = filter(humans, {index, val -> val !~ 'noreply'})
-    let humans = map(humans, '"Co-Authored-By: " . v:val')
-    return humans
   endfunction
 
   function! ToggleEditToWrite()
@@ -639,5 +633,28 @@ augroup vimrc/functions | autocmd!
     cclose
     lclose
     pclose
+  endfunction
+
+  function! GitHumans()
+    let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
+    let humans = uniq(sort(humans))
+    let humans = filter(humans, {index, val -> val !~ 'noreply'})
+    return humans
+  endfunction
+
+  function! s:CompleteCoauthors(findstart, base)
+    if a:findstart " Cursor finds line start or non word character
+      let l:line = getline('.')
+      let l:start_idx = col('.') - 1 " 0-based index of cursor
+      while l:start_idx > 0 && l:line[l:start_idx - 1] =~? '\w'
+        let l:start_idx -= 1
+      endwhile
+      return l:start_idx
+    else " 
+      let l:humans = GitHumans()
+      let l:matching_humans = filter(humans, {index, val -> val =~ a:base})
+      let l:matching_coauthors = map(l:matching_humans, '"Co-Authored-By: " . v:val')
+      return l:matching_coauthors
+    endif
   endfunction
 augroup END
