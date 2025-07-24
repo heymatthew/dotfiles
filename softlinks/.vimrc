@@ -635,13 +635,6 @@ augroup vimrc/functions | autocmd!
     pclose
   endfunction
 
-  function! GitHumans()
-    let humans = systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')
-    let humans = uniq(sort(humans))
-    let humans = filter(humans, {index, val -> val !~ 'noreply'})
-    return humans
-  endfunction
-
   function! s:CompleteCoauthors(findstart, base)
     if a:findstart " Cursor finds line start or non word character
       let l:line = getline('.')
@@ -651,8 +644,8 @@ augroup vimrc/functions | autocmd!
       endwhile
       return l:start_idx
     else " 
-      let l:humans = GitHumans()
-      let l:matching_humans = filter(humans, {index, val -> val =~ a:base})
+      let l:humans = uniq(sort(systemlist('git log --format="%aN <%aE>" "$@" --since "1 year ago"')))
+      let l:matching_humans = filter(l:humans, {index, val -> val =~ a:base})
       let l:matching_coauthors = map(l:matching_humans, '"Co-Authored-By: " . v:val')
       return l:matching_coauthors
     endif
