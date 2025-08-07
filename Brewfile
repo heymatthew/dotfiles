@@ -12,9 +12,9 @@ brew "dict"            # dictionary server protocol (RFC2229) client
 brew "entr"            # run commands when files change
 brew "exercism"        # develop fluency with coding exercises and mentoring https://exercism.org
 brew "gh"              # github cli https://cli.github.com/
-brew "git"
 brew "git-plus"        # git multi, git semvar, git relation, git old-branches, git recvent
 brew "git-workspace"
+brew "git"
 brew "gnu-sed"         # GNU sed > Apple sed
 brew "gnupg"
 brew "go"
