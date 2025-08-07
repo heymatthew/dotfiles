@@ -243,7 +243,7 @@ augroup vimrc/settings | autocmd!
   autocmd WinLeave term://* stopinsert
 
   " Current folder visible in terminal tab
-  autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . NicePwd()
+  autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . WorkingDirectory()
   autocmd WinEnter term://* setlocal statusline=%{b:term_title}
 
   " Disable templates for new go files
@@ -603,9 +603,8 @@ augroup vimrc/functions | autocmd!
     return ''
   endfunction
 
-  function! NicePwd()
-    let pwd = systemlist('pwd')[0]
-    return substitute(pwd, $HOME, '~', '')
+  function! WorkingDirectory()
+    return substitute(getcwd(), $HOME, '~', '')
   endfunction
 
   function! ConfigureVim()
