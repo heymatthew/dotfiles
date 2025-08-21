@@ -189,7 +189,6 @@ fi
 # Advice from
 # brew cask install google-cloud-sdk
 if which gcloud > /dev/null; then
-  echo "gcloud..."
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+  source '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'
+  source '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'
 fi
