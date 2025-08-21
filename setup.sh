@@ -30,12 +30,12 @@ vim ~/.ssh/config.local
 echo "templating git config..."
 echo "editing git config in vim 🤔, press enter to continue..."
 read -r
-tee ~/.gitconfig.local >/dev/null <<EOF
+tee ~/.gitlocal >/dev/null <<EOF
 [user]
-  name = Matthew B. Gray
+  name = Matthew
   email = spamed@matthew.nz
 EOF
-vim ~/.gitconfig.local
+vim ~/.gitlocal
 
 echo "vim-rhubarb requires repo permissions"
 echo "plugin: https://github.com/tpope/vim-rhubarb"
