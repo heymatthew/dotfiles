@@ -192,3 +192,7 @@ if which gcloud > /dev/null; then
   source '/opt/homebrew/share/google-cloud-sdk/completion.zsh.inc'
   source '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'
 fi
+
+if which kubectl > /dev/null; then
+  source <(kubectl completion zsh)
+fi
