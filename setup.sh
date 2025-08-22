@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 echo "testing superuser (password required)..."
 sudo echo 'make me a Sandwich! https://xkcd.com/149' || exit 1
@@ -60,6 +60,9 @@ find softlinks -name ".DS_Store" -depth -exec rm -f {} \;
 
 echo "stowing dotfiles..."
 /opt/homebrew/bin/stow -vv softlinks
+
+echo "source updated zshrc..."
+source ~/.zshrc
 
 echo "creating log dir..."
 mkdir "$HOME/log"
