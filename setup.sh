@@ -123,7 +123,7 @@ echo "TODO:
   * Merriweather default serif font
   * Update ctrl tab to 'sort by recently used'
     about:config > browser.ctrlTab.sortByRecentlyUsed > true
-    https://superuser.com/a/392376
+    about:config > browser.tabs.insertRelatedAfterCurrent true
 * Set Syncthing Device Name to '$hostname' http://localhost:8384/
 * Set hidden menu with minimalist menu bar
 * Set API token in Exercism
