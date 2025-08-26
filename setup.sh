@@ -123,7 +123,7 @@ echo "TODO:
 * Add repos with 'mr register XYZ'
 * Setup github cli with 'gh auth login'
 * Setup asdf
-  * https://github.com/asdf-vm/asdf-ruby
-  * https://github.com/asdf-vm/asdf-nodejs
-  * https://github.com/asdf-community/asdf-python
+  * asdf plugin add nodejs
+  * asdf plugin add yarn
+  * asdf plugin add ruby
 "
