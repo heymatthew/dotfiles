@@ -109,8 +109,6 @@ echo "TODO:
 * Skim MacOS Security & Privacy Guide https://github.com/drduh/macOS-Security-and-Privacy-Guide
 * Firefox
   * Set sync Device Name to '$hostname' about:preferences#sync
-  * Firefox yellow theme -- https://color.firefox.com/?theme=XQAAAAIpAQAAAAAAAABBqYhm849SCia2CaaEGccwS-xMDPsqvXkIbAF6EJDWcx9sS_Bi3JZGE6ZZI2STfI2PTljloDe5nkXVU4eUt67pknPBTFda74qSLuzQZo_BsyuRKt4MYOwUA85nuFvk6_9a1n944vRDhYM8EitgmHsep4u5kxl92bvI79XVHwGNbLJ18lklnhQ90ILDJ7wyz2hU7HpqhejN3CtLUA_oHf2akJAkzdQmd5e_Hmpf_8pXCAA
-  * Merriweather default serif font
   * Update ctrl tab to 'sort by recently used'
     about:config > browser.ctrlTab.sortByRecentlyUsed > true
     about:config > browser.tabs.insertRelatedAfterCurrent true
