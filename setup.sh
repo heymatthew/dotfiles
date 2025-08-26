@@ -105,16 +105,6 @@ echo "TODO:
     0 * * * 1-5 ~FIXME/bin/sync-git
     # Daily at Midday
     0 12 * * * /opt/homebrew/sbin/logrotate -s ~FIXME/logrotate.status ~FIXME/dotfiles/config/logrotate.conf
-* iTerm2
-  * Install Rosé Pine https://github.com/rose-pine/iterm
-  * Create profiles 'dark' from moon and 'light' from dawn
-  * Set M+ 1mn medium font, light:medium, dark:regular https://css-tricks.com/dark-mode-and-variable-fonts/
-  * Bump scrollback to 25k
-  * Set Appearance > General > Theme to 'Minimal'
-  * Set Profiles > * > Colors > Cursor Colors
-  * Remap 'Close' to Cmd+Shift+W, System Settings > Keyboard Shortcuts > App Shortcuts
-* Alacritty
-  * Rice app icon https://github.com/dfl0/mac-icons/blob/main/alacritty/icons/faithful/alacritty_faithful_256.png
 * Bump inotify limits for entr http://eradman.com/entrproject/limits.html
 * Skim MacOS Security & Privacy Guide https://github.com/drduh/macOS-Security-and-Privacy-Guide
 * Firefox
