@@ -10,3 +10,6 @@ font-size = 14
 
 # I install this as a cask through brew, no need to prompt
 auto-update = off
+
+keybind = super+shift+f=write_selection_file:open
+keybind = cmd+f=write_screen_file:open
