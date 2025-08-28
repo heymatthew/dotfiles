@@ -248,6 +248,13 @@ augroup vimrc/settings | autocmd!
 
   " Disable templates for new go files
   let g:go_template_autocreate = 0
+  " Quickfix overrides for vim-go
+  " https://github.com/fatih/vim-go/pull/1415
+  let g:go_list_type_commands = {
+    \   'GoReferrers': 'quickfix',
+    \   'GoImplements': 'quickfix',
+    \   'GoCallers': 'quickfix'
+    \ }
 augroup END
 
 augroup vimrc/mappings | autocmd!
