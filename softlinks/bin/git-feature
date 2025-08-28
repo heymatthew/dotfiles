@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 
+
+
 NAME=$1
+if [[ -n $FEATURE_PREFIX ]]; then
+    NAME="$FEATURE_PREFIX/$NAME"
+fi
 
 if [ -z "$NAME" ]; then
   # If we're not creating a branch, then list branches

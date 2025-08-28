@@ -100,6 +100,7 @@ echo "TODO:
 * Add ssh key to https://github.com/settings/keys
 * Add ssh key to https://gitlab.com/-/profile/keys
 * Add ssh key to remote hosts ~/.ssh/authorized_keys
+* Set FEATURE_PREFIX to feature if required
 * Run crontab -e and set:
     # Hourly from Monday through Friday
     0 * * * 1-5 ~FIXME/bin/sync-git
