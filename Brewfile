@@ -4,7 +4,6 @@
 brew "aerc"            # Text based email
 brew "asdf"            # Multi language package manager
 brew "aspell"
-brew "awscli"
 brew "coreutils"       # GNU File, Shell, and Text utilities
 brew "dict"            # dictionary server protocol (RFC2229) client
 brew "entr"            # run commands when files change
@@ -24,7 +23,6 @@ brew "iftop"           # top for your network interfaces
 brew "jack"            # take audio output of software and send it to another
 brew "jq"              # json formatter and queries
 brew "less"            # gnu less gives me --wordwrap
-brew "mas"             # App Store control from CLI https://github.com/mas-cli/mas
 brew "moreutils"       # for mr fetch | ts '%Y-%m-%dT%T%z'
 brew "mplayer"
 brew "mpv"             # command line media player https://mpv.io/
@@ -79,6 +77,8 @@ cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
 cask "vlc"
 
+# brew "mas"     # App Store control from CLI https://github.com/mas-cli/mas
+# brew "awscli"
 # cask "wezterm" # Terminal emulator without splits
 # cask "kitty"   # Fast but fiddly terminal emulator
 # cask "iterm2"  # Bloated slow terminal emulator with AI
