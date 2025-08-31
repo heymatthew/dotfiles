@@ -1,8 +1,6 @@
 # Brewfile, install everything with `brew bundle`
 # https://openfolder.sh/macos-migrations-with-brewfile
 
-tap 'homebrew/cask-fonts'
-
 brew "aerc"            # Text based email
 brew "asdf"            # Multi language package manager
 brew "aspell"
@@ -68,7 +66,6 @@ cask "audacity"
 cask "docker"
 cask "font-hack"            # nice looking fixed width font
 cask "font-merriweather"    # modern serif font
-cask "font-mplus"           # narrow fixed width for retina
 cask "font-source-code-pro" # adobe backed fixed width font
 cask "font-zilla-slab"
 cask "ghostty"              # zig terminal emulator
@@ -82,17 +79,18 @@ cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
 cask "vlc"
 
-# cask "wezterm"     # Terminal emulator without splits
-# cask "kitty"       # Fast but fiddly terminal emulator
-# cask "iterm2"      # Bloated slow terminal emulator with AI
+# cask "wezterm" # Terminal emulator without splits
+# cask "kitty"   # Fast but fiddly terminal emulator
+# cask "iterm2"  # Bloated slow terminal emulator with AI
 
-# brew "caddy"       # Open source web server with automatic HTTPS written in Go
-# brew "dive"        # Inspect docker images
-# brew "ranger"      # File browser
-# brew "syncthing"   # Great, but not great for work machines as it often breaks policy
-# cask "jupyterlab"  # A Next-Generation Notebook Interface https://jupyter.org/
-# cask "kicad"       # manual install, fab PCBs for http://jlcpcb.com
+# brew "caddy"              # Open source web server with automatic HTTPS written in Go
+# brew "dive"               # Inspect docker images
+# brew "ranger"             # File browser
+# brew "syncthing"          # Great, but not great for work machines as it often breaks policy
+# cask "font-m-plus-1-code" # narrow fixed width for retina
+# cask "jupyterlab"         # A Next-Generation Notebook Interface https://jupyter.org/
+# cask "kicad"              # manual install, fab PCBs for http://jlcpcb.com
 # cask "skype"
 # cask "spotify"
-# cask "tunnelblick" # powers modest VPNs
-# cask "unclack"     # for people with mech keebs, https://unclack.app
+# cask "tunnelblick"        # powers modest VPNs
+# cask "unclack"            # for people with mech keebs, https://unclack.app
