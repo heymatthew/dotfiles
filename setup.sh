@@ -59,6 +59,7 @@ echo "removing .DS_Store files in softlinks"
 find softlinks -name ".DS_Store" -depth -exec rm -f {} \;
 
 echo "stowing dotfiles..."
+mkdir ~/.config
 /opt/homebrew/bin/stow -vv softlinks
 
 echo "source updated zshrc..."
