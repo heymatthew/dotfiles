@@ -52,6 +52,7 @@ augroup vimrc/plugins
     Plug 'mhinz/vim-signify'                      " Faster than gitgutter
     set updatetime=100                            " FIXME move to settings
     Plug 'michaeljsmith/vim-indent-object'        " Select indents as an object
+    Plug 'mmai/wikilink'                          " interlinked, plain text markup
     Plug 'roman/golden-ratio'                     " Splits follow golden ratio rules
     Plug 'tpope/vim-abolish'                      " Word conversions, including snake to pascal case
     Plug 'tpope/vim-characterize'                 " UTF8 outputs for ga binding
@@ -154,6 +155,9 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype markdown setlocal breakindent
   " mail wraps at 78 chars
   autocmd Filetype mail,markdown setlocal textwidth=78
+
+  " Wikilinks hook 'jump to tag' (from https://github.com/mmai/wikilink
+  nnoremap <C-]> :WikiLinkGotoLink<CR>
 
   if has('nvim')
     " Persist 1000 marks, and 100 lines per reg across nvim sessions
