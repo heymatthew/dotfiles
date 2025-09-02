@@ -157,7 +157,7 @@ augroup vimrc/settings | autocmd!
   autocmd Filetype mail,markdown setlocal textwidth=78
 
   " Wikilinks hook 'jump to tag' (from https://github.com/mmai/wikilink
-  nnoremap <C-]> :WikiLinkGotoLink<CR>
+  autocmd Filetype markdown nnoremap <buffer> <C-]> :WikiLinkGotoLink<CR>
 
   if has('nvim')
     " Persist 1000 marks, and 100 lines per reg across nvim sessions
