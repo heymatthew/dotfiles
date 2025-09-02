@@ -41,10 +41,10 @@ augroup vimrc/plugins
     Plug 'dense-analysis/ale',                    " Linter
     Plug 'fatih/vim-go',  { 'do': ':GoInstallBinaries' }
     Plug 'heymatthew/vim-blinkenlights'           " Muted colourscheme
-    Plug 'heymatthew/vim-yui'                     " Minimal color scheme inspired by the Field Notes Rams Notebook
     Plug 'heymatthew/vim-wordsmith'               " Thesaurus, etc.
-    Plug 'junegunn/fzf',  { 'dir': '~/forge/fzf', 'do': 'yes \| ./install' }
+    Plug 'heymatthew/vim-yui'                     " Minimal color scheme inspired by the Field Notes Rams Notebook
     Plug 'junegunn/fzf.vim'                       " Defaults
+    Plug 'junegunn/fzf',  { 'dir': '~/forge/fzf', 'do': 'yes \| ./install' }
     Plug 'junegunn/goyo.vim'                      " Distraction free writing in vim
     Plug 'junegunn/gv.vim'                        " git graph with :GV, :GV!, :GV?
     Plug 'junegunn/vader.vim'                     " Vimscript test framework
