@@ -110,6 +110,7 @@ echo "TODO:
 * Bump inotify limits for entr http://eradman.com/entrproject/limits.html
 * Skim MacOS Security & Privacy Guide https://github.com/drduh/macOS-Security-and-Privacy-Guide
 * Firefox
+  * Set language to English (GB)
   * Set sync Device Name to '$hostname' about:preferences#sync
   * Update ctrl tab to 'sort by recently used'
     about:config > browser.ctrlTab.sortByRecentlyUsed > true
