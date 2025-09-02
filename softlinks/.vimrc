@@ -349,6 +349,8 @@ augroup vimrc/mappings | autocmd!
   nnoremap cv :call ConfigureVim()<CR>
   autocmd BufWritePost .vimrc nested source %
   autocmd BufWritePost ~/.vim/plugged/**/*.vim nested source %
+  " Open tasks
+  nnoremap cx :e ~/Documents/Tasks.md<CR>
   " scratchpad, taking notes on the current file path
   nnoremap cz :call <SID>OpenScratch()<CR>
   nnoremap cZ
