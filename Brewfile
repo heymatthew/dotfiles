@@ -63,6 +63,7 @@ cask "anki"
 cask "audacity"
 cask "docker"
 cask "font-hack"            # nice looking fixed width font
+cask "font-iosevka"         # slab serif monospace font https://typeof.net/Iosevka/
 cask "font-merriweather"    # modern serif font
 cask "font-source-code-pro" # adobe backed fixed width font
 cask "font-zilla-slab"
