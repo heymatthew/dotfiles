@@ -247,7 +247,8 @@ augroup vimrc/settings | autocmd!
   autocmd WinLeave term://* stopinsert
 
   " Current folder visible in terminal tab
-  autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = 'Σ v:' . WorkingDirectory()
+  let title_prefix = has('nvim') ? 'Σ n:' : 'Σ v:'
+  autocmd VimEnter,WinEnter,DirChanged * :set title | let &titlestring = title_prefix . WorkingDirectory()
   autocmd WinEnter term://* setlocal statusline=%{b:term_title}
 
   " Disable templates for new go files
