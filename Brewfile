@@ -8,7 +8,6 @@ brew "coreutils"       # GNU File, Shell, and Text utilities
 brew "dict"            # dictionary server protocol (RFC2229) client
 brew "entr"            # run commands when files change
 brew "exercism"        # develop fluency with coding exercises and mentoring https://exercism.org
-brew "gcloud-cli"      # GCP CLI
 brew "gh"              # github cli https://cli.github.com/
 brew "git-plus"        # git multi, git semvar, git relation, git old-branches, git recvent
 brew "git-workspace"
@@ -67,6 +66,7 @@ cask "font-iosevka"         # slab serif monospace font https://typeof.net/Iosev
 cask "font-merriweather"    # modern serif font
 cask "font-source-code-pro" # adobe backed fixed width font
 cask "font-zilla-slab"
+cask "gcloud-cli"           # GCP CLI
 cask "ghostty"              # zig terminal emulator
 cask "gimp"                 # image editing software
 cask "hiddenbar"            # declutter the osx menu bar
