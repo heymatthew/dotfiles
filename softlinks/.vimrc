@@ -161,7 +161,7 @@ augroup vimrc/settings | autocmd!
 
   if has('nvim')
     " Persist 1000 marks, and 100 lines per reg across nvim sessions
-    set shada='1000,<100,n~/.vim/shada 
+    set shada='1000,<100,n~/.vim/shada
   else
     " Persist 1000 marks, and 100 lines per reg across sessions
     set viminfo='1000,<100,n~/.vim/info
