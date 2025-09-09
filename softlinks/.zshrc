@@ -170,6 +170,9 @@ if [[ `uname` == "Darwin" ]]; then # OSX
 
   # Local IP as env variable
   export LOCAL_IP=$(ipconfig getifaddr en0)
+
+  # Linux habits, updatedb forwards to the OSX binary
+  alias updatedb='/usr/libexec/locate.updatedb'
 fi
 
 # hose things that match string
