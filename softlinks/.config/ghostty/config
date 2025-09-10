@@ -5,8 +5,11 @@ scrollback-limit = 20000000
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
-font-family = Iosevka
+font-family = Iosevka Medium
 font-size = 14
+
+# Text in unfocused splits are legible
+unfocused-split-opacity = 1
 
 # I install this as a cask through brew, no need to prompt
 auto-update = off
