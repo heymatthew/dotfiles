@@ -7,3 +7,6 @@ tags
 # Make .DS_Store files visible in these repos.
 # When stowing dotfiles this has been painful, I want to git clean -df
 # .DS_Store
+
+# Checking these in for projects isn't needed right now
+.envrc
