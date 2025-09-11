@@ -6,6 +6,7 @@ brew "asdf"            # Multi language package manager
 brew "aspell"
 brew "coreutils"       # GNU File, Shell, and Text utilities
 brew "dict"            # dictionary server protocol (RFC2229) client
+brew "direnv"          # loads/unloads a per folder .envrc
 brew "entr"            # run commands when files change
 brew "exercism"        # develop fluency with coding exercises and mentoring https://exercism.org
 brew "gh"              # github cli https://cli.github.com/

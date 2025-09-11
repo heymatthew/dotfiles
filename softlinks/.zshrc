@@ -182,6 +182,11 @@ alias nerf='pkill -9 -i -f'
 # ssh keys stay unlocked for about a week
 alias ssh-add='ssh-add -t 6d'
 
+# .envrc files contain secrets, if direnv exists export them on directory traversal
+if which direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
 # If asdf exists, init shims and autocompletion
 # https://asdf-vm.com/guide/getting-started.html
 if which asdf > /dev/null; then
