@@ -85,7 +85,6 @@ vale sync
 
 echo "installing vim/nvim plugins..."
 /opt/homebrew/bin/nvim -c "call UpdateEverything() | qa"
-/opt/homebrew/bin/vim -c "call UpdateEverything() | qa"
 
 echo "removing 'Last login: $DATEETIME on ttys000' from new windows"
 touch ~/.hushlogin

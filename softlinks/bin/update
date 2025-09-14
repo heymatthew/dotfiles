@@ -9,7 +9,7 @@ if which aws-vault > /dev/null && [ -n "$AWS_PROFILE" ]; then
 fi
 
 echo "vim..."
-vim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdateBinaries") | qa'
+nvim -c 'call execute("PlugUpdate") | echo "Go Update..." | call execute("GoUpdateBinaries") | qa'
 
 echo "restowing dotfiles..."
 /opt/homebrew/bin/stow -vv softlinks
