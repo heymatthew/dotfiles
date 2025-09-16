@@ -36,6 +36,8 @@ brew "nmap"               # Port scanner
 brew "pandoc"             # markdown formatter, but also used to convert between formats
 brew "pgformatter"        # pg_format command to format sql
 brew "postgresql@15"
+brew "protobuf"           # Compile .proto files https://protobuf.dev
+brew "protoc-gen-go-grpc" # gRPC extension for protobuf https://grpc.io
 brew "pstree"             # Hirachical list of processes
 brew "rename"
 brew "restic"             # Nobody wants backup, everyone wants restore https://restic.net/
