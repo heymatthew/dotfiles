@@ -2,4 +2,4 @@
 
 git init
 git add .
-git commit -m "First!"
+git commit -m "feat: First there was nothing. Then there was everything."
