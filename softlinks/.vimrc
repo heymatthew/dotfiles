@@ -186,6 +186,7 @@ augroup vimrc/settings | autocmd!
   " Debugging reminders
   autocmd FileType ruby :iabbrev <buffer> puts puts<ESC>m`A # FIXME: commit = death<ESC>``a
   autocmd FileType ruby :iabbrev <buffer> binding binding<ESC>m`A # FIXME: commit = death<ESC>``a
+  autocmd FileType go :iabbrev <buffer> _= _<SPACE>=<ESC>m`A // FIXME: commit = death<ESC>``a
 
   " Common Abbreviations
   autocmd FileType gitcommit :iabbrev <buffer> prr Preparatory Refactoring
