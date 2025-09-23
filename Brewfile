@@ -17,6 +17,7 @@ brew "gnu-sed"            # GNU sed > Apple sed
 brew "gnupg"
 brew "go"
 brew "hadolint"           # Linter for Dockerfile
+brew "helm"               # Package manager for Kubernetes (depends on kubectl, see Docker)
 brew "htop"               # prettier top, with colour
 brew "hugo"               # static website generator
 brew "iftop"              # top for your network interfaces
@@ -63,7 +64,6 @@ brew "luacheck" # Lua Linter
 
 cask "anki"
 cask "audacity"
-cask "docker"
 cask "font-hack"            # nice looking fixed width font
 cask "font-iosevka"         # slab serif monospace font https://typeof.net/Iosevka/
 cask "font-merriweather"    # modern serif font
@@ -81,6 +81,7 @@ cask "signal"               # secure chat
 cask "transmission"         # good for Linux ISOs
 cask "vlc"
 
+# cask "docker"  # Managed outside of brew, asks for sudo too much
 # brew "mas"     # App Store control from CLI https://github.com/mas-cli/mas
 # brew "awscli"
 # cask "wezterm" # Terminal emulator without splits
