@@ -27,6 +27,11 @@ brew upgrade --cask
 brew cleanup
 brew doctor
 
+if which gcloud > /dev/null; then
+    echo "gcloud..."
+    gcloud components update
+fi
+
 echo "macOS..."
 echo "This command appears to freeze:"
 echo "> softwareupdate --install --all"
