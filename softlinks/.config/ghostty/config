@@ -16,3 +16,6 @@ auto-update = off
 
 keybind = super+shift+f=write_selection_file:open
 keybind = cmd+f=write_screen_file:open
+
+# I manage my CWD pin and cdd so I don't need this
+window-inherit-working-directory = false
