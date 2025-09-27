@@ -62,6 +62,12 @@ brew "lua"
 brew "busted"   # Lua Unit testing
 brew "luacheck" # Lua Linter
 
+# Language Servers
+brew "eslint"
+brew "golangci-lint"
+brew "gopls"
+brew "typescript-language-server"
+
 cask "anki"
 cask "audacity"
 cask "font-hack"            # nice looking fixed width font
