@@ -423,6 +423,9 @@ nnoremap t<SPACE> :TCR
 
   " <C-*> is shorthand for non greedy search
   cnoremap <C-*> \{-}
+
+  " gJ are motions, clobbers gJ which used to join without reformatting
+  nnoremap gJ :set operatorfunc=JoinMotion<CR>g@
 augroup END
 
 augroup vimrc/functions | autocmd!
@@ -666,4 +669,8 @@ augroup vimrc/functions | autocmd!
       return l:matching_coauthors
     endif
   endfunction
+
+  function! JoinMotion(submode)
+    '[,']join
+  endfunc
 augroup END
