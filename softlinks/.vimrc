@@ -405,7 +405,7 @@ augroup vimrc/mappings | autocmd!
   " Merges - find what merged to mainline for a ref under cursor
   command! Merges Git log <cword>..origin/head --ancestry-path --merges --reverse
 " Setup Dispatch with TCR. Run with `<CR>
-command! -nargs=+ -complete=file TCR execute 'FocusDispatch ' . <q-args> . ' && git add . || git checkout .'
+command! -nargs=+ -complete=file TCR execute 'FocusDispatch ' . <q-args> . ' && git add . || git checkout . && exit 1'
 " Convenience map to quickly populate TCR
 nnoremap t<SPACE> :TCR 
 
