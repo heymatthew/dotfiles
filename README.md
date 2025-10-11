@@ -1,9 +1,8 @@
-Standard local configurations for programs that I use on my machines, checked
-into git for maximum awesome.
+Personal configuration. Open source, but unsupported... and probably dangerious.
 
 Setup a new machine with:
 ```
-git clone https://github.com/heymatthew/dotfiles
+git clone ssh://git@codeberg.org/mtyg/dotfiles.git
 cd dotfiles
 ./setup.rb
 ```

@@ -43,7 +43,7 @@ brew "pstree"             # Hirachical list of processes
 brew "rename"
 brew "restic"             # Nobody wants backup, everyone wants restore https://restic.net/
 brew "shellcheck"         # ncjones uses this for linting shell stuff
-brew "stow"               # manage softlinks for dotfiles
+brew "stow"               # manage config softlinks
 brew "svn"                # required for font-source-code-pro
 brew "termshark"          # cli replacement for wireshark
 brew "tig"
